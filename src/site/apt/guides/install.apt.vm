@@ -1,0 +1,114 @@
+ ------
+ Installation
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+{Download} GWE ${buildVersion}
+
+ Download one of the GWE distribution bundles:
+
+*---------------------------------+------------------------+
+|                                             | <<Bundle Link>>
+*---------------------------------+------------------------+
+| GWE Alpha Release ${buildVersion} (zip)     | {{{http://www.${devServerDomain}/maven/org/gwe/client/${buildVersion}/gwe-${buildVersion}-client.zip}gwe-${buildVersion}-client.zip}}
+*---------------------------------+------------------------+
+| GWE Alpha Release ${buildVersion} (tar.gz)  | {{{http://www.${devServerDomain}/maven/org/gwe/client/${buildVersion}/gwe-${buildVersion}-client.tar.gz}gwe-${buildVersion}-client.tar.gz}}
+*---------------------------------+------------------------+
+| GWE Alpha Release ${buildVersion} (tar.bz2) | {{{http://www.${devServerDomain}/maven/org/gwe/client/${buildVersion}/gwe-${buildVersion}-client.tar.bz2}gwe-${buildVersion}-client.tar.bz2}}
+*---------------------------------+------------------------+
+
+====
+
+ <NOTE: The fact that these bundles include a '-client' prefix doesn't mean that they don't carry within them the 
+ necessary artifacts to deploy and entire GWE system. In summary, these bundles are everything you need to be able 
+ to deploy the full blown enterprise distributed system in your grid environment>  
+
+====
+
+* Previous Releases
+
+  All previous releases of GWE can be found {{{http://www.${devServerDomain}/maven/org/gwe/client/}here}}.
+
+* System {Requirements}
+
+** Client Workstations
+
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<JDK>>              | 1.5 or above
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<Memory>>           | No minimum requirement
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<Disk>>             | No minimum requirement. 
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<Operating System>> | No minimum requirement. On Windows, Windows NT and above, Cygwin is required.
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<Network>>          | TCP/IP network connectivity to target cluster head nodes.
+*----------------------+---------------------------------------------------------------------------------------------+
+
+** Cluster Head Nodes
+
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<JDK>>              | 1.5 or above
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<Memory>>           | 512MB or more
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<Disk>>             | Enough to hold localized and result files for a number of jobs equal to the daemon's queue size  
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<Operating System>> | No minimum requirement. Preferable Unix based.
+*----------------------+---------------------------------------------------------------------------------------------+
+| <<Network>>          | TCP/IP network connectivity and SSH port opened.
+*----------------------+---------------------------------------------------------------------------------------------+
+
+* {Installation} Instructions
+
+  <GWE is a Java 1.5 based system, so you must 
+  have> <<{{{http://java.sun.com/javase/downloads/index_jdk5.jsp}Java 1.5}}>> <or higher installed in order to proceed.>
+
+** Unix-based Operating Systems (Linux, Solaris and Mac OS X)
+
+  [[]] Extract the distribution archive, i.e. <<<gwe-${buildVersion}-client.zip>>> to the directory you wish to install GWE ${buildVersion}.
+        These instructions assume you chose <<<"/usr/local/gwe">>>. The directory <<<gwe-${buildVersion}>>> will be created from the archive.
+
+  [[]] In a command terminal, add the <<<GWE_HOME>>> environment variable, e.g. <<<"export GWE_HOME=/usr/local/gwe/gwe-${buildVersion}">>>.
+
+  [[]] Add <<<GWE_HOME/bin>>> environment variable to your path, e.g. <<<"export PATH=$GWE_HOME/bin:$PATH">>>.
+
+  [[]] Make sure that <<<JAVA_HOME>>> is set to the location of your JDK, e.g.
+        <<<"export JAVA_HOME=/usr/java/jdk1.5.0_02">>> and that <<<"$JAVA_HOME/bin">>> is in your <<<PATH>>> environment variable.
+
+
+** Windows 2000/XP (Under Construction - Unresolved Cygwin related problems)
+
+  [[]] Install {{{http://cygwin.com/}Cygwin}} in your system if it is not already installed.
+
+  [[]] Unzip the distribution archive, i.e. <<<gwe-${buildVersion}-client.zip>>> to the directory you wish to install GWE ${buildVersion}.
+        These instructions assume you chose <<<"C:\Program Files\GWE">>>. The directory <<<gwe-${buildVersion}>>> will be created from the archive.
+
+  [[]] Add the <<<GWE_HOME>>> environment variable by opening up the system properties (WinKey + Pause),
+        selecting the "Advanced" tab, and the "Environment Variables" button, then adding the <<<GWE_HOME>>>
+        variable in the user variables with the value
+        <<<"C:\Program Files\GWE\gwe-${buildVersion}">>>.
+
+  [[]] In the same dialog, update/create the <<<Path>>> environment variable in the user variables with the value <<<"%GWE_HOME%;%Path%">>> 
+        to make GWE available from the command line.
+
+  [[]] In the same dialog, make sure that <<<JAVA_HOME>>> exists in your user variables or in the system variables and it is set to the location of your JDK,
+        e.g. <<<"C:\Program Files\Java\jdk1.5.0_02">>> and that <<<"%JAVA_HOME%\bin">>> is in your <<<Path>>> environment variable.
+
+  [[]] Open a new command prompt (Winkey + R then type <<<"cmd">>>) and run <<<"mvn --version">>> to verify that it is correctly installed.
+
+
+* {Updating} Instructions
+
+  [[]] Install the new version of GWE as described in the <{{{Installation}'Installation Instructions' section}}>.
+
+  [[]] Run <<<"gwe-util-client.sh [GWE_HOME_OF_OLD_VERSION]">>>.
+
+
+* Installation Sample Snapshot on Mac OS X
+
+[../images/gwe-core/client-install-resized.png]
+

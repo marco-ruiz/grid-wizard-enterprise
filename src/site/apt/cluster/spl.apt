@@ -1,0 +1,36 @@
+ ------
+ Cluster at "Harvard's Surgical Planning Laboratory"
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Coming Soon
+
+==============
+
+Under Construction
+
+==============
+
+{{{http://www.spl.harvard.edu/index.html}Harvard's Surgical Planning Laboratory}}
+ 
+* Enabling Details
+
+*--------------+------------------------------+
+| GWE Version                |          
+*--------------+------------------------------+
+| Head Node                  |  
+*--------------+------------------------------+
+| Port                       |            
+*--------------+------------------------------+
+| Maximum Resources          |    
+*--------------+------------------------------+
+| Aging Disposal Timeout     |  
+*--------------+------------------------------+
+| Idleness Disposal Timeout  |            
+*--------------+------------------------------+
+
+* Gaining Access
+ 

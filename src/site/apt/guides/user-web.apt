@@ -1,0 +1,129 @@
+ ------
+ GWE Client: Web Control Panel
+ ------
+ Marco Ruiz
+ ------
+ December 2008
+ ------
+
+GWE Client: Web Control Panel
+ 
+ This is a full feature application which runs as a local web server allowing the user to interact with it through any
+ web browser. The web server acts as a proxy to the GWE system by carrying on the user's request: installing and/or 
+ launching new GWE daemons, contacting already deployed ones, queuing new orders in selected daemon, checking the 
+ status of orders and jobs, standard outputs and exceptions, internal configuration, etc. 
+ 
+* {Launching}
+ 
+ This application is launched by invoking:  
+ 
+=====
+
+	<<<$GWE_HOME/bin/gwe-web.sh [IP_PORT_WHERE_TO_RUN_WEB_SERVER] {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}}>>>
+
+=====
+
+[../images/gwe-wcp/wcp-launch.png]
+
+* Interacting
+
+ Thereafter you can use a web browser of your choice and connect to this web application by accessing the URL:
+ 
+---
+	http://localhost:[IP_PORT_WHERE_TO_RUN_WEB_SERVER]
+---
+
+ And you should get a page like this (expanded daemons and keys, collapsed macros):
+ 
+[../images/gwe-wcp/wcp-grid-1.png]
+
+ \
+ (collapsed daemons and keys, expanded macros):
+ 
+[../images/gwe-wcp/wcp-grid-2.png]
+
+** Daemons and Clusters
+ 
+ Following the "next" arrow you would get a page like the following summarizing the details of the BIRN cluster:
+
+[../images/gwe-wcp/wcp-cluster-1.png]
+
+ \
+ You can equally get a summary for any other cluster registered in your {{{config.html#Grid}<Grid Descriptor File>}} 
+ (ie. GWE's local machine virtual cluster):
+
+[../images/gwe-wcp/wcp-cluster-2.png]
+
+
+** Queuing Orders
+
+ To queue an order in a particular daemon you can follow the link provided in its respective cluster details page
+ and in the resulting queue order page input the P2EL statement and press the "Submit Order" button:
+
+[../images/gwe-wcp/wcp-queue-1.png]
+
+ \
+ thereafter the order will be queued and processed accordingly.
+
+[../images/gwe-wcp/wcp-queue-2.png]
+
+ At this point you could {{{#Shutdown}exit}} this application and leave the daemon to work on it. Later you can 
+ {{{#Launching}relaunch}} this application to continue with the following steps to check the execution progress of 
+ this order.
+
+** Monitoring Execution Progress 
+
+ You may follow any of the links to the new order to check its execution progress:
+
+[../images/gwe-wcp/wcp-order-1.png]
+
+ \
+ \
+ you can collapse sections to read jobs summary table...
+
+[../images/gwe-wcp/wcp-order-2.png]
+
+
+ \
+ \
+ Notice that GWE keeps track of jobs that fail to execute...
+
+[../images/gwe-wcp/wcp-order-3.png]
+
+ \
+ \
+ ... and will retry their execution (if the order's profile indicates so) after giving a chance to all other pending jobs:
+
+[../images/gwe-wcp/wcp-order-4.png]
+
+ \
+ \
+ At any time you can check the status of each individual job within an order as well...
+
+[../images/gwe-wcp/wcp-job-1.png]
+
+ \
+ \
+ ... and inspect each execution (ideally only one - more only if previous execution(s) failed):
+
+[../images/gwe-wcp/wcp-job-2.png]
+
+ \
+ \
+ Finally after done with the client we need to shut it down and disconnect it from the daemons by pressing the 
+ "{Shutdown}" button... 
+
+[../images/gwe-wcp/wcp-exit-1.png]
+
+ \
+ \
+ ... at that point we are done using the GWE Web Control Panel:
+
+[../images/gwe-wcp/wcp-exit-2.png]
+
+ \
+ \
+ <Remember that this does not stop your GWE daemons: they stay alive executing any pending orders/jobs and 
+ listening for incoming client connections so you can reconnect to them at a future time to carry on any of the
+ previous tasks.>
+  

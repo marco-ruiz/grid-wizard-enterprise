@@ -1,0 +1,52 @@
+
+Credits
+
+GWE project would not be possible without funding of the following institutions and the open source community, out of which many projects have been used to create it.
+SPONSORS
+
+GWE development is funded by the National Alliance for Medical Image Computing (NA-MIC) and UCSD's Biomedical Informatics Research Network (BIRN)
+[http://www.nbirn.net/images/head1.jpg] National Alliance for Medical Image Computing (NA-MIC)
+[http://www.na-mic.org/img/logo_nac.gif] UCSD's Biomedical Informatics Research Network (BIRN)
+OPEN SOURCE COMMUNITY
+
+logo name="Maven" href="http://maven.apache.org/" img="http://maven.apache.org/images/logos/maven-feather.png" / !-- <logo name="Spring" href="http://maven.apache.org/" img="http://www.springframework.org/buttons/powered-by-spring_large.png" / logo name="Hibernate" href="http://maven.apache.org/" img="http://www.hibernate.org/hib_images/hibernate_logo_a.png" / logo name="Derby" href="http://maven.apache.org/" img="http://db.apache.org/derby/logo/final_logowithtext120.png" / logo name="Velocity" href="http://maven.apache.org/" img="http://wiki.apache.org/velocity-data/attachments/PoweredByVelocity/attachments/powered-by-logo.gif" /	
+	
+
+ 
+ * Spring Framework
+ 
+[http://www.springframework.org/buttons/spring_white.png]
+ 
+ * Hibernate
+
+[http://www.hibernate.org/hib_images/hibernate_logo_a.png]
+
+ * Derby
+ 
+[http://db.apache.org/derby/logo/final_logowithtext120.png]
+
+ * Velocity
+ 
+[http://wiki.apache.org/velocity-data/attachments/PoweredByVelocity/attachments/powered-by-logo.gif]
+
+ * Log4j
+ 
+[http://logging.apache.org/log4j/]
+
+ * XStream
+ 
+[http://xstream.codehaus.org/logo.gif]
+
+ * JSch
+ 
+[http://www.jcraft.com/image/jcraft.logo.png]
+
+ * Maven
+ 
+[http://maven.apache.org/images/logos/maven-inside.png]
+
+ * Many Apache/Jakarta Commons Projects
+
+[http://commons.apache.org/images/logo.png]
+
+ 

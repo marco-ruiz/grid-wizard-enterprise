@@ -1,0 +1,46 @@
+ ------
+ Cluster at the "The Center for Imaging Science, John Hopkins University"
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Coming Soon
+
+==============
+
+Under Construction
+
+==============
+
+{{{http://www.cis.jhu.edu/computationalanatomy/cisandsupercomputing.html}The Center for Imaging Science, John Hopkins University}}
+
+ From the {{{http://www.cis.jhu.edu/computationalanatomy/cisandsupercomputing.html}The Center for Imaging Science, John Hopkins University Site}}:
+ 
+====
+ 
+ <CIS is a center with large computational and visualization needs. The two major computational machines within CIS 
+ are the Intel Itanium2 cluster and the IBM SP. These machines are used for local development and the porting of 
+ applications to various National Supercomputer centers.>
+ 
+====
+ 
+* Enabling Details
+
+*--------------+------------------------------+
+| GWE Version                |          
+*--------------+------------------------------+
+| Head Node                  |  
+*--------------+------------------------------+
+| Port                       |            
+*--------------+------------------------------+
+| Maximum Resources          |       
+*--------------+------------------------------+
+| Aging Disposal Timeout     |  
+*--------------+------------------------------+
+| Idleness Disposal Timeout  |            
+*--------------+------------------------------+
+
+* Gaining Access
+ 

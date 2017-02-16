@@ -1,0 +1,51 @@
+ ------
+ BIRN Cluster
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Under Construction
+
+==============
+
+{{{http://www.nbirn.net/cyberinfrastructure/compute_cluster.shtm}BIRN Cluster}}
+
+ From the {{{http://www.nbirn.net/cyberinfrastructure/compute_cluster.shtm}BIRN Site}}:
+ 
+====
+ 
+ <The BIRN compute cluster consists of 32 dual processor 2 Ghz AMD Opteron compute nodes running the Linux operating 
+ system with 4 Gb of physical RAM. The compute cluster is managed via the Condor resource management software, 
+ which not only ensures fair access to compute cycles but collects usage information for more detailed resource 
+ planning in the future.>
+ 
+====
+ 
+* Enabling Details
+
+*--------------+------------------------------+
+| GWE Version                | ${buildVersion}         
+*--------------+------------------------------+
+| Head Node                  | birn-cluster0.nbirn.net 
+*--------------+------------------------------+
+| Port                       | 1099 (default)           
+*--------------+------------------------------+
+| Maximum Resources          | 25         
+*--------------+------------------------------+
+| Aging Disposal Timeout     | No timeout
+*--------------+------------------------------+
+| Idleness Disposal Timeout  | 5 minutes           
+*--------------+------------------------------+
+
+* Gaining Access
+ 
+ To apply for a BIRN cluster SSH account an email shall be sent to {{{mailto:support@nbirn.net}support@nbirn.net}} 
+ containing the following items:
+ 
+ * Subject: "SSH access request for birn-cluster0".
+ 
+ * SSH public key attached (created with an 8 characters or greater passphrase).
+ 
+ * Contact information (email and phone).

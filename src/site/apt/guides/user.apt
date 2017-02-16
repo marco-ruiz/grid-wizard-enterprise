@@ -1,0 +1,59 @@
+ ------
+ End User Guide
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Using GWE
+
+ GWE comes with a java API that allows to create component interfaces or applications (GWE client application) which 
+ interact with the GWE daemon controlling the described clusters. These daemons can be deployed and 
+ installed by any client on-demand or automatically (if the client detects there is no daemon running remotely, 
+ and it launches it if it is installed but not running). Using this API the generic GWE client applications have been 
+ created as well as specialized ones (as detailed in the documents of the <GWE Powered Tools> section). 
+ 
+ GWE client applications communicate with remote daemons through a secure SSH tunnel (transparently established), so 
+ all communication will be secured and without requiring any cluster administration tasks such as opening specific ports,
+ or installing any software, in fact not even SSH-ing into the clusters is necessary: GWE will take care of everything 
+ from here!
+
+* Interaction Operations Available
+
+ * Deploy/install/launch GWE daemons on remote hosts.
+  
+ * Queue an order in a particular GWE daemon. 
+ 
+ * List all the orders queued in a particular GWE daemon. 
+ 
+ * View the details of a specific queued order.
+ 
+ * List the status of all the jobs belonging to a particular order.
+ 
+ * View the details of a specific job belonging to a specific order.
+ 
+ * View the result of a specific job belonging to a specific order. 
+
+ * Pause the execution of an order. 
+
+ * Resume the execution a paused order. 
+
+ * Delete an order. 
+
+
+* GWE Client Applications
+
+** Generic
+
+ * {{{user-web.html}Web Control Panel}}
+ 
+ * {{{user-terminal.html}Terminal}}
+ 
+ * {{{user-scripts.html}Scripts}}
+ 
+** Specialized 
+
+ * {{{../integration/slicer.html}GSlicer3}}
+ 
+ 

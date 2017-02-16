@@ -1,0 +1,88 @@
+<book>
+	<id>gweGuide</id>
+	<title>GWE User Manual</title>
+	<chapters>
+		<chapter>
+			<id>intro</id>
+			<title>Introduction</title>
+			<sections>
+				<!-- 
+					<section>
+					<id>index</id>
+					<id>apt/index</id>
+					</section>
+				<section>
+					<id>features</id>
+				</section>
+				-->
+				<section>
+					<id>credits</id>
+					<file>apt/credits</file>
+				</section>
+			</sections>
+		</chapter>
+
+		<chapter>
+			<id>setup</id>
+			<title>GWE Setup</title>
+			<sections>
+				<section>
+					<id>config</id>
+					<file>apt/guides/config</file>
+				</section>
+				<!-- 
+					<section>
+					<id>install</id>
+					<file>guides/install</file>
+					</section>
+					<section>
+					<id>admin</id>
+					<file>apt/guides/admin</file>
+					</section>
+				-->
+			</sections>
+		</chapter>
+
+		<chapter>
+			<id>guide</id>
+			<title>Usage</title>
+			<sections>
+				<!-- 
+					<section>
+					<id>user</id>
+					<file>apt/guides/user</file>
+					</section>
+				-->
+				<section>
+					<id>p2el</id>
+					<file>apt/guides/p2el</file>
+				</section>
+			</sections>
+		</chapter>
+
+		<!-- 
+			<chapter>
+			<id>integration</id>
+			<title>Third Party Integration</title>
+			<sections>
+			<section>
+			<id>slicer</id>
+			<file>integration/slicer</file>
+			</section>
+			</sections>
+			</chapter>
+		-->
+<!-- 
+		<chapter>
+			<id>glossary</id>
+			<title>Glossary</title>
+			<sections>
+				<section>
+					<id>glossary</id>
+					<file>apt/glossary</file>
+				</section>
+			</sections>
+		</chapter>
+ -->
+	</chapters>
+</book>

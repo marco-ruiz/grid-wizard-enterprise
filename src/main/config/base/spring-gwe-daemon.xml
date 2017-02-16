@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation=" 
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<import resource="spring-gwe-installer.xml"/>
+
+	<!-- ====================== -->
+	<!-- GRID RESOURCES DRIVERS -->
+	<!-- ====================== -->
+	<bean id="resManagerDriver" abstract="true" class="org.gwe.drivers.resManagers.ResourceManagerDriver">
+		<property name="configuration" ref="configuration"/>
+	</bean>
+
+	<bean id="gridResourceManager" class="org.gwe.drivers.resManagers.GridResourceManager">
+		<constructor-arg>
+			<list>
+				<bean parent="resManagerDriver" class="org.gwe.drivers.resManagers.CondorDriver" >
+					<property name="id" value="condor" />
+				</bean>
+				<bean parent="resManagerDriver" class="org.gwe.drivers.resManagers.QsubDriver" >
+					<property name="id" value="qsub" />
+				</bean>
+				<bean parent="resManagerDriver" class="org.gwe.drivers.resManagers.BsubDriver" >
+					<property name="id" value="bsub" />
+				</bean>
+				<bean parent="resManagerDriver" class="org.gwe.drivers.resManagers.MultiProcessesDriver" >
+					<property name="id" value="local" />
+				</bean>
+				<bean parent="resManagerDriver" class="org.gwe.drivers.resManagers.MultiThreadsDriver">
+					<property name="id" value="localThreads" />
+					<property name="agentAPI" ref="agentAPI" />
+				</bean>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="headResource" />
+	</bean>
+
+	<!-- ========================================================================== -->
+	<!-- 						P E R S I S T E N T   L A Y E R						-->
+	<!-- ========================================================================== -->
+
+	<!-- DB and ORM layer inherited from spring-gwe-installer.xml -->
+
+	<!-- ====== -->
+	<!--  DAOs  -->
+	<!-- ====== -->
+	<bean id="genericDAO" abstract="true" class="org.gwe.persistence.dao.BaseInfoDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="headResourceDAO" parent="genericDAO" class="org.gwe.persistence.dao.HeadResourceInfoDAO" />
+	<bean id="computeResourceDAO" parent="genericDAO" class="org.gwe.persistence.dao.ComputeResourceInfoDAO" />
+	<bean id="allocationDAO" parent="genericDAO" class="org.gwe.persistence.dao.AllocationInfoDAO" />
+	<bean id="orderDAO" parent="genericDAO" class="org.gwe.persistence.dao.OrderInfoDAO" />
+	<bean id="jobDAO" parent="genericDAO" class="org.gwe.persistence.dao.JobInfoDAO" />
+	<bean id="jobExecutionDAO" parent="genericDAO" class="org.gwe.persistence.dao.JobExecutionInfoDAO" />
+
+	<!-- ========================================================================== -->
+	<!-- 								D O M A I N S 								-->
+	<!-- ========================================================================== -->
+
+	<!-- ========= -->
+	<!--  DOMAINS  -->
+	<!-- ========= -->
+	<bean id="baseDomain" abstract="true" class="org.gwe.app.daemon.domain.BaseDomain">
+		<property name="config" ref="configuration"	/>
+		<property name="headResourceDAO" ref="headResourceDAO" />
+		<property name="computeResourceDAO" ref="computeResourceDAO" />
+		<property name="allocationDAO" ref="allocationDAO" />
+		<property name="orderDAO" ref="orderDAO" />
+		<property name="jobDAO" ref="jobDAO" />
+		<property name="jobExecutionDAO" ref="jobExecutionDAO" />
+	</bean>
+
+	<bean id="userDomain"    parent="baseDomain" class="org.gwe.app.daemon.domain.UserDomain" />
+	<bean id="monitorDomain" parent="baseDomain" class="org.gwe.app.daemon.domain.MonitorDomain" />
+	<bean id="daemonDomain"  parent="baseDomain" class="org.gwe.app.daemon.domain.DaemonDomain" />
+	<bean id="agentDomain"   parent="baseDomain" class="org.gwe.app.daemon.domain.AgentDomain" />
+
+	<!-- ==================================================== -->
+	<!--  DOMAIN ASPECTS (SECURITY & TRANSACTION MANAGEMENT)  -->
+	<!-- ==================================================== -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- Transaction Interceptor set up to do PROPAGATION_REQUIRED on all methods -->
+	<bean id="requiredTxInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource">
+			<bean class="org.springframework.transaction.interceptor.MatchAlwaysTransactionAttributeSource">
+				<property name="transactionAttribute" value="PROPAGATION_REQUIRES_NEW" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Transaction Interceptor set up to work with annotations in the target classes -->
+	<bean id="annotatedTxInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource">
+			<bean class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource" />
+		</property>
+	</bean>
+
+	<!-- Transaction Interceptor set up to do PROPAGATION_SUPPORTS on all methods -->
+	<bean id="supportTxInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource">
+			<bean class="org.springframework.transaction.interceptor.MatchAlwaysTransactionAttributeSource">
+				<property name="transactionAttribute" value="PROPAGATION_SUPPORTS" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- =================================== -->
+	<!--  DOMAIN TRANSPARENT PROXY CREATORS  -->
+	<!-- =================================== -->
+	<!-- One BeanNameAutoProxyCreator handles all beans where we want all methods to use PROPAGATION_REQUIRED -->
+	<bean id="daemonDomainProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<idref local="requiredTxInterceptor" />
+			</list>
+		</property>
+		<property name="beanNames">
+			<list>
+				<idref local="daemonDomain" />
+			</list>
+		</property>
+	</bean>
+ 
+	<bean id="userDomainProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<idref local="annotatedTxInterceptor" />
+			</list>
+		</property>
+		<property name="beanNames">
+			<list>
+				<idref local="userDomain" />
+			</list>
+		</property>
+	</bean>
+ 
+	<!-- One BeanNameAutoProxyCreator handles all beans where we want their respective annotations to define their transaction attributes -->
+	<bean id="agentDomainProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<idref local="annotatedTxInterceptor" />
+			</list>
+		</property>
+		<property name="beanNames">
+			<list>
+				<idref local="agentDomain" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 
+		<bean id="baseDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target" ref="baseDAO"/>
+		<property name="transactionAttributes">
+		<props>
+		<prop key="*">PROPAGATION_REQUIRED</prop>
+		</props>
+		</property>
+		</bean>
+	-->
+
+	<!-- ============================================================================================== -->
+	<!-- 								D A E M O N   A P P   S T A R T E R								-->
+	<!-- ============================================================================================== -->
+
+	<!-- ============= -->
+	<!--  SERVER APIs  -->
+	<!-- ============= -->
+	<bean id="userAPI" class="org.gwe.api.impl.ServerAPI4UserImpl">
+		<property name="domain" ref="userDomain" />
+	</bean>
+
+	<bean id="monitorAPI" class="org.gwe.api.impl.ServerAPI4MonitorImpl">
+		<property name="domain" ref="monitorDomain" />
+	</bean>
+
+	<bean id="agentAPI" class="org.gwe.api.impl.ServerAPI4AgentImpl">
+		<property name="domain" ref="agentDomain" />
+	</bean>
+
+	<bean id="daemonAPI" class="org.gwe.api.impl.ServerAPI4DaemonImpl">
+		<property name="domain" ref="daemonDomain" />
+	</bean>
+
+	<util:set id="serverAPIs" set-class="java.util.HashSet">
+		<ref bean="userAPI" />
+		<ref bean="monitorAPI" />
+		<ref bean="agentAPI" />
+		<!-- 
+			<ref bean="daemonAPI" />
+		-->
+	</util:set>
+
+	<!-- ==================================== -->
+	<!--  SERVICES RUNNING IN DAEMON THREADS  -->
+	<!-- ==================================== -->
+	<bean id="jobGenerator"         autowire="constructor" class="org.gwe.app.daemon.domain.background.JobGenerator" />
+	<bean id="jobAllocPreparer"     autowire="constructor" class="org.gwe.app.daemon.domain.background.JobsAndAllocationsPreparer" />
+	<bean id="jobAllocMatcher"      autowire="constructor" class="org.gwe.app.daemon.domain.background.JobAndAllocationMatcher" />
+	<bean id="jobsReadinessFlagger" autowire="constructor" class="org.gwe.app.daemon.domain.background.JobsReadinessFlagger" />
+	<bean id="ordersDBUpdater"      autowire="constructor" class="org.gwe.app.daemon.domain.background.OrdersDBUpdater" />
+
+	<util:map id="daemonThreadServices" map-class="java.util.HashMap">
+		<entry key-ref="jobGenerator"         value="Job Generator" />
+		<entry key-ref="jobAllocPreparer"     value="Jobs and Allocations Preparer" />
+		<entry key-ref="jobAllocMatcher"      value="Job-Allocation Matcher" />
+		<entry key-ref="jobsReadinessFlagger" value="Jobs Readiness Flagger" />
+		<entry key-ref="ordersDBUpdater"      value="Orders DB Updater" />
+		<entry key-ref="monitorDomain"        value="Event Dispatcher" />
+	</util:map>
+
+	<!-- ==================== -->
+	<!--  DAEMON APP STARTER  -->
+	<!-- ==================== -->
+	<bean id="daemonAppStarter" class="org.gwe.app.daemon.DaemonAppStarter" >
+		<property name="configuration" ref="configuration" />
+		<property name="serverAPIs" ref="serverAPIs" />
+		<property name="daemonThreadServices" ref="daemonThreadServices" />
+	</bean>
+	
+</beans>
+

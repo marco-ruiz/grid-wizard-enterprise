@@ -1,0 +1,160 @@
+ ------
+ P2EL Macros
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+P2EL {Macros}
+
+ A P2EL macro is a "P2EL value generator" construct; which for all practical purposes behaves as a 
+ <{{{p2el-semantics.html#Generator}P2EL value generator function}}>; but it is defined by the end user, in plain text, 
+ as a P2EL collection of value space variable definitions, in order to have a single construct to reference them all.  
+
+* Macro Usage
+
+ As we mentioned, P2EL macros are value generator constructs and as such they share the same syntax and usage logic as
+ <{{{p2el-semantics.html#Generator}P2EL value generator functions}}>. The usefulness of macros is in reusing/grouping 
+ inherently related variables under an atomic value generator construct; which highly simplifies the construction of 
+ P2EL statements. 
+ 
+ For example one can define macros to do composite tasks such as download all files located under a 
+ specified remote directory, upload a inherently related group of files (like the outputs of a process) and create a 
+ data model (P2EL variables) for a particular XML schema by extracting its values using XPath. The following are 
+ sample of variable definitions for such macros: 
+ 
++---
+	${downloadedFiles}=$downloadAll(${REMOTE_DIR})
+	${uploadedFiles}=$uploadHDR(${FILE_NAME})
+	${xmlModel}=$xcat(${XML_FILE_NAME})
++---
+ 
+* Macro Definition Syntax
+
+ Macros are defined with advanced P2EL syntax as a collection of value space variables definitions: 
+  
++---
+	$[MACRO_NAME]([MACRO_PARAMETERS]){
+		$${[MACRO_VARIABLE_1]}=$[VALUE_GENERATOR_FUNCTION_NAME_OR_MACRO_NAME]([VALUE_GENERATOR_OR_MACRO_PARAMETERS])
+		$${[MACRO_VARIABLE_2]}=$[VALUE_GENERATOR_FUNCTION_NAME_OR_MACRO_NAME]([VALUE_GENERATOR_OR_MACRO_PARAMETERS])
+		...
+		$${[MACRO_VARIABLE_n]}=$[VALUE_GENERATOR_FUNCTION_NAME_OR_MACRO_NAME]([VALUE_GENERATOR_OR_MACRO_PARAMETERS])
+	}
++---
+ 
+ We can observe that their definition starts with their signature declaration, which identifies the name of the macro and 
+ its parameters followed by the body of the macro enclosed in braces <<<{}>>>. The body of the macro is a list of 
+ variable definitions which the macro implies. For example:
+ 
++---
+	$downloadAll($${REMOTE_DIR}) {
+		$${MATCHES}=$dir($${REMOTE_DIR},.*)
+		$${FILES}=$in($${MATCHES})
+	}
++---
+
+ All macro level declarations and references (parameters and variables) require to be prefix by double dollar signs 
+ ($$) to differentiate them from statement level references, which even when is highly discourage can find its uses 
+ under exceptional circumstances such as reference to <{{{p2el-semantics.html#Contextual}variables resolved at runtime}}>. 
+ For example, the following macro would upload all files found under the home directory of the particular daemon 
+ running the jobs: 
+ 
++---
+	$uploadHomeTo($${REMOTE_DIR}) {
+		$${MATCHES}=$dir(${SYSTEM.USER_HOME},.*)
+		$${FILE_NAME}=$regExp($${MATCHES}, /, [^/]*, $)
+		$${_}=$out($${REMOTE_DIR}/$${FILE_NAME})
+	}
++---
+
+ Notice the reference to the <<<SYSTEM.USER_HOME>>> which contains a single dollar sign ('$') as a prefix in comparison 
+ with all other parameters and macro variable references (and declarations too) which are prefixed with a double dollar 
+ sign ('$$'). Also notice the special macro variable '$${_}'. This one has a special meaning at translation time; 
+ which will be addressed in the next section.
+ 
+* Macro Semantics & Translation
+
+ At pre-compilation time, each value space variable defined by a macro invocation will be replaced with the respective 
+ group of variables definitions associated with the macro invocation using the following rules:
+
+ 1. For each variable in the macro a new variable will be expanded into the corresponding P2EL statement with a name equals
+ to the macro variable prefixed by the name of the variable invoking the macro with an underscore ('_'). A special variable 
+ (root variable '$${_}') is available for the macros to specify the expansion into the actual variable assigned this macro
+ invocation.  
+ 
+ 2. Each reference to a macro parameter will be replaced with the corresponding value specified on the macro invocation. 
+
+ For example, using the previous "uploadHomeTo" macro definition example, the following variable definition: 
+ 
++---
+	${uploaded}=$uploadHomeTo(sftp://host/path)
++---  
+
+ is interpreted as (replaced by) the following variable definitions: 
+
++---
+	${uploaded_MATCHES}=$dir(${SYSTEM.USER_HOME},.*)
+	${uploaded_FILE_NAME}=$regExp(${uploaded_MATCHES}, /, [^/]*, $)
+	${uploaded}=$out(sftp://host/path/${uploaded_FILE_NAME})
++---  
+
+ Pay special attention on how the variable ${uploaded} has been interpreted as the value of the macro variable "$${_}".
+ Macros are not limited to be defined as a group of variables defined by <{{{p2el-semantics.html#Generator}P2EL value generator functions}}> 
+ but they can also be defined in terms of other macros. For example:
+ 
++---
+	$slicer($${HOME},$${MODULE}) {
+		$${CMD}=$const($${HOME}/Slicer3 --launch $${HOME}/lib/Slicer3/Plugins/$${MODULE})
+	}
+		
+	$bspline($${HOME},$${ITER},$${HIST},$${SAM}) {
+		$${SLICER}=$slicer($${HOME},BSplineDeformableRegistration)
+		$${CMD}=$const($${SLICER_CMD} --iterations $${ITER} --gridSize 5 --histogrambins $${HIST} --spatialsamples $${SAM} --maximumDeformation 1 --default 0 --resampledmovingfilename)
+		$${EXPLORATION_ID}=$${ITER}-$${HIST}-$${SAM}
+	}
++---
+
+ Notice:
+ 1. The macro <<<bspline>>> contains a variable (<<<SLICER>>>) which is defined by an invocation to the macro <<<slicer>>>.
+  
+ 2. The <<<CMD>>> variable references variable <<<SLICER_CMD>>> which is a variable expected to come into existence by 
+ the expected replacement of the <<<SLICER>>> variable using its associated <<<slicer>>> function invocation.
+ 
+ So, the following variable definition:
+ 
++---
+	${var}=$bspline(/usr/local/Slicer3,1,2,3)
++---  
+
+ ... will be replaced with the following variable definitions: 
+
++---
+	${var_CMD}=$const(${BSPLINE_SLICER_CMD} --iterations 1 --gridSize 5 --histogrambins 2 --spatialsamples 3 --maximumDeformation 1 --default 0 --resampledmovingfilename)
+	${var_EXPLORATION_ID}=1-2-3
+	${var_SLICER_CMD}=$const(/usr/local/Slicer3/Slicer3 --launch /usr/local/Slicer3/lib/Slicer3/Plugins/BSplineDeformableRegistration)
++---  
+
+ A a more practical version of this previous example are the following variable definitions: 
+ 
++---
+	${I}=range(5,10)
+	${H}=range(20,100,010)
+	${S}=range(500,5000,0500)
+	
+	${BSPLINE_2}=$bspline(/usr/local/Slicer3,${I},${H},${S})
++---  
+
+ ... which conveniently will be replaced with the following variable definitions: 
+
++---
+	${I}=range(5,10)
+	${H}=range(20,100,010)
+	${S}=range(500,5000,0500)
+	
+	${BSPLINE_2_CMD}=$const(${BSPLINE_SLICER_CMD} --iterations ${I} --gridSize 5 --histogrambins ${H} --spatialsamples ${S} --maximumDeformation 1 --default 0 --resampledmovingfilename)
+	${BSPLINE_2_EXPLORATION_ID}=${I}-${H}-${S}
+	${BSPLINE_2_SLICER_CMD}=$const(/usr/local/Slicer3/Slicer3 --launch /usr/local/Slicer3/lib/Slicer3/Plugins/BSplineDeformableRegistration)
++---  
+
+ 

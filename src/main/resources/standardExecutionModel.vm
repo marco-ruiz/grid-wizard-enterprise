@@ -1,0 +1,28 @@
+<executable>
+	<category>GWE Powered (Specialized).${executable.category}</category>
+	<title>${executable.title}</title>
+	<description>${executable.description}\nPowered by GWE</description>
+	<version>${executable.version}</version>
+	<documentation-url>${executable.url}</documentation-url>
+	<license>${executable.license}</license>
+	<contributor>${executable.contributor}</contributor>
+	<acknowledgements>${executable.acknowledgements}</acknowledgements>
+	#foreach(${group} in ${executable.groups})
+
+	<parameters>
+		<label>${group.label}</label>
+		<description>${group.description}</description>
+		#foreach(${param} in ${group.parameters})
+
+		<${param.valueType}>
+			<name>${param.name}</name>
+			<flag>${param.flag}</flag>
+			<longflag>${param.name}</longflag>
+			<label>${param.label}</label>
+			<description>${param.description}</description>
+			<default>${param.defaultValue}</default>
+			<maximum>${param.maximum}</maximum>
+			<minimum>${param.minimum}</minimum>
+		</${param.valueType}>
+	#end</parameters>
+#end</executable>

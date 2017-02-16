@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation=" 
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />
+
+	<bean id="distribution" class="org.gwe.app.Distribution" >
+		<property name="name" value="gwe" />
+		<property name="version" value="${buildVersion}" />
+	</bean>
+
+	<!-- ====================== -->
+	<!-- GRID RESOURCES DRIVERS -->
+	<!-- ====================== -->
+	<bean id="gridFileSystem" class="org.gwe.drivers.fileSystems.GridFileSystem">
+		<constructor-arg value="3" /><!-- File transfer queue size (maximum number of parallel transfers) -->
+	</bean>
+	
+	<bean id="resourceHandleFactory" class="org.gwe.drivers.ResourceHandleFactory">
+		<constructor-arg>
+			<map key-type="org.gwe.utils.security.ProtocolScheme" value-type="java.lang.Class">
+				<entry key="SFTP" value="org.gwe.drivers.fileSystems.handles.VfsHandle"/>
+				<entry key="FILE" value="org.gwe.drivers.fileSystems.handles.VfsHandle"/>
+				<entry key="HTTP" value="org.gwe.drivers.fileSystems.handles.HTTPHandle"/>
+		
+				<entry key="LOCAL" value="org.gwe.drivers.netAccess.handles.LocalHostHandle"/>
+				<entry key="SSH" value="org.gwe.drivers.netAccess.handles.SSHHostHandle"/>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- ============== -->
+	<!-- P2EL FUNCTIONS -->
+	<!-- ============== -->
+	<util:list id="p2elFunctions" list-class="java.util.ArrayList">
+		<bean class="org.gwe.p2elv2.functions.PFConst" />
+		<bean class="org.gwe.p2elv2.functions.PFCount" />
+		<bean class="org.gwe.p2elv2.functions.PFDir" />
+		<bean class="org.gwe.p2elv2.functions.PFFileDownload" />
+		<bean class="org.gwe.p2elv2.functions.PFFileUpload" />
+		<bean class="org.gwe.p2elv2.functions.PFMath" />
+		<bean class="org.gwe.p2elv2.functions.PFRange" />
+		<bean class="org.gwe.p2elv2.functions.PFRegExp" />
+		<bean class="org.gwe.p2elv2.functions.PFXPath" />
+		<bean class="org.gwe.p2elv2.functions.PFLines" />
+		<bean class="org.gwe.p2elv2.functions.PFUUID" />
+		<bean class="org.gwe.p2elv2.functions.PFMD5Hex" />
+<!-- 
+		<bean class="org.gwe.p2elv2.functions.PFUnbundle" />
+ -->
+	</util:list>
+
+</beans>
+

@@ -1,0 +1,34 @@
+<h2>Welcome to GWE's Web Control Panel!</h2>
+
+#h3Section("GWE Daemons" "server_edit.png")
+	#docLink("Configuration Documentation" "http://www.gridwizardenterprise.org/guides/config.html#Grid")
+	${renderer.renderClusters(${config})}
+</div>
+
+#h3Section("Keys" "lock_edit.png")
+	#docLink("Configuration Documentation" "http://www.gridwizardenterprise.org/guides/config.html#Key")
+	${renderer.renderKeys(${config})}
+</div>
+
+#set ($expanded = ${request.getParameter('expanded')})
+#if ($expanded)
+	#set ($expandedMode = true)
+#else
+	#set ($expandedMode = false)
+#end
+
+#h3ModeSection("Macros" ${expandedMode} "script_code.png")
+	#docLink("P2EL Macros Specification" "http://www.gridwizardenterprise.org/guides/p2el-macros.html")
+	#docLink("Configuration Documentation" "http://www.gridwizardenterprise.org/guides/config.html#Macro")
+	#foreach ($macroLibrary in ${config.macroRepo})
+	#h3Section(${macroLibrary.category} "script_code.png")
+		#foreach ($macro in ${macroLibrary.macros})
+			<a name="${macro.macroName}"></a>
+			<h4>${velocityCount}. $!{macro.title} ( ${macro.macroName} )</h4>
+			<p><img src="information.png" style="vertical-align: bottom;"/> Description: $!{macro.description}</p>
+			#viewP2EL("Parameters" ${macro.params} ${macro.vars})
+			<br/><hr/>
+		#end
+	</div>
+	#end
+</div>

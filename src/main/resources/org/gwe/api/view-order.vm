@@ -1,0 +1,7 @@
+Order Id: $!{model.id}
+Description: $!{model.description}
+Descriptor:\n $!{model.descriptor}
+Owner: $!{model.owner.name}
+Submitted at: $!{model.whenCreated}
+Completed at: $!{model.whenCompleted}
+Progress: $!{model.finishedJobsCount}/$!{model.totalJobsCount}

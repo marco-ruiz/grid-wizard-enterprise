@@ -1,0 +1,30 @@
+<h2>#clusterHeader()</h2>
+<hr/>
+
+#h3Details()
+	${renderer.renderDetails(${selectedCluster})}
+</div>
+
+#h3Section("Variables" "script.png")
+	${renderer.render(${selectedCluster.varsAsMap})}
+</div>
+
+#if ($gweSession)
+	#h3Section("Orders Queue" "report.png")
+		<form name="input" action="cluster" method="get">
+			<input type="hidden" name="clusterId" value="${clusterId}">
+			<input type="hidden" name="operation" value="cleanup">
+		    <input type="submit" value="Clean up disposed allocations">
+		</form>
+		<p>
+		#link("Queue a new order!" "queue?clusterId=${clusterId}" "report_go.png" false false)
+		<br/><br/>
+		${renderer.renderElements(${selectedCluster})}
+	</div>
+#else
+	#h3Section("Daemon Not Available!" "disconnect.png")
+	GWE was unable to contact a running GWE daemon at ${clusterId}. Press the launch button install/launch a GWE daemon. 
+	<p>Do not press more than once and please be patient as this process may take a few minutes... 
+	#installDaemonWithBundle(${clusterId} "zip")
+	</div>
+#end

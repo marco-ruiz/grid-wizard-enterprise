@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+Copyright 2007-2008 the original author or authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<document>
+	<properties>
+		<title>GWE - Grid Wizard Enterprise</title>
+		<author email="mruiz@ncmir.ucsd.edu">Marco Ruiz</author>
+	</properties>
+	<body>
+		<release version="0.7.3-alpha" date="03-02-2009" description="Ninth Alpha Release. New tools and productivity features.">
+			<action dev="mruiz" type="add" issue="GWE-">
+				First working draft of the new "Results Browser": infrastructure for local daemons and integration into Web Control Panel. 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-">
+				Redesign and implementation of P2EL compilation cycles: compilation -> system resolution -> runtime resolution.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-">
+				New order "permutation dumps" features: CSV and generated commands of order submitted. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-">
+				New server side (user API) preview order feature and integration with the client side preview (macro expansions) available in the Web Control Panel. 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-">
+				Enhancements to "regExp" P2EL function to support specific matching interest.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-">
+				Configurable resource managers per daemon to take precedence over the resource manager auto-discovery process.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-">
+				New resource manager driver to support clusters managed by "bsub" based systems (LSF, Lava).
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-">
+				New "compute node connection timeout" feature and configuration option. 
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-155">
+				Fix stalling allocations for "local" resource manager. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-">
+				New P2EL macros categorization infrastructure and integration into the Web Control Panel.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-">
+				Option to select daemon bundle type to deploy for installation. 
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-">
+				Fix key store encryption problems for 64-bits machines.
+			</action>
+		</release>
+		
+		<release version="0.7.2-alpha" date="02-04-2009" description="Eight Alpha Release. Productivity and robustness features.">
+			<action dev="mruiz" type="add" issue="GWE-166">
+				Configurable HTTP authentication.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-167">
+				Support for special "root" variable for P2EL macros. Legacy macros update to take advantage of this variable. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-168">
+				P2EL macros to support XNAT operations through the REST API.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-164">
+				Configurable daemon's product installation and operational database path. Replaced 'gweHome' from key store configuration.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-162, GWE_85">
+				Secure read of passwords and pass phrases and encryption of the complete key store. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-169">
+				New P2EL value generator function: text file parser. 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-165">
+				Infrastructure enhancements to the test host feature and integration into GWE terminal.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-9">
+				Files related to allocations disposed are now stored in a special workspace folder. New option in the web control panel to clean up this folder. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-76">
+				Delete order feature implementation and integration into "GWE Terminal" and "GWE Web Control Panel". 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-41">
+				Pause and resume order feature implementation and integration into "GWE Terminal" and "GWE Web Control Panel". 
+			</action>
+		</release>
+		
+		<release version="0.7.1-alpha" date="12-30-2008" description="Seventh Alpha Release. Infrastructure and new tools.">
+			<action dev="mruiz" type="add" issue="GWE-138">
+				New "GWE Web Control Panel" sub-project. Full feature, rich web client application to manage a GWE Grid.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-124">
+				Full feature P2EL macro module. Includes some out-of-the-box macros.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-134">
+				New P2EL value generator function: XPath based parser. 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-139">
+				Resource handle factory infrastructure to replace the convoluted drivers framework. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-140">
+				P2EL inline editor in the GWE Terminal application.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-141">
+				Registry for host tunnels to keep a better control on when and what ports should be tunneled.
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-142">
+				IP port conflicts created by opening tunnels on ports without even checking if they are being used. Uses the new tunnels registry.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-143">
+				Client sessions registry to replace hardcoded the grid controller "single session per client" functionality.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-144">
+				More data available to the clients through opening more APIs and capturing more data related to the execution of jobs.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-145">
+				Keystore test feature using test hosts per authentication info.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-146">
+				Logging infrastructure (to make logging level configurable per application).
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-147">
+				"Hasher" type of P2EL value space generator functions: hexadecimal MD5 calculator and UUID random generator.
+			</action>
+		</release>
+		
+		<release version="0.7.0-alpha" date="12-01-2008" description="Sixth Alpha Release. Major reachitecture.">
+			<action dev="mruiz" type="update" issue="GWE-127">
+				Replaced multi-user paradigm (and its associated extra security layer, user workspace resolution, user virtual file system resolution, etc). 
+				A GWE daemon per user will now be used instead. This will be far easier to use and provides more robustness by relying on the OS multi-user features.    
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-127">
+				Consolidation of all operational data under workspace (virtual file system, generated scripts, processes results, job managers submission files, logs, etc) 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-128">
+				GWE level login will transparently reuse the SSH credentials. Replaced the old explicit GWE login.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-86">
+				Single daemon services registry for multiple daemons running in a host - uniqueness scheme for registering services based on daemon's installation path. 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-32">
+				Daemon auto/silent installer. More robust than the previous one and doesn't require any manual intervention. 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-98">
+				Simplified, cleaner configuration.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-136">
+				Configurable P2EL variables per daemon.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-126">
+				"Local cluster" driver. It emulates a cluster out of the local machine. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-135">
+				Configurable job managers submission templates.  
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-137">
+				New (optional) feature for the P2EL download function to auto-decompress downloaded files.  
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-89">
+				Framework to support order execution profiles to configure execution behavior (first draft).
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-100">
+				Capabilities for job retries and failures tracking (using the execution profiles framework).
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-83">
+				Dramatic increase in robustness and performance in the routines for agent failover and recovery and daemon and agent launching.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-84">
+				Ignore SSH host keys verifications.  
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-129">
+				Slicer integration updated with all the current features.  
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-24">
+				New HTTP driver based on core java. The commons vfs library has nasty multi-threading deadlocks issues.   
+			</action>
+		</release>
+	
+		<release version="0.6.4-alpha" date="08-27-2008" description="Fifth Alpha Release. Feature and maintenance release.">
+			<action dev="mruiz" type="add" issue="GWE-117">
+				Generic parser framework based on regular expression rules (as infrastructure for P2EL version 2).
+			</action>
+			<action dev="mruiz" type="remove" issue="GWE-110">
+				P2EL version 1 and its integration with GWE.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-110">
+				P2EL version 2. Language design (syntax and semantics), module design, implementation and documentation.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-112">
+				Migration of functionality of old P2EL into the new version.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-120">
+				Integration of P2EL version 2 with GWE.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-113">
+				Implementation of multidimensional variables features (variables of type array) into the new version of P2EL.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-114">
+				Implementation of variables co-dependency features into the new version of P2EL. This has the nice 
+				side effect of allowing function invocation aggregation functionality.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-116">
+				Upload/download functions to support directories in addition to just files. 	  	 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-118">
+				Redesign and re-implementation P2EL "dir" function (old "expand") to make it more versatile by allowing matching patterns per file branches. 	  	 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-116">
+				"grep" like function for P2EL.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-121">
+				Friendlier error messages for user mistakes while using GWE generic clients.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-122">
+				More status information added to the generic client query commands.
+			</action>
+		</release>
+		<release version="0.6.3-alpha" date="06-19-2008" description="Fourth Alpha Release. Feature and maintenance release.">
+			<action dev="mruiz" type="add" issue="GWE-7">
+				Full PKI (public key infrastructure) authentication support, including private key passphrase prompting on shell based applications when necessary. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-77">
+				Utility to read private key's passphrases from the prompt of shell based applications. Usage of this utility to add its feature to the generic GWE clients. 
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-22">
+				Misleading exception messages (output in the generic GWE clients) have been replaced with actual user and system errors.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-56">
+				Full feature framework to support pluggable, life cycle based, P2EL functions.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-58">
+				Abstract resource stager framework built as an extension of the P2EL function framework. 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-57">
+				Re-implementation of file staging feature as pluggable functions into the new resource stager framework. 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-81">
+				Performance improvement of core file transfer routines. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-55">
+				Support for P2EL anonymous variables, as a P2EL function. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-3">
+				Support for P2EL wildcard support to traverse on file names, as a P2EL function.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-75">
+				Increased robustness of condor resource manager driver discovery by using condor_version instead of condor_status. 
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-80">
+				Revamped Slicer3 CLMP framework to increase flexibility and robustness to the Slicer3 CLMP framework. Motivated mainly 
+				to be able to reuse it to create the side project "Slicer3 Chain Modules Engine". 
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-82">
+				Job result stored in the DB compressed to prevent it from reaching the 32K size limit (DB updates were crashing because of this).   
+			</action>
+			<action dev="mruiz" type="add">
+				New online forum for the GWE community to share their experiences and comments.
+			</action>
+			<action dev="mruiz" type="update">
+				"P2EL Guide" and "Configuration Guide" updated according to changes. 
+			</action>
+		</release>
+		<release version="0.6.2-alpha" date="04-07-2008" description="Third Alpha Release. Feature and maintenance release.">
+			<action dev="mruiz" type="fix" issue="GWE-10">
+				Processing of jobs in compute nodes using the user that submitted the job rather than the user running the GWE daemon.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-19">
+				Regular and administrator user domain integrated with GWE level authentication and authorization.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-39">
+				Rich set of features added to the terminal application (powered by JLine). Among these are: masked  
+				password capturing, inline command edition, command history, tab completion and tab suggestion.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-46">
+				Major refactoring of the configuration API for tool integration. It has been made simpler, more robust and flexible. 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-50">
+				New startup service beacon on the GWE daemon to report initialization progress to the remote client 
+				installing/configuring/launching it.  
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-62">
+				SSH tunnels opened using logged in users authentication information and not that of the user running the GWE daemon.
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-63">
+				Condor system id retrieved in the condor driver.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-64">
+				Re-architect package manager and application factory as grid level factories by extending the driver 
+				framework (GridBundleManager and GridOSAppManager).
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-65">
+				GWE security domain authorization layer module using AOP security interceptors.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-66">
+				Simplified session and accessor API for tool integration
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-67">
+				Integrated simplified session and accessor API with shell based applications (terminal and command) and slicer CLMPs
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-68">
+				GWE security authentication layer module using hierarchy encryption (daemon encryptor, over user passwords MD5 hash, over user sensitive data) 
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-69">
+				Security authentication utility module using MD5 based symmetric keys and AES encryption.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-70">
+				Increased robustness and flexibility of the utility to install, configure and launch a GWE daemon.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-71">
+				Added GWE authentication information capturing capabilities to Slicer3 CLMP modules.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-72">
+				User translation layer module for pre-processing (downloading files) and post processing (uploading files and clean up) 
+				job related activities. These functions will no longer be performed by the user running the GWE daemon.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-73">
+				Relocated user workspace to user's home directory in cluster head node.
+			</action>
+		</release>
+		<release version="0.6.1-alpha" date="02-28-2008" description="Second Alpha Release. Feature and maintenance release.">
+			<action dev="mruiz" type="update">
+				Changed scripts naming conventions. All command scripts have been renamed with the prefix 
+				"gwe-cmd" and all utility type of scripts have been renamed with "gwe-util".
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-52">
+				Generic download manager framework to stage files. Includes garbage collection and file caching.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-4">
+				Virtual file system sandbox per user to stage files. Built on top of new generic download manager framework.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-53">
+				Order life cycle hooks to start processing in a particular cluster and clean up after done. 
+				This was only available at the job level before. Concrete usage allocates a download manager 
+				for file staging of an order and delete the virtual file system from the cluster file system
+				once finished. 
+			</action>
+			<action dev="mruiz" type="update">
+				Renamed P2L as P2EL (Processes Parallel Execution Language) to more accurately represent it.
+			</action>
+			<action dev="mruiz" type="update" issue="GWE-12">
+				P2EL interpreter robustness. Still in progress though.
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-23">
+				P2EL now accepts P2EL script files as a parameter for queuing orders.  
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-1">
+				P2EL semantics to support float ranges.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-1">
+				P2EL semantics to support optional range stepping information.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-47">
+				P2EL semantics to support optional formatting and precision information for numeric value ranges.
+			</action>
+			<action dev="mruiz" type="add" issue="GWE-51">
+				P2EL semantics to support stage file renaming.
+			</action>
+			<action dev="mruiz" type="fix" issue="GWE-2">
+				Fixed allocations disposal timeouts to respect the aging and laziness tolerance level of the system
+				towards an allocated compute resource.
+			</action>
+			<action dev="mruiz" type="add">
+				"Slicer Integration" module. See "GWE Tool Integration > Case: 3D Slicer" for more details its feature 
+				set and user guide.
+			</action>
+			<action dev="mruiz" type="update">
+				Removed, created and overall clean up of messages to be output in log files.
+			</action>
+			<action dev="mruiz" type="add">
+				Issue management system for the project. 
+			</action>
+			<action dev="mruiz" type="add">
+				Mailing lists for the project. 
+			</action>
+			<action dev="mruiz" type="update">
+				Updated project site with an improved navigation, a feature list page, release notes, source code 
+				browser and javadocs and other useful project information and reports. 
+			</action>
+			<action dev="mruiz" type="add">
+				Progress documentation of the "3D Slicer integration" effort.
+			</action>
+		</release>
+		<release version="0.6.0-alpha" date="02-11-2008" description="Initial Alpha Release. Complete infrastructure plus limited feature set.">
+			<action dev="mruiz" type="add">
+				Complete abstract infrastructure plus a limited feature set. Check features page for details. 
+			</action>
+<!-- 
+			<action dev="Marco Ruiz" type="add">
+				Spring based configuration
+			</action>
+			<action dev="Marco Ruiz" type="add">
+				Grid file system infrastructure
+			</action>
+			<action dev="Marco Ruiz" type="add">
+				Grid network connectivity  infrastructure
+			</action>
+			<action dev="Marco Ruiz" type="add">
+				Grid resource managers infrastructure
+			</action>
+			<action dev="Marco Ruiz" type="add">
+				OS Package Manager Framework
+			</action>
+			<action dev="Marco Ruiz" type="add">
+				Client agent to execute tasks on the compute nodes
+			</action>
+			<action dev="Marco Ruiz" type="add">
+				Submission profiles
+			</action>
+			<action dev="Marco Ruiz" type="fix" issue="" due-to="" due-to-email="">New feature</action>
+ -->
+		</release>
+	</body>
+</document>

@@ -1,0 +1,43 @@
+ ------
+ P2EL Guide
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+{P2EL} (Processes Parallel Execution Language) Specification
+
+ P2EL is a language designed with the goal to allow a single statement to describe a collection of inter-independent 
+ process invocations ({{{http://en.wikipedia.org/wiki/Embarrassingly_parallel}embarrassingly parallel}} workloads); 
+ which in the particular case of GWE will be used to execute them in parallel using cluster environments.
+ 
+ These process invocations are the product of the merge of the statement's 
+ <{{{p2el-syntax.html#Template}process invocation template}}> with each of the statement's 
+ <value space sets>. A <value space set> is a set of <{{{p2el-syntax.html#Variables}variable}}>/value pairs 
+ representing a unique value resolution for each of the <{{{p2el-syntax.html#Variables}variables}}> of a P2EL statement.
+ 
+ There, where the statement's <{{{p2el-syntax.html#Template}process invocation template}}> is explicitly defined, the 
+ <<value space sets>> are implicitly defined through <{{{p2el-syntax.html#Variables}value space variables}}>. They 
+ deterministically translate into <value space sets> when applying <{{{p2el-semantics.html#Permutations}P2EL permutations}}>
+ among their values. 
+
+* P2EL Grammar
+
+[../images/gwe-core/p2el-grammar80.png]
+
+ This guide has been broken down into different pages to ease readability as the guide is getting lengthy. 
+ Navigate the following links in the order presented to learn P2EL as they built on concepts introduced in any 
+ previous section: 
+
+ * {{{p2el-syntax.html}P2EL Syntax}}
+
+ * {{{p2el-semantics.html}P2EL Semantics}}
+
+ * {{{p2el-macros.html}P2EL Macros}}
+
+ * {{{p2el-samples.html}P2EL Statement Examples}}
+  
+  []
+  
+

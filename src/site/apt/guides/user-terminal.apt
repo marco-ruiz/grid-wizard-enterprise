@@ -1,0 +1,72 @@
+ ------
+ GWE Client: Terminal
+ ------
+ Marco Ruiz
+ ------
+ December 2008
+ ------
+
+GWE Client: Terminal
+ 
+ This is a console application which keeps a live connection to a particular GWE daemon an allows the user to 
+ interactively query status information and submit requests to it. This application will remain alive and connected to 
+ the GWE daemon until an '<exit>' or '<quit>' command is issued in their prompt. This application includes rich command
+ line features such as inline editing, tab completion, command history and a P2EL editor activated when submitting an 
+ empty <<<queue-order>>> command. 
+ 
+* Launching
+ 
+ This application is launched by invoking:
+
+=====
+
+	<<<$GWE_HOME/bin/gwe-terminal.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}}>>>
+
+=====
+ 
+[../images/gwe-core/client-launch-resized.png]
+
+* Interacting
+
+ Once the application is launched the user can type, in the terminal prompt, any of the supported commands. 
+ This application is ideal when the user is going to interact for a while with a GWE daemon, although it cannot be 
+ used as a primitive form of API to automate interaction programmatically integrate it with other applications.
+
+** Supported {Commands}
+
+ The following operations are supported to interact with a particular GWE daemon: 
+
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| <<Description>>                                                  | <<How>>   
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| GWE daemon deployment/installation/launching                     | AUTOMATIC 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| Queue an order                                                   | <<<queue-order [{{{p2el.html}P2EL_STATEMENT}}]>>> | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| List all the orders queued                                       | <<<list-orders>>>                                            | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| View the details of a specific queued order                      | <<<view-order [ORDER_ID]>>>                                  | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| List the status of all the jobs belonging to a particular order  | <<<list-jobs [ORDER_ID]>>>                                   |
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| View the details of a specific job belonging to a specific order | <<<view-job [ORDER_ID] [JOB_NUM]>>>                          | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| View the result of a specific job belonging to a specific order  | <<<view-result [ORDER_ID] [JOB_NUM]>>>                       | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| Pause the execution of an order                                  | <<<pause-order [ORDER_ID]>>>                       | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| Resume the execution a paused order                              | <<<resume-order [ORDER_ID]>>>                       | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| Delete an order                                                  | <<<delete-order [ORDER_ID]>>>                       | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+
+ The following is a sample screenshot of the usage of these commands: 
+
+ 
+[../images/gwe-core/client-interact-resized.png]
+
+** P2EL Editor
+
+[../images/gwe-core/terminal-p2el-editor.png]
+ 
+

@@ -1,0 +1,10 @@
+/target/
+/.externalToolBuilders/
+/.settings/
+/.classpath
+/.project
+/velocity.log
+/src/temp/
+/src/test/
+/obsolete/
+/dist/

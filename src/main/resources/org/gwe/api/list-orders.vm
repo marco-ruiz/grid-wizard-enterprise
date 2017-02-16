@@ -1,0 +1,4 @@
+Id	Owner	Submitted		Completed		Progress
+#foreach($!{order} in $!{model})
+$!{order.id}	$!{order.owner.name}	$!{order.whenCreated}	$!{order.whenCompleted}	$!{order.finishedJobsCount} / $!{order.totalJobsCount}
+#end 

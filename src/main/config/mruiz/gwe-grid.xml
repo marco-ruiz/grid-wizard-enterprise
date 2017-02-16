@@ -1,0 +1,10 @@
+<!-- MARCO's Environment & Definitions -->
+
+<grid>
+	<cluster name="DUAL_CORE_LOCAL" host="localhost" queueSize="2" maxHijackMins="120" maxIdleMins="5" >
+		<p2elVar name="SLICER_HOME" value="/Users/admin/GSlicer3-3.3-alpha-2008-11-01-darwin-x86-0.7.0.alpha" />
+	</cluster>
+	<cluster name="BIRN" host="birn-cluster0.nbirn.net" queueSize="25" maxHijackMins="120" maxIdleMins="5" >
+		<p2elVar name="SLICER_HOME" value="/export2/apps/Slicer3-3.3-alpha-2008-11-01-linux-x86" />
+	</cluster>
+</grid>

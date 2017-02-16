@@ -1,0 +1,103 @@
+
+// TITLE: XNAT Experiments Data Model Creator.
+// DESCRIPTION: Creates a set of variables that constitute an initial data model to use other related XNAT macros.
+// ENTRIES: Base XNAT URL and subjects ids which experiments will be introspect.
+
+$xnatExperiments($${XNAT_SYS},$${SUBJECT}) {
+	$${TEXT}=/text()
+	$${_}=$const($${XNAT_SYS}/REST/projects/CENTRAL_OASIS_CS/subjects/$${SUBJECT}/experiments)
+}
+
+
+// TITLE: XNAT Sessions Finder.
+// DESCRIPTION: Returns a value space variables filled with all the scans found for a set of experiments.
+// ENTRIES: A variable assigned an 'XNAT experiments data model'.
+
+$xnatSessions($${EXPERIMENTS}) {
+	$${TEXT}=/text()
+	$${_}=$xpath($${EXPERIMENTS}?format=xml,//row/cell[1]$${TEXT})
+}
+
+
+// TITLE: XNAT Scans Finder.
+// DESCRIPTION: Returns a value space variables filled with all the scans found for a set of sessions from a set of experiments.
+// ENTRIES: A variable assigned an 'XNAT experiments data model'.
+
+$xnatScans($${EXPERIMENTS},$${SESSIONS}) {
+	$${TEXT}=/text()
+	$${_}=$xpath($${EXPERIMENTS}/$${SESSIONS}/scans?format=xml,//row/cell[2]$${TEXT})
+}
+
+
+// TITLE: XNAT Scans Finder (ALL).
+// DESCRIPTION: Returns a value space variables filled with all the scans found in ALL the sessions found in a a set of experiments.
+// ENTRIES: A variable assigned an 'XNAT experiments data model'.
+
+$xnatAllScans($${EXPERIMENTS}) {
+    $${SESSIONS}=$xnatSessions($${EXPERIMENTS})
+	$${_}=$xnatScans($${EXPERIMENTS},$${SESSIONS})
+}
+
+
+// TITLE: XNAT Scans Image Finder.
+// DESCRIPTION: Returns a value space variables filled with all the images corresponding to a particular scans/sessions/experiments group.
+// ENTRIES: The scans, sessions and experiments the images of interest belong to.
+
+$xnatListImages($${EXPERIMENTS},$${SESSIONS},$${SCANS}) {
+	$${_}=$xpath($${EXPERIMENTS}/$${SESSIONS}/scans/$${SCANS}/files?format=xml,//rows)
+}
+
+
+// TITLE: XNAT Image Stager.
+// DESCRIPTION: Returns the staged location of a particular file downloaded from an XNAT system.
+// ENTRIES: The base URL of the XNAT system, a "XNAT Scans Image Finder" value space variable and the XPath expression to use to locate the relative URL of the image to stage.
+
+$xnatStageImage($${XNAT_SYS},$${IMAGE_LIST},$${XPATH}) {
+	$${URI}=$xpath($${IMAGE_LIST},$${XPATH})
+	$${_}=$in($${XNAT_SYS}$${URI})
+}
+
+
+// TITLE: XNAT Identified Image Stager.
+// DESCRIPTION: Returns the staged location of a particular image file downloaded from an XNAT system.
+// ENTRIES: The XNAT system base URL, a "XNAT Scans Image Finder" value space variable and the image number of the particular image list to stage.
+
+$xnatStageIdentifiedImage($${XNAT_SYS},$${IMAGE_LIST},$${IMAGE_NUMBER}) {
+	$${XPATH}=/rows/row[$${IMAGE_NUMBER}]/cell[3]/text()
+	$${_}=$xnatStageImage($${XNAT_SYS},$${IMAGE_LIST},$${XPATH})
+}
+
+
+// TITLE: XNAT Header Image Stager.
+// DESCRIPTION: Returns the staged location of the 'header' image associated with an image list from an XNAT system.
+// ENTRIES: The XNAT system base URL and a "XNAT Scans Image Finder" value space variable.
+
+$xnatHeaderImage($${XNAT_SYS},$${IMAGE_LIST}) {
+	$${XPATH}=//rows/row/cell[(position()=3)and((substring-after(.,'.')='hdr')or(substring-after(.,'.')='nrrd'))]/text()
+	$${_}=$xnatStageImage($${XNAT_SYS},$${IMAGE_LIST},$${XPATH})
+}
+
+
+// TITLE: XNAT HDR Images Stager.
+// DESCRIPTION: Downloads the three images associated with a HDR image (GIF, IMG and HDR).
+// ENTRIES: Base XNAT system URL, experiments, sessions and scans.
+
+$xnatStageHDR($${XNAT_SYS},$${LIST}) {
+	$${IMAGE_1}=$xnatStageIdentifiedImage($${XNAT_SYS},$${LIST},1)
+	$${IMAGE_2}=$xnatStageIdentifiedImage($${XNAT_SYS},$${LIST},2)
+	$${IMAGE_3}=$xnatStageIdentifiedImage($${XNAT_SYS},$${LIST},3)
+	$${_}=$xnatHeaderImage($${XNAT_SYS},$${LIST})
+}
+
+
+// TITLE: XNAT All Images Stager.
+// DESCRIPTION: Downloads all images associated with all sessions/scans for the given subjects.
+// ENTRIES: Base XNAT system URL and subject.
+
+$xnatStageAllImages($${XNAT_SYS},$${SUBJECTS}) {
+	$${EXPERIMENTS}=$xnatExperiments($${XNAT_SYS},$${SUBJECTS})
+	$${SESSIONS}=$xnatSessions($${EXPERIMENTS})
+	$${SCANS}=$xnatScans($${EXPERIMENTS},$${SESSIONS})
+	$${IMAGE_LIST}=$xnatListImages($${EXPERIMENTS},$${SESSIONS},$${SCANS})
+	$${_}=$xnatStageHDR($${XNAT_SYS},$${IMAGE_LIST})
+}

@@ -1,0 +1,50 @@
+ ------
+ CardioVascular Research Grid
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Coming Soon
+
+==============
+
+Under Construction
+
+==============
+
+{{{http://cvrgrid.org/}CardioVascular Research Grid}}
+
+ From the {{{http://cvrgrid.org/}CardioVascular Research Grid Site}}:
+ 
+====
+ 
+  <The aim of the CardioVascular Research Grid (CVRG) project is to create a grid infrastructure for sharing 
+  cardiovascular data and data analysis tools. The CVRG will support national and international multi-institutional 
+  collaborations in cardiovascular science, and will build on and extend tools developed in the caBIG and BIRN 
+  projects. The CVRG project is supported by the National Heart Lung & Blood Institute. The project is based at 
+  the Institute for Computational Medicine at Johns Hopkins University, in collaboration with the Department of 
+  Biomedical Informatics at The Ohio State University, and the Center for Research in Biological Systems at 
+  the University of California, San Diego.>
+ 
+====
+ 
+* Enabling Details
+
+*--------------+------------------------------+
+| GWE Version                |          
+*--------------+------------------------------+
+| Head Node                  |  
+*--------------+------------------------------+
+| Port                       |            
+*--------------+------------------------------+
+| Maximum Resources          |       
+*--------------+------------------------------+
+| Aging Disposal Timeout     |  
+*--------------+------------------------------+
+| Idleness Disposal Timeout  |            
+*--------------+------------------------------+
+
+* Gaining Access
+ 

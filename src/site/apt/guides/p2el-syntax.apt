@@ -1,0 +1,86 @@
+ ------
+ P2EL Syntax
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+P2EL {Syntax}
+
+ A P2EL statement will have the following syntax:
+ 
++---
+	[VALUE_SPACE_VARIABLE_DECLARATIONS] [PROCESS_INVOCATION_TEMPLATE]
++---
+
+* Process Invocation {Template} (<<<[PROCESS_INVOCATION_TEMPLATE]>>>)
+
+ This construct is the template of the process invocations to be generated. This construct is built using regular 
+ command line syntax and P2EL variable reference expressions. This construct is interpreted as the part of the 
+ statement from the position, where no more variables can be interpreted, to the end of it.
+
+ For example the following statement:
+ 
++---
+	${index}=$range(1,5000) 
+	${j}=$range(1,10) 
+	echo "${index} and ${j}"
++---
+
+ the first 2 lines are value space variable declarations while the last (third) line is the process invocation template.  
+ 
+** Variable {Reference} Expressions
+
+ These are expressions found in the process invocation template interpreted as references to variable values (similar to 
+ bash variables expressions); which at compilation time will be substituted by the particular values of the variable 
+ referenced; value taken from the value space of the particular permutation of the process invocation. 
+
+ For example in the previous P2EL statement example variable references were: 
+ 
++---
+	${index}
+	${j}
++---
+
+ ... references to value space variables defined in the same P2EL statement.
+
+* Value Space {Variables} (<<<[VALUE_SPACE_VARIABLE_DECLARATIONS]>>>)
+
+ It is a space separated list of variable declarations. This list can be of any size including 0 (no variable declarations).
+ 
++---
+ 	[VALUE_SPACE_VARIABLE_DECLARATION_1] [VALUE_SPACE_VARIABLE_DECLARATION_2] ... [VALUE_SPACE_VARIABLE_DECLARATION_n]
++---
+ 
+ ... and each of these variable declarations has the following generic form:
+ 
++---
+	${[VARIABLE_NAME]} = $[VALUE_GENERATOR_IDENTIFIER]([VALUE_GENERATOR_PARAMETERS])
++---
+
+ Examples: 
+ 
++---
+	${index}=$range(1,5000) 
+	${count}=$count(10)
+	${paths}=$const(/home/user/path1,/home/user/path2,/home/user/path3)
+	${files}=$dir(/home/user/,path\\d*,.*?[.]log)
+	${local}=$in(sftp://host/home/user/file)
++---
+
+ <<{Variable} Name>> (<<<[VARIABLE_NAME]>>>)
+ 
+ A user friendly identifier used to refer to the associated values as a substitution tag.
+ 
+ <<Value {Generator Identifier}>> (<<<[VALUE_GENERATOR_IDENTIFIER]>>>)
+ 
+ This is either the name of a {{{p2el-semantics.html#Generator}value generator function}} (as registered within the particular P2EL interpreter) or the 
+ name of a user-defined {{{p2el-macros.html}P2EL macro}}. 
+ 
+ <<Value Generator {Parameters}>> (<<<[VALUE_GENERATOR_PARAMETERS]>>>)
+ 
+ These are comma separated values which the respective <<value generator function>> will use to generate the set of 
+ values to be associated with the respective variable. These parameters may contain references to other variables.
+
+ 

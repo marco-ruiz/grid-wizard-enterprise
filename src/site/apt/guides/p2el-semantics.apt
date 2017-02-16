@@ -1,0 +1,463 @@
+ ------
+ P2EL Semantincs
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+P2EL {Semantics}
+
+* Value {Generator} Functions
+
+ These are routines that are registered with a unique identifier into the particular P2EL interpreter. The invocation of 
+ these routines is expressed through their registered identifier and associated with a <value space variable> 
+ (see <{{{Variables} Value Space Variables}}> syntax for details) for which it will generate a set of values 
+ (using the parameters provided) and assigned these to the associated variable. These routines has optionally the 
+ ability to inject pre-process and post-process behavior into the command that will use their respective value (see 
+ {{{in}File Downloader}} and {{{out}File Uploader}} function for example of this). 
+ 
+ The P2EL interpreter included with GWE currently support the following functions:
+
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| <<Function>>                              | <<Function Name>> | <<Parameters>>                                                                    | <<Value Set>>
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{const}Constants}}                      | const             | Comma separated list of values                                                    | Parameters.
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{range}Value Range Evaluator}}          | range             | Start value, end value and optionally step value                                  | Values between <start> (including it) and <end> in <step> increments (or 1 is <step> value is missing).
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{count}Numeric Counter}}                | count             | End integer value                                                                 | Integer values from 1 to <end> value. 
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{dir}Files Matcher}}                    | dir               | Root URI and regular expression patterns                                          | Files that match the root path followed by file system branches that matches each of the regular expressions.
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{regExp}Regular Expression Evaluator}}  | regExp            | Desired match index, source and regular expressions patterns (prefix, match and suffix)   | Match(es) of the regular expression when applied to the source.
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{xpath}XPath Parser}}                   | xpath             | URI of an XML file or a well formatted XML element and an XPath expression        | Match(es) of the XPath expression when applied to the XML file or XML element provided.
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{lines}Text File Parser}}               | lines             | URI of the file to parse                                                          | Lines encountered in the target file. 
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{md5Hex}MD5 Hasher}}                    | md5Hex            | List of values for which to compute their corresponding MD5 hash                  | MD5 hash of the parameters in hexadecimal format. 
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{uuid}Universal Unique Identifier Generator}}  | uuid       | Number of UUIDs to generate. The default quantity (for no parameters) is 1.       | UUIDs generated. 
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{in}File Downloader}}                   | in                | URI of the file/directory to stage, optional name to use when staging the file    | Staged file location.
+|                                           |                   | and optional flag to indicate the staged file is a bundle                         | 
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+| {{{out}File Uploader}}                    | out               | URI where to upload the file/directory generated by the process invocation        | Temporary output file (to be staged remotely when the command completes).
+*-------------------------------------------+-------------------+-----------------------------------------------------------------------------------+----------------------------+
+
+** 1. Constants Function ( {const} )
+
+ The most basic of the functions. It translates each of its parameters into a value to be included into the resulting 
+ value set. For example:
+ 
++---
+	$const(X)                =  X
+	$const(1,-7,0.93)        =  1, -7, 0.93
+	$const(myFile,yourFile)  =  myFile, yourFile
++---
+ 
+ P2EL recognizes a special shortcut property for defining variables where the variable declaration is 
+ immediately followed by a value. This particular construct is internally equivalent to an invocation to this function with 
+ parameter equal to the value assigned. The following is the general form with some examples:  
+
++---
+	${VAR}=X                      <=>  ${VAR}=$const(X)
+	
+	${HOME}=/home/user            <=>  ${HOME}=$const(/home/user)
+	${REG_EXP}=out-\\d*[.]log     <=>  ${REG_EXP}=$const(out-\\d*[.]log)
++---
+
+** 2. Range Function ( {range} )
+ 
+ This function takes a mandatory <start> numeric parameter, a mandatory <end> numeric parameter and an optional <step> 
+ numeric parameter (if <step> is missing it takes the value of 1); and using them will generate a value set composed 
+ of all values between <start> (including it) and <end> in <step> increments. For example:
+ 
++---
+	$range(0,5)           = 0, 1, 2, 3, 4, 5
+	$range(0,5,1)         = 0, 1, 2, 3, 4, 5 (Same as previous example. Explicitly stating the default step value)
+	$range(1,12,2)        = 1, 3, 5, 7, 9, 11
+	$range(0.1,2,0.15)    = 0.10, 0.25, 0.40, 0.55, 0.70, 0.85, 1.00, 1.15, 1.30, 1.45, 1.60, 1.75, 1.90 
++---
+ 
+ The numeric values generated will be formatted according to the format of the <step> value. The number of digits used 
+ in the integer portion will be the minimum length of the digits the integers portion of a value 
+ will have (padded with leading zeros as needed). The number of digits used in the decimals portion of the step value 
+ will specify the precision of the values (padded with trailing zeros as needed). The following are the previous 
+ examples <'reformatted'>, plus a couple more for illustrative purposes:
+ 
++---
+	$range(0,5)           = 0, 1, 2, 3, 4, 5
+	$range(0,5,01.00)     = 00.00, 01.00, 02.00, 03.00, 04.00, 05.00 (Same as previous example; but reformatting values)
+	$range(1,10,002)      = 001, 003, 005, 007, 009
+	$range(0.1,2,0.1500)  = 0.1000, 0.2500, 0.4000, 0.5500, 0.7000, 0.8500, 1.0000, 1.1500, 1.3000, 1.4500, 1.6000, 1.7500, 1.9000 
+	
+	$range(0.25,110,9.25) = 0.25, 9.50, 18.75, 28.00, 37.25, 46.50, 55.75, 65.00, 74.25, 83.50, 92.75, 102.00
+	$range(8,1000,001)    = 008, 009, 010, 011 ... 099, 100, 101, ... 999, 1000 (notice 1000 have 3 integer digits: formatting guarantees only minimum number of integer digits.)
++---
+ 
+** 3. Numeric Counter Function ( {count} )
+
+ This function is a specialized form of the range function. The following is the general equivalence (for <<<X>>> integer value):
+
++---
+	${VAR}=$count(X)  <=>  ${VAR}=$range(1,X,1)
++---
+ 
+** 4. Files Matcher Function ( {dir} )
+
+ This function resolves a set of files matching the pattern created with the semantical interpretation of its parameters. 
+ Its parameters are:
+ 
+ * A URI.
+ 
+ * A list of {{{http://en.wikipedia.org/wiki/Regular_expression}regular expressions}}.
+ 
+ []
+ 
+ The first parameter is interpreted as the root URI of the matching file and the list of regular expressions as the 
+ patterns of the branches of the matching files after the root URI. For example, given the following file system 
+ (under <<<sftp://host>>>) :
+ 
++---
+	/home/
+	/home/other-user/
+	/home/other-user/.profile
+		
+	/home/other-user/1
+	/home/other-user/1/out-1.log
+		
+	/home/user/
+	/home/user/.profile
+	
+	/home/user/1
+	/home/user/1/out-1.log
+	/home/user/1/out-234.log
+	/home/user/1/out-1a.log
+	/home/user/1/out-1
+	
+	/home/user/12
+	/home/user/12/out-1.log
+	
+	/home/user/1a
+	/home/user/1a/out-1.log
++---
+  
+ The following function invocation ...
+ 
++---
+	$dir(sftp://host/home/,user,\d*,out-\d*[.]log)
++---
+
+  ... would generate the following set of values:
+  
++---
+	sftp://host/home/user/1/out-1.log
+	sftp://host/home/user/1/out-234.log
+	sftp://host/home/user/12/out-1.log
++---
+
+** 5. Regular Expression Evaluator ( {regExp} )
+
+ This function works similarly to the {{{http://en.wikipedia.org/wiki/Grep}<'grep'>}} unix command. 
+ The values generated are the sub strings found in the second parameter (data source) that match the fourth parameter pattern 
+ (expressed in {{{http://en.wikipedia.org/wiki/Regular_expression}regular expression}} format). The optional second 
+ and fourth parameters (default to empty string) are the patterns of the prefix and suffix of the match respectively 
+ (also expressed in {{{http://en.wikipedia.org/wiki/Regular_expression}regular expression}} format). The function expands
+ to a value space equals to the match which index is provided as the first parameter, if non-negative, non-empty or all matches 
+ otherwise. For example: 
+
++---
+	$regExp(0,/home/user/data/file, /, [^/]*)                                       = home
+	$regExp(1,/home/user/data/file, /, [^/]*)                                       = user
+	$regExp(2,/home/user/data/file, /, [^/]*)                                       = data
+	$regExp(3,/home/user/data/file, /, [^/]*)                                       = file
+
+	$regExp(-1,/home/user/data/file, /, [^/]*)                                      = home, user, data, file
+	
+	$regExp(,/home/user/data/file, /, [^/]*)                                        = home, user, data, file
+	$regExp(,/home/user/data/file, /, [^/]*, $)                                     = file
+	$regExp(,cmd --aIndex 1 --bIndex 2 --other 4 --cIndex 3, \s*--, [^\s]*, Index)  = a, b, c
+	$regExp(,http://host/path, ://, [^/]*, /)                                       = host
++---
+ 
+** 6. XPath Parser ( {xpath} )
+ 
+ This function queries an XML element specified as the first parameter (in the form of a URI to an actual XML file or a 
+ literal well-formatted XML element) using an <{{{http://en.wikipedia.org/wiki/Xpath}XPath expression}}> specified as 
+ the second parameter and generates a value set equals to the set of matches resulting from such query. For example, 
+ for the XML file located at 
+ <{{{http://www.gridwizardenterprise.org/test/oasis-id.xcat}http://www.gridwizardenterprise.org/test/oasis-id.xcat}}>
+ with the following content:
+ 
++---
+	<Catalog ID="ID1">
+		<entries>
+			<entry name="first"   ID="0005_1"  format="HDR"/>
+			<entry name="second"  ID="0005_2"  format="HDR"/>
+			<entry name="third"   ID="0005_3"  format="HDR"/>
+			<entry name="fourth"  ID="0005_4"  format="HDR"/>
+			<entry name="fifth"   ID="0010_1"  format="HDR"/>
+			<entry name="sixth"   ID="0010_2"  format="HDR"/>
+			<entry name="seventh" ID="0010_3"  format="HDR"/>
+			<entry name="eight"   ID="0015_1"  format="HDR"/>
+			<entry name="ninth"   ID="0015_2"  format="HDR"/>
+			<entry name="tenth"   ID="0020_1"  format="HDR"/>
+		</entries>
+	</Catalog>
++---
+
+ The following function invocation generated a value set composed by all the XML entry elements: 
+
++---
+	$xpath(http://www.gridwizardenterprise.org/test/oasis-id.xcat,//entry)
++---
+
+ And if we assigned that function invocation to a variable named <<<ENTRIES>>>, then the following list of function 
+ invocations can be defined to generate the respective value set:
+ 
++---
+	$xpath(${ENTRIES},/entry/@name)      = first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth 
+	$xpath(${ENTRIES},/entry/@ID)        = 0005_1, 0005_2, 0005_3, 0005_4, 0010_1, 0010_2, 0010_3, 0015_1, 0015_2, 0020_1 
+	$xpath(${ENTRIES},/entry/@format)    = HDR, HDR, HDR, HDR, HDR, HDR, HDR, HDR, HDR, HDR
++---
+ 
+** 7. Text File Parser ( {lines} )
+
+ This function parses a text file (which URI is passed as parameter) and generates a value space with the lines 
+ found in it. For example given the file with URI 'http://host/path/file-1' with contents: 
+
++---
+	100:alfa:20:1:A:0.5
+	150:beta:40:2:B:-0.5
+	200:gamma:60:3:C:0.5
+	150:delta:80:4:D:-0.5
++---
+
+ then the following function invocation will generate the following value space: 
+
++---
+	$lines(http://host/path/file-1) = 100:alfa:20:1:A:0.5, 150:beta:40:2:B:-0.5, 200:gamma:60:3:C:0.5, 150:delta:80:4:D:-0.5
++---
+
+
+** 8. MD5 Hasher ( {md5Hex} )
+
+ This function computes the <{{{http://en.wikipedia.org/wiki/MD5}'MD5 hash'}}> value of each of its parameters and 
+ generates a value space with their hexadecimal representation. For example: 
+
++---
+	$md5Hex(http://host/path/file-1)    = 3E19898877CBD679CFB57AE753AF8F27
+	$md5Hex(http://host/path/file-2)    = 6E4C6E206CC5F06F15C4B5F62C5684B0
+	$md5Hex(user-1,user-2)              = D6D7705392BC7AF633328BEA8C4C6904, 3D58CE20FE802793E0B221905BAA60B3
++---
+
+
+** 9. Universally Unique Identifier Generator ( {uuid} )
+
+ This function generates as many random <{{{http://en.wikipedia.org/wiki/Universally_Unique_Identifier}UUIDs}}> as specified 
+ by its first and unique parameters. If no parameter is provided then it will default to just 1 UUID to generate.
+ For example: 
+
++---
+	$uuid()    = dc5ac05b-c642-4d5a-94e0-29d1855ad352
+	$uuid(3)   = 24faf14f-7e46-4609-95e8-86700a6de4b0, 44ef0e08-7239-46f9-ba6c-8fae117407ec, a13cd13d-b087-48e0-9cb5-c1d86c59b67d
++---
+
+ 
+** 10. File Downloader Function ( {in} )
+ 
+ Sometimes, a process invocation requires to read files (or files on directories), which will not necessarily be 
+ available in the particular cluster file system tasked to execute the process. In such cases, the files 
+ (or directories) have to be downloaded from their remote locations into the cluster file system. For those cases, 
+ this function has been implemented to allow the user to express the request to execute such "pre-process" task by 
+ stating the remote file's (or directory's) URI and optionally a name to rename the downloaded copy of the file 
+ (or directory). This function generates as single value the location of the downloaded file. GWE uses this function 
+ invocation to securely download the remote files to a "sandbox" virtual file system (reserved only for the 
+ requesting user). For example:
+ 
++---
+	$in(sftp://host/home/user/input/input1)         = [JOB_VIRTUAL_FILESYSTEM]/sftp/host/user/input/input1
+	$in(http://host/operation.do?param=3,html.page) = [JOB_VIRTUAL_FILESYSTEM]/http/host/html.page
++---
+
+ An extra, optional parameter is available to flag the function to try to extract the contents of the staged file if it is
+ a supported bundle. The bundles supported are <zip>, <tar>, <tar.gz> and <tar.bz2> (granted the respective utilities must 
+ exist on the cluster). The bundle type of a stage file flagged for decompression is determined based on the file's 
+ extension. The extracted contents can be found under:
+ 
++---
+	[STAGED_FILE]-contents
++---
+
+ Where [STAGED_FILE] is the full path of the staged file including the file itself and its extension.
+ 
+** 11. File Uploader Function ( {out} )
+ 
+ Sometimes, a process invocation require to write files (or entire directories) to a file system other than the cluster's.
+ In such cases, these files (or directories) have to be uploaded from the cluster file system to their remote location 
+ after the completion of the process invocation. For those cases, this function has been implemented to 
+ allow the user to express the request to execute such "post-process" task by stating the remote file's (or directory's) 
+ URI to be uploaded. This function generates as single value the location of a temporary "placeholder" output file. 
+ GWE separates this placeholder file in a "sandbox" virtual file system (reserved only for the requesting user) and 
+ after the process invocation completes (output file written to temporary placeholder location), it securely uploads it 
+ to its stated destination. Example:
+ 
++---
+	$out(sftp://host/home/user/out/output1) = [JOB_VIRTUAL_FILESYSTEM]/sftp/host/home/user/out/output1
+	$out(sftp://host/home/user/out/output2) = [JOB_VIRTUAL_FILESYSTEM]/sftp/host/home/user/out/output2
++---
+
+* Value Space Variables {Permutations}
+
+ As we mentioned, <P2EL value space variables> are variables associated with a set of values resolved by a given 
+ function (<value generator function>) with given parameters. With the values of all variables resolved the 
+ <value space sets> are generated as the output of permutating these values all to all. For example, assuming that
+ variable <<<$\{index\}>>> is assigned values <<<1,2,3>>> and variable <<<$\{letter\}>>> is assigned values <<<a,b>>>
+ their associated <value space set> (generated by permutating their values) would be:
+ 
+*----------------+-----------------+
+| <<$\{index\}>> | <<$\{letter\}>> |
+*----------------+-----------------+
+| 1              | a               |
+*----------------+-----------------+
+| 2              | a               |
+*----------------+-----------------+
+| 3              | a               |
+*----------------+-----------------+
+| 1              | b               |
+*----------------+-----------------+
+| 2              | b               |
+*----------------+-----------------+
+| 3              | b               |
+*----------------+-----------------+
+ 
+ However there are some exceptions to this all-to-all type of permutations, designed into P2EL to allow the support 
+ of far richer scenarios. The following are the exception available so far:
+
+ The compilation process respect the following considerations to create a permutation:
+ 
+** 1. Variable {co-dependencies}
+ 
+ This exception occurs when the values of one variable depends on the values of another. In such case the values of the 
+ dependent variable will be 'tied' to the particular values of the dependency variable that spawned it. For example, 
+ given the following variable declarations for a single statement:
+ 
++---
+	${index}=$count(5)
+	${increment}=$count(${index})
++---
+ 
+ The permutations created will use a fixed set of values for <<<index>>> and for each value of index, it will use a 
+ different set of values for <<<increment>>> (since it is a value dependent on the value of <<<index>>>). Therefor, 
+ this would result in the following permutations (represented as the associated <value space set> - 
+ one <value space> per row):
+
+*----------------+--------------------+
+| <<$\{index\}>> | <<$\{increment\}>> | 
+*----------------+--------------------+
+| 1              | 1                  |
+*----------------+--------------------+
+| 2              | 1                  |
+*----------------+--------------------+
+| 2              | 2                  |
+*----------------+--------------------+
+| 3              | 1                  |
+*----------------+--------------------+
+| 3              | 2                  |
+*----------------+--------------------+
+| 3              | 3                  |
+*----------------+--------------------+
+| 4              | 1                  |
+*----------------+--------------------+
+| 4              | 2                  |
+*----------------+--------------------+
+| 4              | 3                  |
+*----------------+--------------------+
+| 4              | 4                  |
+*----------------+--------------------+
+
+ The following are additional examples to illustrate the many uses of this feature:
+ 
++---
+	${files}=$dir(sftp://host, .*?$[.]ext) ${downloadedFile}=$in(${files})
+	
+	${host}=$const(hostA, hostB, hostC) ${files}=$dir(sftp://${host}/path, regExp1, regExp2)
+	
+	${index}=$count(10) ${space}=$range(20,100,020) ${weight}=$range(0,1,0.1) ${file}=$out(sftp://destinationHost/path/out-${index}-${space}-${weight}.nrrd)
++---
+ 
+
+** 2. {Multidimensional} variables (or {Array} type of variables) 
+
+ The compilation process does not permutate among the dimensions of a multi-dimensional variable. Its values are to be 
+ grouped and treated as a single set.
+ 
+ A variable's name has the intrinsic property of deterministically specify and {{{Array}array}} of values. If the name 
+ contains a name with a dot in it, it will be interpreted as a dimension of an array variable define by the part 
+ before the dot. For example, given the following variable declarations for a single statement:
+ 
++---
+	${files}=$const(/home/user/file1,/home/user/file2)
+	${algorithm.index}=$count(6)
+	${algorithm.space}=$range(0,3000,1000) 
+	${algorithm.weight}=$const(3,11,-8,4,-23)
++---
+ 
+ The permutations created will include only 2 variables <<<files>>> and <<<algorithm>>>. <<<files>>> would iterate over
+ the 3 constant values associated and <<<algorithm>>> iterating over the multidimensional values associated. These
+ multidimensional values are one for <<<space>>>, one for <<<index>>> and another one for <<<weight>>>. These would 
+ result in the following permutations (represented as the associated <value space set> - one <value space> per row):
+ 
+*----------------------+--------------------------+--------------------------+-----------------------+
+| <<$\{files\}>>       | <<$\{algorithm.index\}>> | <<$\{algorithm.space\}>> | <<$\{algorithm.weight\}>> 
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file1     | 1                        | 0000                     | 3
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file1     | 2                        | 1000                     | 11
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file1     | 3                        | 2000                     | -8
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file1     | 4                        | 3000                     | 4
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file1     | 5                        | <<<[EMPTY]>>>            | -23
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file1     | 6                        | <<<[EMPTY]>>>            | <<<[EMPTY]>>>
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file2     | 1                        | 0000                     | 3
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file2     | 2                        | 1000                     | 11
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file2     | 3                        | 2000                     | -8
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file2     | 4                        | 3000                     | 4
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file2     | 5                        | <<<[EMPTY]>>>            | -23
+*----------------------+--------------------------+--------------------------+-----------------------+
+| /home/user/file2     | 6                        | <<<[EMPTY]>>>            | <<<[EMPTY]>>>
+*----------------------+--------------------------+--------------------------+-----------------------+
+
+ Notice how the 'n'th values of each of the <<<$\{algorithm.X\}>>> variables are paired up together in what would be a 
+ single multidimensional value. Also notice how for dimensional variables not having values, an <<empty>> string will 
+ be used as their value in permutations where there are still dimensional <<non-empty>> values. 
+ 
+** 3. {Contextual} system and runtime variables
+ 
+ These are variables, injected by P2EL into each of the value spaces generated; which provides referential access to the 
+ environment where the process invocation is going to be executed. System variables are those static values proper of
+ the GWE system itself; while runtime variables are dynamic values that can be resolved only by the compute resource
+ processing the job (for example user home directory). The following are the system and runtime variables available: 
+  
+*---------------------------+--------------------------+
+| <<Variable>>              | <<Description>>   
+*---------------------------+--------------------------+
+| $\{SYSTEM_ORDER_ID\}      | The unique internal identifier of the order.
+*---------------------------+--------------------------+
+| $\{SYSTEM_JOB_NUM\}       | The unique internal identifier (within its order) of the process invocation (job).
+*---------------------------+--------------------------+
+| $\{SYSTEM_JOB_ID\}        | The unique internal identifier (overall) of the process invocation (job).
+*---------------------------+--------------------------+
+| $\{RUNTIME_USER_HOME\}    | The full path of the home directory of the account running the process invocation  
+*---------------------------+--------------------------+
+ 

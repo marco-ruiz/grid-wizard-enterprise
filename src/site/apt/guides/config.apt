@@ -1,0 +1,276 @@
+ ------
+ Configuration
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Configuring GWE 
+
+ All GWE client applications read the following client configuration files:
+
+*-------------------------------------+-------------------------------------+----------------------------------------------------------------+
+| <<Configuration>>                   | <<Configuration File>>              | <<Description>> 
+*-------------------------------------+-------------------------------------+----------------------------------------------------------------+
+| {{{Grid}User Grid Descriptor}}      | <<<$GWE_HOME/conf/gwe-grid.xml>>>   | Which resources will compose your grid (cluster descriptors)
+*-------------------------------------+-------------------------------------+----------------------------------------------------------------+
+| {{{Key}User Key Store}}             | <<<$GWE_HOME/conf/gwe-auth.xml>>>   | How to gain access to resources to connect (authentication information)
+*-------------------------------------+-------------------------------------+----------------------------------------------------------------+
+| {{{Macro}User Macro Library}}       | <<<$GWE_HOME/conf/gwe-macro.p2el>>> | P2EL macros to load into the P2EL interpreter
+*-------------------------------------+-------------------------------------+----------------------------------------------------------------+
+ 
+ This information will be read by default from files stated in the previous table. These defaults can be changed using 
+ the process described in the <{{{#Overriding} 'Overriding The Default Criteria To Locate Configuration Items'}}> section.
+ 
+* User {Grid} Descriptor
+
+ This is an XML file which allows users to describe their grid as a collection of clusters.
+
++---+
+<grid>
+	<!-- Cluster Descriptor Template -->
+	<cluster name="Sample" host="Cluster_1_User_Identifier" installRootPath="" databaseRootPath="" queueSize="25" maxHijackSecs="3600" maxIdleSecs="300" />
+	
+	<!-- Local Machine as Cluster Sample -->
+	<cluster name="LOCAL" host="localhost" queueSize="3" maxHijackSecs="-1" maxIdleSecs="300"/>
+	
+	<!-- BIRN Cluster Sample -->
+	<cluster name="BIRN" host="birn-cluster0.nbirn.net" installRootPath="/home/[USER]" queueSize="25" maxHijackSecs="7200" maxIdleSecs="300"/>
+</grid>
++---+
+
+ The <<<grid>>> parent element contains 0 to many <<<cluster>>> elements, each of which represent a particular
+ cluster head node information; which is composed of the following fields:
+ 
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+| <<Attribute>>           | <<Description>>                                                            | <<"0" or "-1" Value Meaning>>   
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+| <<<name>>>              | Friendly user name used for reference purposes only.                       | N/A
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+| <<<host>>>              | IP host name of the cluster head node (required).                          | N/A
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+| <<<installRootPath>>>   | Directory under which the daemon installation must be stored (required). This directory must have enough space to hold all temporary files used with staging operations (virtual file system), plus a fix size of about 100MB for the installation itself  | N/A 
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+| <<<databaseRootPath>>>  | Directory under which the daemon database must be stored. This directory must reside in a hard drive attached to <<<host>>>. If not provided it takes the value of <<<installRootPath>>>. | N/A 
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+| <<<queueSize>>>         | Maximum amount of resources GWE can have allocated at any given moment in the cluster's resource manager. | No limit. 
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+| <<<maxWaitMins>>>       | Maximum amount of minutes (allows fractions) a compute node is allowed to take to connect to the daemon (after requested to the resource manager) before disposing the request (and probably submitting a new one). | No limit. No such thing as being 'too late', the daemon will wait indefinitely for a compute resource to get attach once the request has been submitted.   
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+| <<<maxHijackMins>>>     | Maximum amount of minutes (allows fractions) a compute node can serve the system before returning it to the resource manager's pool. | No limit, being 'too old' will not be a reason for returning a compute resource back to the resource manager pool. 
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+| <<<maxIdleMins>>>       | Maximum amount of minutes (allows fractions) a compute node can be waiting a process request before returning it to the resource manager's pool. | No limit. Being 'too lazy' will not be a reason for returning a compute resource back to the resource manager pool.   
+*-------------------------+----------------------------------------------------------------------------+------------------------+
+
+ By default GWE client applications will try to connect to the first cluster defined in this <<<grid>>> element to act 
+ as a grid controller to coordinate efforts. If you decide not to use the default cluster descriptor, you can do so by 
+ selecting it by its friendly user name in the way detailed in the 
+ <{{{Overriding}'Overriding The Default Criteria To Locate Configuration Items'}}> section below.
+
+ <NOTE: Right now an order will be executed in the cluster where it was submitted; which means that load balancing 
+ across the clusters of the grid defined, will not be available, as the the functionality to dynamically 
+ split and prioritize the parallelization of these processes across clusters, has not been finalized yet.>
+
+** P2EL {Environmental} Variables
+
+ An additional, optional configuration feature is the ability to provide contextual P2EL variables per daemon. This 
+ feature is particularly useful in cases in which your P2EL commands require per daemon values like executable installation paths, 
+ as in the Slicer integration case:
+
++---+
+<grid>
+	<cluster name="LOCALHOST" installationRootPath="/home/[USER]" host="localhost" queueSize="2" maxWaitMins="0.5" maxHijackMins="120" maxIdleMins="5" >
+		<p2elVar name="SLICER_HOME" value="[SLICER_LOCATION_ON_LOCAL_MACHINE]" />
+	</cluster>
+	
+	<cluster name="BIRN" host="birn-cluster0.nbirn.net" installationRootPath="/home/[USER]" databaseRootPath="/tmp/[PATH]" queueSize="50" maxHijackMins="120" maxIdleMins="5" >
+		<p2elVar name="SLICER_HOME" value="[SLICER_LOCATION_ON_BIRN_CLUSTER]" />
+	</cluster>
+</grid>
++---+
+
+
+* User {Key} Store
+
+ This is an XML file which allows users to state the authentication information they use to access network enabled resources.
+ This is necessary for GWE to access those resource on behalf of the user as part of executing their processes in the grid. 
+ 
++---+
+<keystore>
+	<accessControl>
+		<account user="[ACCOUNT_USER_NAME]" passphrase="?" privateKeyFileName="[PRIVATE_KEY_FULL_PATH]"/>
+		<realms>
+			<!-- General domain realm template -->
+			<realm schemes="ssh;sftp" domain="*.[SUB_DOMAIN]" testHost="[HOST].[SUB_DOMAIN]"/>
+			
+			<!-- Domain realm template for BIRN cluster resources -->
+			<realm schemes="ssh;sftp" domain="*.nbirn.net" testHost="birn-cluster0.nbirn.net"/>
+			
+			<!-- Domain realm template for "www.whatever.com" machine -->
+			<realm schemes="ssh;sftp" domain="www.whatever.org" testHost="www.whatever.org"/>
+		</realms>
+	</accessControl>
+</keystore>
++---+
+
+ The <<<keystore>>> parent element contains 0 to many <<<accessControl>>> elements, each of which represent the
+ authentication information to access a particular network device group. It revolves around the concept of the user 
+ having authentication information (<account>) at its disposal to access these network device groups (<realms>).
+ The following are the forms that can take the <<<account>>> element to provide the authentication information: 
+
++---+
+<!-- Account authenticated using private keys and stated passphrase -->
+<account user="[ACCOUNT_USER_NAME]" passphrase="[PASSPHRASE]" privateKeyFileName="[PRIVATE_KEY_FULL_PATH]"/>
+
+<!-- Account authenticated using private keys and passphrase to be securely read at runtime -->
+<account user="[ACCOUNT_USER_NAME]" passphrase="?" privateKeyFileName="[PRIVATE_KEY_FULL_PATH]"/>
+
+<!-- Account authenticated using private keys (and overriding default public key file name "[PRIVATE_KEY_FULL_PATH].pub") and passphrase to be securely read at runtime -->
+<account user="[ACCOUNT_USER_NAME]" passphrase="?" privateKeyFileName="[PRIVATE_KEY_FULL_PATH]" publicKeyFileName="[PUBLIC_KEY_FULL_PATH]"/>
+
+<!-- Account authenticated using stated password -->
+<account user="[ACCOUNT_USER_NAME]" password="[PASSWORD]"/>
+
+<!-- Account authenticated using password to be securely read at runtime -->
+<account user="[ACCOUNT_USER_NAME]" password="?"/>
++---+
+
+ The realm section will be used to provide the network context to which the associated account has access, in terms of
+ protocols and network domains. It also allows the user to provide the FULL host name of an actual host against which 
+ the particular credential can be tested. Finally, a security feature is available to the user to avoid explicitly stating 
+ his/her passwords/passphrases. The user can do this by assigning to these fields the wildcard value of "?". This will 
+ indicate the GWE clients to securely read these fields at runtime and stored them in disk encrypted for future usage.
+
+=====
+
+ <WARNING: It is mandatory that the 'homeDir' directory has enough disk space and quotas to have a GWE daemon installed 
+ there (if your {{{#Grid}'grid descriptor' file}} implicitly declared it needs a daemon there of course). 
+ A GWE daemon installation requires a minimum of about 500MB of disk space to 
+ operate (base installation, database, logs, etc.). Additionally, its virtual file system will require enough space to
+ download and manipulate files corresponding to the amount of parallel jobs it may be able to run (size of the daemon's 
+ queue configured in the {{{#Grid}'grid descriptor'}}). Failure to appropriately allocate disk space will most likely result 
+ in catastrophic failure since, the operating system may very well deny access to the GWE daemon database, which 
+ would corrupt the whole installation.>   
+
+=====
+
+* User {Macro} Library
+
+ This is a text file which contents will be interpreted by GWE as the library of P2EL macros to load into its P2EL
+ interpreter. This library is simply a list of <<{{{p2el-macros.html}macro definitions}}>> separated by new lines.
+ The following is a sample of a macro library file consisting of 2 macros: <<<xcat>>> and <<<slicer>>>.
+ 
++---
+
+$xcat($${CONTENTS}) {
+	$${ENTRIES}=$xpath($${CONTENTS},//entry)
+	$${URI}=$xpath($${ENTRIES},/entry/@URI)
+	$${CACHEPATH}=$xpath($${ENTRIES},/entry/@cachePath)
+	$${NAME}=$xpath($${ENTRIES},/entry/@name)
+	$${ID}=$xpath($${ENTRIES},/entry/@ID)
+	$${DESCRIPTION}=$xpath($${ENTRIES},/entry/@description)
+	$${CONTENT}=$xpath($${ENTRIES},/entry/@content)
+	$${FORMAT}=$xpath($${ENTRIES},/entry/@format)
+}
+
+$slicer($${HOME},$${MODULE}) {
+	$${CMD}=$const($${HOME}/Slicer3 --launch $${HOME}/lib/Slicer3/Plugins/$${MODULE})
+}
+
++--- 
+ 
+** Macro Documentation (Optional)
+ 
+ Optionally, when defining a macro you can include documentation tags that will be used by GWE clients to provide 
+ contextual information to its users. The way to do this is by including right before the macro definition a list of 
+ "document" lines. Each of these lines must start with <//>. For example, using the previous <<<slicer>>> macro sample 
+ we can document it by prepending the following lines:
+ 
++---
+
+// TITLE: Slicer Module Base Command
+// DESCRIPTION: Creates the base command to launch a Slicer3 module given its 
+// installation directory and the module name.
+// HOME: Path to the Slicer installation
+// MODULE: Name of the Slicer module to launch
+// CMD: Base command to launch the Slicer3 module specified
+
++--- 
+
+ So the documented definition of the <<<slicer>>> macro would look like this: 
+ 	
++--- 
+
+// TITLE: Slicer Module Base Command
+// DESCRIPTION: Creates the base command to launch a Slicer3 module given its 
+// installation directory and the module name.
+// HOME: Path to the Slicer installation
+// MODULE: Name of the Slicer module to launch
+// CMD: Base command to launch the Slicer3 module specified
+
+$slicer($${HOME},$${MODULE}) {
+	$${CMD}=$const($${HOME}/Slicer3 --launch $${HOME}/lib/Slicer3/Plugins/$${MODULE})
+}
+
++--- 
+
+ If the content, of a "document" line, starts with a particular token, which does not containing spaces and 
+ it is followed by a colon (:);  then the "document" line content will be associated with such token. 
+ Standard tokens are <<<TITLE>>>, <<<DESCRIPTION>>> and the names of the macro parameters. Going back to the 
+ previous example you may notice that the documentation for all the standard tokens available for the 
+ <<<slicer>>> macro has been provided.   
+ 
+{Overriding} The Default Criteria To Locate Configuration Items
+
+ As previously mentioned, all GWE client applications use the same default configuration criteria. If you want to 
+ override this criteria you can do so by specifying the optional configuration parameter all GWE client 
+ applications accept and which are referred in the syntax of their respective documentation as:  
+ 
++---
+	[OPTIONAL_CONFIG_PARAM]
++--- 
+
+ Specifically, this option allows you to use to override the file to use as {{{Grid}grid descriptor}} and the encryption
+ token (which takes a default secret value) to use for generating the encrypted keys.
+ 
+ The format of this optional configuration parameter is the following:
+ 
++---
+-conf=[CLUSTER_ID]@[GRID_DEFINITION_FILENAME]:[KEY_STORE_FILENAME]
++--- 
+
+*------------------------------------------+-------------------------------------------+
+| <<Configuration Item>>                   | <<Token location>> 
+*------------------------------------------+-------------------------------------------+
+| Cluster Descriptor Id (*)                | From the start until the <<@>> character 
+*------------------------------------------+-------------------------------------------+
+| GWE Grid Definition                      | From the <<@>> character to the <<:>> character 
+*------------------------------------------+-------------------------------------------+
+| KeyStore Encryption Token                | From the <<:>> character to the end 
+*------------------------------------------+-------------------------------------------+
+
+ (*) <The 'Cluster Descriptor Id' is the friendly user name given to a cluster descriptor in a 'GWE Grid Definition' file>
+  
+ By providing such <<<[OPTIONAL_CONFIG_PARAM]>>> parameter the user can override the default criteria used to locate
+ any of the necessary configuration items. If any of these values are empty strings, then the defaults will be used 
+ instead; which makes this parameter powerful enough to override any combination of configuration item location 
+ criteria. For example:
+ 
+*-------------------------------------------------+-------------------------------------------+
+| <<[OPTIONAL_CONFIG_PARAM]>>                     | <<Instructs the client application to override the following default criteria to locate configuration information>>  
+*-------------------------------------------------+-------------------------------------------+
+| <<<Id>>>                                        | Use the cluster identified by <<<Id>>>  
+*-------------------------------------------------+-------------------------------------------+
+| <<<@/home/me/grid.xml>>>                        | Use <<</home/me/grid.xml>>> as the {{{Grid}grid descriptor}} file
+*-------------------------------------------------+-------------------------------------------+
+| <<<:MY_ENCRYPTION_TOKEN>>>                      | Use the token <<<MY_ENCRYPTION_TOKEN>>> to encrypt the passwords and passphrases of the {{{Key}key store}} 
+*-------------------------------------------------+-------------------------------------------+
+| <<<Id@/home/me/grid.xml>>>                      | Use the cluster identified by <<<Id>>> from the <<</home/me/grid.xml>>> {{{Grid}grid descriptor}} file
+*-------------------------------------------------+-------------------------------------------+
+| <<<Id:MY_ENCRYPTION_TOKEN>>>                    | Use the cluster identified by <<<Id>>> and the <<<MY_ENCRYPTION_TOKEN>>> as the key store encryption token 
+*-------------------------------------------------+-------------------------------------------+
+| <<</home/me/grid.xml:MY_ENCRYPTION_TOKEN>>>     | Read the grid definitions from <<</home/me/grid.xml>>> and the <<<MY_ENCRYPTION_TOKEN>>> as the key store encryption token 
+*-------------------------------------------------+-------------------------------------------+
+| <<<Id@/home/me/grid.xml:MY_ENCRYPTION_TOKEN>>>  | Override all default configuration location criteria accordingly!
+*-------------------------------------------------+-------------------------------------------+

@@ -1,0 +1,9 @@
+Job Number: $!{model.jobNum}
+Descriptor: $!{model.descriptor}
+Started at: $!{model.whenStarted}
+Prepared at: $!{model.whenPrepared}
+Assigned at: $!{model.whenAssigned}
+Dispatched at: $!{model.whenDispatched}
+Processed at: $!{model.whenProcessed}
+Completed at: $!{model.whenCompleted}
+Aborted at: $!{model.whenFailed}

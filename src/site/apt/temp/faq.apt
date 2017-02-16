@@ -1,0 +1,48 @@
+ ------
+ Introduction
+ ------
+ Marco Ruiz
+ ------
+ August 2007
+ ------
+
+
+FAQ
+
+* Question 1?
+
++----+
+code();
++----+
+
+ Answer 1:
+ 
+ 	[[1]] Option 1
+ 	
+ 	[[2]] Option 2
+ 	
+ 	[[3]] Option 3
+
+ More code: 
+ 
++----+
+code();
++----+
+
+* Question 2?
+
+ Answer 2 plus <<<package.class>>>
+
+* Question 3?
+
+ Snippet for question 3:
+
++----+
+code();
+...
+code();
+code();
++----+
+
+ and that's it! 
+ 

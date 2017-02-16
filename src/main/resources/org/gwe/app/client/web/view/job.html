@@ -1,0 +1,62 @@
+#set ($previous = ${selectedJob.jobNum} - 1)
+#set ($next = ${selectedJob.jobNum} + 1)
+#set ($baseURLParams = "clusterId=${clusterId}&orderId=${selectedJob.order.id}")
+<h2>
+	#clusterHeader()#titleSeparator()
+	<a href="order?${baseURLParams}"><img style="vertical-align: center;" src="img/report.png"/> Order # ${orderId} </a>#titleSeparator()
+	<img style="vertical-align: center;" src="img/page.png"/> Job # ${jobNum} &nbsp&nbsp( ${renderer.renderStatusImage(${selectedJob.execution})} )
+</h2>
+<hr/><p/>
+<div>
+	<div class="xleft">	
+		#link("Back To Order # ${orderId}" "order?${baseURLParams}"         "report.png"         false false)
+	</div>
+	<div class="xright">
+		#if (${previous} > 0)
+			#link("Job # ${previous}" "job?${baseURLParams}&jobNum=${previous}" "action_back.gif" false false)
+		#end
+		&nbsp&nbsp|&nbsp&nbsp
+		#link("Job # ${next}"     "job?${baseURLParams}&jobNum=${next}"     "action_forward.gif"     false true)
+	</div>
+	<br/>
+    <hr/>
+</div>
+
+#if ($gweSession)
+
+	#h3Details()
+		${renderer.renderDetails(${selectedJob})}
+	</div>
+	<p/>
+	
+	#h3Section("Process Permutation" "arrow_permutation.png")
+		#source("Template" ${selectedJob.descriptor.template} "script.png")
+	${renderer.render(${selectedJob.descriptor.permutation})}
+	</div>
+	<p/>
+	
+	#if (${selectedJob.execution.whenCompleted} && ${selectedJob.descriptor.uploads.size()} > 0)
+		#h3Section("Files Uploaded" "disk_multiple.png")
+			#foreach ($upload in ${selectedJob.descriptor.uploads})
+				<p><img src="img/disk.png" style="vertical-align: bottom;"/> $!{upload}</p>
+			#end
+		</div>
+		<p/>
+	#end
+	
+	<h2><img style="vertical-align: center;" src="img/cog.png"/> Executions</h2>
+	
+	#foreach ($exec in ${selectedJob.executions})
+		<a name="${exec.executionNum}"></a>
+		#h3Section("Execution # ${exec.executionNum}" "cog.png")
+			${renderer.renderDetails(${exec})}
+			<br/>
+			#sourceLarge("Process Standard Output" ${exec.requestResult} true "information.png")
+			#sourceLarge("Exceptions" ${exec.requestExceptionStackTrace} true "exclamation.png")
+		</div>
+		<p/>
+	#end
+	
+#else
+#installDaemon($clusterId)
+#end

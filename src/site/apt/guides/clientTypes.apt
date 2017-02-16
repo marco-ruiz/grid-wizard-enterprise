@@ -1,0 +1,41 @@
+ ------
+ Users
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+GWE Users
+
+ As with any enterprise system, GWE uses the concept of having different type of users; but this categorization has 
+ been limited, so far, to a reduced amount, which will not sacrifice true enterprise support nor increase complexity. 
+ 
+* GWE Administrator
+ 
+  Any user with access to the SSH account used to install a GWE daemon into a cluster's head node. Such SSH account 
+  will be the account which, the GWE daemon installed, will use to run on the cluster's head node, and therefore the 
+  account it will use to access the cluster's resources (SSH to compute nodes, read and write files in its 
+  shared file system, etc). 
+  
+  Such user will have access to a number of maintenance and control functions over a GWE daemon; which in this 
+  first version are being kept to the bare minimum of remote deployment, remote installation, remote configuration and
+  remote launching. Convenient, easy to use, utilities to carry on these function are included in the standard GWE
+  distribution. 
+  
+  This concept is the equivalent of the <root> user in Unix based system and
+  <Administrator> user in Windows based system. 
+  
+* GWE End User    
+
+  A user which will have access to a SSH account to the head node of a GWE enabled cluster. Such user will have 
+  access to a number of commands it can issue to the GWE daemon in order to submit process parallelization requests, 
+  control their execution and/or monitor overall execution status. In the first release, this functionality is being
+  kept to a bare minimum as well; but enough to do all your processing. In future releases full blown interactive real
+  time event and customized alert notifications will be available for example.
+ 
+  As it is intuitively obvious, the same user carrying on the role of <GWE Administrator> can carry the role of an 
+  end user by connecting to the GWE daemon using the same SSH account used to install it (not recommended though) 
+  or by using a different SSH account to do so.
+ 
+   

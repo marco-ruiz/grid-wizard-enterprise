@@ -1,0 +1,4 @@
+Num	Started			Prepared		Assigned		Dispatched		Processed		Completed		Failed
+#foreach($!{job} in $!{model.jobs})
+$!{job.jobNum}	$!{job.whenStarted}	$!{job.whenPrepared}	$!{job.whenAssigned}	$!{job.whenDispatched}	$!{job.whenProcessed}	$!{job.whenCompleted}	$!{job.whenFailed}
+#end 

@@ -1,0 +1,42 @@
+ ------
+ LDDMM Integration
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Coming Soon
+
+==============
+
+Under Construction
+
+==============
+
+{{{http://cis.jhu.edu/software/lddmm-volume/}LDDMM}}
+
+ From the {{{http://cis.jhu.edu/software/lddmm-volume/}LDDMM Project Site}}:
+ 
+====
+ 
+ <The Large Deformation Diffeomorphic Metric Mapping (LDDMM) tool is an application which aims to assign metric 
+ distances on the space of anatomical images in Computational Anatomy thereby allowing for the direct comparison 
+ and quantization of morphometric changes in shapes. As part of these efforts the Center for Imaging Science at 
+ Johns Hopkins University developed techniques to not only compare images, but also to visualize the changes and 
+ differences.>
+ 
+====
+
+* Installation Guide
+
+** Upgrading to "GWE Powered"
+ 
+** Installing a "GWE Powered" distribution
+
+* Usage Guide
+
+* Integration Technical Details
+
+* Snapshots & Movies
+

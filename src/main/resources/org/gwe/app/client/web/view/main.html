@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>GWE Web Control Panel</title>
+    <style type="text/css" media="all">
+      @import url("css/maven-base.css");
+      @import url("css/maven-theme.css");
+      @import url("css/site.css");
+      @import url("css/slider/bluecurve/bluecurve.css");
+    </style>
+    <link rel="stylesheet" href="print.css" type="text/css" media="print" />
+	<meta name="author" content="Marco Ruiz" />
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<script type="text/javascript" src="js/slider/range.js"></script>
+	<script type="text/javascript" src="js/slider/timer.js"></script>
+	<script type="text/javascript" src="js/slider/slider.js"></script>
+	<script type="text/javascript" src="js/pvar.js"></script>
+	<script type="text/javascript" src="js/pstmt.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+</head>
+<body class="composite">
+
+<div id="banner">
+	<a id="bannerLeft" href="grid"><img src="img/logo_only.jpg" alt="" /></a>
+	<a id="bannerRight" href="grid"><img src="img/webControlPanel.png"/></a>
+	<div class="clear"><hr/></div>
+</div>
+
+<div id="breadcrumbs">
+	<div class="xleft">Version: ${version}</div>
+	<div class="xright">
+		<a href="http://www.gridwizardenterprise.org/" class="externalLink">GWE Project Site</a> | 
+		<a href="http://www.na-mic.org/" class="externalLink">NAMIC</a> | 
+		<a href="http://nbirn.net/" class="externalLink">BIRN</a>
+	</div>
+
+    <div class="clear"><hr/></div>
+</div>
+
+<div id="leftColumn">
+	<div id="navcolumn">
+		<h5><a href="grid">My Grid</a></h5>
+		<ul>
+#foreach ($cluster in ${config.grid.headResources})
+	#set ($link = "<a href='cluster?clusterId=${cluster.name}'>${cluster.name}</a>")
+	#if ($cluster == $selectedCluster)
+			#set ($link = "<strong>${link}</strong>")
+	#end
+			<li class="none">${link}</li>
+#end 
+		</ul>
+		
+#if ($selectedCluster)
+		<h5><a href="cluster?clusterId=${selectedCluster.name}">${selectedCluster.name}</a></h5>
+		<ul>
+	#if ($gweSession)
+			<li class="none"><a href="queue?clusterId=${clusterId}">Queue a new order! --></a></li>
+			<br/>
+	#end
+	#foreach ($!{order} in $!{selectedCluster.ordersList})
+			<li class="none"><a href="order?clusterId=$!{selectedCluster.name}&orderId=$!{order.id}">Order $!{order.id}</a></li>
+	#end 
+		</ul>
+#end
+		<br>
+		<form name="input" action="shutdown" method="get">
+			<input type="submit" value="Shutdown Web Server!">
+		</form>
+		<br>
+	</div>
+</div>
+
+<div id="bodyColumn"><div id="contentBox">
+
+<div class="section">
+${meta_contentBox}
+</div>
+	
+</div></div>
+
+<div class="clear"><hr/></div>
+<div id="footer">
+	<div class="xright">&#169;2007-2009</div>
+	<div class="clear"><hr/></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+ ------
+ TeraGrid
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Coming Soon
+
+==============
+
+Under Construction
+
+==============
+
+{{{http://www.teragrid.org/}TeraGrid}}
+
+ From the {{{http://www.teragrid.org/}TeraGrid Site}}:
+ 
+====
+ 
+ <TeraGrid is an open scientific discovery infrastructure combining leadership class resources at eleven partner sites 
+ to create an integrated, persistent computational resource.> 
+ 
+====
+ 
+* Enabling Details
+
+*--------------+------------------------------+
+| GWE Version                |          
+*--------------+------------------------------+
+| Head Node                  |  
+*--------------+------------------------------+
+| Port                       |            
+*--------------+------------------------------+
+| Maximum Resources          |      
+*--------------+------------------------------+
+| Aging Disposal Timeout     |  
+*--------------+------------------------------+
+| Idleness Disposal Timeout  |            
+*--------------+------------------------------+
+
+* Gaining Access
+ 

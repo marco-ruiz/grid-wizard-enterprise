@@ -1,0 +1,36 @@
+ ------
+ API
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Under Construction
+
+==============
+
+GWE Client API
+
+ GWE has been design and implemented with a very modular architecture to maximize reusability and extensibility. 
+ This allows third party users to extend GWE to their custom needs. One important aspect in which GWE can be 
+ extended is on the client side. Third party developers can use what it is known as the <"GWE Client API"> to integrate
+ GWE into their own tools in order to to upgrade them to a <"GWE Powered"> level; which means their tool will have 
+ grid computing capabilites out-of-the-box through GWE. The <GWE Client API> is composed by the following rich java 
+ APIs:
+ 
+* Synchronous API: 
+ 
+ Provides a programmatic interface for end users to control orders execution and query orders progress
+ synchronously.
+ 
+* Asynchronous API: 
+
+ Provides a programmatic interface to register interest in events and asynchronously gather them in real time. 
+ 
+ []
+ 
+Architecture
+ 
+[../images/gwe-core/gwe-client-internals.png]
+ 

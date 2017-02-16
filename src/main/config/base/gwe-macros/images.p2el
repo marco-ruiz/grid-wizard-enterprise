@@ -1,0 +1,39 @@
+
+// TITLE: PNG File Generator Command.
+// DESCRIPTION: Creates a cross sectional PNG file for a given vlume file using UNU.
+// HOME: Path to the Slicer installation.
+// FILE: 
+// SLICE_A: 
+// SLICE_P: 
+
+$sliceGen($${HOME},$${FILE_VOL},$${SLICE_A},$${SLICE_P}) {
+	$${FILE_SLICE}=$${FILE_VOL}-out/$${SLICE_A}-$${SLICE_P}.png
+	$${FILE_EXT}=$fileExt($${FILE_VOL})
+	$${_}=$const(mkdir -p $${FILE_VOL}-out && $${HOME}/Slicer3 --launch unu slice -a $${SLICE_A} -p $${SLICE_P} -i $${FILE_VOL} -o $${FILE_SLICE}.tmp.$${FILE_EXT} && $${HOME}/Slicer3 --launch unu quantize -b 8 -i $${FILE_SLICE}.tmp.$${FILE_EXT} -o $${FILE_SLICE} && rm $${FILE_SLICE}.tmp.*)
+}
+
+$sliceGenEnhanced($${HOME},$${FILE_VOL},$${FILE_SLICE},$${SLICE_A},$${SLICE_P}) {
+	$${FILE_EXT}=$fileExt($${FILE_VOL})
+	$${_}=$const($${HOME}/Slicer3 --launch unu slice -a $${SLICE_A} -p $${SLICE_P} -i $${FILE_VOL} -o $${FILE_SLICE}.tmp.$${FILE_EXT} && $${HOME}/Slicer3 --launch unu quantize -b 8 -i $${FILE_SLICE}.tmp.$${FILE_EXT} -o $${FILE_SLICE} && rm $${FILE_SLICE}.tmp.*)
+}
+
+
+// TITLE: HDR Image File Uploader.
+// DESCRIPTION: Uploads a HDR file set (HDR and IMG) given its base name.
+// FILE: 
+
+$uploadHDR($${FILE}) {
+	$${IMG}=$out($${FILE}.img)
+	$${HDR}=$out($${FILE}.hdr)
+	$${_}=$${HDR}
+}
+
+
+// TITLE: NRRD Image File Uploader.
+// DESCRIPTION: Uploads a NRRD file set (NRRD) given its base name.  
+// FILE: 
+
+$uploadNRRD($${FILE}) {
+	$${_}=$out($${FILE}.nrrd)
+}
+

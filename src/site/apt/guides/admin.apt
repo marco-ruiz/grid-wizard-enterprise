@@ -1,0 +1,91 @@
+ ------
+ Administrator Guide
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+GWE Administrator
+
+ A GWE administrator user is that user that installs a GWE daemon into a cluster's head node. In order to do so, such user
+ must own an SSH account into the head node. The GWE daemon installed will use such SSH account to run on the cluster to 
+ SSH to compute nodes, read and write GWE system and temporary files in its shared file system, etc.
+
+ A GWE administrator will have access to a number of maintenance and control functions over a GWE daemon; which in this first 
+ version are being kept to the bare minimum of remote deployment, remote installation, remote configuration and remote 
+ launching. Convenient easy to use utilities, to carry on these functions, are included in the standard GWE distribution.
+
+ The GWE administrator user concept is the equivalent of the root user in Unix based system and Administrator user in 
+ Windows based system.
+
+Extended Configuration
+
+ Additional to the regular {{{config.html}GWE Client Configuration}}, 'GWE Administrators' can (and are encourage to) 
+ specify extra configuration information. This extra information will be used when configuring newly deployed GWE 
+ daemons to clusters' head nodes to make them 'GWE Enabled'; and it is expressed as simple extra attributes in
+ the regular <Cluster Descriptors> in the <GWE Grid Definition> file.
+ 
+======
+ 
+ <WARNING: Using the default configuration for a GWE daemon will effectively hijack the cluster's resource manager. 
+ Ideally, eventually all process parallelization in a cluster would go through GWE in which case this would not be 
+ a problem; but in the meantime coordinate with you cluster administration to decide the appropriate values of this 
+ parameters for your cluster> 
+
+======
+
+ The following is the list of the extra attributes a <Cluster Descriptor> can hold in order to be provide behavioral 
+ information for the GWE daemon remotely installed and configured using this profile:
+ 
+*-------------------------+----------------------------------+------------------------+
+| <<Attribute>>           | <<Description>>                  | <<"0" or "-1" Value Meaning>>   
+*-------------------------+----------------------------------+------------------------+
+| <<<<queueSize>>>>       | Maximum amount of resources GWE can have allocated at any given    | No limit
+|                         | moment in the cluster's resource manager.                          |  
+*-------------------------+----------------------------------+------------------------+
+| <<<<maxHijackMillis>>>> | Maximum amount of milliseconds a compute node can serve the system | No limit, being 'too old' will not be a reason for returning 
+|                         | before returning it to the resource manager's pool.                | a compute resource back to the resource manager pool.
+*-------------------------+----------------------------------+------------------------+
+| <<<<maxIdleMillis>>>>   | Maximum amount of milliseconds a compute node can be waiting a     | No limit. Being 'too lazy' will not be a reason for returning   
+|                         | process request before returning it to the resource manager's pool | a compute resource back to the resource manager pool.
+*-------------------------+----------------------------------+------------------------+
+
+ The following is a sample of the <<GWE Grid Definition>> file used on the <{{{cluster/birn.html}BIRN cluster}}> 
+ to make it <<GWE Enabled>>. 
+  
++---+
+<grid>
+    <cluster>
+        <name>BIRN</name>
+        <host>birn-cluster0.nbirn.net</host>
+        <queueSize>25</queueSize>
+        <maxHijackMillis>3600000</maxHijackMillis>
+        <maxIdleMillis>60000</maxIdleMillis>
+    </cluster>
+</grid>
++---+
+
+ <NOTE: If you don't carry on GWE administrator functions in a cluster, this extra configuration information will 
+ be simply ignored.>
+
+Utilities
+
+ The following are the 'GWE administrator' utilities available, so far, to remotely setup, configure and launch a GWE 
+ daemon in a cluster head node to make the respective cluster 'GWE Enabled'.
+
+*----------------------------------------------------------------------------------------+----------------------------------+
+| <<Invocation Command>>                                                                 | <<Description>>    
+*----------------------------------------------------------------------------------------+----------------------------------+
+| <<<gwe-util-daemon-install.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}}>>>   | Remotely installs and configure a GWE daemon 
+*----------------------------------------------------------------------------------------+----------------------------------+
+| <<<gwe-util-daemon-launch.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}}>>>    | Remotely launches an already installed and configured GWE daemon 
+*----------------------------------------------------------------------------------------+----------------------------------+
+| <<<gwe-util-daemon-fullsetup.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}}>>> | Installation + Launching (a simple sequential combination of the previous two commands)
+*----------------------------------------------------------------------------------------+----------------------------------+
+
+Full Setup Sample
+
+[../images/gwe-core/fullsetup.png]
+ 
+ 

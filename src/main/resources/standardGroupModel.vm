@@ -1,0 +1,18 @@
+	<parameters>
+		<label>${group.label}</label>
+		<description>${group.description}</description>
+		#foreach(${param} in ${group.parameters})
+
+		<${param.valueType}>
+			<name>${param.name}</name>
+			<flag>${param.flag}</flag>
+			<longflag>${param.longFlag}</longflag>
+			<label>${param.label}</label>
+			<description>${param.description}</description>
+			<default>${param.defaultValue}</default>
+#if(${param.valueType.endsWith("-enumeration")})#foreach(${ele} in ${param.elements})
+			<element>${ele}</element>
+#end#end
+			${param.filler}
+		</${param.valueType}>
+	#end</parameters>

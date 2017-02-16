@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation=" 
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<import resource="spring-gwe-agent.xml"/>
+
+	<!-- ========================================================================== -->
+	<!-- 						P E R S I S T E N T   L A Y E R						-->
+	<!-- ========================================================================== -->
+
+	<!-- ==================== -->
+	<!--  DB CONNECTION POOL  -->
+	<!-- ==================== -->
+	<util:property-path id="databaseURL" path="daemonConfigDAO.databaseURL"/>
+	
+	<!-- CONNECTION POOLING OFF - (DBCP is giving some GenericObjectPool deadlock problem) -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="url" ref="databaseURL" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+	</bean>
+
+	<!-- DBCP CONNECTION POOLING ON -->
+	<!-- 
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="url" ref="databaseURL" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+		</bean>
+	-->
+
+	<!-- ====================== -->
+	<!--  HIBERNATE PROPERTIES  -->
+	<!-- ====================== -->
+	<bean id="hibernateProps" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- <prop key="hibernate.dialect">net.sf.hibernate.dialect.DerbyDialect</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
+				<prop key="hibernate.query.substitutions">true 'T', false 'F'</prop>
+<!-- 
+				<prop key="hibernate.show_sql">true</prop>
+ -->
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.c3p0.minPoolSize">5</prop>
+				<prop key="hibernate.c3p0.maxPoolSize">20</prop>
+				<prop key="hibernate.c3p0.timeout">600</prop>
+				<prop key="hibernate.c3p0.max_statement">50</prop>
+				<prop key="hibernate.c3p0.testConnectionOnCheckout">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- =========================== -->
+	<!--  HIBERNATE SESSION FACTORY  -->
+	<!-- =========================== -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties" ref="hibernateProps" />
+		<property name="annotatedClasses">
+			<list>
+				<value>org.gwe.persistence.model.BaseModelInfo</value>
+				<value>org.gwe.persistence.model.BundleInfo</value>
+				<value>org.gwe.persistence.model.HeadResourceInfo</value>
+				<value>org.gwe.persistence.model.VarInfo</value>
+				<value>org.gwe.persistence.model.ComputeResourceInfo</value>
+				<value>org.gwe.persistence.model.AllocationInfo</value>
+				<value>org.gwe.persistence.model.OrderInfo</value>
+				<value>org.gwe.persistence.model.OrderExecutionProfileInfo</value>
+				<value>org.gwe.persistence.model.JobInfo</value>
+				<value>org.gwe.persistence.model.JobExecutionInfo</value>
+<!-- 
+				<value>org.gwe.persistence.model.order.shell.P2ELCommandJobInfo</value>
+ -->
+			</list>
+		</property>
+		<!-- 
+			<property name="annotatedPackages">
+			<list>
+			<value>org.gwe.persistence.model</value>
+			</list>
+			</property>
+		-->
+	</bean>
+
+</beans>
+

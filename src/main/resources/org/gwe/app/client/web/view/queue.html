@@ -1,0 +1,40 @@
+<h2>#clusterHeader()</h2>
+<hr/>
+#if ($gweSession)
+
+	#if (${queuedOrder})
+		#h3Section("Order Queued!" "report_add.png")
+		#set ($orderLink = "<a href='order?clusterId=${clusterId}&orderId=${queuedOrder.id}'>order # ${queuedOrder.id}</a>")
+		#source(" <b> Your order was queued as ${orderLink}. It was interpreted as a total of ${queuedOrder.getJobs().size()} jobs.</b><p/>P2EL statement" ${queuedOrder.descriptor} "icon_success_sml.gif")
+		</div>
+	#end
+	
+	#if (${operationResult})
+		#h3Section("Order Preview" "report_magnify.png")
+			#source("The P2EL statement" ${p2el} "")
+			#source("Will be parsed into" ${operationResult} "")
+			After applying your macros translations.<br/><p/>
+			#sourceLarge("<b>${commands.size()}</b> Interpreted Process Invocations" ${renderer.renderElements(${commands})} "true" "book.png")
+		</div>
+	#end
+
+	#h3ModeSection("Execution Profile" false "report_go.png")
+		${renderer.renderExecutionProfile()}
+	</div>
+
+	#h3Section("Queue Order" "report_go.png")
+		<p/><p/>
+		
+		<form name="input" action="queue" method="get">
+			<img style="vertical-align: center;" src="script_code.png"/> P2EL Statement:<p/>
+			<textarea name="p2el" rows="15" cols="100">$!{p2el}</textarea><p>
+			<input type="hidden" name="clusterId" value="${clusterId}">
+			<input type="submit" name="operation" value="Queue">
+			<input type="submit" name="operation" value="Preview">
+		</form>
+	</div>
+
+#else
+	#installDaemon($clusterId)
+#end
+

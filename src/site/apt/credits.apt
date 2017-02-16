@@ -1,0 +1,78 @@
+ ------
+ Credits
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Credits
+
+* <<Funding>>
+
+ GWE would not have been possible without funding from:
+  
+ * {{{http://www.na-mic.org/}National Alliance for Medical Image Computing (NA-MIC)}} 
+ 
+ * {{{http://nbirn.net/}UCSD's Biomedical Informatics Research Network (BIRN)}}
+
+* <<Open Source Community>>
+
+ GWE would not have been possible without the following open source development resources:
+
+ * {{{http://www.springframework.org/}Spring - Application Framework}}
+ 
+ * {{{http://www.hibernate.org/}Hibernate - ORM Framework}}
+
+ * {{{http://db.apache.org/derby/}Derby - DBMS}}
+ 
+ * {{{http://velocity.apache.org/}Velocity - Template Engine}}
+
+ * {{{http://www.mortbay.org/jetty/}Jetty - Web Server}}
+ 
+ * {{{http://logging.apache.org/log4j/}Log4j - Logging Utility}}
+ 
+ * {{{http://www.jcraft.com/jsch/}JSch - SSH2 Library}}
+
+ * {{{http://xstream.codehaus.org/}XStream - XML/Java Serialization Library}}
+ 
+ * {{{http://xmlbeans.apache.org/}XMLBeans - XML/Java Binding Framework}}
+ 
+ * {{{http://jline.sourceforge.net/}JLine - Console Input Library}}
+ 
+ * {{{http://commons.apache.org/}Multiple Apache/Jakarta Commons Projects}}
+
+ * {{{http://webfx.eae.net/}WebFX - DHTML Widgets}}
+ 
+ * {{{http://www.famfamfam.com/lab/icons/silk/}FamFamFam - Icons}}
+ 
+ []
+ 
+ GWE would not have been possible without the following open source development tools:
+ 
+ * {{{http://www.eclipse.org/}Eclipse - IDE}}
+ 
+ * {{{http://maven.apache.org/}Maven - Software Project Management Tool}}
+ 
+ * {{{http://subversion.tigris.org/}Subversion - Source Code Management System (SCM)}}
+ 
+ * {{{https://hudson.dev.java.net/}Hudson - Continuous Integration Engine}}
+ 
+ * {{{http://www.junit.org/}JUnit - Testing Framework}}
+ 
+ * {{{http://www.gnu.org/software/mailman/}Mailman - Mailing List Engine}}
+ 
+ * {{{http://httpd.apache.org/}Apache - Web Server}}
+ 
+ * {{{http://tomcat.apache.org/}Tomcat - Web Application Container}}
+ 
+ []
+
+ GWE would not have been possible without the following, free licensed (for open source projects such as GWE), development tools:
+ 
+ * {{{http://www.atlassian.com/software/jira/}JIRA - Issue Traker}}
+ 
+ []
+
+ 
+ 

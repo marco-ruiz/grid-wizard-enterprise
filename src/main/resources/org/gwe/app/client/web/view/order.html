@@ -1,0 +1,52 @@
+#set ($previous = ${selectedOrder.id} - 1)
+#set ($next = ${selectedOrder.id} + 1)
+<h2>
+	#clusterHeader()#titleSeparator()
+	<img style="vertical-align: center;" src="img/report.png"/> Order # ${orderId}
+</h2>
+<hr/><p/>
+<div>
+	<div class="xleft">	
+		#link("Back To Cluster '${clusterId}'" "cluster?clusterId=${clusterId}"        "server.png" false false)
+	</div>
+	<div class="xright">
+		#if (${previous} > 0)
+			#link("Order # ${previous}" "order?clusterId=${clusterId}&orderId=${previous}" "action_back.gif" false false)
+		#end
+		&nbsp&nbsp|&nbsp&nbsp
+		#link("Order # ${next}"     "order?clusterId=${clusterId}&orderId=${next}"     "action_forward.gif" false true)
+	</div>
+	<br/>
+    <hr/>
+</div>
+<p/>
+
+#if ($gweSession)
+	
+	#h3Details()
+		${renderer.renderDetails(${selectedOrder})}
+	</div>
+	<p/>
+	
+	#h3ModeSection("P2EL Statement" false "script_code.png")
+		<b>1. Structured Format</b><p>
+		#viewP2EL("Template" ${p2elStatement.template} ${p2elStatement.vars})
+		<br/><hr/>
+		<br><b>2. Plain Format</b><p>
+		#source("P2EL" ${p2elStatement.toStringFormatted()} "script.png")
+	</div>
+
+	#h3ModeSection("Permutations Dumps" false "book.png")
+		#sourceLarge("Process Invocations (May contain references to variables to be resolved at runtime by the executing compute resource)" ${selectedOrder.toCommands()} "true" "book.png")
+		<br/><hr/>
+		#sourceLarge("CSV (Values of the permutation variables per process invocation)" ${selectedOrder.toCVS()} "true" "book.png")
+	</div>
+	
+	#resultBrowserSection(${selectedOrder})
+	
+	#h3Section("Jobs" "page.png")
+		${renderer.renderElements(${clusterId}, ${selectedOrder})}
+	</div>
+
+#else
+#end

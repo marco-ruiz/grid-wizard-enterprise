@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation=" 
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+<!-- 
+	<bean id="loggerConfigurer" class="org.gwe.utils.LoggingConfigurer" lazy-init="false" init-method="init">
+		<property name="levels">
+			<map>
+				<entry key="org.springframework" value="DEBUG" />
+				<entry key="org.hibernate" value="WARN" />
+			</map>
+		</property>
+		<property name="pattern" value="%-10d{HH:mm:ss} %-4r [%t] %-5p %c %x - %m%n" />
+		<property name="pattern" value="%-10d{HH:mm:ss} [%t] %-5p  - %c{1}:%L %x - %m%n" />
+		<property name="addConsoleAppender" value="true" />
+		<property name="logFiles">
+			<set>
+				<value>${application.workspace}app.log</value>
+			</set>
+		</property>
+	</bean>
+ -->
+ 
+ 	<bean id="loggingLevelsConfigurer" class="org.gwe.utils.LoggingLevelsConfigurer">
+		<constructor-arg>
+		 	<map key-type="java.lang.Class" value-type="java.util.Map">
+				<entry key="org.gwe.app.client.config.ClientConfig" value-ref="clientLoggingLevels" />
+				<entry key="org.gwe.app.daemon.DaemonInstallerApp" value-ref="daemonInstallerLoggingLevels" />
+				<entry key="org.gwe.app.daemon.DaemonApp" value-ref="daemonLoggingLevels" />
+				<entry key="org.gwe.app.agent.AgentApp" value-ref="agentLoggingLevels" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<util:map id="clientLoggingLevels">
+		<entry key="rootLogger" value="INFO" />
+		<entry key="org.springframework" value="INFO" />
+		<entry key="org.hibernate" value="INFO" />
+		<entry key="org.gwe.api.TunneledSocketFactory" value="TRACE" />
+	</util:map>
+	
+	<util:map id="daemonInstallerLoggingLevels">
+		<entry key="rootLogger" value="DEBUG" />
+	</util:map>
+
+	<util:map id="daemonLoggingLevels">
+		<entry key="rootLogger" value="INFO" />
+		<entry key="org.springframework" value="INFO" />
+		<entry key="org.hibernate" value="INFO" />
+	</util:map>
+
+	<util:map id="agentLoggingLevels">
+		<entry key="rootLogger" value="INFO" />
+		<entry key="org.springframework" value="INFO" />
+		<entry key="org.hibernate" value="INFO" />
+		<entry key="org.gwe.utils.concurrent.Heart" value="TRACE" />
+		<entry key="org.gwe.drivers.netAccess" value="TRACE" />
+	</util:map>
+
+</beans>
+

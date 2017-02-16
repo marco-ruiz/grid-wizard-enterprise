@@ -1,0 +1,44 @@
+<!-- End User Environment & Definitions -->
+<!-- Detailed configuration guide @ http://www.gridwizardenterprise.org/guides/config.html -->
+
+<grid>
+	
+	<cluster name="LOCALHOST" 
+			host="localhost" 
+			installRootPath="" 
+			resourceManager="local" 
+			queueSize="1" 
+			maxWaitMins="0.5" 
+			maxHijackMins="120" 
+			maxIdleMins="1" >
+		
+		<p2elVar name="SLICER_HOME" value="" />
+	</cluster>
+	
+	<cluster name="BIRN" 
+			host="birn-cluster0.nbirn.net" 
+			installRootPath="/PATH_ON_BIRN_CLUSTER" 
+			databaseRootPath="" 
+			resourceManager="condor" 
+			queueSize="25" 
+			maxWaitMins="-1" 
+			maxHijackMins="120" 
+			maxIdleMins="5" >
+		
+		<p2elVar name="SLICER_HOME" value="" />
+	</cluster>
+	
+	<cluster name="SPL" 
+			host="cluster.bwh.harvard.edu" 
+			installRootPath="/PATH_ON_SPL_CLUSTER" 
+			databaseRootPath="" 
+			resourceManager="bsub" 
+			queueSize="25" 
+			maxWaitMins="-1" 
+			maxHijackMins="120" 
+			maxIdleMins="5" >
+			
+		<p2elVar name="SLICER_HOME" value="" />
+	</cluster>
+</grid>
+

@@ -1,0 +1,85 @@
+
+// TITLE: Slicer Module Base Command.
+// DESCRIPTION: Creates the base command to launch a Slicer3 module given its 
+// installation directory and the module name.
+// HOME: Path to the Slicer installation.
+// MODULE: Name of the Slicer module to launch.
+// CMD: Base command to launch the Slicer3 module specified.
+
+$slicer($${HOME},$${MODULE}) {
+	$${_}=$const($${HOME}/Slicer3 --launch $${HOME}/lib/Slicer3/Plugins/$${MODULE})
+}
+
+
+// TITLE: Slicer's BSpline Deformable Registration Command.
+// DESCRIPTION: Creates the base command to launch a Slicer's 'BSpline Deformable Registration' with the iterations, 
+// histograms and samples provided as parameters.
+// HOME: Path to the Slicer installation.
+// ITER: 
+// HIST: 
+// SAM: 
+
+$bspline($${HOME},$${ITER},$${HIST},$${SAM}) {
+	$${SLICER}=$slicer($${HOME},BSplineDeformableRegistration)
+	$${EXPLORATION_ID}=$${ITER}-$${HIST}-$${SAM}
+	$${_}=$const($${SLICER} --iterations $${ITER} --gridSize 5 --histogrambins $${HIST} --spatialsamples $${SAM} --maximumDeformation 1 --default 0 --resampledmovingfilename)
+}
+
+
+// TITLE: Slicer's Gradient Anisotropic Diffusion Command.
+// DESCRIPTION: Creates the base command to launch a Slicer's 'BSpline Deformable Registration' with the iterations, 
+// histograms and samples provided as parameters.
+// HOME: Path to the Slicer installation.
+// CONDUCT: 
+// TIME: 
+// ITER: 
+
+$gradient($${HOME},$${CONDUCT},$${TIME},$${ITER}) {
+	$${SLICER}=$slicer($${HOME},GradientAnisotropicDiffusion)
+	$${EXPLORATION_ID}=$${CONDUCT}-$${TIME}-$${ITER}
+	$${_}=$const($${SLICER} --conductance $${CONDUCT} --timeStep $${TIME} --iterations $${ITER})
+}
+
+
+// TITLE: XCat Data Model Creator.
+// DESCRIPTION: Creates value space variables for the attributes of the XML "entry" elements found in the 
+// XCAT catalog file passed as parameter.
+// CONTENTS: 
+// ENTRIES: XML entry elements found in the XCAT catalog file passed as parameter.
+
+$xcat($${CONTENTS}) {
+	$${ENTRIES}=$xpath($${CONTENTS},//entry)
+	$${URI}=$xpath($${ENTRIES},/entry/@URI)
+	$${CACHEPATH}=$xpath($${ENTRIES},/entry/@cachePath)
+	$${NAME}=$xpath($${ENTRIES},/entry/@name)
+	$${ID}=$xpath($${ENTRIES},/entry/@ID)
+	$${DESCRIPTION}=$xpath($${ENTRIES},/entry/@description)
+	$${CONTENT}=$xpath($${ENTRIES},/entry/@content)
+	$${FORMAT}=$xpath($${ENTRIES},/entry/@format)
+}
+
+
+// TITLE: Image Stager for OASIS Database.
+// DESCRIPTION: Stages images from the OASIS database given its image and scan number.
+// NUM: 
+// SCAN: 
+
+$oasis($${NUM},$${SCAN}) {
+	$${NAME}=OAS1_$${NUM}_MR1
+	$${STAGED}=$in(http://www.oasis-brains.org/app/action/DownloadImages/template/ClosePage.vm?download_type=zip&search_element=xnat%3AmrSessionData&search_field=xnat%3AmrSessionData.ID&scanmpr1=true&scanmpr2=true&scanmpr3=true&scanmpr4=true&search_value=$${NAME},$${NAME}.zip,Y)
+	$${HDR}=$${STAGED}-contents/$${NAME}/RAW/$${NAME}_mpr-$${SCAN}_anon.hdr
+	$${ID}=$${NUM}-$${SCAN}
+}
+
+
+// TITLE: Catalog Images Stager for OASIS Database. 
+// DESCRIPTION: Stages images from the OASIS database which identifiers are specified in the XCat file passed as parameters. 
+// CONTENTS: 
+
+$oasis_xcat($${CONTENTS}) {
+    $${CAT}=$xcat($${CONTENTS})
+    $${NUM}=$regExp(0,$${CAT_ID},,[^_]*,[_])
+    $${SCAN}=$regExp($${CAT_ID},[_],.*)
+    $${OASIS}=$oasis($${NUM},$${SCAN})
+}
+

@@ -1,0 +1,39 @@
+ ------
+ Quick Start Guide
+ ------
+ Marco Ruiz
+ ------
+ February 2009
+ ------
+
+
+{Quick} Start Guide
+
+* Steps
+
+ <<1. Install GWE in your machine.>> 
+ 
+ Download and unbundle one of the GWE bundles and set the appropriate environmental variables. 
+ Check the <{{{install.html}'Installation Guide'}}> for details.
+ 
+ <<2. Configure installed GWE.>> 
+ 
+ Provide authentication information to access networked remote 
+ resources (file systems and clusters) and the list of clusters to composed your "GWE Grid". 
+ Check the <{{{config.html}'Configuration Guide'}}> for details.
+ 
+ <<3. Launch a GWE client.>> 
+ 
+ Launch one of the 'GWE client's available. If the target GWE daemon is not already available in your clusters the GWE 
+ client will auto-deploy it without requiring any user intervention. Check the <{{{user.html}'User Guide'}}> for details.
+ 
+ <<4. Interact with your 'GWE enabled' cluster!.>> 
+ 
+ You are ready to interact with a GWE enabled cluster 
+ (submit process parallelization requests, monitor execution progress, control orders execution, etc). To submit jobs 
+ into your GWE cluster you need to describe them using P2EL. Check the <{{{p2el.html}'P2EL Specification'}}> 
+ for details. 
+ 
+* Steps Context Overview
+ 
+[../images/gwe-core/quick-guide.png] 

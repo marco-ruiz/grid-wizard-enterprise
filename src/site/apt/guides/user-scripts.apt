@@ -1,0 +1,49 @@
+ ------
+ GWE Client: Command Line Scripts
+ ------
+ Marco Ruiz
+ ------
+ December 2008
+ ------
+
+GWE Client: Command Line Scripts
+
+ GWE comes with bash scripts to interact with a GWE daemon system. The user will find that for every command available 
+ in the {{{user-terminal.html}<GWE Terminal>}} client interface, there is an equivalent shell script named:
+ 
+=====
+
+	<<<gwe-cmd-[GWE_TERMINAL_COMMAND].sh>>>
+
+=====
+
+ These scripts are expensive since a brand new network connection has to be established every time they are invoked (in 
+ contrast with all other interactive clients which keep connections alive for the length of the session). 
+ On the other hand it provides a quick command line access to a GWE daemon function and a rudimentary API for 
+ integrating GWE requests programmatically within scripts.
+ 
+* {Scripts}
+
+ The following is the list of available scripts: 
+
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| <<Description>>                                                  | <<GWE Command Line Script>> 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| Queue an order                                                   | <<<gwe-cmd-queue-order.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}} [{{{p2el.html}P2EL_STATEMENT}}]>>> 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| List all the orders queued                                       | <<<gwe-cmd-list-orders.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}}>>> 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| View the details of a specific queued order                      | <<<gwe-cmd-view-order.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}} [ORDER_ID]>>> 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| List the status of all the jobs belonging to a particular order  | <<<gwe-cmd-list-jobs.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}} [ORDER_ID]>>>
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| View the details of a specific job belonging to a specific order | <<<gwe-cmd-view-job.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}} [ORDER_ID] [JOB_NUM]>>> 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| View the result of a specific job belonging to a specific order  | <<<gwe-cmd-view-result.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}} [ORDER_ID] [JOB_NUM]>>> 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| Pause the execution of an order                                  | <<<gwe-cmd-pause-order.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}} [ORDER_ID]>>>                       | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| Resume the execution a paused order                              | <<<gwe-cmd-resume-order.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}} [ORDER_ID]>>>                       | 
+*------------------------------------------------------------------+--------------------------------------------------------------+
+| Delete an order                                                  | <<<gwe-cmd-delete-order.sh {{{config.html#Overriding}[OPTIONAL_CONFIG_PARAM]}} [ORDER_ID]>>>                       | 
+*------------------------------------------------------------------+--------------------------------------------------------------+

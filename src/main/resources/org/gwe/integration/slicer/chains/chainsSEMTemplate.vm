@@ -1,0 +1,26 @@
+<executable>
+	<category>Composite Chains</category>
+	<title>$!{executable.title}</title>
+	<description>Auto generated chain descriptor</description>
+	<version>$!{executable.version}</version>
+	<documentation-url>$!{executable.url}</documentation-url>
+	<license>$!{executable.license}</license>
+	<contributor>Marco Ruiz</contributor>
+	<acknowledgements>NAMIC, BIRN CC</acknowledgements>
+	#foreach(${group} in ${executable.groups})
+
+	<parameters>
+		<label>$!{group.label}</label>
+		<description>$!{group.description}</description>
+		#foreach(${param} in ${group.parameters})
+
+		<${param.valueType}>
+			<name>$!{param.name}</name>
+			<longflag>$!{param.longFlag}</longflag>
+			<label>$!{param.label}</label>
+			<description>$!{param.description}</description>
+			<default>$!{param.defaultValue}</default>
+			$!{param.filler}
+		</${param.valueType}>
+	#end</parameters>
+#end</executable>

@@ -1,0 +1,39 @@
+ ------
+ FreeSurfer Integration
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Coming Soon
+
+==============
+
+Under Construction
+
+==============
+
+{{{http://surfer.nmr.mgh.harvard.edu/}Free Surfer}}
+
+ From the {{{http://surfer.nmr.mgh.harvard.edu/}Free Surfer Project Site}}:
+ 
+====
+ 
+ <FreeSurfer is a set of automated tools for reconstruction of the brainÕs cortical surface from structural MRI data, 
+ and overlay of functional MRI data onto the reconstructed surface.>
+ 
+====
+
+* Installation Guide
+
+** Upgrading to "GWE Powered"
+ 
+** Installing a "GWE Powered" distribution
+
+* Usage Guide
+
+* Integration Technical Details
+
+* Snapshots & Movies
+

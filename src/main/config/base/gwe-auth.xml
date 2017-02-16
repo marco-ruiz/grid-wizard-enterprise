@@ -1,0 +1,40 @@
+<!-- User authentication information -->
+<!-- Detailed configuration guide @ http://www.gridwizardenterprise.org/guides/config.html -->
+
+<keystore>
+	<!-- Realm access abstract template -->
+<!-- 
+	<accessControl>
+		<account user="USER" privateKeyFileName="PRIVATE_KEY_FILE_NAME" passphrase="PASSPHRASE" publicKeyFileName="PUBLIC_KEY_FILE_NAME"/>
+		<realms>
+			<realm schemes="SCHEMES" domain="DOMAIN_1" testHost="TEST_HOST_1"/>
+			<realm schemes="SCHEMES" domain="DOMAIN_2" testHost="TEST_HOST_2"/>
+			<realm schemes="SCHEMES" domain="DOMAIN_3" testHost="TEST_HOST_3"/>
+		</realms>
+	</accessControl>
+ -->
+
+	<!-- Realm access abstract template -->
+<!-- 
+	<accessControl>
+		<account user="USER" password="password"/>
+		<realms>
+			<realm schemes="SCHEMES" domain="DOMAIN_1" testHost="TEST_HOST_1"/>
+			<realm schemes="SCHEMES" domain="DOMAIN_3" testHost="TEST_HOST_3"/>
+		</realms>
+	</accessControl>
+ -->
+
+
+	<!-- BIRN Realm access template using private keys and passphrases to be securely read at runtime -->
+<!-- 
+	<accessControl>
+		<account user="USER" passphrase="?" privateKeyFileName="YOUR_PRIVATE_KEY_FILE_PATH"/>
+		<realms>
+			<realm schemes="ssh;sftp" domain="*.nbirn.net" testHost="birn-cluster0.nbirn.net"/>
+		</realms>
+	</accessControl>
+ -->
+ 
+</keystore>
+

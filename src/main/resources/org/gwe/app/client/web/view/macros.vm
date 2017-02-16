@@ -1,0 +1,97 @@
+#macro (installDaemonWithBundle $clusterId $bundleType)
+	<p><p>
+	<form name="input" action="cluster" method="get">
+		<input type="hidden" name="clusterId" value="${clusterId}">
+		<input type="hidden" name="install" value="true">
+		<input type="hidden" name="bundle" value="${bundleType}">
+	    <input type="submit" value="Deploy, install and/or launch a GWE Daemon at '${clusterId}' (${bundleType})!">
+	</form>
+#end
+
+#macro (source $title $text $icon)
+#sourceLarge($title $text false $icon)
+#end
+
+#macro (sourceLarge $title $text $large $icon)
+	#if ($large)
+		#set ($style = "overflow:scroll; max-height: 500px;")
+	#end
+		<img src="img/${icon}" style="vertical-align: bottom;"/> ${title}:  
+	#if (${text})
+		<p/><div class="source" style="$!{style}"><pre>$!{text}</pre></div>
+	#else
+		---<p/>
+	#end
+#end
+
+#macro (h3Section $title $icon)
+	#h3ModeSection($title true $icon)
+#end
+
+#macro (h3ModeSection $title $expandedMode $icon)
+	#set ($hideTag = "style='display:none'")
+	#if ($expandedMode)
+		#set ($dotsHide = ${hideTag})
+		#set ($divHide = "")
+		#set ($mode = "opened")
+	#else
+		#set ($dotsHide = "")
+		#set ($divHide = ${hideTag})
+		#set ($mode = "closed")
+	#end
+
+	<a href="javascript:toggle('${title}');">
+		<h3 id="${title}Title" class="${mode}">${title}&nbsp&nbsp&nbsp<img style="vertical-align: center;" src="img/${icon}"/>&nbsp&nbsp<span id="${title}Dots" $!{dotsHide}>[ ... ]</span></h3>
+	</a>
+	<div id="${title}Div" class="section" $!{divHide}>
+#end
+
+#macro (h3Details)
+	#h3Section("Details" "application_view_list.png")
+#end
+
+#macro (viewP2EL $templateTitle $template $vars)
+	#if (${template})
+		#source(${templateTitle} ${template} "script.png")
+	#end
+	${renderer.render(${vars})}
+#end
+
+#macro (docLink $title $url)
+#link($title $url "icon_doc_sml.gif" true false)<p>
+#end
+
+#macro (link $title $url $image $external $reverse)
+	#if ($external)
+		#set ($class = "class='externalLink'")
+	#else
+		#set ($class = "")
+	#end
+	
+	<a href="${url}" ${class}> 
+	#if ($reverse)
+		 ${title} <img src="img/${image}" style="vertical-align: bottom;"/>
+	#else
+		 <img src="img/${image}" style="vertical-align: bottom;"/> ${title}
+	#end
+	 </a>
+#end
+
+#macro (titleSeparator)
+&nbsp&nbsp<img src="img/arrow_next.png"/>&nbsp&nbsp
+#end
+
+#macro (clusterHeader)
+<a href="cluster?clusterId=${clusterId}"><img style="vertical-align: center;" src="img/server.png"/> Daemon '${clusterId}'</a>
+#end
+
+#macro (resultBrowserSection $selectedOrder)
+	#h3Section("Results Browser" "magnifier.png")
+		<table class="bodyTable" id="tableContent" cellspacing="2" cellpadding="0" border="0"></table>
+		
+		<script language="javascript" type="text/javascript">
+			${renderer.renderResultsModel(${selectedOrder})}
+			var model = new PStmt(varNames, varValues, varDependencies, document.getElementById("tableContent"));
+		</script>
+	</div>
+#end

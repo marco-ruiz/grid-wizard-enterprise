@@ -1,0 +1,39 @@
+
+// TITLE: Remote File Reader.
+// DESCRIPTION: Downloads remote files and builds a command to output their contents to the standard output. 
+// FILENAME: Absolute name of the file to read.
+
+$read($${FILENAME}) {
+	$${FILE}=$in($${FILENAME})
+	$${CMD}=$const(echo -e "File: $${FILENAME}\n=======================================\n" && cat $${FILE})
+}
+
+
+// TITLE: Full file name.
+// DESCRIPTION: Extracts the relative file name of the absolute file name passed as parameter.
+// FULL_FILENAME: Absolute file name.
+
+$relFileName($${FULL_FILENAME}) {
+	$${_}=$regExp(0,$${FULL_FILENAME}, /, [^/]*, $) 
+}
+
+
+// TITLE: Full file name.
+// DESCRIPTION: Extracts the relative file name of the absolute file name passed as parameter without the extension.
+// FULL_FILENAME: Absolute file name.
+
+$fileName($${FULL_FILENAME}) {
+	$${REL_NAME}=$relFileName($${FULL_FILENAME}) 
+	$${_}=$regExp(0,$${REL_NAME}, , .*, [.][^.]*$) 
+}
+
+
+// TITLE: File name extension.
+// DESCRIPTION: Extracts the extension of the file name passed as parameter.
+// FULL_FILENAME: Absolute file name.
+
+$fileExt($${FULL_FILENAME}) {
+	$${REL_NAME}=$relFileName($${FULL_FILENAME}) 
+	$${_}=$regExp(0,$${REL_NAME}, [.], [^.]*, $) 
+}
+

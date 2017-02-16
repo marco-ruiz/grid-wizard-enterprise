@@ -1,0 +1,146 @@
+ ------
+ Glossary
+ ------
+ Marco Ruiz
+ ------
+ February 2008
+ ------
+
+Glossary
+
+ The following is a list of the most relevant terms ordered not alphabetically; but by level of abstraction, 
+ from more abstract to more concrete, so it can be read from top to bottom as a manual which describes the idea 
+ behind GWE, its new concepts and the problem it addresses.
+
+* Industry Related Terms
+ 
+ * <<{Inter-independent} Processes>>
+ 
+ A group of processes that has no execution dependencies on each other. Each of the processes in such a group can run 
+ in any order, at any time and in any cluster or compute node. In contrast, an "inter-dependent" processes may be a group in 
+ which the processes would have to execute in a particular order because the execution of process "n+1" depends on the 
+ result of process "n". In summary, each one of these processes are atomic and the most common thing that may bundle 
+ them together is a higher level of abstraction problem which they are part of.
+ 
+ * <<Processes {Parallel} Execution>>
+ 
+ The execution of a group of processes without sequentiality (as with a single batch script) and/or resources constrains 
+ (as with a single compute resource). This does not mean that these processes necessarily will execute at the same time in 
+ their own dedicated compute nodes; this only means that they will not have the constraints previously mentioned.
+ 
+ * <<{Key} Store>>
+ 
+ A particular user's authentication information to access a group of network enabled compute and data-storage resources. 
+ 
+ 
+* GWE Distributed System Terms
+
+ * <<GWE {Daemon}>>
+ 
+ A system intended to run on a cluster head node as a daemon process. This system is the heart of GWE and it will 
+ coordinate all parallelization related operations for that cluster and provide interfaces to enable communication 
+ with other daemons and clients for external coordination of parallelization related operations as a part of 
+ a {{{#Grid}<GWE Grid>}}. 
+ 
+ * <<GWE Enabled {Cluster}>>
+ 
+ A cluster that has a {{{#Daemon}<GWE Daemon>}} running in its head node.
+ 
+ * <<GWE {Grid}>>
+
+ A a collection of {{{#Cluster}<GWE Enabled Clusters>}} defined by a user to work together towards the target of getting his/her 
+ processes executed. Such collection of {{{#Cluster}<GWE Enabled Clusters>}} will automatically and transparently 
+ (without further user intervention) coordinate their actions with each other to achieve that goal. 
+ (Feature not released yet).
+  
+ * <<{GWE Client}>>
+ 
+ An application built on top of a {{{#API}<GWE Client API>}}, which communicates with {{{#Daemon}<GWE Daemons>}} 
+ to submit requests to it and/or monitor (in real time or on demand) status information on authorized resources and 
+ activities which the daemon is responsible for or aware as a part of a greater {{{#Grid}<GWE Grid>}}. 
+ 
+ * <<{GWE Agent}>>
+ 
+ A small proxy application running on each compute node of a cluster leased for usage to a {{{#Daemon}<GWE Daemon>}}. 
+ The operation of these small applications are completely transparent from the end users point of view and their
+ overall existence is only relevant to a {{{#Daemon}<GWE Daemon>}}, as it is only an internal aid to it to fulfill 
+ its functions. 
+ 
+* GWE Usability Terms
+
+ * <<{Order}>>
+ 
+ The GWE unit of work from the end user's point of view. This unit of work represent a collection of  
+ {{{#Inter-independent}<inter-independent processes>}} invocations the end user wants a particular {{{#Grid}<GWE Grid>}} 
+ to execute using specific scheduling criterias (latter feature not released yet). Orders are queued in a 
+ {{{#Daemon}<GWE Daemon>}} of the order's {{{#Grid}<GWE Grid>}} with a unique identifier which can be used by the 
+ user to query progress status regarding their orders. 
+ 
+ * <<Execution Profile>>
+ 
+ A set of directives that set the criteria to use while executing a particular order such as whether to cache stage 
+ files, maximum amount of concurrent jobs to execute, criteria to clean up staged files, etc. This is a part of an order.  
+ 
+ * <<Jobs {Descriptor}>>
+ 
+ An abstract unit of information that can be translated into a collection of {{{#Job}<jobs>}}
+ invocations. This is a part of an order.  
+ 
+ * <<{P2EL} (Processes Parallel Execution Language)>>
+
+ An easy to use, GWE proprietary, scripting language which has semantics to easily describe a great number of complex 
+ grid parallelizable process invocations. See the {{{p2el-index.html}P2EL guide}} for more details.
+   
+ * <<{Job}>>
+ 
+ Same as a {{{#Inter-independent}<inter-independent processes>}} invocation, used within the GWE system as the internal 
+ system's unit of work. 
+ 
+ * <<Job {Execution}>>
+ 
+ An actual instance of a run of a job. There could be more than one per job if the executions failed and the job is 
+ supposed to retry. 
+ 
+ * <<Job {Result} / Result>>
+ 
+ The abstract result of the process associated with a {{{#Job}<Job>}}. This is an abstract concept because the user has the power 
+ to define what it wants as the result of its processes. 
+ Although most likely this value will be irrelevant under normal circumstances since the execution of these processes 
+ may generate themselves the output somewhere else. By default this is the OS standard output stream the process 
+ created during its execution. 
+ 
+ * <<Order {Queuing}>>
+ 
+ The process of requesting a particular {{{#Daemon}<GWE Daemon>}} to execute an {{{#Order}<Order>}}. This request itself 
+ does not do the actual execution of the processes that compose the order; but queues the order (as a collection of 
+ {{{#Inter-independent}<inter-independent processes>}}) for processing as compute resources become available in the
+ order's {{{#Grid}<GWE Grid>}}.  Orders are queued in a {{{#Daemon}<GWE Daemon>}} of the order's {{{#Grid}<GWE Grid>}} 
+ with a unique identifier which can be used by the user to query progress status regarding their orders. 
+   
+ * <<{Staging}>>
+ 
+ The operation of downloading files required to execute a process (before its execution) and of uploading files 
+ created during a process execution, from and to selected remote locations. Check the P2EL staging functions for more 
+ details <<<{{{p2el-semantics.html#in}$in()}}>>> and <<<{{{p2el-semantics.html#out}$out()}}>>>.
+ 
+ *  <<{Workspace}>>
+
+ The "workspace" directory under the GWE daemon's installation directory (in the running cluster) where temporary,
+ GWE related, files are stored such as logs, staged files and auto generated scripts. 
+
+ *  <<{Virtual File System}>>
+
+ The directory under a {{{#Workspace}<Workspace>}} where staged files (downloaded and scheduled 
+ for uploading) are temporarily stored. 
+
+* GWE Extensibility Terms
+
+ * <<GWE Client {API}>>
+ 
+ A Java library which provides routines to make secured remote procedure calls (RPC) to {{{#Daemon}<GWE Daemons>}}. 
+ 
+ * <<GWE {Powered} Tool>>
+ 
+ A third party application which has been integrated with GWE through the {{{#API}<GWE Client API>}} in order
+ to add grid computing capabilities to it. 
+ 

@@ -1,0 +1,15 @@
+# GWE_AGENT_SCRIPT = ${GWE_AGENT_SCRIPT}
+# GWE_AGENT_WORKSPACE = ${GWE_AGENT_WORKSPACE}
+
+universe=vanilla 
+executable=${GWE_AGENT_SCRIPT}
+machine_count=1 
+getenv=TRUE 
+should_transfer_files=YES 
+when_to_transfer_output=ON_EXIT
+notification=NEVER 
+error=agent.err 
+output=agent.out 
+log=agent.condor.log 
+transfer_input_files= 
+queue

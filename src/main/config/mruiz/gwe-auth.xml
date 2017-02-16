@@ -1,0 +1,20 @@
+<keystore>
+	<!-- BIRN Realm access using private keys and passphrases to be securely read at runtime -->
+	<accessControl>
+		<account user="mruiz" passphrase="?" privateKeyFileName="/Users/admin/.ssh/id_rsa"/>
+		<realms>
+			<realm schemes="ssh;sftp" domain="*.nbirn.net" homeDir="/home/mruiz" testHost="birn-cluster0.nbirn.net"/>
+			<realm schemes="ssh;sftp" domain="*.gridwizard.org" homeDir="/home/mruiz" testHost="www.gridwizard.org"/>
+			<realm schemes="ssh;sftp" domain="*.gridwizardenterprise.org" homeDir="/home/mruiz" testHost="www.gridwizardenterprise.org"/>
+<!-- 
+			<realm schemes="local" domain="localhost" homeDir="/home/mruiz"/>
+ -->
+		</realms>
+	</accessControl>
+	<accessControl>
+		<account user="mruiz" password="xnatmruiz" />
+		<realms>
+			<realm schemes="http" domain="central.xnat.org" homeDir="/home/mruiz" testHost="central.xnat.org"/>
+		</realms>
+	</accessControl>
+</keystore>
