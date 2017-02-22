@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<title>PFFileExpand xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../apidocs/org/gwe/p2el/functions/PFFileExpand.html">View Javadoc</a></div><pre>
+
+<a name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
+<a name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2007-2008 the original author or authors.</em>
+<a name="3" href="#3">3</a>   <em class="jxr_comment"> * </em>
+<a name="4" href="#4">4</a>   <em class="jxr_comment"> * Licensed under the Apache License, Version 2.0 (the "License");</em>
+<a name="5" href="#5">5</a>   <em class="jxr_comment"> * you may not use this file except in compliance with the License.</em>
+<a name="6" href="#6">6</a>   <em class="jxr_comment"> * You may obtain a copy of the License at</em>
+<a name="7" href="#7">7</a>   <em class="jxr_comment"> * </em>
+<a name="8" href="#8">8</a>   <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a name="9" href="#9">9</a>   <em class="jxr_comment"> * </em>
+<a name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
+<a name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS,</em>
+<a name="12" href="#12">12</a>  <em class="jxr_comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</em>
+<a name="13" href="#13">13</a>  <em class="jxr_comment"> * See the License for the specific language governing permissions and</em>
+<a name="14" href="#14">14</a>  <em class="jxr_comment"> * limitations under the License.</em>
+<a name="15" href="#15">15</a>  <em class="jxr_comment"> */</em>
+<a name="16" href="#16">16</a>  
+<a name="17" href="#17">17</a>  <strong class="jxr_keyword">package</strong> org.gwe.p2el.functions;
+<a name="18" href="#18">18</a>  
+<a name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> java.io.FileNotFoundException;
+<a name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> java.net.URI;
+<a name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> java.net.URISyntaxException;
+<a name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> java.util.List;
+<a name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> java.util.regex.Matcher;
+<a name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> java.util.regex.Pattern;
+<a name="26" href="#26">26</a>  
+<a name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.gwe.GWEAppContext;
+<a name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.gwe.app.client.ClusterNotSpecifiedException;
+<a name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.gwe.app.client.XMLClientAppConfig;
+<a name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> org.gwe.drivers.HandleOperationException;
+<a name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.gwe.p2el.P2ELExpressionContext;
+<a name="32" href="#32">32</a>  <strong class="jxr_keyword">import</strong> org.gwe.p2el.P2ELFunction;
+<a name="33" href="#33">33</a>  <strong class="jxr_keyword">import</strong> org.gwe.p2el.P2ELFunctionInvocationPhase;
+<a name="34" href="#34">34</a>  <strong class="jxr_keyword">import</strong> org.gwe.p2el.P2ELRange;
+<a name="35" href="#35">35</a>  <strong class="jxr_keyword">import</strong> org.gwe.p2el.P2ELSyntaxException;
+<a name="36" href="#36">36</a>  <strong class="jxr_keyword">import</strong> org.gwe.p2el.P2ELVariable;
+<a name="37" href="#37">37</a>  <strong class="jxr_keyword">import</strong> org.gwe.utils.IOUtils;
+<a name="38" href="#38">38</a>  <strong class="jxr_keyword">import</strong> org.gwe.utils.security.CredentialNotFoundException;
+<a name="39" href="#39">39</a>  <strong class="jxr_keyword">import</strong> org.gwe.utils.security.KeyStore;
+<a name="40" href="#40">40</a>  <strong class="jxr_keyword">import</strong> org.gwe.utils.security.URILink;
+<a name="41" href="#41">41</a>  
+<a name="42" href="#42">42</a>  <em class="jxr_javadoccomment">/**</em>
+<a name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> * @author Marco Ruiz</em>
+<a name="44" href="#44">44</a>  <em class="jxr_javadoccomment"> * @since May 1, 2008</em>
+<a name="45" href="#45">45</a>  <em class="jxr_javadoccomment"> */</em>
+<a name="46" href="#46">46</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/gwe/p2el/functions/PFFileExpand.html">PFFileExpand</a> <strong class="jxr_keyword">extends</strong> P2ELFunction&lt;Object&gt; {
+<a name="47" href="#47">47</a>  	
+<a name="48" href="#48">48</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String P2EL_AUTOGEN_WC_VAR_PREFIX = <span class="jxr_string">"P2EL_AUTOGEN_WC_VAR_"</span>;
+<a name="49" href="#49">49</a>  	
+<a name="50" href="#50">50</a>  	<strong class="jxr_keyword">public</strong> <a href="../../../../org/gwe/p2el/functions/PFFileExpand.html">PFFileExpand</a>() { <strong class="jxr_keyword">super</strong>(<span class="jxr_string">"expand"</span>); }
+<a name="51" href="#51">51</a>  
+<a name="52" href="#52">52</a>  	<strong class="jxr_keyword">public</strong> String runPrecompilationPhase(P2ELFunctionInvocationPhase phase, P2ELExpressionContext ctx, 
+<a name="53" href="#53">53</a>  			String params, List&lt;P2ELVariable&gt; vars) <strong class="jxr_keyword">throws</strong> P2ELSyntaxException {
+<a name="54" href="#54">54</a>  		
+<a name="55" href="#55">55</a>      	<strong class="jxr_keyword">if</strong> (phase != P2ELFunctionInvocationPhase.EXPAND) <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
+<a name="56" href="#56">56</a>  		List&lt;String&gt; varReferences = P2ELVariable.extractVarReferences(params);
+<a name="57" href="#57">57</a>  		
+<a name="58" href="#58">58</a>  		<strong class="jxr_keyword">if</strong> (varReferences.size() == 0 &amp;&amp; params.contains(<span class="jxr_string">"*"</span>)) {
+<a name="59" href="#59">59</a>  			String wildcardAnonVarValue = params.substring(params.indexOf(<span class="jxr_string">"*"</span>), params.lastIndexOf(<span class="jxr_string">"*"</span>) + 1);
+<a name="60" href="#60">60</a>  <em class="jxr_comment">//			P2ELVariable wildcardAnonVar = new P2ELVariable((P2EL_AUTOGEN_WC_VAR_PREFIX + invocationCount), wildcardAnonVarValue);</em>
+<a name="61" href="#61">61</a>  			P2ELVariable wildcardAnonVar = <strong class="jxr_keyword">new</strong> P2ELVariable(P2EL_AUTOGEN_WC_VAR_PREFIX + (vars.size() + 1), wildcardAnonVarValue);
+<a name="62" href="#62">62</a>  			vars.add(wildcardAnonVar);
+<a name="63" href="#63">63</a>  			params = params.replace(wildcardAnonVarValue, wildcardAnonVar.getReference());
+<a name="64" href="#64">64</a>  			varReferences.add(wildcardAnonVar.getReference());
+<a name="65" href="#65">65</a>  		}
+<a name="66" href="#66">66</a>  		
+<a name="67" href="#67">67</a>  		<strong class="jxr_keyword">if</strong> (varReferences.size() == 1 &amp;&amp; !params.contains(<span class="jxr_string">"*"</span>)) {
+<a name="68" href="#68">68</a>  			String varRef = varReferences.get(0);
+<a name="69" href="#69">69</a>  			P2ELVariable varDeclaration = getVarDeclaration(varRef, vars);
+<a name="70" href="#70">70</a>  			<strong class="jxr_keyword">if</strong> (varDeclaration != <strong class="jxr_keyword">null</strong> &amp;&amp; varDeclaration.getRanges().size() == 1) {
+<a name="71" href="#71">71</a>  				String wcGlobExp = varDeclaration.getRanges().get(0).getRange();
+<a name="72" href="#72">72</a>  				wcGlobExp = wcGlobExp.substring(1, wcGlobExp.length() - 1); <em class="jxr_comment">// Remove the quotes</em>
+<a name="73" href="#73">73</a>  				<strong class="jxr_keyword">if</strong> (wcGlobExp.contains(<span class="jxr_string">"*"</span>)) {
+<a name="74" href="#74">74</a>  					String globFilePath    = params.replace(varRef, wcGlobExp);
+<a name="75" href="#75">75</a>                      String regExpFilePath  = params.replace(varRef, <span class="jxr_string">"("</span> + wcGlobExp.replace(<span class="jxr_string">"."</span>, <span class="jxr_string">"&#92;&#92;."</span>).replace(<span class="jxr_string">"**"</span>, <span class="jxr_string">"*"</span>).replace(<span class="jxr_string">"*"</span>, <span class="jxr_string">".*"</span>) + <span class="jxr_string">")"</span>);
+<a name="76" href="#76">76</a>  					List&lt;String&gt; wildcardMatches = resolveWildcardMatches(globFilePath, ctx.getKeys());
+<a name="77" href="#77">77</a>  					varDeclaration.setRanges(createVarRanges(regExpFilePath, wildcardMatches));
+<a name="78" href="#78">78</a>  				}
+<a name="79" href="#79">79</a>  			}
+<a name="80" href="#80">80</a>  		}
+<a name="81" href="#81">81</a>  		
+<a name="82" href="#82">82</a>  		<strong class="jxr_keyword">return</strong> params;
+<a name="83" href="#83">83</a>  	}
+<a name="84" href="#84">84</a>  
+<a name="85" href="#85">85</a>  	<strong class="jxr_keyword">private</strong> P2ELVariable getVarDeclaration(String varReference, List&lt;P2ELVariable&gt; vars) {
+<a name="86" href="#86">86</a>  	    <strong class="jxr_keyword">for</strong> (P2ELVariable <strong class="jxr_keyword">var</strong> : vars) {
+<a name="87" href="#87">87</a>  	        <strong class="jxr_keyword">if</strong> (<strong class="jxr_keyword">var</strong>.getReference().equals(varReference)) <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">var</strong>;
+<a name="88" href="#88">88</a>  	    }
+<a name="89" href="#89">89</a>  	    <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
+<a name="90" href="#90">90</a>      }
+<a name="91" href="#91">91</a>  	
+<a name="92" href="#92">92</a>  	<strong class="jxr_keyword">private</strong> List&lt;P2ELRange&gt; createVarRanges(String regExpFilePath, List&lt;String&gt; matches) <strong class="jxr_keyword">throws</strong> P2ELSyntaxException {
+<a name="93" href="#93">93</a>  		regExpFilePath = extractFilePath(regExpFilePath);
+<a name="94" href="#94">94</a>  	    List&lt;P2ELRange&gt; ranges = <strong class="jxr_keyword">new</strong> ArrayList&lt;P2ELRange&gt;();
+<a name="95" href="#95">95</a>          Pattern pattern = Pattern.compile(regExpFilePath);
+<a name="96" href="#96">96</a>          <strong class="jxr_keyword">for</strong> (String match : matches) {
+<a name="97" href="#97">97</a>          	Matcher matcher = pattern.matcher(match);
+<a name="98" href="#98">98</a>          	<strong class="jxr_keyword">if</strong> (matcher.matches()) 
+<a name="99" href="#99">99</a>          		ranges.add(P2ELRange.createRange(matcher.group(1)));
+<a name="100" href="#100">100</a>         }
+<a name="101" href="#101">101</a>         <strong class="jxr_keyword">return</strong> ranges;
+<a name="102" href="#102">102</a>     }
+<a name="103" href="#103">103</a> 	
+<a name="104" href="#104">104</a> 	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String extractFilePath(String fileURI) <strong class="jxr_keyword">throws</strong> P2ELSyntaxException {
+<a name="105" href="#105">105</a> 		<strong class="jxr_keyword">try</strong> {
+<a name="106" href="#106">106</a> 	        URI uriObj = <strong class="jxr_keyword">new</strong> URI(IOUtils.getFileBase(fileURI));
+<a name="107" href="#107">107</a> 	        <strong class="jxr_keyword">int</strong> startIndex = fileURI.indexOf(uriObj.getPath());
+<a name="108" href="#108">108</a> 	        <strong class="jxr_keyword">return</strong> fileURI.substring(startIndex);
+<a name="109" href="#109">109</a>         } <strong class="jxr_keyword">catch</strong> (URISyntaxException e) {
+<a name="110" href="#110">110</a>         	<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> P2ELSyntaxException(<span class="jxr_string">"Syntax error found in wildcard file path '"</span> + fileURI + <span class="jxr_string">"'"</span>);
+<a name="111" href="#111">111</a>         }
+<a name="112" href="#112">112</a> <em class="jxr_comment">/*</em>
+<a name="113" href="#113">113</a> <em class="jxr_comment">		String schemeDelimit = "://";</em>
+<a name="114" href="#114">114</a> <em class="jxr_comment">		int index = fileURI.indexOf(schemeDelimit);</em>
+<a name="115" href="#115">115</a> <em class="jxr_comment">		return (index != -1) ? fileURI.substring(index + schemeDelimit.length()) : fileURI;</em>
+<a name="116" href="#116">116</a> <em class="jxr_comment">*/</em>
+<a name="117" href="#117">117</a>     }
+<a name="118" href="#118">118</a> 
+<a name="119" href="#119">119</a> 	<strong class="jxr_keyword">private</strong> List&lt;String&gt; resolveWildcardMatches(String globFilePath, <a href="../../../../org/gwe/utils/security/KeyStore.html">KeyStore</a> keys) <strong class="jxr_keyword">throws</strong> P2ELSyntaxException {
+<a name="120" href="#120">120</a> 	    <strong class="jxr_keyword">try</strong> {
+<a name="121" href="#121">121</a> 			URILink link = (keys != <strong class="jxr_keyword">null</strong>) ? keys.generateURILink(globFilePath) : URILink.createLocalLink(<strong class="jxr_keyword">new</strong> URI(globFilePath));
+<a name="122" href="#122">122</a> 			<strong class="jxr_keyword">return</strong> GWEAppContext.getGridFileSystem().findWildcardMatches(link);
+<a name="123" href="#123">123</a>         } <strong class="jxr_keyword">catch</strong> (URISyntaxException e) {
+<a name="124" href="#124">124</a>         	<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> P2ELSyntaxException(<span class="jxr_string">""</span>, e);
+<a name="125" href="#125">125</a>         } <strong class="jxr_keyword">catch</strong> (HandleOperationException e) {
+<a name="126" href="#126">126</a>         	<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> P2ELSyntaxException(<span class="jxr_string">""</span>, e);
+<a name="127" href="#127">127</a>         }
+<a name="128" href="#128">128</a>     }
+<a name="129" href="#129">129</a> 	
+<a name="130" href="#130">130</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) <strong class="jxr_keyword">throws</strong> P2ELSyntaxException, FileNotFoundException, CredentialNotFoundException, ClusterNotSpecifiedException {
+<a name="131" href="#131">131</a> 		XMLClientAppConfig appConfig = <strong class="jxr_keyword">new</strong> <a href="../../../../org/gwe/app/client/XMLClientAppConfig.html">XMLClientAppConfig</a>(<strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>);
+<a name="132" href="#132">132</a> 
+<a name="133" href="#133">133</a> <em class="jxr_comment">//		GWEAppContext.setInstance(new GWEAppContext(null));</em>
+<a name="134" href="#134">134</a> <em class="jxr_comment">//		GWEAppContext.setInstance(new GWEAppContext(null, "/Users/admin/work/eclipse-ws/gwe-core/src/main/config/base/gwe-core.xml"));</em>
+<a name="135" href="#135">135</a> 		
+<a name="136" href="#136">136</a> 		PFFileExpand expander = <strong class="jxr_keyword">new</strong> <a href="../../../../org/gwe/p2el/functions/PFFileExpand.html">PFFileExpand</a>();
+<a name="137" href="#137">137</a> <em class="jxr_comment">//		String p2elPath = "file:///Users/admin/${WILD}";</em>
+<a name="138" href="#138">138</a> 		String p2elPath = <span class="jxr_string">"file:///Users/admin/.p*"</span>;
+<a name="139" href="#139">139</a> <em class="jxr_comment">//		String p2elPath = "sftp://birn-cluster0.nbirn.net/home/mruiz/gwe-home/gwe-0.6.2.alpha/workspace/alloc-32768/result*";</em>
+<a name="140" href="#140">140</a> 		
+<a name="141" href="#141">141</a> 		List&lt;P2ELVariable&gt; vars = <strong class="jxr_keyword">new</strong> ArrayList&lt;P2ELVariable&gt;();
+<a name="142" href="#142">142</a> 		vars.add(<strong class="jxr_keyword">new</strong> P2ELVariable(<span class="jxr_string">"WILD"</span>, <span class="jxr_string">".p*o*"</span>));
+<a name="143" href="#143">143</a> 		vars.add(<strong class="jxr_keyword">new</strong> P2ELVariable(<span class="jxr_string">"WILD2"</span>, <span class="jxr_string">"pr*"</span>));
+<a name="144" href="#144">144</a> <em class="jxr_comment">//		String p2elPath = "file:///Users/admin/work/eclipse-ws/gwe-core/src/site/**/.svn/*";</em>
+<a name="145" href="#145">145</a> 		P2ELExpressionContext ctx = <strong class="jxr_keyword">new</strong> P2ELExpressionContext(<strong class="jxr_keyword">null</strong>, appConfig.getKeys());
+<a name="146" href="#146">146</a> 		System.out.println(expander.runPrecompilationPhase(P2ELFunctionInvocationPhase.EXPAND, ctx, p2elPath, vars));
+<a name="147" href="#147">147</a> 		<strong class="jxr_keyword">for</strong> (P2ELVariable <strong class="jxr_keyword">var</strong> : vars) System.out.println(<strong class="jxr_keyword">var</strong>.getP2ELDefinition());
+<a name="148" href="#148">148</a> 	}
+<a name="149" href="#149">149</a> }
+<a name="150" href="#150">150</a> 
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div><script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-1");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>
+

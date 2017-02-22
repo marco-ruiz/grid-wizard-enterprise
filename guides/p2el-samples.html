@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>GWE - P2EL Examples</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Marco Ruiz" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                                                    
+<meta content="GWE (Grid Wizard Enterprise) is an open source, HPC distributed enterprise system, which leverages on clusters of computers, in order to provide a powerful grid computing platform for end users to easily and effectively parallelize the execution of an (in theory) unlimited number of inter-independent processes." name="description"/>
+                                                        
+<meta content="gwe, grid, cluster, parallel, distributed, computing, hpc, high performance, resource manager, job scheduler, condor, sge, pbs, lsf, torque, globus, metascheduler, jsdl, java, open source" name="keywords"/>
+                                                        
+<meta content="all" name="robots"/>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+                                            <img src="../images/logo.jpg" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 02 Mar 2009
+                  &nbsp;| Version: 0.7.3.alpha
+                      </div>
+            <div class="xright">            <a href="http://www.na-mic.org/" class="externalLink">NAMIC</a>
+            |
+                <a href="http://nbirn.net/" class="externalLink">BIRN</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../news.html">News</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../changes-report.html">Release Notes</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../credits.html">Credits</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+          </ul>
+              <h5>Guides</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../guides/glossary.html">Glossary</a>
+          </li>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                  
+      
+            
+      
+            
+      
+            
+      
+            
+            
+                    
+            <li class="expanded">
+                    <a href="../guides/quick.html">Quick Start Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../guides/install.html">Installation</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../guides/config.html">Configuration</a>
+          </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/user.html">Usage</a>
+                </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+            
+            
+              
+            <li class="expanded">
+                    <a href="../guides/p2el.html">P2EL Specification</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../guides/p2el-syntax.html">Syntax</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../guides/p2el-semantics.html">Semantics</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../guides/p2el-macros.html">Macros</a>
+          </li>
+                  
+    <li class="none">
+              <strong>Examples</strong>
+        </li>
+              </ul>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+                    <a href="../guides/resources.html">Other Resources</a>
+          </li>
+          </ul>
+              <h5>GWE Powered Tools</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../integration/api.html">GWE API</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../integration/slicer.html">Case: 3D Slicer3</a>
+          </li>
+          </ul>
+              <h5>Project Collaboration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="https://issues.nbirn.net/jira/browse/GWE" class="externalLink">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../coming-soon.html">Continuous Integration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://groups.google.com/group/gwe-forum?hl=en" class="externalLink">Forum</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../source-repository.html">Source Repository</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../team-list.html">Team</a>
+          </li>
+          </ul>
+              <h5>Source Code Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../xref/index.html">Browser</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDocs</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../jdepend-report.html">Analysis</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../taglist.html">Tag List</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://maven.apache.org/" title="Maven" class="poweredBy">
+                            <img alt="Maven" src="http://maven.apache.org/images/logos/maven-feather.png" />
+            </a>
+                               
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>P2EL Examples</h2>
+<p><i>To ease readability the following commands has been broken down in several lines. If you wish to resubmit any of them, you will need to put it back together as a single line, unless you are using a sensitive editor such as the &quot;P2EL editor&quot; of the &quot;GWE Terminal&quot; or the &quot;GWE Web Control Panel&quot;. Also valid parameters of these commands have been replaced by intuitive self explanatory tags of valid values.</i>
+ </p>
+<div class="section"><h3>Parallel Online Documents Reader</h3>
+<div class="source"><pre>
+${INDEX}=$range(0,50,01) 
+${FASTA_FILE}=$in(http://www.expasy.org/uniprot/P801${INDEX}.fas)
+
+cat ${FASTA_FILE}
+</pre>
+</div>
+<p>This command instructs GWE to read in parallel, from online Expasy DB, the 81 fasta sequences generated by permutating the variables <tt>INDEX_1</tt>
+ and <tt>INDEX_2</tt>
+ </p>
+</div>
+<div class="section"><h3>Parallel Backup-er</h3>
+<div class="source"><pre>
+${INDEX}=$range(1,100,001)
+${DEST}=$out(sftp://destinationHost/destinationDir/destinationFile-${INDEX}.tar) 
+${SOURCE}=$in(sftp://sourceHost/sourceDir/sourceFile-${INDEX}) 
+
+tar -cf ${DEST} ${SOURCE}
+</pre>
+</div>
+<p>This command instructs GWE to download the matching files and, tar them, and save them in a different host </p>
+</div>
+<div class="section"><h3>Parallel Directories <a name="Analyzer">Analyzer</a>
+</h3>
+<div class="source"><pre>
+${REMOTE_HOME_ROOT}=sftp://host/home
+${FILES}=$dir(${REMOTE_ROOT},user-\d*,.*) 
+${TARGET_FILE}=$in(${FILES}) 
+${FILE_NAME}=$regExp(${FILES}, /, [^/]*, $) 
+${STAT_DIR}=$out(${REMOTE_HOME_ROOT}/admin/dirStats/${FILE_NAME}) 
+
+${RUNTIME_USER_HOME}/file-analysis.sh ${TARGET_FILE} ${STAT_DIR} 
+</pre>
+</div>
+<p>This command instructs GWE to find all files and directories stored in the remote <tt>'host'</tt>
+ machine under the home directory of any user which user name starts with <tt>user-</tt>
+ and is followed by digits. Once found, GWE must do the following for each matching file/directory:</p>
+<ul><li>Download the file/directory to the compute node that is going to analyze it.</li>
+<li>Execute the <tt>file-analysis.sh</tt>
+ script found in the cluster's home directory of the user who submitted this command.</li>
+<li>Upload the directory (supposably generated by the script) specified as the second parameter of the script to the home directory of the user <tt>admin</tt>
+, under the subdirectory <tt>dirStats</tt>
+<p>The following is a simple test sample for the script <tt>dir-analysis.sh</tt>
+</p>
+<div class="source"><pre>
+#!/bin/sh
+
+mkdir $1
+ls -alR $2 &gt; $1/ls-test
+ls -alR $2
+</pre>
+</div>
+</li>
+</ul>
+</div>
+<div class="section"><h3>Parallel FreeSurfer Subject Cases Processor</h3>
+<div class="source"><pre>
+${PATH}=sftp://sourceHost/subjectsPath 
+${FILES}=$dir(${PATH},.*) 
+${INPUT_DIR}=$in(${FILES})
+${SUBJ_ID}=$regExp(${FILES}, /, [^/]*, $)
+${OUTPUT_DIR}=$out(${PATH}/${SUBJ_ID}_out)
+
+${RUNTIME_USER_HOME}/RunFreesurfer.sh ${INPUT_DIR} ${OUTPUT_DIR}
+</pre>
+</div>
+<p>This command is similar to the <i><a href="#Analyzer">Parallel Directories Analyzer</a>
+</i>
+. It instructs GWE to find all directories under <tt>sftp://sourceHost/subjectsPath</tt>
+ and for each of those:</p>
+<ul><li>Download it to the compute node tasked to process it.</li>
+<li>Execute the <tt>RunFreesurfer.sh</tt>
+ script found in the cluster's home directory of the user who submitted this command against this downloaded directory.</li>
+<li>Upload the directory generated by FreeSurfer to the source remote host as a sibling of its source subject directory with the same name suffixed by the token <tt>_out</tt>
+. </li>
+</ul>
+</div>
+<div class="section"><h3>Parallel Slicer's BSpline Deformable Registration (NAMIC Dataset)</h3>
+<div class="source"><pre>
+${SLICER_MODULE}=$const(BSplineDeformableRegistration,BSplineDeformableRegistration-version2) 
+${FIXED_FILES}=http://www.na-mic.org/ViewVC/index.cgi/trunk/Libs/MRML/Testing/TestData/fixed.nrrd?view=co
+${MOVING_FILES}=http://www.na-mic.org/ViewVC/index.cgi/trunk/Libs/MRML/Testing/TestData/moving.nrrd?view=co
+${FIXED_LOCAL}=$in(${FIXED_FILES},fixed.nrrd) 
+${MOVING_LOCAL}=$in(${MOVING_FILES},moving.nrrd)
+${OUTPUT}=$out(sftp://destinationHost/path/${SLICER_MODULE}/out-${ITER}-${HIST}-${SAM}.nrrd)
+${ITER}=$range(10,50,5) ${HIST}=$range(20,100,010) ${SAM}=$range(500,5000,0750)
+
+${SLICER_HOME}/Slicer3 --launch ${SLICER_HOME}/lib/Slicer3/Plugins/${SLICER_MODULE} 
+--iterations ${ITER} --gridSize 5 --histogrambins ${HIST} --spatialsamples ${SAM} 
+--maximumDeformation 1 --default 0 
+--resampledmovingfilename ${OUTPUT} ${FIXED_LOCAL} ${MOVING_LOCAL} 
+</pre>
+</div>
+<p>This command instructs GWE to execute in parallel 700 parameter exploration type of invocations for each of two different versions of the <tt>BSplineDeformableRegistration</tt>
+ Slicer3 module (1400 parallel runs total) and store each of their output files in an specified remote host. This command requires the '$<a name="SLICER_HOME">SLICER_HOME</a>
+' variable to be defined in the <a href="config.html#Environmental">grid descriptor file</a>
+.</p>
+</div>
+<div class="section"><h3>Parallel Slicer's BSpline Deformable Registration (OASIS Dataset)</h3>
+<div class="source"><pre>
+${URI}=http://www.oasis-brains.org/app/action/DownloadImages/template/ClosePage.vm?download_type=zip&amp;search_element=xnat%3AmrSessionData&amp;search_field=xnat%3AmrSessionData.ID&amp;scanmpr1=true&amp;scanmpr2=true&amp;scanmpr3=true&amp;scanmpr4=true&amp;search_value=
+${FIX_NAME}=OAS1_0101_MR1
+${FIX}=$in(${URI}${FIX_NAME},${FIX_NAME}.zip,Y)
+${MOV_NUM}=$range(1,51,10)
+${MOV_NAME}=OAS1_00${MOV_NUM}_MR1
+${MOV}=$in(${URI}${MOV_NAME},${MOV_NAME}.zip,Y)
+${SCAN}=$range(1,4)
+
+${ITER}=$const(10,20) ${HIST}=$range(20,100,060) ${SAM}=$range(500,5000,3000)
+${OUT}=${RUNTIME_USER_HOME}/oasis-results/out-${SYSTEM_JOB_NUM}-${MOV_NUM}-${ITER}-${HIST}-${SAM}.
+${OUT_HDR}=$out(${OUT}hdr)
+${OUT_IMG}=$out(${OUT}img)
+
+${SLICER_HOME}/Slicer3 --launch ${SLICER_HOME}/lib/Slicer3/Plugins/BSplineDeformableRegistration 
+--iterations ${ITER} --gridSize 5 --histogrambins ${HIST} --spatialsamples ${SAM} --maximumDeformation 1 
+--default 0 --resampledmovingfilename ${OUT_HDR} 
+${FIX}-contents/${FIX_NAME}/RAW/${FIX_NAME}_mpr-${SCAN}_anon.hdr 
+${MOV}-contents/${MOV_NAME}/RAW/${MOV_NAME}_mpr-${SCAN}_anon.hdr
+</pre>
+</div>
+<p>This command instructs GWE to download a set of <a href="http://www.oasis-brains.org/app/template/Index.vm" class="externalLink">OASIS MRI Images</a>
+ and execute <tt>BSplineDeformableRegistration</tt>
+s over them. It also instructs that at completion GWE must save the results to under the home directory of the running cluster. This command requires the '$<a name="SLICER_HOME">SLICER_HOME</a>
+' variable to be defined in the <a href="config.html#Environmental">grid descriptor file</a>
+.</p>
+</div>
+<div class="section"><h3>Parallel Slicer's BSpline Deformable Registration (OASIS Dataset) Using P2EL Macros</h3>
+<div class="source"><pre>
+${MOV}=$oasis_xcat(http://www.gridwizardenterprise.org/test/oasis-id.xcat)
+${FIX}=$oasis(0101,1)
+${ITER}=$const(10,20) ${HIST}=$range(20,100,060) ${SAM}=$range(500,5000,3000)
+${BSPLINE}=$bspline(${SLICER_HOME},${ITER},${HIST},${SAM})
+${OUT}=$uploadHDR(${RUNTIME_USER_HOME}/oasis-result2/${BSPLINE_EXPLORATION_ID}/out-${FIX_ID}-${MOV_OASIS_ID}-${SYSTEM_JOB_NUM})
+${BSPLINE_CMD} ${OUT_HDR} ${FIX_HDR} ${MOV_OASIS_HDR}
+</pre>
+</div>
+<p>Exact command as the previous one highly simplified by using custom <b><a href="p2el-macros.html">P2EL Macros</a>
+</b>
+.</p>
+</div>
+<div class="section"><h3>Parallel Slicer's BSpline Deformable Registration (XNAT System Images) Using P2EL Macros <a href="http://www.gridwizardenterprise.org/svn/gwe/gwe-core/trunk/src/main/config/base/gwe-macros/xnat.p2el">(XNAT Library)</a></h3>
+<div class="source"><pre>
+${XNAT_SYS}=http://central.xnat.org
+${FIX_EXPERIMENTS}=$xnatExperiments(${XNAT_SYS},CENTRAL_OASIS_CS,OAS1_0101)
+${FIX_IMAGE_LIST}=$xnatListImages(${FIX_EXPERIMENTS},OAS1_0101_MR1,mpr-1)
+${FIX}=$xnatStageHDR(${XNAT_SYS},${FIX_IMAGE_LIST})
+${MOV_SUBJECTS}=$const(OAS1_0101,OAS1_0102)
+${MOV}=$xnatStageAllImages(${XNAT_SYS},CENTRAL_OASIS_CS,${MOV_SUBJECTS})
+${ITER}=$const(5,10) ${HIST}=$range(20,100,030) ${SAM}=$range(500,5000,1500)
+${BSPLINE}=$bspline(${SLICER_HOME},${ITER},${HIST},${SAM})
+${OUT}=$uploadHDR(${RUNTIME_USER_HOME}/gwe-res/${BSPLINE_EXPLORATION_ID}/out-${SYSTEM_JOB_NUM})
+${BSPLINE_CMD} ${OUT} ${FIX} ${MOV}
+</pre>
+</div>
+<p>Similar command to the previous one running registrations over images queried and downloaded from a XNAT system using its REST API. Heavily relies on the out-of-the-box P2EL macros written for XNAT support.</p>
+</div>
+<div class="section"><h3>Parallel Creation Of Multiple Slices For All Volumes Associated To A Particular XNAT Session</h3>
+<div class="source"><pre>
+${XNAT_SYS}=http://central.xnat.org
+${XPATH}=//rows/row/cell[(position()=3)and(substring-after(.,'.')='nrrd')]/text()
+${VOL_REL_URI}=$xpath(${XNAT_SYS}/REST/experiments/CENTRAL_E00465/scans/brain/files?format=xml,${XPATH})
+${VOL}=$in(${XNAT_SYS}${VOL_REL_URI})
+
+${AXIS}=$const(0,1,2)
+${PLANE}=$range(100,140,2.5)
+${SLICING_CMD}=$sliceGen(${SLICER_HOME},${VOL_REL_URI},${AXIS},${PLANE})
+
+${VOL_REL_URI_PATH}=$regExp(0,${VOL_REL_URI},,.*,/[^/]*$)
+
+mkdir -p ${VOL_REL_URI_PATH} && cp ${VOL} ${VOL_REL_URI} && ${SLICING_CMD}</pre>
+<p></p>
+</div>
+<div class="section"><h3>Parallel Slicer's DWI Streamline Tractography</h3>
+<div class="source"><pre>
+${SEED_POINT}=[[0,0,0]]
+${TENSOR_TYPE}=$const(Two-Tensor)
+${ANISOTROPY}=$const(Cl1)
+${ANISOTROPY_THRESHOLD}=$range(0.1,0.1,0.1)
+${STOPPING_CURVATURE}=$range(0.8,0.9,0.1)
+${INTEGRATION_STEP_LENGTH}=$range(0.4,0.4,0.1)
+${STEPS}=$range(1,1,1)
+${CONFIDENCE}=$range(1,1,1)
+${FRACTION}=$range(0.1,0.1,0.1)
+${MINIMUM_LENGTH}=$range(40,40,10)
+${MAXIMUM_LENGTH}=$range(800,800,100)
+${MINIMUM_STEPS}=$range(1,1,1)
+${ROI_LABEL}=$range(1,1,1)
+${NUMBER_OF_SEED_POINTS_PER_VOXEL}=$range(1,1,1)
+${OUTPUT}=$const(/media/sda7/Testing/out-${SEED_POINT}-${TENSOR_TYPE}-${ANISOTROPY}-${ANISOTROPY_THRESHOLD}-${STOPPING_CURVATURE}-${INTEGRATION_STEP_LENGTH}-${STEPS}.vtk)
+
+${SLICER_HOME}/Slicer3 --no_splash --evalpython 
+&quot;import Slicer; 
+volNode=Slicer.slicer.VolumesGUI.GetLogic().AddArchetypeVolume('/media/sda7/Images/01053-dwi-filt-Ed.nhdr','FirstImage',0); 
+roiNode = Slicer.slicer.VolumesGUI.GetLogic().AddArchetypeVolume('/media/sda7/Programming/Slicer/Slicer3-build/Working.nhdr','ROIImage',1); 
+p = Slicer.Plugin('DWI Streamline Tractography'); 
+nodeType = 'vtkMRMLFiberBundleNode'; 
+outputNode = slicer.MRMLScene.CreateNodeByClass(nodeType); 
+fiberBundleNode=Slicer.slicer.MRMLScene.AddNode(outputNode); 
+p.Execute(inputVolume=volNode.GetID(), inputROI=roiNode.GetID(), seedPoint=${SEED_POINT}, outputFibers=fiberBundleNode.GetID(), tensorType=${TENSOR_TYPE}, anisotropy=${ANISOTROPY, anisotropyThreshold=${ANISOTROPY_THRESHOLD}, stoppingCurvature=${STOPPING_CURVATURE}, integrationStepLength=${INTEGRATION_STEP_LENGTH}, steps=${STEPS}, confidence=${CONFIDENCE}, fraction=${FRACTION}, minimumLength=${MINIMUM_LENGTH}, maximumLength=${MAXIMUM_LENGTH}, minimumSteps=${MINIMUM_STEPS}, roiLabel=${ROI_LABEL}, numberOfSeedpointsPerVoxel=${NUMBER_OF_SEED_POINTS_PER_VOXEL}, fiducial=False); 
+Slicer.slicer.ModelsGUI.GetLogic().SaveModel(${OUTPUT},fiberBundleNode)&quot;
+    </pre>
+</div>
+<p>This command instructs GWE to execute in parallel Slicer's &quot;DWI Streamline Tractography&quot; module which is a Python based module. Other Python based modules can follow the same pattern to run as standalone command line executables in the grid. </p>
+</div>
+<div class="section"><h3>Parallel Volume Slices Generator</h3>
+<div class="source"><pre>
+${SLICER_HOME}=/Users/admin/GSlicer3-3.3-alpha-2009-02-01-darwin-x86-0.7.2.alpha
+${volumes_files_dir}=/demos/gwe/data
+${volumes_name_regexp}=.*[.](nrrd|nhdr)
+${volumes_filenames}=$dir(${volumes_files_dir},${volumes_name_regexp})
+${axis}=$const(0,1,2)
+${plane}=$range(40,160,2)
+${sliceGenerationCommand}=$sliceGen(${SLICER_HOME},${volumes_filenames},${axis},${plane})
+
+${sliceGenerationCommand}
+</pre>
+</div>
+<p>This command instructs GWE to execute in parallel <a href="http://teem.sourceforge.net/unrrdu/index.html" class="externalLink">UNU commands</a>
+ against all NRRD images found on specific directory to generate 71 slices (every other plane from a plane of 40 to a plane of 160) on each of the 3 axis. These images are ideal to work with in conjuction with the result browser available in the &quot;GWE Control Panel&quot; as featured in the GWE introductory screen cast. </p>
+</div>
+<div class="section"><h3>Parallel Gradient Anisotropic Diffusion</h3>
+<div class="source"><pre>
+${CONDUCT}=$range(0.5,2.5,0.5)
+${TIME}=$range(0.01,0.05,0.01)
+${ITER}=$const(1,11,21,31)
+${outNRRD}=${RUNTIME_USER_HOME}/grad-test/${SYSTEM_JOB_NUM}.nrrd
+${grad}=$gradient(${SLICER_HOME},${CONDUCT},${TIME},${ITER})
+${png0}=$pngGen(${SLICER_HOME},${outNRRD},0,100)
+${png1}=$pngGen(${SLICER_HOME},${outNRRD},1,100)
+${png2}=$pngGen(${SLICER_HOME},${outNRRD},2,100)
+
+${grad} ${RUNTIME_USER_HOME}/grad-test/target.nrrd ${outNRRD} &amp;&amp; ${png0} &amp;&amp; ${png1} &amp;&amp; ${png2}
+</pre>
+</div>
+<p>This command instructs GWE to execute in parallel gradient anisotropic diffusion run against a target volume and take a slice at the plane 100 on each of its axis to easily browse through a representative image. These representative images are ideal to work with in conjuction with the result browser available in the &quot;GWE Control Panel&quot;.</p>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007-2009
+    
+          
+  
+
+  
+    
+            
+  
+    
+   - <a href="http://maven.apache.org/privacy-policy.html">Privacy Policy</a></div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  <script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-1");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>

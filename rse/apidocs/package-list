@@ -1,0 +1,10 @@
+org.gwe.rse
+org.gwe.rse.datasets
+org.gwe.rse.json
+org.gwe.rse.provider
+org.gwe.rse.provider.xnat
+org.gwe.rse.render
+org.gwe.rse.servlet
+org.gwe.rse.servlet.jetty
+org.gwe.rse.servlet.sessions
+org.gwe.rse.utils

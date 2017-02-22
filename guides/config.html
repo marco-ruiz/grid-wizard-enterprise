@@ -1,0 +1,601 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>GWE - Configuration</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Marco Ruiz" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                                                    
+<meta content="GWE (Grid Wizard Enterprise) is an open source, HPC distributed enterprise system, which leverages on clusters of computers, in order to provide a powerful grid computing platform for end users to easily and effectively parallelize the execution of an (in theory) unlimited number of inter-independent processes." name="description"/>
+                                                        
+<meta content="gwe, grid, cluster, parallel, distributed, computing, hpc, high performance, resource manager, job scheduler, condor, sge, pbs, lsf, torque, globus, metascheduler, jsdl, java, open source" name="keywords"/>
+                                                        
+<meta content="all" name="robots"/>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+                                            <img src="../images/logo.jpg" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 02 Mar 2009
+                  &nbsp;| Version: 0.7.3.alpha
+                      </div>
+            <div class="xright">            <a href="http://www.na-mic.org/" class="externalLink">NAMIC</a>
+            |
+                <a href="http://nbirn.net/" class="externalLink">BIRN</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../news.html">News</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../changes-report.html">Release Notes</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../credits.html">Credits</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+          </ul>
+              <h5>Guides</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../guides/glossary.html">Glossary</a>
+          </li>
+              
+          
+              
+      
+            
+            
+            
+      
+            
+      
+            
+      
+            
+      
+                  
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                    
+            <li class="expanded">
+                    <a href="../guides/quick.html">Quick Start Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../guides/install.html">Installation</a>
+          </li>
+                  
+    <li class="none">
+              <strong>Configuration</strong>
+        </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/user.html">Usage</a>
+                </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/p2el.html">P2EL Specification</a>
+                </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+                    <a href="../guides/resources.html">Other Resources</a>
+          </li>
+          </ul>
+              <h5>GWE Powered Tools</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../integration/api.html">GWE API</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../integration/slicer.html">Case: 3D Slicer3</a>
+          </li>
+          </ul>
+              <h5>Project Collaboration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="https://issues.nbirn.net/jira/browse/GWE" class="externalLink">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../coming-soon.html">Continuous Integration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://groups.google.com/group/gwe-forum?hl=en" class="externalLink">Forum</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../source-repository.html">Source Repository</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../team-list.html">Team</a>
+          </li>
+          </ul>
+              <h5>Source Code Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../xref/index.html">Browser</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDocs</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../jdepend-report.html">Analysis</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../taglist.html">Tag List</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://maven.apache.org/" title="Maven" class="poweredBy">
+                            <img alt="Maven" src="http://maven.apache.org/images/logos/maven-feather.png" />
+            </a>
+                               
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Configuring GWE </h2>
+<p>All GWE client applications read the following client configuration files:</p>
+<table class="bodyTable"><tbody><tr class="a"><td align="left"><b>Configuration</b>
+</td>
+<td align="left"><b>Configuration File</b>
+</td>
+<td align="left"><b>Description</b>
+</td>
+</tr>
+<tr class="b"><td align="left"><a href="#Grid">User Grid Descriptor</a>
+</td>
+<td align="left"><tt>$GWE_HOME/conf/gwe-grid.xml</tt>
+</td>
+<td align="left">Which resources will compose your grid (cluster descriptors)</td>
+</tr>
+<tr class="a"><td align="left"><a href="#Key">User Key Store</a>
+</td>
+<td align="left"><tt>$GWE_HOME/conf/gwe-auth.xml</tt>
+</td>
+<td align="left">How to gain access to resources to connect (authentication information)</td>
+</tr>
+<tr class="b"><td align="left"><a href="#Macro">User Macro Library</a>
+</td>
+<td align="left"><tt>$GWE_HOME/conf/gwe-macro.p2el</tt>
+</td>
+<td align="left">P2EL macros to load into the P2EL interpreter</td>
+</tr>
+</tbody>
+</table>
+<p>This information will be read by default from files stated in the previous table. These defaults can be changed using the process described in the <i><a href="#Overriding"> 'Overriding The Default Criteria To Locate Configuration Items'</a>
+</i>
+ section.</p>
+<div class="section"><h3>User <a name="Grid">Grid</a>
+ Descriptor</h3>
+<p>This is an XML file which allows users to describe their grid as a collection of clusters.</p>
+<div class="source"><pre>&lt;grid&gt;
+        &lt;!-- Cluster Descriptor Template --&gt;
+        &lt;cluster name=&quot;Sample&quot; host=&quot;Cluster_1_User_Identifier&quot; installRootPath=&quot;&quot; databaseRootPath=&quot;&quot; queueSize=&quot;25&quot; maxHijackSecs=&quot;3600&quot; maxIdleSecs=&quot;300&quot; /&gt;
+        
+        &lt;!-- Local Machine as Cluster Sample --&gt;
+        &lt;cluster name=&quot;LOCAL&quot; host=&quot;localhost&quot; queueSize=&quot;3&quot; maxHijackSecs=&quot;-1&quot; maxIdleSecs=&quot;300&quot;/&gt;
+        
+        &lt;!-- BIRN Cluster Sample --&gt;
+        &lt;cluster name=&quot;BIRN&quot; host=&quot;birn-cluster0.nbirn.net&quot; installRootPath=&quot;/home/[USER]&quot; queueSize=&quot;25&quot; maxHijackSecs=&quot;7200&quot; maxIdleSecs=&quot;300&quot;/&gt;
+&lt;/grid&gt;</pre>
+</div>
+<p>The <tt>grid</tt>
+ parent element contains 0 to many <tt>cluster</tt>
+ elements, each of which represent a particular cluster head node information; which is composed of the following fields:</p>
+<table class="bodyTable"><tbody><tr class="a"><td align="left"><b>Attribute</b>
+</td>
+<td align="left"><b>Description</b>
+</td>
+<td align="left"><b>&quot;0&quot; or &quot;-1&quot; Value Meaning</b>
+</td>
+</tr>
+<tr class="b"><td align="left"><tt>name</tt>
+</td>
+<td align="left">Friendly user name used for reference purposes only.</td>
+<td align="left">N/A</td>
+</tr>
+<tr class="a"><td align="left"><tt>host</tt>
+</td>
+<td align="left">IP host name of the cluster head node (required).</td>
+<td align="left">N/A</td>
+</tr>
+<tr class="b"><td align="left"><tt>installRootPath</tt>
+</td>
+<td align="left">Directory under which the daemon installation must be stored (required). This directory must have enough space to hold all temporary files used with staging operations (virtual file system), plus a fix size of about 100MB for the installation itself</td>
+<td align="left">N/A</td>
+</tr>
+<tr class="a"><td align="left"><tt>databaseRootPath</tt>
+</td>
+<td align="left">Directory under which the daemon database must be stored. This directory must reside in a hard drive attached to <tt>host</tt>
+. If not provided it takes the value of <tt>installRootPath</tt>
+.</td>
+<td align="left">N/A</td>
+</tr>
+<tr class="b"><td align="left"><tt>queueSize</tt>
+</td>
+<td align="left">Maximum amount of resources GWE can have allocated at any given moment in the cluster's resource manager.</td>
+<td align="left">No limit.</td>
+</tr>
+<tr class="a"><td align="left"><tt>maxWaitMins</tt>
+</td>
+<td align="left">Maximum amount of minutes (allows fractions) a compute node is allowed to take to connect to the daemon (after requested to the resource manager) before disposing the request (and probably submitting a new one).</td>
+<td align="left">No limit. No such thing as being 'too late', the daemon will wait indefinitely for a compute resource to get attach once the request has been submitted.</td>
+</tr>
+<tr class="b"><td align="left"><tt>maxHijackMins</tt>
+</td>
+<td align="left">Maximum amount of minutes (allows fractions) a compute node can serve the system before returning it to the resource manager's pool.</td>
+<td align="left">No limit, being 'too old' will not be a reason for returning a compute resource back to the resource manager pool.</td>
+</tr>
+<tr class="a"><td align="left"><tt>maxIdleMins</tt>
+</td>
+<td align="left">Maximum amount of minutes (allows fractions) a compute node can be waiting a process request before returning it to the resource manager's pool.</td>
+<td align="left">No limit. Being 'too lazy' will not be a reason for returning a compute resource back to the resource manager pool.</td>
+</tr>
+</tbody>
+</table>
+<p>By default GWE client applications will try to connect to the first cluster defined in this <tt>grid</tt>
+ element to act as a grid controller to coordinate efforts. If you decide not to use the default cluster descriptor, you can do so by selecting it by its friendly user name in the way detailed in the <i><a href="#Overriding">'Overriding The Default Criteria To Locate Configuration Items'</a>
+</i>
+ section below.</p>
+<p><i>NOTE: Right now an order will be executed in the cluster where it was submitted; which means that load balancing across the clusters of the grid defined, will not be available, as the the functionality to dynamically split and prioritize the parallelization of these processes across clusters, has not been finalized yet.</i>
+</p>
+<div class="section"><h4>P2EL <a name="Environmental">Environmental</a>
+ Variables</h4>
+<p>An additional, optional configuration feature is the ability to provide contextual P2EL variables per daemon. This feature is particularly useful in cases in which your P2EL commands require per daemon values like executable installation paths, as in the Slicer integration case:</p>
+<div class="source"><pre>&lt;grid&gt;
+        &lt;cluster name=&quot;LOCALHOST&quot; installationRootPath=&quot;/home/[USER]&quot; host=&quot;localhost&quot; queueSize=&quot;2&quot; maxWaitMins=&quot;0.5&quot; maxHijackMins=&quot;120&quot; maxIdleMins=&quot;5&quot; &gt;
+                &lt;p2elVar name=&quot;SLICER_HOME&quot; value=&quot;[SLICER_LOCATION_ON_LOCAL_MACHINE]&quot; /&gt;
+        &lt;/cluster&gt;
+        
+        &lt;cluster name=&quot;BIRN&quot; host=&quot;birn-cluster0.nbirn.net&quot; installationRootPath=&quot;/home/[USER]&quot; databaseRootPath=&quot;/tmp/[PATH]&quot; queueSize=&quot;50&quot; maxHijackMins=&quot;120&quot; maxIdleMins=&quot;5&quot; &gt;
+                &lt;p2elVar name=&quot;SLICER_HOME&quot; value=&quot;[SLICER_LOCATION_ON_BIRN_CLUSTER]&quot; /&gt;
+        &lt;/cluster&gt;
+&lt;/grid&gt;</pre>
+</div>
+</div>
+</div>
+<div class="section"><h3>User <a name="Key">Key</a>
+ Store</h3>
+<p>This is an XML file which allows users to state the authentication information they use to access network enabled resources. This is necessary for GWE to access those resource on behalf of the user as part of executing their processes in the grid. </p>
+<div class="source"><pre>&lt;keystore&gt;
+        &lt;accessControl&gt;
+                &lt;account user=&quot;[ACCOUNT_USER_NAME]&quot; passphrase=&quot;?&quot; privateKeyFileName=&quot;[PRIVATE_KEY_FULL_PATH]&quot;/&gt;
+                &lt;realms&gt;
+                        &lt;!-- General domain realm template --&gt;
+                        &lt;realm schemes=&quot;ssh;sftp&quot; domain=&quot;*.[SUB_DOMAIN]&quot; testHost=&quot;[HOST].[SUB_DOMAIN]&quot;/&gt;
+                        
+                        &lt;!-- Domain realm template for BIRN cluster resources --&gt;
+                        &lt;realm schemes=&quot;ssh;sftp&quot; domain=&quot;*.nbirn.net&quot; testHost=&quot;birn-cluster0.nbirn.net&quot;/&gt;
+                        
+                        &lt;!-- Domain realm template for &quot;www.whatever.com&quot; machine --&gt;
+                        &lt;realm schemes=&quot;ssh;sftp&quot; domain=&quot;www.whatever.org&quot; testHost=&quot;www.whatever.org&quot;/&gt;
+                &lt;/realms&gt;
+        &lt;/accessControl&gt;
+&lt;/keystore&gt;</pre>
+</div>
+<p>The <tt>keystore</tt>
+ parent element contains 0 to many <tt>accessControl</tt>
+ elements, each of which represent the authentication information to access a particular network device group. It revolves around the concept of the user having authentication information (<i>account</i>
+) at its disposal to access these network device groups (<i>realms</i>
+). The following are the forms that can take the <tt>account</tt>
+ element to provide the authentication information: </p>
+<div class="source"><pre>&lt;!-- Account authenticated using private keys and stated passphrase --&gt;
+&lt;account user=&quot;[ACCOUNT_USER_NAME]&quot; passphrase=&quot;[PASSPHRASE]&quot; privateKeyFileName=&quot;[PRIVATE_KEY_FULL_PATH]&quot;/&gt;
+
+&lt;!-- Account authenticated using private keys and passphrase to be securely read at runtime --&gt;
+&lt;account user=&quot;[ACCOUNT_USER_NAME]&quot; passphrase=&quot;?&quot; privateKeyFileName=&quot;[PRIVATE_KEY_FULL_PATH]&quot;/&gt;
+
+&lt;!-- Account authenticated using private keys (and overriding default public key file name &quot;[PRIVATE_KEY_FULL_PATH].pub&quot;) and passphrase to be securely read at runtime --&gt;
+&lt;account user=&quot;[ACCOUNT_USER_NAME]&quot; passphrase=&quot;?&quot; privateKeyFileName=&quot;[PRIVATE_KEY_FULL_PATH]&quot; publicKeyFileName=&quot;[PUBLIC_KEY_FULL_PATH]&quot;/&gt;
+
+&lt;!-- Account authenticated using stated password --&gt;
+&lt;account user=&quot;[ACCOUNT_USER_NAME]&quot; password=&quot;[PASSWORD]&quot;/&gt;
+
+&lt;!-- Account authenticated using password to be securely read at runtime --&gt;
+&lt;account user=&quot;[ACCOUNT_USER_NAME]&quot; password=&quot;?&quot;/&gt;</pre>
+</div>
+<p>The realm section will be used to provide the network context to which the associated account has access, in terms of protocols and network domains. It also allows the user to provide the FULL host name of an actual host against which the particular credential can be tested. Finally, a security feature is available to the user to avoid explicitly stating his/her passwords/passphrases. The user can do this by assigning to these fields the wildcard value of &quot;?&quot;. This will indicate the GWE clients to securely read these fields at runtime and stored them in disk encrypted for future usage.</p>
+<hr />
+<p><i>WARNING: It is mandatory that the 'homeDir' directory has enough disk space and quotas to have a GWE daemon installed there (if your <a href="#Grid">'grid descriptor' file</a>
+ implicitly declared it needs a daemon there of course). A GWE daemon installation requires a minimum of about 500MB of disk space to operate (base installation, database, logs, etc.). Additionally, its virtual file system will require enough space to download and manipulate files corresponding to the amount of parallel jobs it may be able to run (size of the daemon's queue configured in the <a href="#Grid">'grid descriptor'</a>
+). Failure to appropriately allocate disk space will most likely result in catastrophic failure since, the operating system may very well deny access to the GWE daemon database, which would corrupt the whole installation.</i>
+ </p>
+<hr />
+</div>
+<div class="section"><h3>User <a name="Macro">Macro</a>
+ Library</h3>
+<p>This is a text file which contents will be interpreted by GWE as the library of P2EL macros to load into its P2EL interpreter. This library is simply a list of <b><a href="p2el-macros.html">macro definitions</a>
+</b>
+ separated by new lines. The following is a sample of a macro library file consisting of 2 macros: <tt>xcat</tt>
+ and <tt>slicer</tt>
+.</p>
+<div class="source"><pre>
+$xcat($${CONTENTS}) {
+        $${ENTRIES}=$xpath($${CONTENTS},//entry)
+        $${URI}=$xpath($${ENTRIES},/entry/@URI)
+        $${CACHEPATH}=$xpath($${ENTRIES},/entry/@cachePath)
+        $${NAME}=$xpath($${ENTRIES},/entry/@name)
+        $${ID}=$xpath($${ENTRIES},/entry/@ID)
+        $${DESCRIPTION}=$xpath($${ENTRIES},/entry/@description)
+        $${CONTENT}=$xpath($${ENTRIES},/entry/@content)
+        $${FORMAT}=$xpath($${ENTRIES},/entry/@format)
+}
+
+$slicer($${HOME},$${MODULE}) {
+        $${CMD}=$const($${HOME}/Slicer3 --launch $${HOME}/lib/Slicer3/Plugins/$${MODULE})
+}
+</pre>
+</div>
+<div class="section"><h4>Macro Documentation (Optional)</h4>
+<p>Optionally, when defining a macro you can include documentation tags that will be used by GWE clients to provide contextual information to its users. The way to do this is by including right before the macro definition a list of &quot;document&quot; lines. Each of these lines must start with <i>//</i>
+. For example, using the previous <tt>slicer</tt>
+ macro sample we can document it by prepending the following lines:</p>
+<div class="source"><pre>
+// TITLE: Slicer Module Base Command
+// DESCRIPTION: Creates the base command to launch a Slicer3 module given its 
+// installation directory and the module name.
+// HOME: Path to the Slicer installation
+// MODULE: Name of the Slicer module to launch
+// CMD: Base command to launch the Slicer3 module specified
+</pre>
+</div>
+<p>So the documented definition of the <tt>slicer</tt>
+ macro would look like this: </p>
+<div class="source"><pre>
+// TITLE: Slicer Module Base Command
+// DESCRIPTION: Creates the base command to launch a Slicer3 module given its 
+// installation directory and the module name.
+// HOME: Path to the Slicer installation
+// MODULE: Name of the Slicer module to launch
+// CMD: Base command to launch the Slicer3 module specified
+
+$slicer($${HOME},$${MODULE}) {
+        $${CMD}=$const($${HOME}/Slicer3 --launch $${HOME}/lib/Slicer3/Plugins/$${MODULE})
+}
+</pre>
+</div>
+<p>If the content, of a &quot;document&quot; line, starts with a particular token, which does not containing spaces and it is followed by a colon (:); then the &quot;document&quot; line content will be associated with such token. Standard tokens are <tt>TITLE</tt>
+, <tt>DESCRIPTION</tt>
+ and the names of the macro parameters. Going back to the previous example you may notice that the documentation for all the standard tokens available for the <tt>slicer</tt>
+ macro has been provided. </p>
+</div>
+</div>
+</div>
+<div class="section"><h2><a name="Overriding">Overriding</a>
+ The Default Criteria To Locate Configuration Items</h2>
+<p>As previously mentioned, all GWE client applications use the same default configuration criteria. If you want to override this criteria you can do so by specifying the optional configuration parameter all GWE client applications accept and which are referred in the syntax of their respective documentation as: </p>
+<div class="source"><pre>        [OPTIONAL_CONFIG_PARAM]</pre>
+</div>
+<p>Specifically, this option allows you to use to override the file to use as <a href="#Grid">grid descriptor</a>
+ and the encryption token (which takes a default secret value) to use for generating the encrypted keys.</p>
+<p>The format of this optional configuration parameter is the following:</p>
+<div class="source"><pre>-conf=[CLUSTER_ID]@[GRID_DEFINITION_FILENAME]:[KEY_STORE_FILENAME]</pre>
+</div>
+<table class="bodyTable"><tbody><tr class="b"><td align="left"><b>Configuration Item</b>
+</td>
+<td align="left"><b>Token location</b>
+</td>
+</tr>
+<tr class="a"><td align="left">Cluster Descriptor Id (*)</td>
+<td align="left">From the start until the <b>@</b>
+ character</td>
+</tr>
+<tr class="b"><td align="left">GWE Grid Definition</td>
+<td align="left">From the <b>@</b>
+ character to the <b>:</b>
+ character</td>
+</tr>
+<tr class="a"><td align="left">KeyStore Encryption Token</td>
+<td align="left">From the <b>:</b>
+ character to the end</td>
+</tr>
+</tbody>
+</table>
+<p>(*) <i>The 'Cluster Descriptor Id' is the friendly user name given to a cluster descriptor in a 'GWE Grid Definition' file</i>
+</p>
+<p>By providing such <tt>[OPTIONAL_CONFIG_PARAM]</tt>
+ parameter the user can override the default criteria used to locate any of the necessary configuration items. If any of these values are empty strings, then the defaults will be used instead; which makes this parameter powerful enough to override any combination of configuration item location criteria. For example:</p>
+<table class="bodyTable"><tbody><tr class="b"><td align="left"><b>[OPTIONAL_CONFIG_PARAM]</b>
+</td>
+<td align="left"><b>Instructs the client application to override the following default criteria to locate configuration information</b>
+</td>
+</tr>
+<tr class="a"><td align="left"><tt>Id</tt>
+</td>
+<td align="left">Use the cluster identified by <tt>Id</tt>
+</td>
+</tr>
+<tr class="b"><td align="left"><tt>@/home/me/grid.xml</tt>
+</td>
+<td align="left">Use <tt>/home/me/grid.xml</tt>
+ as the <a href="#Grid">grid descriptor</a>
+ file</td>
+</tr>
+<tr class="a"><td align="left"><tt>:MY_ENCRYPTION_TOKEN</tt>
+</td>
+<td align="left">Use the token <tt>MY_ENCRYPTION_TOKEN</tt>
+ to encrypt the passwords and passphrases of the <a href="#Key">key store</a>
+</td>
+</tr>
+<tr class="b"><td align="left"><tt>Id@/home/me/grid.xml</tt>
+</td>
+<td align="left">Use the cluster identified by <tt>Id</tt>
+ from the <tt>/home/me/grid.xml</tt>
+ <a href="#Grid">grid descriptor</a>
+ file</td>
+</tr>
+<tr class="a"><td align="left"><tt>Id:MY_ENCRYPTION_TOKEN</tt>
+</td>
+<td align="left">Use the cluster identified by <tt>Id</tt>
+ and the <tt>MY_ENCRYPTION_TOKEN</tt>
+ as the key store encryption token</td>
+</tr>
+<tr class="b"><td align="left"><tt>/home/me/grid.xml:MY_ENCRYPTION_TOKEN</tt>
+</td>
+<td align="left">Read the grid definitions from <tt>/home/me/grid.xml</tt>
+ and the <tt>MY_ENCRYPTION_TOKEN</tt>
+ as the key store encryption token</td>
+</tr>
+<tr class="a"><td align="left"><tt>Id@/home/me/grid.xml:MY_ENCRYPTION_TOKEN</tt>
+</td>
+<td align="left">Override all default configuration location criteria accordingly!</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007-2009
+    
+          
+  
+
+  
+    
+            
+  
+    
+   - <a href="http://maven.apache.org/privacy-policy.html">Privacy Policy</a></div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  <script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-1");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>

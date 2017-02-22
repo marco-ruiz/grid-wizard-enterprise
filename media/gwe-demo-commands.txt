@@ -1,0 +1,27 @@
+0. 
+
+browse site towards installation page
+download gwe
+fresh terminal:
+cp ~/downloads/gwe* /apps/gwe
+cd /apps/gwe
+ls -al
+unzip -q gwe-0.6.2.alpha-client.zip
+
+export GWE_HOME=/apps/gwe/gwe-0.6.2.alpha-client
+export PATH=$GWE_HOME/bin:$PATH
+java -version
+gwe-version.sh
+
+
+1.
+
+ls -al $GWE_HOME
+ls -al $GWE_HOME/conf 
+less $GWE_HOME/conf/gwe-grid.xml
+gwe-version
+
+2. 
+gwe-terminal
+tab
+list-orders

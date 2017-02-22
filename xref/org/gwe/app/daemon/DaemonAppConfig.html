@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<title>DaemonAppConfig xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../apidocs/org/gwe/app/daemon/DaemonAppConfig.html">View Javadoc</a></div><pre>
+
+<a name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.gwe.app.daemon;
+<a name="2" href="#2">2</a>   
+<a name="3" href="#3">3</a>   <strong class="jxr_keyword">import</strong> org.gwe.AppConfig;
+<a name="4" href="#4">4</a>   <strong class="jxr_keyword">import</strong> org.gwe.persistence.domain.MonitorDomain;
+<a name="5" href="#5">5</a>   <strong class="jxr_keyword">import</strong> org.gwe.persistence.model.IEventLogger;
+<a name="6" href="#6">6</a>   
+<a name="7" href="#7">7</a>   <em class="jxr_javadoccomment">/**</em>
+<a name="8" href="#8">8</a>   <em class="jxr_javadoccomment"> * @author mruiz</em>
+<a name="9" href="#9">9</a>   <em class="jxr_javadoccomment"> * @since Sep 28, 2007</em>
+<a name="10" href="#10">10</a>  <em class="jxr_javadoccomment"> */</em>
+<a name="11" href="#11">11</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/gwe/app/daemon/DaemonAppConfig.html">DaemonAppConfig</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../org/gwe/AppConfig.html">AppConfig</a> {
+<a name="12" href="#12">12</a>  
+<a name="13" href="#13">13</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String DEFAULT_DAEMON_CONF = <span class="jxr_string">"gwe-daemon.xml"</span>;
+<a name="14" href="#14">14</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PROP_DAEMON_LOCATION 	= <span class="jxr_string">"daemon.location"</span>;
+<a name="15" href="#15">15</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PROP_DAEMON_HOME 		= <span class="jxr_string">"daemon.home"</span>;
+<a name="16" href="#16">16</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PROP_DB_INSTALL 		= <span class="jxr_string">"db.install"</span>;
+<a name="17" href="#17">17</a>  
+<a name="18" href="#18">18</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> init(<strong class="jxr_keyword">boolean</strong> configurationMode, String daemonLocation) { 
+<a name="19" href="#19">19</a>  <em class="jxr_comment">//		jdbc:derby:${user.dir}/db/daemon;create=${db.install}</em>
+<a name="20" href="#20">20</a>  		System.setProperty(PROP_DB_INSTALL, String.valueOf(configurationMode));
+<a name="21" href="#21">21</a>  		<em class="jxr_comment">// FIXME: Should be consistent and get this info from the same source of the properties ${gwed.home} and ${pom.version}</em>
+<a name="22" href="#22">22</a>  		<em class="jxr_comment">// created at build time of this distribution (maybe passed as parameters to DaemonApp???</em>
+<a name="23" href="#23">23</a>  		System.setProperty(PROP_DAEMON_HOME, System.getProperty(<span class="jxr_string">"user.dir"</span>));
+<a name="24" href="#24">24</a>  		System.setProperty(PROP_DAEMON_LOCATION, daemonLocation);
+<a name="25" href="#25">25</a>  		init(DaemonAppConfig.<strong class="jxr_keyword">class</strong>, DEFAULT_COMMONS_CONF, DEFAULT_DAEMON_CONF);
+<a name="26" href="#26">26</a>  		getInstance().monitorDomain = getInstance().getBeanOfClass(MonitorDomain.<strong class="jxr_keyword">class</strong>);
+<a name="27" href="#27">27</a>  	}
+<a name="28" href="#28">28</a>  	
+<a name="29" href="#29">29</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a href="../../../../org/gwe/app/daemon/DaemonAppConfig.html">DaemonAppConfig</a> getInstance() { <strong class="jxr_keyword">return</strong> (DaemonAppConfig)AppConfig.getInstance(); }
+<a name="30" href="#30">30</a>  	
+<a name="31" href="#31">31</a>  	<strong class="jxr_keyword">private</strong> <a href="../../../../org/gwe/persistence/model/IEventLogger.html">IEventLogger</a> monitorDomain;
+<a name="32" href="#32">32</a>  	<strong class="jxr_keyword">public</strong> <a href="../../../../org/gwe/persistence/model/IEventLogger.html">IEventLogger</a> getEventLogger()  { <strong class="jxr_keyword">return</strong> monitorDomain; }
+<a name="33" href="#33">33</a>  }
+<a name="34" href="#34">34</a>  
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div><script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-2");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>
+

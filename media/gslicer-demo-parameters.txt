@@ -1,0 +1,7 @@
+ITERATIONS:		gwe:[10..40||10]
+HISTOGRAMS:		gwe:[20..100||020] 
+SAMPLES:		gwe:[500..3000||0500]
+
+FIXED IMAGE:	in[fixed.nrrd]:http://www.na-mic.org/ViewVC/index.cgi/trunk/Libs/MRML/Testing/TestData/fixed.nrrd?view=co
+MOVING IMAGE:	in[moving.nrrd]:http://www.na-mic.org/ViewVC/index.cgi/trunk/Libs/MRML/Testing/TestData/moving.nrrd?view=co
+OUTPUT IMAGE:	/home/mruiz/gslicer3Test/out-${GWE_ITER_ID}.nrrd

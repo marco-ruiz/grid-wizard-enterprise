@@ -1,0 +1,429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>GWE - 3D Slicer Integration</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Marco Ruiz" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                                                    
+<meta content="GWE (Grid Wizard Enterprise) is an open source, HPC distributed enterprise system, which leverages on clusters of computers, in order to provide a powerful grid computing platform for end users to easily and effectively parallelize the execution of an (in theory) unlimited number of inter-independent processes." name="description"/>
+                                                        
+<meta content="gwe, grid, cluster, parallel, distributed, computing, hpc, high performance, resource manager, job scheduler, condor, sge, pbs, lsf, torque, globus, metascheduler, jsdl, java, open source" name="keywords"/>
+                                                        
+<meta content="all" name="robots"/>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+                                            <img src="../images/logo.jpg" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 02 Mar 2009
+                  &nbsp;| Version: 0.7.3.alpha
+                      </div>
+            <div class="xright">            <a href="http://www.na-mic.org/" class="externalLink">NAMIC</a>
+            |
+                <a href="http://nbirn.net/" class="externalLink">BIRN</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../news.html">News</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../changes-report.html">Release Notes</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../credits.html">Credits</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+          </ul>
+              <h5>Guides</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../guides/glossary.html">Glossary</a>
+          </li>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                  
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                    
+        <li class="expanded">
+                    <a href="../guides/quick.html">Quick Start Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../guides/install.html">Installation</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../guides/config.html">Configuration</a>
+          </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/user.html">Usage</a>
+                </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/p2el.html">P2EL Specification</a>
+                </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+                    <a href="../guides/resources.html">Other Resources</a>
+          </li>
+          </ul>
+              <h5>GWE Powered Tools</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../integration/api.html">GWE API</a>
+          </li>
+              
+    <li class="none">
+              <strong>Case: 3D Slicer3</strong>
+        </li>
+          </ul>
+              <h5>Project Collaboration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="https://issues.nbirn.net/jira/browse/GWE" class="externalLink">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../coming-soon.html">Continuous Integration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://groups.google.com/group/gwe-forum?hl=en" class="externalLink">Forum</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../source-repository.html">Source Repository</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../team-list.html">Team</a>
+          </li>
+          </ul>
+              <h5>Source Code Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../xref/index.html">Browser</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDocs</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../jdepend-report.html">Analysis</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../taglist.html">Tag List</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://maven.apache.org/" title="Maven" class="poweredBy">
+                            <img alt="Maven" src="http://maven.apache.org/images/logos/maven-feather.png" />
+            </a>
+                               
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2><a href="http://www.slicer.org/" class="externalLink">3D Slicer</a>
+</h2>
+<p>From the <a href="http://www.slicer.org/" class="externalLink">Slicer Project Site</a>
+:</p>
+<hr />
+<p><i>3D Slicer is a multi-platform, free open source software (FOSS) for visualization and image computing.</i>
+</p>
+<hr />
+<div class="section"><h3>Installation Guide</h3>
+<p>You may choose to <a href="#Installing">install a pre-bundled &quot;GWE Powered&quot; distribution of Slicer3</a>
+ or <a href="#Upgrading">upgrade a current distribution of Slicer3 with GWE Features</a>
+.</p>
+<div class="section"><h4><a name="Installing">Installing</a>
+ a &quot;GWE Powered&quot; distribution</h4>
+<ol type="1"><li>Download one of the &quot;GWE Powered&quot; Slicer (<b>GSlicer3</b>
+) distribution bundles:<hr />
+<table class="bodyTable"><tbody><tr class="a"><td align="left"><b>Products Merged</b>
+</td>
+<td align="left"><b>Link</b>
+</td>
+</tr>
+<tr class="b"><td align="left">GWE 0.7.3.alpha + Slicer 3.3-alpha-2009-03-01 for darwin PPC</td>
+<td align="left"><a href="http://www.gridwizardenterprise.org/maven/org/gwe/client/0.7.3.alpha/GSlicer3-3.3-alpha-2009-03-01-darwin-ppc-0.7.3.alpha.tar.gz" class="externalLink">GSlicer3-3.3-alpha-2009-03-01-darwin-ppc-0.7.3.alpha.tar.gz</a>
+</td>
+</tr>
+<tr class="a"><td align="left">GWE 0.7.3.alpha + Slicer 3.3-alpha-2009-03-01 for darwin x86</td>
+<td align="left"><a href="http://www.gridwizardenterprise.org/maven/org/gwe/client/0.7.3.alpha/GSlicer3-3.3-alpha-2009-03-01-darwin-x86-0.7.3.alpha.tar.gz" class="externalLink">GSlicer3-3.3-alpha-2009-03-01-darwin-x86-0.7.3.alpha.tar.gz</a>
+</td>
+</tr>
+<tr class="b"><td align="left">GWE 0.7.3.alpha + Slicer 3.3-alpha-2009-03-01 for linux x86</td>
+<td align="left"><a href="http://www.gridwizardenterprise.org/maven/org/gwe/client/0.7.3.alpha/GSlicer3-3.3-alpha-2009-03-01-linux-x86-0.7.3.alpha.tar.gz" class="externalLink">GSlicer3-3.3-alpha-2009-03-01-linux-x86-0.7.3.alpha.tar.gz</a>
+</td>
+</tr>
+<tr class="a"><td align="left">GWE 0.7.3.alpha + Slicer 3.3-alpha-2009-03-01 for linux x86 64 bits</td>
+<td align="left"><a href="http://www.gridwizardenterprise.org/maven/org/gwe/client/0.7.3.alpha/GSlicer3-3.3-alpha-2009-03-01-linux-x86_64-0.7.3.alpha.tar.gz" class="externalLink">GSlicer3-3.3-alpha-2009-03-01-linux-x86_64-0.7.3.alpha.tar.gz</a>
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</li>
+<li>Extract the distribution archive to the directory you wish to install it. These instructions assume you chose <tt>&quot;/usr/local/slicer&quot;</tt>
+. The directory <tt>GSlicer3-3.3-alpha-2009-03-01-[PLATFORM]</tt>
+ will be created from the archive.</li>
+<li>In a command terminal, add the <tt>SLICER_HOME</tt>
+ environment variable to point to the directory where the GSlicer3 distribution has just been extracted e.g. <tt>&quot;export SLICER_HOME=/usr/local/slicer/Slicer3-3.3-alpha-2009-03-01-[PLATFORM]&quot;</tt>
+.</li>
+<li>Make sure that <tt>JAVA_HOME</tt>
+ is set to the location of your JDK, e.g. <tt>&quot;export JAVA_HOME=/usr/java/jdk1.5.0_02&quot;</tt>
+ and that <tt>&quot;$JAVA_HOME/bin&quot;</tt>
+ is in your <tt>PATH</tt>
+ environment variable.</li>
+<li>Configure the GWE portion of the merged product as described in the <i><a href="../guides/config.html">'Configuration Guide'</a>
+</i>
+. The GWE portion (<tt>$GWE_HOME</tt>
+) can be found under <tt>$SLICER_HOME/gwe-0.7.3.alpha</tt>
+. </li>
+</ol>
+<img src="../images/gslicer3/gslicer3-install.png" /></div>
+<div class="section"><h4><a name="Upgrading">Upgrading</a>
+ to &quot;GWE Powered&quot;</h4>
+<ol type="1"><li>Install the latest release of GWE as described in the <i><a href="../guides/install.html">'Installation Guide'</a>
+</i>
+.</li>
+<li>In a command terminal, add the <tt>SLICER_HOME</tt>
+ environment variable to point to the Slicer installation to be upgraded, e.g. <tt>&quot;export SLICER_HOME=/usr/local/slicer/Slicer3-3.0.2008-02-14-darwin-x86&quot;</tt>
+.</li>
+<li>Run <tt>&quot;gwe-util-slicer-integration.sh&quot;</tt>
+. This will run an analysis of the Slicer installation to be upgraded and create all the appropriate CLM proxys.</li>
+<li>Configure the GWE portion of the upgraded Slicer as described in the <i><a href="../guides/config.html">'Configuration Guide'</a>
+</i>
+. The GWE portion (<tt>$GWE_HOME</tt>
+) can be found under <tt>$SLICER_HOME/gwe-0.7.3.alpha</tt>
+. </li>
+</ol>
+<img src="../images/gslicer3/gslicer3-upgrade-1.png" /><img src="../images/gslicer3/gslicer3-upgrade-2.png" /></div>
+</div>
+<div class="section"><h3>Usage Guide</h3>
+<p>After launching Slicer as usual (invoking Slicer3 executable from an X11 terminal) inspect the modules menu. There you will find all the typical Slicer modules along with their respective dynamic <i>'GWE Powered Proxys'</i>
+ modules. </p>
+<img src="../images/gslicer3/gslicer3-ui.png" /><p>Each one of those proxy modules is a Slicer module which first will capture:</p>
+<ul><li>Grid computing related information. This information is composed of:<hr />
+<table class="bodyTable"><tbody><tr class="b"><td align="left"><b>Field</b>
+</td>
+<td align="left"><b>Description</b>
+</td>
+</tr>
+<tr class="a"><td align="left"><tt>Cluster</tt>
+</td>
+<td align="left">The cluster where the Slicer modules should process permutations in parallel, as a radio button choice.</td>
+</tr>
+<tr class="b"><td align="left"><tt>Iteration Variables</tt>
+</td>
+<td align="left"><a href="../guides/p2el.html#Variables">Global P2EL value space variables</a>
+.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</li>
+</ul>
+<ul><li>Values for the parameters of the proxied module. These values can be the same as the expected by the particular module or, alternatively, <a href="../guides/p2el.html#Generator">P2EL function invocations</a>
+. These expressions are semantic constructs to express value sets or runtime grid contextual values and are used to instruct GWE how to create a a set of value spaces to apply to the desired Slicer module. These expressions can also include references to global variables declared in the <tt>Iteration Variables</tt>
+ field. Please refer to the <a href="../guides/p2el.html">P2EL guide</a>
+ for details on how to use and construct the particular expressions. </li>
+</ul>
+<p>Once all this information is entered and the user clicks the <tt>Apply</tt>
+ button, GWE will execute in parallel this set of invocations, on the cluster selected in the <tt>Cluster</tt>
+ field and using the Slicer installation located under <tt>Slicer Location</tt>
+ on such cluster. </p>
+<p>All GWE configuration will be read at runtime by Slicer3 and that's how the proxy modules are able to resolve the cluster options to provide in the Slicer UI and the authentication information to use to connect to the cluster; but doing such configuration from within Slicer is not available as of right now, so you have to do that before launching Slicer (as required in the 'Installation Guide' section). </p>
+<img src="../images/gslicer3/gslicer3-clm-ui.png" /></div>
+<div class="section"><h3>Integration Technical Details</h3>
+<p>The process of upgrading Slicer3 to GSlicer3 or creating a GSlicer3 bundle carries on the following two tasks:</p>
+<ul><li>Inspects the plugins of the given Slicer3 distribution and for each of those complying with the <i><a href="http://www.na-mic.org/Wiki/index.php/Slicer3:Execution_Model_Documentation" class="externalLink">Standard Execution Model</a>
+</i>
+ specification, it creates a special type of CLM which will be referenced as <i>GWE CLM Proxy</i>
+ (GWE CLMP) from this point forward.</li>
+<li>Takes the Slicer3 distribution, the GWE CLM Proxys just created and the given GWE distribution and bundle them together.</li>
+</ul>
+<img src="../images/gslicer3/gslicer3-internals.png" /><p>GWE CLM Proxys (CLMP) are CLMs which will proxy into another (proxied CLM) to provide a generalized GWE powered version of the proxied CLM. CLMPs are intelligent agents, which at runtime will:</p>
+<ul><li>Add and modify XML tags to the proxied CLM's XML descriptor to add GWE support.</li>
+<li>Generate GWE order templates which will be transformed into actual proxied CLM invocations. </li>
+<li>Localize the CLM invocations of the GWE order to be executed on the cluster selected by the user.</li>
+<li>Install a customized Slicer result parser to the GWE order.</li>
+<li>Submit the GWE order created to the remote selected cluster, over the secured RPC GWE network.</li>
+<li>Monitor, in real time, the execution progress of the localized proxied CLM invocations (from the GWE order) on the selected cluster. This real time monitoring is also performed over the secured RPC GWE network.</li>
+<li>Keep track of the CLMP progress as a ratio of the number of proxied CLMs invocations already executed divided by the total amount of proxied CLMs invocations associated with the GWE order submitted.</li>
+<li>Notify Slicer3 of this progress using Slicer3 XML based progress API (<tt>&lt;filter-XXX</tt>
+&gt; tags sent to the standard output of the CLMP).</li>
+</ul>
+<img src="../images/gslicer3/gslicer3-flow.png" /><p>This integration effort will also provide an additional framework to easily build specialized GWE powered CLMs. This framework includes:</p>
+<ul><li>Automatic generation and parsing of XML descriptor into a programmatic model.</li>
+<li>Libraries to access filtering information.</li>
+<li>Straight forward access to GWE Grid through the secured RPC GWE network. </li>
+</ul>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007-2009
+    
+          
+  
+
+  
+    
+            
+  
+    
+   - <a href="http://maven.apache.org/privacy-policy.html">Privacy Policy</a></div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  <script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-1");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>

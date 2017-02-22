@@ -1,0 +1,30 @@
+1.
+
+ls -al | grep GSlicer
+export SLICER_HOME=$PWD/GSlicer3-3.0.2008-02-14-darwin-x86-0.6.2.alpha
+ls -al $SLICER_HOME
+less $SLICER_HOME/gwe-0.6.2.alpha/conf/gwe-grid.xml
+cd $SLICER_HOME/lib/Slicer3/Plugins
+ls -al | grep gwe | less
+cd $SLICER_HOME
+$SLICER_HOME/Slicer3
+
+
+
+
+
+5.
+
+ls -al | grep Slicer
+cd Slicer3
+ls -al
+pwd
+
+
+9.
+
+cd /home/mruiz/gslicer3Test
+pwd
+ls -al
+ls -al | wc -l
+ls -al | less

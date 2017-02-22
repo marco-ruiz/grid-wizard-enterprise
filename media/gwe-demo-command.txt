@@ -1,0 +1,10 @@
+Demo P2EL Command (Variable Declarations + Templated Command Line):
+
+${ITER}=[10..40||10] ${HIST}=[20..100||020] ${SAM}=[500..3000||0500] 
+
+/home/mruiz/Slicer3/Slicer3 --launch /home/mruiz/Slicer3/lib/Slicer3/Plugins/BSplineDeformableRegistration --iterations ${ITER} --gridSize 5 --histogrambins ${HIST} --spatialsamples ${SAM} --maximumDeformation 1  --default  0  --resampledmovingfilename /home/mruiz/gslicer3Test/out-${ITER}-${HIST}-${SAM}.nrrd  in[fixed.nrrd]:http://www.na-mic.org/ViewVC/index.cgi/trunk/Libs/MRML/Testing/TestData/fixed.nrrd?view=co in[mov.nrrd]:http://www.na-mic.org/ViewVC/index.cgi/trunk/Libs/MRML/Testing/TestData/moving.nrrd?view=co 
+
+&& 
+
+/home/mruiz/Slicer3/Slicer3 --launch /home/mruiz/Slicer3/lib/Slicer3/Plugins/BSplineDeformableRegistration --iterations ${ITER} --gridSize 5 --histogrambins ${HIST} --spatialsamples ${SAM} --maximumDeformation 1  --default  0  --resampledmovingfilename /home/mruiz/gslicer3Test/out-${ITER}-${HIST}-${SAM}.nrrd  in[fixed.nrrd]:http://www.na-mic.org/ViewVC/index.cgi/trunk/Libs/MRML/Testing/TestData/fixed.nrrd?view=co in[mov.nrrd]:http://www.na-mic.org/ViewVC/index.cgi/trunk/Libs/MRML/Testing/TestData/moving.nrrd?view=co 
+

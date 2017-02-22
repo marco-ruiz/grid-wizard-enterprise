@@ -1,0 +1,820 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>GWE - P2EL Semantincs</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Marco Ruiz" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                                                    
+<meta content="GWE (Grid Wizard Enterprise) is an open source, HPC distributed enterprise system, which leverages on clusters of computers, in order to provide a powerful grid computing platform for end users to easily and effectively parallelize the execution of an (in theory) unlimited number of inter-independent processes." name="description"/>
+                                                        
+<meta content="gwe, grid, cluster, parallel, distributed, computing, hpc, high performance, resource manager, job scheduler, condor, sge, pbs, lsf, torque, globus, metascheduler, jsdl, java, open source" name="keywords"/>
+                                                        
+<meta content="all" name="robots"/>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+                                            <img src="../images/logo.jpg" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 02 Mar 2009
+                  &nbsp;| Version: 0.7.3.alpha
+                      </div>
+            <div class="xright">            <a href="http://www.na-mic.org/" class="externalLink">NAMIC</a>
+            |
+                <a href="http://nbirn.net/" class="externalLink">BIRN</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../news.html">News</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../changes-report.html">Release Notes</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../credits.html">Credits</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+          </ul>
+              <h5>Guides</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../guides/glossary.html">Glossary</a>
+          </li>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                  
+      
+            
+      
+            
+            
+            
+      
+            
+      
+                    
+            <li class="expanded">
+                    <a href="../guides/quick.html">Quick Start Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../guides/install.html">Installation</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../guides/config.html">Configuration</a>
+          </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/user.html">Usage</a>
+                </li>
+                  
+                
+              
+      
+            
+            
+            
+      
+            
+      
+              
+            <li class="expanded">
+                    <a href="../guides/p2el.html">P2EL Specification</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../guides/p2el-syntax.html">Syntax</a>
+          </li>
+                  
+    <li class="none">
+              <strong>Semantics</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="../guides/p2el-macros.html">Macros</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../guides/p2el-samples.html">Examples</a>
+          </li>
+              </ul>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+                    <a href="../guides/resources.html">Other Resources</a>
+          </li>
+          </ul>
+              <h5>GWE Powered Tools</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../integration/api.html">GWE API</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../integration/slicer.html">Case: 3D Slicer3</a>
+          </li>
+          </ul>
+              <h5>Project Collaboration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="https://issues.nbirn.net/jira/browse/GWE" class="externalLink">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../coming-soon.html">Continuous Integration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://groups.google.com/group/gwe-forum?hl=en" class="externalLink">Forum</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../source-repository.html">Source Repository</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../team-list.html">Team</a>
+          </li>
+          </ul>
+              <h5>Source Code Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../xref/index.html">Browser</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDocs</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../jdepend-report.html">Analysis</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../taglist.html">Tag List</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://maven.apache.org/" title="Maven" class="poweredBy">
+                            <img alt="Maven" src="http://maven.apache.org/images/logos/maven-feather.png" />
+            </a>
+                               
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>P2EL <a name="Semantics">Semantics</a>
+</h2>
+<div class="section"><h3>Value <a name="Generator">Generator</a>
+ Functions</h3>
+<p>These are routines that are registered with a unique identifier into the particular P2EL interpreter. The invocation of these routines is expressed through their registered identifier and associated with a <i>value space variable</i>
+ (see <i><a href="#Variables"> Value Space Variables</a>
+</i>
+ syntax for details) for which it will generate a set of values (using the parameters provided) and assigned these to the associated variable. These routines has optionally the ability to inject pre-process and post-process behavior into the command that will use their respective value (see <a href="#in">File Downloader</a>
+ and <a href="#out">File Uploader</a>
+ function for example of this). </p>
+<p>The P2EL interpreter included with GWE currently support the following functions:</p>
+<table class="bodyTable"><tbody><tr class="a"><td align="left"><b>Function</b>
+</td>
+<td align="left"><b>Function Name</b>
+</td>
+<td align="left"><b>Parameters</b>
+</td>
+<td align="left"><b>Value Set</b>
+</td>
+</tr>
+<tr class="b"><td align="left"><a href="#const">Constants</a>
+</td>
+<td align="left">const</td>
+<td align="left">Comma separated list of values</td>
+<td align="left">Parameters.</td>
+</tr>
+<tr class="a"><td align="left"><a href="#range">Value Range Evaluator</a>
+</td>
+<td align="left">range</td>
+<td align="left">Start value, end value and optionally step value</td>
+<td align="left">Values between <i>start</i>
+ (including it) and <i>end</i>
+ in <i>step</i>
+ increments (or 1 is <i>step</i>
+ value is missing).</td>
+</tr>
+<tr class="b"><td align="left"><a href="#count">Numeric Counter</a>
+</td>
+<td align="left">count</td>
+<td align="left">End integer value</td>
+<td align="left">Integer values from 1 to <i>end</i>
+ value.</td>
+</tr>
+<tr class="a"><td align="left"><a href="#dir">Files Matcher</a>
+</td>
+<td align="left">dir</td>
+<td align="left">Root URI and regular expression patterns</td>
+<td align="left">Files that match the root path followed by file system branches that matches each of the regular expressions.</td>
+</tr>
+<tr class="b"><td align="left"><a href="#regExp">Regular Expression Evaluator</a>
+</td>
+<td align="left">regExp</td>
+<td align="left">Desired match index, source and regular expressions patterns (prefix, match and suffix)</td>
+<td align="left">Match(es) of the regular expression when applied to the source.</td>
+</tr>
+<tr class="a"><td align="left"><a href="#xpath">XPath Parser</a>
+</td>
+<td align="left">xpath</td>
+<td align="left">URI of an XML file or a well formatted XML element and an XPath expression</td>
+<td align="left">Match(es) of the XPath expression when applied to the XML file or XML element provided.</td>
+</tr>
+<tr class="b"><td align="left"><a href="#lines">Text File Parser</a>
+</td>
+<td align="left">lines</td>
+<td align="left">URI of the file to parse</td>
+<td align="left">Lines encountered in the target file.</td>
+</tr>
+<tr class="a"><td align="left"><a href="#md5Hex">MD5 Hasher</a>
+</td>
+<td align="left">md5Hex</td>
+<td align="left">List of values for which to compute their corresponding MD5 hash</td>
+<td align="left">MD5 hash of the parameters in hexadecimal format.</td>
+</tr>
+<tr class="b"><td align="left"><a href="#uuid">Universal Unique Identifier Generator</a>
+</td>
+<td align="left">uuid</td>
+<td align="left">Number of UUIDs to generate. The default quantity (for no parameters) is 1.</td>
+<td align="left">UUIDs generated.</td>
+</tr>
+<tr class="a"><td align="left"><a href="#in">File Downloader</a>
+</td>
+<td align="left">in</td>
+<td align="left">URI of the file/directory to stage, optional name to use when staging the file<br />
+and optional flag to indicate the staged file is a bundle</td>
+<td align="left">Staged file location.</td>
+</tr>
+<tr class="b"><td align="left"><a href="#out">File Uploader</a>
+</td>
+<td align="left">out</td>
+<td align="left">URI where to upload the file/directory generated by the process invocation</td>
+<td align="left">Temporary output file (to be staged remotely when the command completes).</td>
+</tr>
+</tbody>
+</table>
+<div class="section"><h4>1. Constants Function ( <a name="const">const</a>
+ )</h4>
+<p>The most basic of the functions. It translates each of its parameters into a value to be included into the resulting value set. For example:</p>
+<div class="source"><pre>        $const(X)                =  X
+        $const(1,-7,0.93)        =  1, -7, 0.93
+        $const(myFile,yourFile)  =  myFile, yourFile</pre>
+</div>
+<p>P2EL recognizes a special shortcut property for defining variables where the variable declaration is immediately followed by a value. This particular construct is internally equivalent to an invocation to this function with parameter equal to the value assigned. The following is the general form with some examples: </p>
+<div class="source"><pre>        ${VAR}=X                      &lt;=&gt;  ${VAR}=$const(X)
+        
+        ${HOME}=/home/user            &lt;=&gt;  ${HOME}=$const(/home/user)
+        ${REG_EXP}=out-\\d*[.]log     &lt;=&gt;  ${REG_EXP}=$const(out-\\d*[.]log)</pre>
+</div>
+</div>
+<div class="section"><h4>2. Range Function ( <a name="range">range</a>
+ )</h4>
+<p>This function takes a mandatory <i>start</i>
+ numeric parameter, a mandatory <i>end</i>
+ numeric parameter and an optional <i>step</i>
+ numeric parameter (if <i>step</i>
+ is missing it takes the value of 1); and using them will generate a value set composed of all values between <i>start</i>
+ (including it) and <i>end</i>
+ in <i>step</i>
+ increments. For example:</p>
+<div class="source"><pre>        $range(0,5)           = 0, 1, 2, 3, 4, 5
+        $range(0,5,1)         = 0, 1, 2, 3, 4, 5 (Same as previous example. Explicitly stating the default step value)
+        $range(1,12,2)        = 1, 3, 5, 7, 9, 11
+        $range(0.1,2,0.15)    = 0.10, 0.25, 0.40, 0.55, 0.70, 0.85, 1.00, 1.15, 1.30, 1.45, 1.60, 1.75, 1.90 </pre>
+</div>
+<p>The numeric values generated will be formatted according to the format of the <i>step</i>
+ value. The number of digits used in the integer portion will be the minimum length of the digits the integers portion of a value will have (padded with leading zeros as needed). The number of digits used in the decimals portion of the step value will specify the precision of the values (padded with trailing zeros as needed). The following are the previous examples <i>'reformatted'</i>
+, plus a couple more for illustrative purposes:</p>
+<div class="source"><pre>        $range(0,5)           = 0, 1, 2, 3, 4, 5
+        $range(0,5,01.00)     = 00.00, 01.00, 02.00, 03.00, 04.00, 05.00 (Same as previous example; but reformatting values)
+        $range(1,10,002)      = 001, 003, 005, 007, 009
+        $range(0.1,2,0.1500)  = 0.1000, 0.2500, 0.4000, 0.5500, 0.7000, 0.8500, 1.0000, 1.1500, 1.3000, 1.4500, 1.6000, 1.7500, 1.9000 
+        
+        $range(0.25,110,9.25) = 0.25, 9.50, 18.75, 28.00, 37.25, 46.50, 55.75, 65.00, 74.25, 83.50, 92.75, 102.00
+        $range(8,1000,001)    = 008, 009, 010, 011 ... 099, 100, 101, ... 999, 1000 (notice 1000 have 3 integer digits: formatting guarantees only minimum number of integer digits.)</pre>
+</div>
+</div>
+<div class="section"><h4>3. Numeric Counter Function ( <a name="count">count</a>
+ )</h4>
+<p>This function is a specialized form of the range function. The following is the general equivalence (for <tt>X</tt>
+ integer value):</p>
+<div class="source"><pre>        ${VAR}=$count(X)  &lt;=&gt;  ${VAR}=$range(1,X,1)</pre>
+</div>
+</div>
+<div class="section"><h4>4. Files Matcher Function ( <a name="dir">dir</a>
+ )</h4>
+<p>This function resolves a set of files matching the pattern created with the semantical interpretation of its parameters. Its parameters are:</p>
+<ul><li>A URI.</li>
+<li>A list of <a href="http://en.wikipedia.org/wiki/Regular_expression" class="externalLink">regular expressions</a>
+.</li>
+</ul>
+<p>The first parameter is interpreted as the root URI of the matching file and the list of regular expressions as the patterns of the branches of the matching files after the root URI. For example, given the following file system (under <tt>sftp://host</tt>
+) :</p>
+<div class="source"><pre>        /home/
+        /home/other-user/
+        /home/other-user/.profile
+                
+        /home/other-user/1
+        /home/other-user/1/out-1.log
+                
+        /home/user/
+        /home/user/.profile
+        
+        /home/user/1
+        /home/user/1/out-1.log
+        /home/user/1/out-234.log
+        /home/user/1/out-1a.log
+        /home/user/1/out-1
+        
+        /home/user/12
+        /home/user/12/out-1.log
+        
+        /home/user/1a
+        /home/user/1a/out-1.log</pre>
+</div>
+<p>The following function invocation ...</p>
+<div class="source"><pre>        $dir(sftp://host/home/,user,\d*,out-\d*[.]log)</pre>
+</div>
+<p>... would generate the following set of values:</p>
+<div class="source"><pre>        sftp://host/home/user/1/out-1.log
+        sftp://host/home/user/1/out-234.log
+        sftp://host/home/user/12/out-1.log</pre>
+</div>
+</div>
+<div class="section"><h4>5. Regular Expression Evaluator ( <a name="regExp">regExp</a>
+ )</h4>
+<p>This function works similarly to the <a href="http://en.wikipedia.org/wiki/Grep" class="externalLink"><i>'grep'</i>
+</a>
+ unix command. The values generated are the sub strings found in the second parameter (data source) that match the fourth parameter pattern (expressed in <a href="http://en.wikipedia.org/wiki/Regular_expression" class="externalLink">regular expression</a>
+ format). The optional second and fourth parameters (default to empty string) are the patterns of the prefix and suffix of the match respectively (also expressed in <a href="http://en.wikipedia.org/wiki/Regular_expression" class="externalLink">regular expression</a>
+ format). The function expands to a value space equals to the match which index is provided as the first parameter, if non-negative, non-empty or all matches otherwise. For example: </p>
+<div class="source"><pre>        $regExp(0,/home/user/data/file, /, [^/]*)                                       = home
+        $regExp(1,/home/user/data/file, /, [^/]*)                                       = user
+        $regExp(2,/home/user/data/file, /, [^/]*)                                       = data
+        $regExp(3,/home/user/data/file, /, [^/]*)                                       = file
+
+        $regExp(-1,/home/user/data/file, /, [^/]*)                                      = home, user, data, file
+        
+        $regExp(,/home/user/data/file, /, [^/]*)                                        = home, user, data, file
+        $regExp(,/home/user/data/file, /, [^/]*, $)                                     = file
+        $regExp(,cmd --aIndex 1 --bIndex 2 --other 4 --cIndex 3, \s*--, [^\s]*, Index)  = a, b, c
+        $regExp(,http://host/path, ://, [^/]*, /)                                       = host</pre>
+</div>
+</div>
+<div class="section"><h4>6. XPath Parser ( <a name="xpath">xpath</a>
+ )</h4>
+<p>This function queries an XML element specified as the first parameter (in the form of a URI to an actual XML file or a literal well-formatted XML element) using an <i><a href="http://en.wikipedia.org/wiki/Xpath" class="externalLink">XPath expression</a>
+</i>
+ specified as the second parameter and generates a value set equals to the set of matches resulting from such query. For example, for the XML file located at <i><a href="http://www.gridwizardenterprise.org/test/oasis-id.xcat" class="externalLink">http://www.gridwizardenterprise.org/test/oasis-id.xcat</a>
+</i>
+ with the following content:</p>
+<div class="source"><pre>        &lt;Catalog ID=&quot;ID1&quot;&gt;
+                &lt;entries&gt;
+                        &lt;entry name=&quot;first&quot;   ID=&quot;0005_1&quot;  format=&quot;HDR&quot;/&gt;
+                        &lt;entry name=&quot;second&quot;  ID=&quot;0005_2&quot;  format=&quot;HDR&quot;/&gt;
+                        &lt;entry name=&quot;third&quot;   ID=&quot;0005_3&quot;  format=&quot;HDR&quot;/&gt;
+                        &lt;entry name=&quot;fourth&quot;  ID=&quot;0005_4&quot;  format=&quot;HDR&quot;/&gt;
+                        &lt;entry name=&quot;fifth&quot;   ID=&quot;0010_1&quot;  format=&quot;HDR&quot;/&gt;
+                        &lt;entry name=&quot;sixth&quot;   ID=&quot;0010_2&quot;  format=&quot;HDR&quot;/&gt;
+                        &lt;entry name=&quot;seventh&quot; ID=&quot;0010_3&quot;  format=&quot;HDR&quot;/&gt;
+                        &lt;entry name=&quot;eight&quot;   ID=&quot;0015_1&quot;  format=&quot;HDR&quot;/&gt;
+                        &lt;entry name=&quot;ninth&quot;   ID=&quot;0015_2&quot;  format=&quot;HDR&quot;/&gt;
+                        &lt;entry name=&quot;tenth&quot;   ID=&quot;0020_1&quot;  format=&quot;HDR&quot;/&gt;
+                &lt;/entries&gt;
+        &lt;/Catalog&gt;</pre>
+</div>
+<p>The following function invocation generated a value set composed by all the XML entry elements: </p>
+<div class="source"><pre>        $xpath(http://www.gridwizardenterprise.org/test/oasis-id.xcat,//entry)</pre>
+</div>
+<p>And if we assigned that function invocation to a variable named <tt>ENTRIES</tt>
+, then the following list of function invocations can be defined to generate the respective value set:</p>
+<div class="source"><pre>        $xpath(${ENTRIES},/entry/@name)      = first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth 
+        $xpath(${ENTRIES},/entry/@ID)        = 0005_1, 0005_2, 0005_3, 0005_4, 0010_1, 0010_2, 0010_3, 0015_1, 0015_2, 0020_1 
+        $xpath(${ENTRIES},/entry/@format)    = HDR, HDR, HDR, HDR, HDR, HDR, HDR, HDR, HDR, HDR</pre>
+</div>
+</div>
+<div class="section"><h4>7. Text File Parser ( <a name="lines">lines</a>
+ )</h4>
+<p>This function parses a text file (which URI is passed as parameter) and generates a value space with the lines found in it. For example given the file with URI 'http://host/path/file-1' with contents: </p>
+<div class="source"><pre>        100:alfa:20:1:A:0.5
+        150:beta:40:2:B:-0.5
+        200:gamma:60:3:C:0.5
+        150:delta:80:4:D:-0.5</pre>
+</div>
+<p>then the following function invocation will generate the following value space: </p>
+<div class="source"><pre>        $lines(http://host/path/file-1) = 100:alfa:20:1:A:0.5, 150:beta:40:2:B:-0.5, 200:gamma:60:3:C:0.5, 150:delta:80:4:D:-0.5</pre>
+</div>
+</div>
+<div class="section"><h4>8. MD5 Hasher ( <a name="md5Hex">md5Hex</a>
+ )</h4>
+<p>This function computes the <i><a href="http://en.wikipedia.org/wiki/MD5" class="externalLink">'MD5 hash'</a>
+</i>
+ value of each of its parameters and generates a value space with their hexadecimal representation. For example: </p>
+<div class="source"><pre>        $md5Hex(http://host/path/file-1)    = 3E19898877CBD679CFB57AE753AF8F27
+        $md5Hex(http://host/path/file-2)    = 6E4C6E206CC5F06F15C4B5F62C5684B0
+        $md5Hex(user-1,user-2)              = D6D7705392BC7AF633328BEA8C4C6904, 3D58CE20FE802793E0B221905BAA60B3</pre>
+</div>
+</div>
+<div class="section"><h4>9. Universally Unique Identifier Generator ( <a name="uuid">uuid</a>
+ )</h4>
+<p>This function generates as many random <i><a href="http://en.wikipedia.org/wiki/Universally_Unique_Identifier" class="externalLink">UUIDs</a>
+</i>
+ as specified by its first and unique parameters. If no parameter is provided then it will default to just 1 UUID to generate. For example: </p>
+<div class="source"><pre>        $uuid()    = dc5ac05b-c642-4d5a-94e0-29d1855ad352
+        $uuid(3)   = 24faf14f-7e46-4609-95e8-86700a6de4b0, 44ef0e08-7239-46f9-ba6c-8fae117407ec, a13cd13d-b087-48e0-9cb5-c1d86c59b67d</pre>
+</div>
+</div>
+<div class="section"><h4>10. File Downloader Function ( <a name="in">in</a>
+ )</h4>
+<p>Sometimes, a process invocation requires to read files (or files on directories), which will not necessarily be available in the particular cluster file system tasked to execute the process. In such cases, the files (or directories) have to be downloaded from their remote locations into the cluster file system. For those cases, this function has been implemented to allow the user to express the request to execute such &quot;pre-process&quot; task by stating the remote file's (or directory's) URI and optionally a name to rename the downloaded copy of the file (or directory). This function generates as single value the location of the downloaded file. GWE uses this function invocation to securely download the remote files to a &quot;sandbox&quot; virtual file system (reserved only for the requesting user). For example:</p>
+<div class="source"><pre>        $in(sftp://host/home/user/input/input1)         = [JOB_VIRTUAL_FILESYSTEM]/sftp/host/user/input/input1
+        $in(http://host/operation.do?param=3,html.page) = [JOB_VIRTUAL_FILESYSTEM]/http/host/html.page</pre>
+</div>
+<p>An extra, optional parameter is available to flag the function to try to extract the contents of the staged file if it is a supported bundle. The bundles supported are <i>zip</i>
+, <i>tar</i>
+, <i>tar.gz</i>
+ and <i>tar.bz2</i>
+ (granted the respective utilities must exist on the cluster). The bundle type of a stage file flagged for decompression is determined based on the file's extension. The extracted contents can be found under:</p>
+<div class="source"><pre>        [STAGED_FILE]-contents</pre>
+</div>
+<p>Where [STAGED_FILE] is the full path of the staged file including the file itself and its extension.</p>
+</div>
+<div class="section"><h4>11. File Uploader Function ( <a name="out">out</a>
+ )</h4>
+<p>Sometimes, a process invocation require to write files (or entire directories) to a file system other than the cluster's. In such cases, these files (or directories) have to be uploaded from the cluster file system to their remote location after the completion of the process invocation. For those cases, this function has been implemented to allow the user to express the request to execute such &quot;post-process&quot; task by stating the remote file's (or directory's) URI to be uploaded. This function generates as single value the location of a temporary &quot;placeholder&quot; output file. GWE separates this placeholder file in a &quot;sandbox&quot; virtual file system (reserved only for the requesting user) and after the process invocation completes (output file written to temporary placeholder location), it securely uploads it to its stated destination. Example:</p>
+<div class="source"><pre>        $out(sftp://host/home/user/out/output1) = [JOB_VIRTUAL_FILESYSTEM]/sftp/host/home/user/out/output1
+        $out(sftp://host/home/user/out/output2) = [JOB_VIRTUAL_FILESYSTEM]/sftp/host/home/user/out/output2</pre>
+</div>
+</div>
+</div>
+<div class="section"><h3>Value Space Variables <a name="Permutations">Permutations</a>
+</h3>
+<p>As we mentioned, <i>P2EL value space variables</i>
+ are variables associated with a set of values resolved by a given function (<i>value generator function</i>
+) with given parameters. With the values of all variables resolved the <i>value space sets</i>
+ are generated as the output of permutating these values all to all. For example, assuming that variable <tt>${index}</tt>
+ is assigned values <tt>1,2,3</tt>
+ and variable <tt>${letter}</tt>
+ is assigned values <tt>a,b</tt>
+ their associated <i>value space set</i>
+ (generated by permutating their values) would be:</p>
+<table class="bodyTable"><tbody><tr class="a"><td align="left"><b>${index}</b>
+</td>
+<td align="left"><b>${letter}</b>
+</td>
+</tr>
+<tr class="b"><td align="left">1</td>
+<td align="left">a</td>
+</tr>
+<tr class="a"><td align="left">2</td>
+<td align="left">a</td>
+</tr>
+<tr class="b"><td align="left">3</td>
+<td align="left">a</td>
+</tr>
+<tr class="a"><td align="left">1</td>
+<td align="left">b</td>
+</tr>
+<tr class="b"><td align="left">2</td>
+<td align="left">b</td>
+</tr>
+<tr class="a"><td align="left">3</td>
+<td align="left">b</td>
+</tr>
+</tbody>
+</table>
+<p>However there are some exceptions to this all-to-all type of permutations, designed into P2EL to allow the support of far richer scenarios. The following are the exception available so far:</p>
+<p>The compilation process respect the following considerations to create a permutation:</p>
+<div class="section"><h4>1. Variable <a name="co-dependencies">co-dependencies</a>
+</h4>
+<p>This exception occurs when the values of one variable depends on the values of another. In such case the values of the dependent variable will be 'tied' to the particular values of the dependency variable that spawned it. For example, given the following variable declarations for a single statement:</p>
+<div class="source"><pre>        ${index}=$count(5)
+        ${increment}=$count(${index})</pre>
+</div>
+<p>The permutations created will use a fixed set of values for <tt>index</tt>
+ and for each value of index, it will use a different set of values for <tt>increment</tt>
+ (since it is a value dependent on the value of <tt>index</tt>
+). Therefor, this would result in the following permutations (represented as the associated <i>value space set</i>
+ - one <i>value space</i>
+ per row):</p>
+<table class="bodyTable"><tbody><tr class="b"><td align="left"><b>${index}</b>
+</td>
+<td align="left"><b>${increment}</b>
+</td>
+</tr>
+<tr class="a"><td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr class="b"><td align="left">2</td>
+<td align="left">1</td>
+</tr>
+<tr class="a"><td align="left">2</td>
+<td align="left">2</td>
+</tr>
+<tr class="b"><td align="left">3</td>
+<td align="left">1</td>
+</tr>
+<tr class="a"><td align="left">3</td>
+<td align="left">2</td>
+</tr>
+<tr class="b"><td align="left">3</td>
+<td align="left">3</td>
+</tr>
+<tr class="a"><td align="left">4</td>
+<td align="left">1</td>
+</tr>
+<tr class="b"><td align="left">4</td>
+<td align="left">2</td>
+</tr>
+<tr class="a"><td align="left">4</td>
+<td align="left">3</td>
+</tr>
+<tr class="b"><td align="left">4</td>
+<td align="left">4</td>
+</tr>
+</tbody>
+</table>
+<p>The following are additional examples to illustrate the many uses of this feature:</p>
+<div class="source"><pre>        ${files}=$dir(sftp://host, .*?$[.]ext) ${downloadedFile}=$in(${files})
+        
+        ${host}=$const(hostA, hostB, hostC) ${files}=$dir(sftp://${host}/path, regExp1, regExp2)
+        
+        ${index}=$count(10) ${space}=$range(20,100,020) ${weight}=$range(0,1,0.1) ${file}=$out(sftp://destinationHost/path/out-${index}-${space}-${weight}.nrrd)</pre>
+</div>
+</div>
+<div class="section"><h4>2. <a name="Multidimensional">Multidimensional</a>
+ variables (or <a name="Array">Array</a>
+ type of variables) </h4>
+<p>The compilation process does not permutate among the dimensions of a multi-dimensional variable. Its values are to be grouped and treated as a single set.</p>
+<p>A variable's name has the intrinsic property of deterministically specify and <a href="#Array">array</a>
+ of values. If the name contains a name with a dot in it, it will be interpreted as a dimension of an array variable define by the part before the dot. For example, given the following variable declarations for a single statement:</p>
+<div class="source"><pre>        ${files}=$const(/home/user/file1,/home/user/file2)
+        ${algorithm.index}=$count(6)
+        ${algorithm.space}=$range(0,3000,1000) 
+        ${algorithm.weight}=$const(3,11,-8,4,-23)</pre>
+</div>
+<p>The permutations created will include only 2 variables <tt>files</tt>
+ and <tt>algorithm</tt>
+. <tt>files</tt>
+ would iterate over the 3 constant values associated and <tt>algorithm</tt>
+ iterating over the multidimensional values associated. These multidimensional values are one for <tt>space</tt>
+, one for <tt>index</tt>
+ and another one for <tt>weight</tt>
+. These would result in the following permutations (represented as the associated <i>value space set</i>
+ - one <i>value space</i>
+ per row):</p>
+<table class="bodyTable"><tbody><tr class="a"><td align="left"><b>${files}</b>
+</td>
+<td align="left"><b>${algorithm.index}</b>
+</td>
+<td align="left"><b>${algorithm.space}</b>
+</td>
+<td align="left"><b>${algorithm.weight}</b>
+</td>
+</tr>
+<tr class="b"><td align="left">/home/user/file1</td>
+<td align="left">1</td>
+<td align="left">0000</td>
+<td align="left">3</td>
+</tr>
+<tr class="a"><td align="left">/home/user/file1</td>
+<td align="left">2</td>
+<td align="left">1000</td>
+<td align="left">11</td>
+</tr>
+<tr class="b"><td align="left">/home/user/file1</td>
+<td align="left">3</td>
+<td align="left">2000</td>
+<td align="left">-8</td>
+</tr>
+<tr class="a"><td align="left">/home/user/file1</td>
+<td align="left">4</td>
+<td align="left">3000</td>
+<td align="left">4</td>
+</tr>
+<tr class="b"><td align="left">/home/user/file1</td>
+<td align="left">5</td>
+<td align="left"><tt>[EMPTY]</tt>
+</td>
+<td align="left">-23</td>
+</tr>
+<tr class="a"><td align="left">/home/user/file1</td>
+<td align="left">6</td>
+<td align="left"><tt>[EMPTY]</tt>
+</td>
+<td align="left"><tt>[EMPTY]</tt>
+</td>
+</tr>
+<tr class="b"><td align="left">/home/user/file2</td>
+<td align="left">1</td>
+<td align="left">0000</td>
+<td align="left">3</td>
+</tr>
+<tr class="a"><td align="left">/home/user/file2</td>
+<td align="left">2</td>
+<td align="left">1000</td>
+<td align="left">11</td>
+</tr>
+<tr class="b"><td align="left">/home/user/file2</td>
+<td align="left">3</td>
+<td align="left">2000</td>
+<td align="left">-8</td>
+</tr>
+<tr class="a"><td align="left">/home/user/file2</td>
+<td align="left">4</td>
+<td align="left">3000</td>
+<td align="left">4</td>
+</tr>
+<tr class="b"><td align="left">/home/user/file2</td>
+<td align="left">5</td>
+<td align="left"><tt>[EMPTY]</tt>
+</td>
+<td align="left">-23</td>
+</tr>
+<tr class="a"><td align="left">/home/user/file2</td>
+<td align="left">6</td>
+<td align="left"><tt>[EMPTY]</tt>
+</td>
+<td align="left"><tt>[EMPTY]</tt>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Notice how the 'n'th values of each of the <tt>${algorithm.X}</tt>
+ variables are paired up together in what would be a single multidimensional value. Also notice how for dimensional variables not having values, an <b>empty</b>
+ string will be used as their value in permutations where there are still dimensional <b>non-empty</b>
+ values. </p>
+</div>
+<div class="section"><h4>3. <a name="Contextual">Contextual</a>
+ system and runtime variables</h4>
+<p>These are variables, injected by P2EL into each of the value spaces generated; which provides referential access to the environment where the process invocation is going to be executed. System variables are those static values proper of the GWE system itself; while runtime variables are dynamic values that can be resolved only by the compute resource processing the job (for example user home directory). The following are the system and runtime variables available: </p>
+<table class="bodyTable"><tbody><tr class="b"><td align="left"><b>Variable</b>
+</td>
+<td align="left"><b>Description</b>
+</td>
+</tr>
+<tr class="a"><td align="left">${SYSTEM_ORDER_ID}</td>
+<td align="left">The unique internal identifier of the order.</td>
+</tr>
+<tr class="b"><td align="left">${SYSTEM_JOB_NUM}</td>
+<td align="left">The unique internal identifier (within its order) of the process invocation (job).</td>
+</tr>
+<tr class="a"><td align="left">${SYSTEM_JOB_ID}</td>
+<td align="left">The unique internal identifier (overall) of the process invocation (job).</td>
+</tr>
+<tr class="b"><td align="left">${RUNTIME_USER_HOME}</td>
+<td align="left">The full path of the home directory of the account running the process invocation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007-2009
+    
+          
+  
+
+  
+    
+            
+  
+    
+   - <a href="http://maven.apache.org/privacy-policy.html">Privacy Policy</a></div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  <script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-1");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>

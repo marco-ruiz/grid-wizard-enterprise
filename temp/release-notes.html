@@ -1,0 +1,896 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>GWE - Release Notes - Maven $currentVersion</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Brett Porter
+Jason van Zyl" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                                                    
+<meta content="GWE (Grid Wizard Enterprise) is an open source, HPC distributed enterprise system, which leverages on clusters of computers, in order to provide a powerful grid computing platform for end users to easily and effectively parallelize the execution of an (in theory) unlimited number of inter-independent processes." name="description"/>
+                                                        
+<meta content="gwe, grid, cluster, parallel, distributed, computing, hpc, high performance, resource manager, job scheduler, condor, sge, pbs, lsf, torque, globus, metascheduler, jsdl, java, open source" name="keywords"/>
+                                                        
+<meta content="all" name="robots"/>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+                                            <img src="../images/logo.jpg" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 02 Mar 2009
+                  &nbsp;| Version: 0.7.3.alpha
+                      </div>
+            <div class="xright">            <a href="http://www.na-mic.org/" class="externalLink">NAMIC</a>
+            |
+                <a href="http://nbirn.net/" class="externalLink">BIRN</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../news.html">News</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../changes-report.html">Release Notes</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../credits.html">Credits</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+          </ul>
+              <h5>Guides</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../guides/glossary.html">Glossary</a>
+          </li>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                  
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                    
+        <li class="expanded">
+                    <a href="../guides/quick.html">Quick Start Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../guides/install.html">Installation</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../guides/config.html">Configuration</a>
+          </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/user.html">Usage</a>
+                </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/p2el.html">P2EL Specification</a>
+                </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+                    <a href="../guides/resources.html">Other Resources</a>
+          </li>
+          </ul>
+              <h5>GWE Powered Tools</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../integration/api.html">GWE API</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../integration/slicer.html">Case: 3D Slicer3</a>
+          </li>
+          </ul>
+              <h5>Project Collaboration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="https://issues.nbirn.net/jira/browse/GWE" class="externalLink">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../coming-soon.html">Continuous Integration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://groups.google.com/group/gwe-forum?hl=en" class="externalLink">Forum</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../source-repository.html">Source Repository</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../team-list.html">Team</a>
+          </li>
+          </ul>
+              <h5>Source Code Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../xref/index.html">Browser</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDocs</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../jdepend-report.html">Analysis</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../taglist.html">Tag List</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://maven.apache.org/" title="Maven" class="poweredBy">
+                            <img alt="Maven" src="http://maven.apache.org/images/logos/maven-feather.png" />
+            </a>
+                               
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Maven $<a name="currentVersion">currentVersion</a>
+</h2>
+<p>The Apache Maven team would like to announce the release of Maven $<a name="currentVersion">currentVersion</a>
+.</p>
+<p>Maven $<a name="currentVersion">currentVersion</a>
+ is <a href="download.html"> available for download</a>
+.</p>
+<p>Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central place.</p>
+<p>The core release is independent of the plugins available. Further releases of plugins will be made separately. See <a href="plugins/index.html"> Plugin List</a>
+ for more information.</p>
+<p>We hope you enjoy using Maven! If you have any questions, please consult:</p>
+<ul><li>the web site: <a href="http://maven.apache.org/" class="externalLink">http://maven.apache.org/</a>
+</li>
+<li>the maven-user mailing list: <a href="http://maven.apache.org/mail-lists.html" class="externalLink">http://maven.apache.org/mail-lists.html</a>
+</li>
+</ul>
+<p>For news and information, see:</p>
+<ul><li>Maven Dashboard: <a href="http://docs.codehaus.org/display/MAVEN/Home" class="externalLink">http://docs.codehaus.org/display/MAVEN/Home</a>
+</li>
+</ul>
+<div class="section"><h3>2.0.8 Release Notes</h3>
+<p>Release Notes - Maven 2 - Version 2.0.8</p>
+<p>The full list of changes can be found <a href="http://jira.codehaus.org/secure/ReleaseNote.jspa?version=13139&amp;styleName=Text&amp;projectId=10500&amp;Create=Create" class="externalLink">here</a>
+, and is reproduced below.</p>
+<div class="section"><h4>Changes that may affect existing builds</h4>
+<ul><li><a href="http://jira.codehaus.org/browse/MNG-3118" class="externalLink"> MNG-3118</a>
+ - Test-classes should come before classes in the classpath. This may slightly alter behavior of tests. The test-classes is now included first in the classpath to allow test resources to override normal runtime ones.</li>
+</ul>
+</div>
+<div class="section"><h4>Bug</h4>
+<ul><li>[MNG-2025] - POM is still not read using the right encoding</li>
+<li>[MNG-2045] - Maven can't compile against sibling test-jar dependency in multiproject (Test Attached)</li>
+<li>[MNG-2061] - DistributionManagement properties don't get copied in cloned executionProject while lifecycle fork</li>
+<li>[MNG-2254] - the encoding parameter in xml declaration of POM is ignored </li>
+<li>[MNG-2277] - aggregating plugins in submodules of the reactor return all projects causing a chicken/egg issue</li>
+<li>[MNG-2593] - Maven 2 stumbels upon non ASCII characters in the value of a <i>localRepository</i>
+ value in the $HOME/.m2/settings.xml</li>
+<li>[MNG-2685] - mvn.bat detection of 4NT syntax error</li>
+<li>[MNG-2932] - Encoding chaos</li>
+<li>[MNG-2961] - DefaultArtifact getBaseVersion is changed to &quot;xxxx-SNAPSHOT&quot; only if you first call isSnapshot()</li>
+<li>[MNG-3046] - DefaultArtifactVersion compareTo misbehaves regarding buildNumber 0</li>
+<li>[MNG-3077] - NullPointerException, if MojoExecutionException has no message</li>
+<li>[MNG-3084] - mvn.bat in maven 2.0.7 does not return the correct error code.</li>
+<li>[MNG-3095] - maven-plugin-testing-tools causes bad version in deployed artifacts after tests are run</li>
+<li>[MNG-3134] - DefaultModelInheritence::assembleDistributionInheritence should be childPathAdjustment aware</li>
+<li>[MNG-3141] - Build not working if pom.xml is a symbolic link</li>
+<li>[MNG-3215] - Missing rar artifact handler descriptor</li>
+<li>[MNG-3240] - maven-model RepositoryBase.equals() causes ClassCastException</li>
+<li>[MNG-3245] - Maven Reporting API is binary incompatible in 2.0.8-SNAPSHOT by r579987</li>
+<li>[MNG-3254] - artifactId is not appended any more in distributionManagement.site.url in multi modules when it's not defined in a child</li>
+<li>[MNG-3298] - invoker MavenCommandLineBuilder#checkRequiredState() should not throw Exception if envvar M2_HOME exists</li>
+</ul>
+</div>
+<div class="section"><h4>Improvement</h4>
+<ul><li>[MNG-2188] - Report mojos should check canGenerateReport() when called directly</li>
+<li>[MNG-2290] - Generated URLs in POMs of child modules</li>
+<li>[MNG-3024] - Missing artifact error text improvement</li>
+<li>[MNG-3047] - DefaultArtifactVersion compareTo inconsistent with equals</li>
+<li>[MNG-3062] - Allow access to mojoExecution from within plugin.</li>
+<li>[MNG-3118] - Test-classes should come before classes in the classpath</li>
+<li>[MNG-3152] - Change to plugin testing harness to allow the setting of ArtifactRepository on the ArtifactStub</li>
+<li>[MNG-3201] - org.apache.maven.project.MavenProject needs a toString()</li>
+</ul>
+</div>
+<div class="section"><h4>New Feature</h4>
+<ul><li>[MNG-2105] - Enable remote debugging command line option (+ docs)</li>
+<li>[MNG-2166] - Provide the help listing as default when no arguments are provided</li>
+</ul>
+</div>
+<div class="section"><h4>Task</h4>
+<ul><li>[MNG-3088] - update the assembly name</li>
+</ul>
+</div>
+<div class="section"><h4>Wish</h4>
+<ul><li>[MNG-3207] - Order of repositories for download should be inverted if Archiva is used.</li>
+</ul>
+</div>
+</div>
+<div class="section"><h3>2.0.7 Release Notes</h3>
+<p>The full list of changes can be found <a href="http://jira.codehaus.org/secure/IssueNavigator.jspa?reset=true&amp;&amp;fixfor=13138&amp;pid=10500&amp;sorter/field=issuekey&amp;sorter/order=DESC" class="externalLink">here</a>
+, and is reproduced below.</p>
+<div class="section"><h4>Bug </h4>
+<ul><li>[MNG-2247] - Release-Dates of maven releases not documented on website? </li>
+<li>[MNG-2267] - Introduction to Repositories contains incorrect information </li>
+<li>[MNG-2289] - Newer SNAPSHOT parents in the remote repository are ignored </li>
+<li>[MNG-2432] - Apache and Mojo plugins take precendence over plugins in the pom. </li>
+<li>[MNG-2689] - <i>type</i>
+ejb-client<i>/type</i>
+ dependency not working properly as reactor build </li>
+<li>[MNG-2696] - maven-cli assembly exceptions when using maven to build </li>
+<li>[MNG-2784] - Multiple executions of the same plugin at the same life cycle phase in a multi-module profile mixed up </li>
+<li>[MNG-2831] - Cannot add custom artifact handler and custom lifecycle as a build extension </li>
+<li>[MNG-2860] - Empty <i>module</i>
+<i>/module</i>
+ entry causes OutOfMemoryError </li>
+<li>[MNG-2880] - error message for artifacts with classifiers doesn't instruct user to install with classier </li>
+<li>[MNG-2905] - JIRA URL is wrong on the site </li>
+<li>[MNG-2919] - Scope defined in dependencyManagement section of parent pom overwrites scope of current artifact </li>
+<li>[MNG-2921] - ejb-client dependency no longer working </li>
+<li>[MNG-2923] - Having any active profiles causes the build to fail </li>
+<li>[MNG-2926] - group search order for plugins is inverted </li>
+<li>[MNG-2934] - Cannot Deploy Using Webdav due to DependencyManagement </li>
+<li>[MNG-2939] - ${basedir} isn't well interpolated in properties files </li>
+<li>[MNG-2942] - Typo in Maven introduction </li>
+<li>[MNG-2981] - [PATCH] NPE in PluginXDocGenerator while creating plugin site </li>
+<li>[MNG-2988] - Ranges with inclusive upper bounds are not validated against metadata </li>
+<li>[MNG-2998] - maven-plugin-testing-harness: all collections in MavenProjectStub should return empty collections </li>
+<li>[MNG-3039] - mvn.bat fails </li>
+<li>[MNG-3055] - [regression] loader constraint problems with XmlSerializer if attaching site descriptorImprovement </li>
+</ul>
+</div>
+<div class="section"><h4>Improvement </h4>
+<ul><li>[MNG-980] - Provide control over precedence of org.apache.maven.plugins group in search path </li>
+<li>[MNG-2376] - Have Java code output Java version, not the shell script </li>
+<li>[MNG-2582] - -X (debug) does not display JVM version </li>
+<li>[MNG-2885] - improve os activation documentation </li>
+<li>[MNG-2904] - Misleading error message if profiles that are active by default do not have an ID </li>
+<li>[MNG-2965] - Update svn:ignores for developing with eclipse </li>
+<li>[MNG-3024] - Missing artifact error text improvementNew Feature </li>
+</ul>
+</div>
+<div class="section"><h4>New Feature </h4>
+<ul><li>[MNG-2169] - Want to contribute: Contributing Maven 2 refcard</li>
+</ul>
+</div>
+</div>
+<div class="section"><h3>2.0.6 Release Notes</h3>
+<p>The full list of changes can be found <a href="http://jira.codehaus.org/secure/IssueNavigator.jspa?reset=true&amp;&amp;pid=10500&amp;fixfor=13010&amp;sorter/field=issuekey&amp;sorter/order=DESC" class="externalLink"> here</a>
+, and is reproduced below.</p>
+<div class="section"><h4>Changes that may affect existing builds</h4>
+<ul><li><a href="http://jira.codehaus.org/browse/MNG-1577" class="externalLink"> MNG-1577</a>
+ - Maven will now only obey the dependendencyManagment element in the POM and will align all transitive dependencies to versions specified in the dependencyManagement. To detect any problems that you might have you can refer to these <a href="http://maven.apache.org/plugins/maven-dependency-plugin/examples/preparing-dependencies.html" class="externalLink">notes</a>
+ to prepare for the upgrade.</li>
+</ul>
+</div>
+<div class="section"><h4>Bug</h4>
+<ul><li>[MNG-1577] - dependencyManagement does not work for transitive dependencies</li>
+<li>[MNG-2339] - ${project.*} are interpreted in the wrong place</li>
+<li>[MNG-2362] - Deployed POM is not valid XML</li>
+<li>[MNG-2433] - Maven looks for snapshots in offline mode</li>
+<li>[MNG-2648] - Repeated message &quot;[WARNING] Unable to get resource from repository ... &quot;</li>
+<li>[MNG-2760] - Fix deployment so that assemblies are signed with the GPG plugin</li>
+<li>[MNG-2793] - Snapshot plugins cannot be resolved correctly with java6</li>
+<li>[MNG-2812] - Profile with an undefined os family activation should not activate</li>
+<li>[MNG-2843] - Plugins can't get project properties</li>
+<li>[MNG-2867] - Guide building maven not up to date</li>
+<li>[MNG-2877] - unable to resolve attached artifacts from reactor that are not in repo. (patch applied in svn and IT tests added)</li>
+<li>[MNG-2891] - Fix deployment permissions so by default group write works</li>
+<li>[MNG-2897] - Make sure that Xpp3Dom is shared from the core to plugins</li>
+<li>[MNG-2899] - In cases where ${version} is used in depMan we get null versions in attached artifacts</li>
+<li>[MNG-2900] - Extensions that have no declared dependency on plexus-utils yet need it at runtime will fail.</li>
+</ul>
+</div>
+<div class="section"><h4>Improvement</h4>
+<ul><li>[MNG-2252] - Upgrade to plexus-utils 1.3</li>
+<li>[MNG-2823] - More control over what WARNING messages are displayed</li>
+<li>[MNG-2828] - Upgrade the dependency on plexus-utils to a more recent version</li>
+<li>[MNG-2892] - Use shade to hide the use of plexus-utils internally so that plugins can use their own version</li>
+</ul>
+</div>
+<div class="section"><h4>Task</h4>
+<ul><li>[MNG-2776] - Upgrade the dependency on modello-maven-plugin to a more recent version</li>
+<li>[MNG-2894] - Make sure that if a plugin does not specify the use of plexus-utils that once is fed in to protect against plugins that use plexus-utils but don't declare it.</li>
+<li>[MNG-2898] - Look at allowing all org.codehaus.plexus.util.xml to show through</li>
+</ul>
+</div>
+</div>
+<div class="section"><h3>2.0.5 Release Notes</h3>
+<p>The full list of changes can be found <a href="http://jira.codehaus.org/secure/ReleaseNote.jspa?version=12294&amp;styleName=Text&amp;projectId=10500&amp;Create=Create" class="externalLink"> here</a>
+, and is reproduced below.</p>
+<div class="section"><h4>Changes that may affect existing builds</h4>
+<ul><li><a href="http://jira.codehaus.org/browse/MNG-2794" class="externalLink"> MNG-2794</a>
+ - Maven now behaves in a defined way when matching the nearest dependency when two exist at the same depth in the dependency graph, by matching the first encountered. Previously, it was undefined. This may result in some builds having a different dependency graph, which could cause failures if all compilation dependencies are not specified completely in the POM. While not currently enforced, projects should always list the dependencies it needs to compile, even if they are available transitively.</li>
+<li><a href="http://jira.codehaus.org/browse/MNG-2228" class="externalLink"> MNG-2228</a>
+ - The handling of build extensions has changed. This technique causes less pollution to the global classloader, allowing them to be used more widely for extensions to Maven's core. This may affect builds that used them to expose extra classes to various plugins. While in most scenarios these builds will continue to work, in these situations the <tt>&lt;dependencies&gt;</tt>
+ element of <tt>&lt;plugin&gt;</tt>
+ should be used instead.</li>
+</ul>
+</div>
+<div class="section"><h4>Bug</h4>
+<ul><li>[MNG-967] - maven.mdo, settings.mdo, and generated-sources</li>
+<li>[MNG-1181] - MavenEmbedder.execute() doesn't run reactor modules</li>
+<li>[MNG-1245] - Reactor projects sometimes used even with version mismatch</li>
+<li>[MNG-1281] - Most of the links off the m2 ant task documentation page are broken</li>
+<li>[MNG-1290] - What is a Mojo?</li>
+<li>[MNG-1379] - Wrong path for artifacts with system scope</li>
+<li>[MNG-1458] - error/warning handling in embedder</li>
+<li>[MNG-1545] - some execution output not routed through default routes.</li>
+<li>[MNG-1562] - Exception with dependencies that have <i>type</i>
+ and implied <i>version</i>
+ from parents</li>
+<li>[MNG-1593] - Typo in settings doc</li>
+<li>[MNG-1645] - document clean and site lifecycles in the build lifecycle doc</li>
+<li>[MNG-1697] - NPE in addEdgeWithParentCheck</li>
+<li>[MNG-1797] - Dependency excludes apply to every subsequent dependency, not just the one it is declared under.</li>
+<li>[MNG-1891] - plugin execution in a profile</li>
+<li>[MNG-1955] - null pointer exception in profile if pluginManagement section exists in pom</li>
+<li>[MNG-2056] - Exception when starting new page with AbstractMavenMultiPageReport</li>
+<li>[MNG-2088] - antcall failed</li>
+<li>[MNG-2106] - Add dependency-maven-plugin to plugins list (patch attached)</li>
+<li>[MNG-2164] - Generated plugin documentation lists wrong data type</li>
+<li>[MNG-2177] - moved mojo plugins are missing web pages at http://maven.apache.org/plugins</li>
+<li>[MNG-2201] - Interpolation problem when using surefire</li>
+<li>[MNG-2214] - ITs fail when bootstrapping M2 SVN trunk with java.lang.StringIndexOutOfBoundsException: String index out of range: 1</li>
+<li>[MNG-2221] - Multiple Executions of Plugin at Difference Inhertiance levels causes plugin executions to run multiple times</li>
+<li>[MNG-2228] - Classloader problem loading jars from build extensions</li>
+<li>[MNG-2230] - The &quot;How do I create documentation?&quot; part of the &quot;Maven Gettting Started Guide&quot; features an invalid example</li>
+<li>[MNG-2236] - DefaultMavenProjectBuilder.buildStandaloneSuperProject() should include a ProfileManager that includes active profiles from settings.xml</li>
+<li>[MNG-2244] - Plugin xdoc generator outputs xdoc with unix file endings</li>
+<li>[MNG-2256] - Misleading documentation regarding configuration of java.utils.Properties</li>
+<li>[MNG-2261] - Profiles ignored when working with non-projects (such as archetype:create)</li>
+<li>[MNG-2282] - If a repo is down, maven stops the buid instead of trying other repos</li>
+<li>[MNG-2284] - Cannot specify additional classpath entries in manifest when using addClasspath</li>
+<li>[MNG-2291] - svn ignore command incorrect</li>
+<li>[MNG-2299] - org.apache.maven.it.Verifier.loadProperties(..) does not close FileInputStream (relies upon finalizer being called)</li>
+<li>[MNG-2302] - SCM path calculations don't work when parent and grandparent are in sibling directories</li>
+<li>[MNG-2303] - ActiveProjectArtifact.getFile(..) and .setFile(..) result in StackOverflowException, since they are effectively recursive</li>
+<li>[MNG-2309] - Profile activation order is random</li>
+<li>[MNG-2312] - The mvn script doesn't work on Solaris</li>
+<li>[MNG-2314] - <i>dependencyManagement</i>
+ not inherited more than one level</li>
+<li>[MNG-2341] - Shell script mvn too old</li>
+<li>[MNG-2407] - New user docs: proxy configuration is not clear to new users</li>
+<li>[MNG-2408] - Improve handling of &quot;no plugin version found&quot; error after intermittent errors</li>
+<li>[MNG-2413] - maven version insistence based on wrong variable</li>
+<li>[MNG-2420] - exclusion on dependency seems to act global on POM</li>
+<li>[MNG-2424] - Classpath in reactor builds differ from dependency resolution</li>
+<li>[MNG-2425] - Mojo parameters with no &quot;expression&quot; does not get added to the parameter list</li>
+<li>[MNG-2460] - Incorrect POM inheritance for plugins</li>
+<li>[MNG-2462] - Using Maven 1.x Legacy Repository Layout in a Maven 2.0.4 Project, I can't depend on a &quot;java-sources&quot; jar</li>
+<li>[MNG-2475] - Need to finish escaping html in http://maven.apache.org/general.html#Compiling-J2SE-5</li>
+<li>[MNG-2493] - Snapshot plugin repositories should be included for reference at the Maven site</li>
+<li>[MNG-2539] - Transitive dependencies referenced by a plugin are searched only in the plugin-repositories</li>
+<li>[MNG-2612] - antrun's exec task breaks in 2.0.5-SNAPSHOT</li>
+<li>[MNG-2709] - Maven 2 doesn't resolve parent test dependencies when using JDK 6</li>
+<li>[MNG-2712] - update policy 'daily' not honored</li>
+<li>[MNG-2746] - NPE in DefaultMavenProjectBuilder when parentPath is a directory and pom is not found.</li>
+<li>[MNG-2749] - extensions stopped working in 2.0.5-SNAPSHOT</li>
+<li>[MNG-2773] - Plugin repositories are chekced for SNAPSHOTS on every run in the 2.0.5 candidate</li>
+<li>[MNG-2780] - snapshots are not updated based on metadata deployed with uniqueVersion = false</li>
+<li>[MNG-2790] - lastUpdated timestamp in local repository metadata not updated on install if it already exists</li>
+<li>[MNG-2794] - Transitive dependency resolution differs between 2.0.4 and (future) 2.0.5</li>
+<li>[MNG-2795] - Classloader problem loading a resource from a build extension Jar : difference between 2.0.4 and (future) 2.0.5</li>
+<li>[MNG-2801] - broken link in basic documentation</li>
+<li>[MNG-2820] - Deployment is stripping out the license header from the POM</li>
+</ul>
+</div>
+<div class="section"><h4>Improvement</h4>
+<ul><li>[MNG-830] - review plugins use of expression and change to default-value/component where appropriate</li>
+<li>[MNG-1299] - Document m1 xdocs compatibility with the m2 site plug-in</li>
+<li>[MNG-1508] - Need a process-test-classes phase</li>
+<li>[MNG-1540] - ability to categorise guides in the maven site</li>
+<li>[MNG-1560] - Guide to accessing repository with https client authentication</li>
+<li>[MNG-1929] - Plugin Goal report should indicate which fields are read only. (Patch Attached)</li>
+<li>[MNG-1952] - Give equal footing to all m2 plugins and add Cargo plugin to the list</li>
+<li>[MNG-1997] - document xsd support for pom and settings in guides</li>
+<li>[MNG-2129] - generated source repo page is misleading when added to the &quot;general site&quot;.</li>
+<li>[MNG-2153] - Updated resource bundles for pl and en locales</li>
+<li>[MNG-2213] - Current settings.xml example incorrect</li>
+<li>[MNG-2246] - mojo developer guide takes a shortcut at explaining fully how the command line can be shortened</li>
+<li>[MNG-2250] - fix misspelled and added missing words in getting started guide and philosphy of maven</li>
+<li>[MNG-2251] - Upgrade to plexus-utils 1.2</li>
+<li>[MNG-2306] - mojo javadoc annotations support for IntelliJ Idea</li>
+<li>[MNG-2311] - site plugin i18n HU</li>
+<li>[MNG-2324] - Add a getWagon(Repository) method to the WagonManager</li>
+<li>[MNG-2346] - FAQ: Why does maven compile my test classes but does not run them?</li>
+<li>[MNG-2355] - Documentation of the @component javadoc tag</li>
+<li>[MNG-2357] - misc cleanup</li>
+<li>[MNG-2375] - Generate docs for mojo goals should list whehter or not each parameter is read-only</li>
+<li>[MNG-2379] - review and link to free Maven courseware</li>
+<li>[MNG-2474] - missing jar files in javax repository</li>
+<li>[MNG-2494] - Plugin development guide should have link to test harness plugin</li>
+<li>[MNG-2638] - Please add Developpez.com Maven FAQ to articles (french)</li>
+</ul>
+</div>
+<div class="section"><h4>New Feature</h4>
+<ul><li>[MNG-2169] - Want to contribute: Contributing Maven 2 refcard</li>
+<li>[MNG-2293] - maven-plugin-descriptor: Not possible to define a default implementation for a field defined by its interface</li>
+<li>[MNG-2454] - add @since to mojo at class level</li>
+</ul>
+</div>
+<div class="section"><h4>Task</h4>
+<ul><li>[MNG-1059] - update mojo API documentation</li>
+<li>[MNG-1069] - Verify the embedder is using the same strategy for locating the local repo as the CLI</li>
+<li>[MNG-1213] - more info on the plugin summary</li>
+<li>[MNG-1325] - Document ibiblio synchronization process</li>
+<li>[MNG-2117] - Update doap file descriptor</li>
+<li>[MNG-2300] - broken links on http://maven.apache.org/plugins/</li>
+<li>[MNG-2393] - documentation of -U on CLI usage help is incorrect</li>
+</ul>
+</div>
+<div class="section"><h4>Wish</h4>
+<ul><li>[MNG-1731] - I18n issues with report generation</li>
+<li>[MNG-1880] - Add new pre and post phases to the integration-test phase</li>
+<li>[MNG-2361] - Document pomRefId attribute for M2 ant tasks on M2 website.</li>
+</ul>
+</div>
+</div>
+<div class="section"><h3>2.0.4 Release Notes</h3>
+<div class="section"><h4>Bug</h4>
+<ul><li><b>MNG-2054</b>
+ - Multiple Inheritence causes plugin executions to run multiple times (Test Case Attached)</li>
+<li><b>MNG-2186</b>
+ - POM interpolation problem in maven-2.0.3</li>
+<li><b>MNG-2196</b>
+ - Fails when parent module is not located a level above</li>
+<li><b>MNG-2207</b>
+ - Infinite Recursion when POM element has value with substring that is self-referencing</li>
+</ul>
+</div>
+<div class="section"><h4>Task</h4>
+<ul><li><b>MNG-1123</b>
+ - publish m2 component javadoc and reports</li>
+</ul>
+</div>
+</div>
+<div class="section"><h3>2.0.3 Release Notes</h3>
+<div class="section"><h4>Bug</h4>
+<ul><li><b>MNG-1317</b>
+ - m2.bat doesn't work on Windows 2000</li>
+<li><b>MNG-1318</b>
+ - mvn.bat sets incorrect value to M2_HOME [Windows 2000]</li>
+<li><b>MNG-1337</b>
+ - Interpolation of POM values needs to be improved</li>
+<li><b>MNG-1415</b>
+ - quoted arguments are not being protected</li>
+<li><b>MNG-1509</b>
+ - Profile activation by os doesn't work</li>
+<li><b>MNG-1703</b>
+ - <i>pluginManagement</i>
+<i>dependencies</i>
+ is not propagated to child POMs</li>
+<li><b>MNG-1837</b>
+ - deploy-file succeeds even when local file not found</li>
+<li><b>MNG-1856</b>
+ - legacy layout tag in a profile does not show up in child pom.</li>
+<li><b>MNG-1882</b>
+ - activeByDefault is ignored in pom.xml</li>
+<li><b>MNG-1895</b>
+ - Dependencies in two paths are not added to resolution when scope needs to be updated in the nearest due to any of nearest parents</li>
+<li><b>MNG-1898</b>
+ - Plugin classpath broken from 2.0 to 2.0.1</li>
+<li><b>MNG-1980</b>
+ - &quot;Duplicate project ID found&quot; message with maven-artifact-ant-2.0.2</li>
+<li><b>MNG-1999</b>
+ - Reporting inheritance does not work properly</li>
+<li><b>MNG-2002</b>
+ - The mvn.bat Script does not return the error-code of Maven</li>
+<li><b>MNG-2006</b>
+ - Module SCM URL is resolved as [...]/parent/module regardless of relativePath</li>
+<li><b>MNG-2037</b>
+ - Strange NPE with profile and injectPlugins</li>
+<li><b>MNG-2052</b>
+ - Transitive system deps are not interpolated correctly thus rendering them invalid</li>
+<li><b>MNG-2068</b>
+ - Multiple inheritance fails to find &quot;grand&quot; parent in ../../pom.xml when the groupIds differ (Test Case Attached)</li>
+<li><b>MNG-2078</b>
+ - Fixup super pom to activate the profile only when -DperformRelease=true.</li>
+<li><b>MNG-2083</b>
+ - Path to missing dependency is not shown nor url to download</li>
+<li><b>MNG-2087</b>
+ - NPE in PluginXdocGenerator</li>
+<li><b>MNG-2124</b>
+ - Incorrect resolution of parent POM properties</li>
+<li><b>MNG-2130</b>
+ - Parent POM not created by reactor if not found in repository</li>
+<li><b>MNG-2136</b>
+ - Active profile in profiles.xml prevents active profile in pom.xml to be triggered automatically</li>
+</ul>
+</div>
+<div class="section"><h4>Improvement</h4>
+<ul><li><b>MNG-1644</b>
+ - parent pom = child pom results in stack overflow error</li>
+<li><b>MNG-2030</b>
+ - Make -X show maven version as first thing</li>
+<li><b>MNG-2096</b>
+ - allow <i>configuration</i>
+ with <i>execution</i>
+ in a lifecycle overlay, like a plugin allows</li>
+</ul>
+</div>
+<div class="section"><h4>Task</h4>
+<ul><li><b>MNG-2003</b>
+ - release and update to wagon-file 1.0-alpha-7</li>
+<li><b>MNG-2095</b>
+ - Add &quot;plugin-metadata-1.0.0.xsd&quot; to http://maven.apache.org/xsd</li>
+</ul>
+</div>
+<div class="section"><h4>Wish</h4>
+<ul><li><b>MNG-547</b>
+ - being able to set the <i>head</i>
+ of a page to wathever we want</li>
+</ul>
+</div>
+</div>
+<div class="section"><h3>2.0.2 Release Notes</h3>
+<div class="section"><h4>Bug</h4>
+<ul><li><b>MNG-1419</b>
+ - resolve outstanding wagon issues</li>
+<li><b>MNG-1744</b>
+ - Doxia move from org.codehaus to org.apache breaks Reporting API Contract.</li>
+<li><b>MNG-1819</b>
+ - StringIndexOutOfBoundsException when running maven</li>
+<li><b>MNG-1850</b>
+ - Error: Duplicate project ID found in pom</li>
+<li><b>MNG-1851</b>
+ - &quot;Duplicate project ID found&quot; message with maven-artifact-ant-2.0.1</li>
+<li><b>MNG-1900</b>
+ - Error while deploying when using scpexe protocol with non-default scp/ssh executables</li>
+<li><b>MNG-1923</b>
+ - please add reference to netbeans maven2 integration from the the maven2 site</li>
+<li><b>MNG-1927</b>
+ - $<a name="project.build.directory">project.build.directory</a>
+ different in M2.0 &amp; M2.0.1</li>
+<li><b>MNG-1933</b>
+ - When using artifacts with full stops in the artifact id the are not loaded correctly when transitively referenced another project.</li>
+<li><b>MNG-1934</b>
+ - cannot deploy with embedder</li>
+</ul>
+</div>
+<div class="section"><h4>Improvement</h4>
+<ul><li><b>MNG-1689</b>
+ - Only print relocation warnings in standard output for the current pom</li>
+<li><b>MNG-1903</b>
+ - Make site descriptor attachment default behaviour</li>
+<li><b>MNG-1907</b>
+ - Bundle wagon-ssh-external with maven dist</li>
+</ul>
+</div>
+<div class="section"><h4>Task</h4>
+<ul><li><b>MNG-1932</b>
+ - Document how to write an ant based mojo</li>
+</ul>
+</div>
+</div>
+<div class="section"><h3>2.0.1 Release Notes</h3>
+<div class="section"><h4>Bug</h4>
+<ul><li><b>MNG-948</b>
+ - Broken Links on Maven2 Website</li>
+<li><b>MNG-1205</b>
+ - dependency with scope:system &amp; flag optional = true doesn't appear in the class path</li>
+<li><b>MNG-1220</b>
+ - NPE in DiagnosisUtils</li>
+<li><b>MNG-1232</b>
+ - Incorrect field case triggers NPE when configurator unable to configure object</li>
+<li><b>MNG-1241</b>
+ - configuration collections are not merged when configuration is</li>
+<li><b>MNG-1244</b>
+ - bin/m2 breaks with spaces in path</li>
+<li><b>MNG-1246</b>
+ - target/test-classes isn't added to $<a name="project.testClasspathElements">project.testClasspathElements</a>
+ variable</li>
+<li><b>MNG-1249</b>
+ - External Javadoc report apidocs/index.html is overwritten</li>
+<li><b>MNG-1251</b>
+ - attachArtifact doesn't allow to attach an artifact with different type and no assembly</li>
+<li><b>MNG-1291</b>
+ - Incorrect usage information</li>
+<li><b>MNG-1311</b>
+ - Cannot be executed in package phase (infinite loop when @execute is specified)</li>
+<li><b>MNG-1320</b>
+ - Build failed due to an empty or corrupt metadata file in the repository</li>
+<li><b>MNG-1335</b>
+ - Artifact must be cloned too in MavenProject's constructor</li>
+<li><b>MNG-1355</b>
+ - Infinity Loop in DefaultMavenProjectBuilder.assembleLineage</li>
+<li><b>MNG-1357</b>
+ - An attempt at running the tests is performed even if the testClassesDirectory is not present</li>
+<li><b>MNG-1363</b>
+ - Transitive dependencies with system scope and version range trying to be downloaded</li>
+<li><b>MNG-1372</b>
+ - Reference to deprecated command in message</li>
+<li><b>MNG-1384</b>
+ - optional dependencies not resolved while compiling from a master project</li>
+<li><b>MNG-1394</b>
+ - Use of the RelativePath Multi-Module produces failure</li>
+<li><b>MNG-1417</b>
+ - Relocated artifacts hide other versions that should be picked</li>
+<li><b>MNG-1424</b>
+ - Specifying <i>version</i>
+ for a plugin in <i>pluginManagement</i>
+ does not force Maven to use this version</li>
+<li><b>MNG-1434</b>
+ - [patch] Fix some typos and broken links</li>
+<li><b>MNG-1443</b>
+ - should not fail in offline mode if pom doesn't exist</li>
+<li><b>MNG-1466</b>
+ - Ant dependencies task does not work with multiple repositories</li>
+<li><b>MNG-1474</b>
+ - Profile properties do not appear to be substituted in the scm connection string</li>
+<li><b>MNG-1499</b>
+ - Execution order is arbitrary if inheritance is involved</li>
+<li><b>MNG-1529</b>
+ - NPE when inheriting report sets</li>
+<li><b>MNG-1559</b>
+ - Error (Nonexistent component: org.apache.maven.lifecycle.mapping.LifecycleMappingnar) for clean goal.</li>
+<li><b>MNG-1586</b>
+ - activeByDefault is ignored</li>
+<li><b>MNG-1603</b>
+ - POM is not read using the right encoding</li>
+<li><b>MNG-1620</b>
+ - par and ejb3 files must expose its classes to the classpath, so other modules can use them when compiling</li>
+<li><b>MNG-1630</b>
+ - Optional tag in dependencyManagement is not inherited in the children projects</li>
+<li><b>MNG-1642</b>
+ - Incorrect APT markup applied to the Title of the guide-releasing.apt</li>
+<li><b>MNG-1646</b>
+ - Optional tag in project dependency doesn't work</li>
+<li><b>MNG-1656</b>
+ - xml-apis relocation wrong</li>
+<li><b>MNG-1666</b>
+ - PluginParameterExpressionEvaluator, StringIndexOOBE</li>
+<li><b>MNG-1784</b>
+ - mvn install - multiple modules using subproject as launch point - pom.xml gets renamed installed in local repository as a .war file</li>
+<li><b>MNG-1804</b>
+ - Can't load a class from a plugin, when this class is in a user's pom/build/plugins/plugin/dependencies</li>
+<li><b>MNG-1842</b>
+ - maven/plugins/trunk fails to build on clean system</li>
+</ul>
+</div>
+<div class="section"><h4>Improvement</h4>
+<ul><li><b>ARCHETYPE-6</b>
+ - Metadata missing from ibiblio</li>
+<li><b>ARCHETYPE-8</b>
+ - example maven project architecture (jars, wars, ejbs, and an ear)</li>
+<li><b>MNG-123</b>
+ - bootstrap should build with itself</li>
+<li><b>MNG-764</b>
+ - pom with modules should fail if packaging is not pom or an aggregator</li>
+<li><b>MNG-857</b>
+ - Maven Archetype documentation</li>
+<li><b>MNG-897</b>
+ - allows use of Ant build files</li>
+<li><b>MNG-1182</b>
+ - update plexus-utils code for stream handling</li>
+<li><b>MNG-1198</b>
+ - group artifact not found exceptions</li>
+<li><b>MNG-1217</b>
+ - Relocation messages don't mention the artifact that was relocated</li>
+<li><b>MNG-1265</b>
+ - Improve information displayed by &quot;mvn --version&quot;</li>
+<li><b>MNG-1270</b>
+ - allow custom artifact handlers using build extensions</li>
+<li><b>MNG-1271</b>
+ - Maven 2 needs to give a warning when it is being run in a Maven 1 project and there isn't a pom.xml file</li>
+<li><b>MNG-1276</b>
+ - warning too verbose for invalid poms</li>
+<li><b>MNG-1286</b>
+ - Check exclusions against relocated artifacts</li>
+<li><b>MNG-1287</b>
+ - Bring back dependency path tree in &quot;Failed to resolve artifact.&quot; error</li>
+<li><b>MNG-1352</b>
+ - Improve message when a required config is not present in pom.xml</li>
+<li><b>MNG-1361</b>
+ - Improve the message when the version is missing from a dependency</li>
+<li><b>MNG-1404</b>
+ - Provide informative messages when POM is invalid</li>
+<li><b>MNG-1550</b>
+ - save checksum in local repository</li>
+<li><b>MNG-1594</b>
+ - Update sun jars guide</li>
+<li><b>MNG-1788</b>
+ - setup lax parsing of repository poms and metadata</li>
+</ul>
+</div>
+<div class="section"><h4>New Feature</h4>
+<ul><li><b>MNG-1223</b>
+ - warning with multiple child modules with the same artifact id</li>
+<li><b>MNG-1525</b>
+ - Allow environment variables to be referenced in pom.xml, settings.xml, etc.</li>
+<li><b>MNG-1650</b>
+ - Maven Archiver should allow pom.xml and pom.properties to be excluded in the generated jar</li>
+</ul>
+</div>
+<div class="section"><h4>Task</h4>
+<ul><li><b>MNG-40</b>
+ - Sites for all components</li>
+<li><b>MNG-263</b>
+ - restructure maven-components when in SVN</li>
+<li><b>MNG-1092</b>
+ - minor site improvements</li>
+</ul>
+</div>
+<div class="section"><h4>Wish</h4>
+<ul><li>[MNG-1598] - It should be possible not to include the META-INF/maven directory in produced jars</li>
+</ul>
+</div>
+</div>
+<div class="section"><h3>2.0 Release Notes</h3>
+<p>Maven 2.0 is a rewrite of the popular Maven application to achieve a number of new goals, and to provide a stable basis for future development.</p>
+<p>This release includes the following new features and changes since Maven 1.0:</p>
+<ul><li>Significantly faster and smaller than previous releases.</li>
+<li>Improved dependency management including dependency closures (transitive dependencies), version ranges, automatic build numbering, and automatic updating on a configurable interval.</li>
+<li>Defined build lifecycle. Any type of project can be built using standard commands such as compile, test and install.</li>
+<li>Improved reactor operation. Built in support for multiple projects and without the need to perform a full install cycle to compile all projects. Includes support for project aggregation.</li>
+<li>Improved plugin architecture, with plugins that can be written in Java and scripting languages such as Beanshell.</li>
+<li>Unified project definition. All information required to build is contained in a single POM, including project information, dependencies and plugin configuration.</li>
+<li>Improved repository support, including separated snapshot repositories, a new more managable layout and per-project definitions of new repositories.</li>
+<li>New site management tools that support multiple input and output formats. New input formats include wiki-like APT format, docbook while continuing to support traditional Maven XDoc and FAQ format.</li>
+<li>Reporting API for producing project information and reports in a standard way.</li>
+</ul>
+<p>This release is considered stable with a feature set that encompasses and supersedes Maven 1.0.</p>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007-2009
+    
+          
+  
+
+  
+    
+            
+  
+    
+   - <a href="http://maven.apache.org/privacy-policy.html">Privacy Policy</a></div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  <script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-1");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>

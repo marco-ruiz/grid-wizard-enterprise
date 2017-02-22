@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>GWE - P2EL Macros</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Marco Ruiz" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                                                    
+<meta content="GWE (Grid Wizard Enterprise) is an open source, HPC distributed enterprise system, which leverages on clusters of computers, in order to provide a powerful grid computing platform for end users to easily and effectively parallelize the execution of an (in theory) unlimited number of inter-independent processes." name="description"/>
+                                                        
+<meta content="gwe, grid, cluster, parallel, distributed, computing, hpc, high performance, resource manager, job scheduler, condor, sge, pbs, lsf, torque, globus, metascheduler, jsdl, java, open source" name="keywords"/>
+                                                        
+<meta content="all" name="robots"/>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+                                            <img src="../images/logo.jpg" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 02 Mar 2009
+                  &nbsp;| Version: 0.7.3.alpha
+                      </div>
+            <div class="xright">            <a href="http://www.na-mic.org/" class="externalLink">NAMIC</a>
+            |
+                <a href="http://nbirn.net/" class="externalLink">BIRN</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../news.html">News</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../changes-report.html">Release Notes</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../credits.html">Credits</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+          </ul>
+              <h5>Guides</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../guides/glossary.html">Glossary</a>
+          </li>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                  
+      
+            
+      
+            
+      
+            
+            
+            
+      
+                    
+            <li class="expanded">
+                    <a href="../guides/quick.html">Quick Start Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../guides/install.html">Installation</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../guides/config.html">Configuration</a>
+          </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/user.html">Usage</a>
+                </li>
+                  
+                
+              
+      
+            
+      
+            
+            
+            
+      
+              
+            <li class="expanded">
+                    <a href="../guides/p2el.html">P2EL Specification</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="../guides/p2el-syntax.html">Syntax</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="../guides/p2el-semantics.html">Semantics</a>
+          </li>
+                  
+    <li class="none">
+              <strong>Macros</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="../guides/p2el-samples.html">Examples</a>
+          </li>
+              </ul>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+                    <a href="../guides/resources.html">Other Resources</a>
+          </li>
+          </ul>
+              <h5>GWE Powered Tools</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../integration/api.html">GWE API</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../integration/slicer.html">Case: 3D Slicer3</a>
+          </li>
+          </ul>
+              <h5>Project Collaboration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="https://issues.nbirn.net/jira/browse/GWE" class="externalLink">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../coming-soon.html">Continuous Integration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://groups.google.com/group/gwe-forum?hl=en" class="externalLink">Forum</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../source-repository.html">Source Repository</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../team-list.html">Team</a>
+          </li>
+          </ul>
+              <h5>Source Code Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../xref/index.html">Browser</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDocs</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../jdepend-report.html">Analysis</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../taglist.html">Tag List</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://maven.apache.org/" title="Maven" class="poweredBy">
+                            <img alt="Maven" src="http://maven.apache.org/images/logos/maven-feather.png" />
+            </a>
+                               
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>P2EL <a name="Macros">Macros</a>
+</h2>
+<p>A P2EL macro is a &quot;P2EL value generator&quot; construct; which for all practical purposes behaves as a <i><a href="p2el-semantics.html#Generator">P2EL value generator function</a>
+</i>
+; but it is defined by the end user, in plain text, as a P2EL collection of value space variable definitions, in order to have a single construct to reference them all. </p>
+<div class="section"><h3>Macro Usage</h3>
+<p>As we mentioned, P2EL macros are value generator constructs and as such they share the same syntax and usage logic as <i><a href="p2el-semantics.html#Generator">P2EL value generator functions</a>
+</i>
+. The usefulness of macros is in reusing/grouping inherently related variables under an atomic value generator construct; which highly simplifies the construction of P2EL statements. </p>
+<p>For example one can define macros to do composite tasks such as download all files located under a specified remote directory, upload a inherently related group of files (like the outputs of a process) and create a data model (P2EL variables) for a particular XML schema by extracting its values using XPath. The following are sample of variable definitions for such macros: </p>
+<div class="source"><pre>        ${downloadedFiles}=$downloadAll(${REMOTE_DIR})
+        ${uploadedFiles}=$uploadHDR(${FILE_NAME})
+        ${xmlModel}=$xcat(${XML_FILE_NAME})</pre>
+</div>
+</div>
+<div class="section"><h3>Macro Definition Syntax</h3>
+<p>Macros are defined with advanced P2EL syntax as a collection of value space variables definitions: </p>
+<div class="source"><pre>        $[MACRO_NAME]([MACRO_PARAMETERS]){
+                $${[MACRO_VARIABLE_1]}=$[VALUE_GENERATOR_FUNCTION_NAME_OR_MACRO_NAME]([VALUE_GENERATOR_OR_MACRO_PARAMETERS])
+                $${[MACRO_VARIABLE_2]}=$[VALUE_GENERATOR_FUNCTION_NAME_OR_MACRO_NAME]([VALUE_GENERATOR_OR_MACRO_PARAMETERS])
+                ...
+                $${[MACRO_VARIABLE_n]}=$[VALUE_GENERATOR_FUNCTION_NAME_OR_MACRO_NAME]([VALUE_GENERATOR_OR_MACRO_PARAMETERS])
+        }</pre>
+</div>
+<p>We can observe that their definition starts with their signature declaration, which identifies the name of the macro and its parameters followed by the body of the macro enclosed in braces <tt><a name=""></a>
+</tt>
+. The body of the macro is a list of variable definitions which the macro implies. For example:</p>
+<div class="source"><pre>        $downloadAll($${REMOTE_DIR}) {
+                $${MATCHES}=$dir($${REMOTE_DIR},.*)
+                $${FILES}=$in($${MATCHES})
+        }</pre>
+</div>
+<p>All macro level declarations and references (parameters and variables) require to be prefix by double dollar signs ($$) to differentiate them from statement level references, which even when is highly discourage can find its uses under exceptional circumstances such as reference to <i><a href="p2el-semantics.html#Contextual">variables resolved at runtime</a>
+</i>
+. For example, the following macro would upload all files found under the home directory of the particular daemon running the jobs: </p>
+<div class="source"><pre>        $uploadHomeTo($${REMOTE_DIR}) {
+                $${MATCHES}=$dir(${SYSTEM.USER_HOME},.*)
+                $${FILE_NAME}=$regExp($${MATCHES}, /, [^/]*, $)
+                $${_}=$out($${REMOTE_DIR}/$${FILE_NAME})
+        }</pre>
+</div>
+<p>Notice the reference to the <tt>SYSTEM.USER_HOME</tt>
+ which contains a single dollar sign ('$') as a prefix in comparison with all other parameters and macro variable references (and declarations too) which are prefixed with a double dollar sign ('$$'). Also notice the special macro variable '$$<a name="a_">_</a>
+'. This one has a special meaning at translation time; which will be addressed in the next section.</p>
+</div>
+<div class="section"><h3>Macro Semantics &amp; Translation</h3>
+<p>At pre-compilation time, each value space variable defined by a macro invocation will be replaced with the respective group of variables definitions associated with the macro invocation using the following rules:</p>
+<p>1. For each variable in the macro a new variable will be expanded into the corresponding P2EL statement with a name equals to the macro variable prefixed by the name of the variable invoking the macro with an underscore ('_'). A special variable (root variable '$$<a name="a_">_</a>
+') is available for the macros to specify the expansion into the actual variable assigned this macro invocation. </p>
+<p>2. Each reference to a macro parameter will be replaced with the corresponding value specified on the macro invocation. </p>
+<p>For example, using the previous &quot;uploadHomeTo&quot; macro definition example, the following variable definition: </p>
+<div class="source"><pre>        ${uploaded}=$uploadHomeTo(sftp://host/path)</pre>
+</div>
+<p>is interpreted as (replaced by) the following variable definitions: </p>
+<div class="source"><pre>        ${uploaded_MATCHES}=$dir(${SYSTEM.USER_HOME},.*)
+        ${uploaded_FILE_NAME}=$regExp(${uploaded_MATCHES}, /, [^/]*, $)
+        ${uploaded}=$out(sftp://host/path/${uploaded_FILE_NAME})</pre>
+</div>
+<p>Pay special attention on how the variable $<a name="uploaded">uploaded</a>
+ has been interpreted as the value of the macro variable &quot;$$<a name="a_">_</a>
+&quot;. Macros are not limited to be defined as a group of variables defined by <i><a href="p2el-semantics.html#Generator">P2EL value generator functions</a>
+</i>
+ but they can also be defined in terms of other macros. For example:</p>
+<div class="source"><pre>        $slicer($${HOME},$${MODULE}) {
+                $${CMD}=$const($${HOME}/Slicer3 --launch $${HOME}/lib/Slicer3/Plugins/$${MODULE})
+        }
+                
+        $bspline($${HOME},$${ITER},$${HIST},$${SAM}) {
+                $${SLICER}=$slicer($${HOME},BSplineDeformableRegistration)
+                $${CMD}=$const($${SLICER_CMD} --iterations $${ITER} --gridSize 5 --histogrambins $${HIST} --spatialsamples $${SAM} --maximumDeformation 1 --default 0 --resampledmovingfilename)
+                $${EXPLORATION_ID}=$${ITER}-$${HIST}-$${SAM}
+        }</pre>
+</div>
+<p>Notice: 1. The macro <tt>bspline</tt>
+ contains a variable (<tt>SLICER</tt>
+) which is defined by an invocation to the macro <tt>slicer</tt>
+.</p>
+<p>2. The <tt>CMD</tt>
+ variable references variable <tt>SLICER_CMD</tt>
+ which is a variable expected to come into existence by the expected replacement of the <tt>SLICER</tt>
+ variable using its associated <tt>slicer</tt>
+ function invocation.</p>
+<p>So, the following variable definition:</p>
+<div class="source"><pre>        ${var}=$bspline(/usr/local/Slicer3,1,2,3)</pre>
+</div>
+<p>... will be replaced with the following variable definitions: </p>
+<div class="source"><pre>        ${var_CMD}=$const(${BSPLINE_SLICER_CMD} --iterations 1 --gridSize 5 --histogrambins 2 --spatialsamples 3 --maximumDeformation 1 --default 0 --resampledmovingfilename)
+        ${var_EXPLORATION_ID}=1-2-3
+        ${var_SLICER_CMD}=$const(/usr/local/Slicer3/Slicer3 --launch /usr/local/Slicer3/lib/Slicer3/Plugins/BSplineDeformableRegistration)</pre>
+</div>
+<p>A a more practical version of this previous example are the following variable definitions: </p>
+<div class="source"><pre>        ${I}=range(5,10)
+        ${H}=range(20,100,010)
+        ${S}=range(500,5000,0500)
+        
+        ${BSPLINE_2}=$bspline(/usr/local/Slicer3,${I},${H},${S})</pre>
+</div>
+<p>... which conveniently will be replaced with the following variable definitions: </p>
+<div class="source"><pre>        ${I}=range(5,10)
+        ${H}=range(20,100,010)
+        ${S}=range(500,5000,0500)
+        
+        ${BSPLINE_2_CMD}=$const(${BSPLINE_SLICER_CMD} --iterations ${I} --gridSize 5 --histogrambins ${H} --spatialsamples ${S} --maximumDeformation 1 --default 0 --resampledmovingfilename)
+        ${BSPLINE_2_EXPLORATION_ID}=${I}-${H}-${S}
+        ${BSPLINE_2_SLICER_CMD}=$const(/usr/local/Slicer3/Slicer3 --launch /usr/local/Slicer3/lib/Slicer3/Plugins/BSplineDeformableRegistration)</pre>
+</div>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007-2009
+    
+          
+  
+
+  
+    
+            
+  
+    
+   - <a href="http://maven.apache.org/privacy-policy.html">Privacy Policy</a></div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  <script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-1");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>

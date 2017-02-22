@@ -1,0 +1,4167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>GWE - JDepend Report Metrics</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                                                    
+<meta content="GWE (Grid Wizard Enterprise) is an open source, HPC distributed enterprise system, which leverages on clusters of computers, in order to provide a powerful grid computing platform for end users to easily and effectively parallelize the execution of an (in theory) unlimited number of inter-independent processes." name="description"/>
+                                                        
+<meta content="gwe, grid, cluster, parallel, distributed, computing, hpc, high performance, resource manager, job scheduler, condor, sge, pbs, lsf, torque, globus, metascheduler, jsdl, java, open source" name="keywords"/>
+                                                        
+<meta content="all" name="robots"/>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+                                            <img src="images/logo.jpg" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 02 Mar 2009
+                  &nbsp;| Version: 0.7.3.alpha
+                      </div>
+            <div class="xright">            <a href="http://www.na-mic.org/" class="externalLink">NAMIC</a>
+            |
+                <a href="http://nbirn.net/" class="externalLink">BIRN</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="news.html">News</a>
+          </li>
+              
+    <li class="none">
+                    <a href="changes-report.html">Release Notes</a>
+          </li>
+              
+    <li class="none">
+                    <a href="features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="credits.html">Credits</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license.html">License</a>
+          </li>
+          </ul>
+              <h5>Guides</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="guides/glossary.html">Glossary</a>
+          </li>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                  
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                    
+        <li class="expanded">
+                    <a href="guides/quick.html">Quick Start Guide</a>
+                  <ul>
+                  
+    <li class="none">
+                    <a href="guides/install.html">Installation</a>
+          </li>
+                  
+    <li class="none">
+                    <a href="guides/config.html">Configuration</a>
+          </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="guides/user.html">Usage</a>
+                </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="guides/p2el.html">P2EL Specification</a>
+                </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+                    <a href="guides/resources.html">Other Resources</a>
+          </li>
+          </ul>
+              <h5>GWE Powered Tools</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="integration/api.html">GWE API</a>
+          </li>
+              
+    <li class="none">
+                    <a href="integration/slicer.html">Case: 3D Slicer3</a>
+          </li>
+          </ul>
+              <h5>Project Collaboration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="https://issues.nbirn.net/jira/browse/GWE" class="externalLink">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="coming-soon.html">Continuous Integration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://groups.google.com/group/gwe-forum?hl=en" class="externalLink">Forum</a>
+          </li>
+              
+    <li class="none">
+                    <a href="mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="source-repository.html">Source Repository</a>
+          </li>
+              
+    <li class="none">
+                    <a href="team-list.html">Team</a>
+          </li>
+          </ul>
+              <h5>Source Code Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="xref/index.html">Browser</a>
+          </li>
+              
+    <li class="none">
+                    <a href="apidocs/index.html">JavaDocs</a>
+          </li>
+              
+    <li class="none">
+              <strong>Analysis</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="taglist.html">Tag List</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://maven.apache.org/" title="Maven" class="poweredBy">
+                            <img alt="Maven" src="http://maven.apache.org/images/logos/maven-feather.png" />
+            </a>
+                               
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Metric Results</h2>
+[ <a href="#summary">summary</a>
+ ] [ <a href="#packages">packages</a>
+ ] [ <a href="#cycles">cycles</a>
+ ] [ <a href="#explanations">explanations</a>
+ ] <br />
+<br />
+The following document contains the results of a JDepend metric analysis. The various metrics are defined at the bottom of this document.<br />
+<br />
+<a name="summary"></a>
+<h2>Summary</h2>
+[ <a href="#summary">summary</a>
+ ] [ <a href="#packages">packages</a>
+ ] [ <a href="#cycles">cycles</a>
+ ] [ <a href="#explanations">explanations</a>
+ ] <br />
+<br />
+<table class="bodyTable"><tr class="a"><th>Package</th>
+<th>TC</th>
+<th>CC</th>
+<th>AC</th>
+<th>Ca</th>
+<th>Ce</th>
+<th>A</th>
+<th>I</th>
+<th>D</th>
+<th>V</th>
+</tr>
+<tr class="b"><td><a href="#Default">Default</a>
+</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe">org.gwe</a>
+</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>10</td>
+<td>13</td>
+<td>0.0%</td>
+<td>57.0%</td>
+<td>43.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.api">org.gwe.api</a>
+</td>
+<td>28</td>
+<td>19</td>
+<td>9</td>
+<td>10</td>
+<td>22</td>
+<td>32.0%</td>
+<td>69.0%</td>
+<td>1.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.api.event">org.gwe.api.event</a>
+</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td>5</td>
+<td>6</td>
+<td>25.0%</td>
+<td>55.0%</td>
+<td>20.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.api.exceptions">org.gwe.api.exceptions</a>
+</td>
+<td>9</td>
+<td>9</td>
+<td>0</td>
+<td>8</td>
+<td>2</td>
+<td>0.0%</td>
+<td>20.0%</td>
+<td>80.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.api.impl">org.gwe.api.impl</a>
+</td>
+<td>10</td>
+<td>7</td>
+<td>3</td>
+<td>1</td>
+<td>21</td>
+<td>30.000002%</td>
+<td>95.0%</td>
+<td>25.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.app">org.gwe.app</a>
+</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>5</td>
+<td>2</td>
+<td>0.0%</td>
+<td>29.0%</td>
+<td>71.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.app.agent">org.gwe.app.agent</a>
+</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>9</td>
+<td>0.0%</td>
+<td>90.0%</td>
+<td>10.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.app.client">org.gwe.app.client</a>
+</td>
+<td>10</td>
+<td>9</td>
+<td>1</td>
+<td>7</td>
+<td>18</td>
+<td>10.0%</td>
+<td>72.0%</td>
+<td>18.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.app.client.admin">org.gwe.app.client.admin</a>
+</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+<td>12</td>
+<td>0.0%</td>
+<td>80.0%</td>
+<td>20.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.app.client.config">org.gwe.app.client.config</a>
+</td>
+<td>8</td>
+<td>7</td>
+<td>1</td>
+<td>9</td>
+<td>16</td>
+<td>12.0%</td>
+<td>64.0%</td>
+<td>24.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.app.client.regular.shell">org.gwe.app.client.regular.shell</a>
+</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>17</td>
+<td>0.0%</td>
+<td>94.0%</td>
+<td>6.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.app.client.web">org.gwe.app.client.web</a>
+</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>15</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.app.client.web.request">org.gwe.app.client.web.request</a>
+</td>
+<td>8</td>
+<td>7</td>
+<td>1</td>
+<td>3</td>
+<td>8</td>
+<td>12.0%</td>
+<td>73.0%</td>
+<td>15.000001%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.app.client.web.servlet">org.gwe.app.client.web.servlet</a>
+</td>
+<td>11</td>
+<td>9</td>
+<td>2</td>
+<td>1</td>
+<td>20</td>
+<td>18.0%</td>
+<td>95.0%</td>
+<td>13.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.app.client.web.view">org.gwe.app.client.web.view</a>
+</td>
+<td>18</td>
+<td>17</td>
+<td>1</td>
+<td>3</td>
+<td>15</td>
+<td>6.0%</td>
+<td>83.0%</td>
+<td>11.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.app.controller">org.gwe.app.controller</a>
+</td>
+<td>5</td>
+<td>1</td>
+<td>4</td>
+<td>0</td>
+<td>5</td>
+<td>80.0%</td>
+<td>100.0%</td>
+<td>80.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.app.daemon">org.gwe.app.daemon</a>
+</td>
+<td>7</td>
+<td>7</td>
+<td>0</td>
+<td>1</td>
+<td>14</td>
+<td>0.0%</td>
+<td>93.0%</td>
+<td>7.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.app.daemon.domain">org.gwe.app.daemon.domain</a>
+</td>
+<td>12</td>
+<td>12</td>
+<td>0</td>
+<td>4</td>
+<td>21</td>
+<td>0.0%</td>
+<td>84.0%</td>
+<td>16.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.app.daemon.domain.background">org.gwe.app.daemon.domain.background</a>
+</td>
+<td>8</td>
+<td>7</td>
+<td>1</td>
+<td>0</td>
+<td>8</td>
+<td>12.0%</td>
+<td>100.0%</td>
+<td>12.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.app.explorer">org.gwe.app.explorer</a>
+</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>10</td>
+<td>0.0%</td>
+<td>91.0%</td>
+<td>9.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.drivers">org.gwe.drivers</a>
+</td>
+<td>8</td>
+<td>7</td>
+<td>1</td>
+<td>10</td>
+<td>8</td>
+<td>12.0%</td>
+<td>44.0%</td>
+<td>43.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.drivers.bundleManagers">org.gwe.drivers.bundleManagers</a>
+</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+<td>8</td>
+<td>0.0%</td>
+<td>67.0%</td>
+<td>33.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.drivers.fileSystems">org.gwe.drivers.fileSystems</a>
+</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+<td>8</td>
+<td>8</td>
+<td>20.0%</td>
+<td>50.0%</td>
+<td>30.000002%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.drivers.fileSystems.handles">org.gwe.drivers.fileSystems.handles</a>
+</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>17</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.drivers.fileSystems.staging">org.gwe.drivers.fileSystems.staging</a>
+</td>
+<td>9</td>
+<td>9</td>
+<td>0</td>
+<td>3</td>
+<td>12</td>
+<td>0.0%</td>
+<td>80.0%</td>
+<td>20.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.drivers.netAccess">org.gwe.drivers.netAccess</a>
+</td>
+<td>6</td>
+<td>3</td>
+<td>3</td>
+<td>12</td>
+<td>7</td>
+<td>50.0%</td>
+<td>37.0%</td>
+<td>13.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.drivers.netAccess.handles">org.gwe.drivers.netAccess.handles</a>
+</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>9</td>
+<td>0.0%</td>
+<td>90.0%</td>
+<td>10.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.drivers.netAccess.tunneling">org.gwe.drivers.netAccess.tunneling</a>
+</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+<td>9</td>
+<td>0.0%</td>
+<td>75.0%</td>
+<td>25.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.drivers.resManagers">org.gwe.drivers.resManagers</a>
+</td>
+<td>13</td>
+<td>11</td>
+<td>2</td>
+<td>1</td>
+<td>12</td>
+<td>15.000001%</td>
+<td>92.0%</td>
+<td>8.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.integration.lddmm">org.gwe.integration.lddmm</a>
+</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>7</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.integration.slicer">org.gwe.integration.slicer</a>
+</td>
+<td>9</td>
+<td>8</td>
+<td>1</td>
+<td>1</td>
+<td>22</td>
+<td>11.0%</td>
+<td>96.0%</td>
+<td>7.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.integration.slicer.chains">org.gwe.integration.slicer.chains</a>
+</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.integration.slicer.model">org.gwe.integration.slicer.model</a>
+</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>7</td>
+<td>0.0%</td>
+<td>64.0%</td>
+<td>36.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.integration.slicer.model.exec">org.gwe.integration.slicer.model.exec</a>
+</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.integration.slicer.model.param">org.gwe.integration.slicer.model.param</a>
+</td>
+<td>7</td>
+<td>7</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>0.0%</td>
+<td>60.000004%</td>
+<td>40.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.p2elv2">org.gwe.p2elv2</a>
+</td>
+<td>19</td>
+<td>14</td>
+<td>5</td>
+<td>7</td>
+<td>10</td>
+<td>26.0%</td>
+<td>58.999996%</td>
+<td>15.000001%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.p2elv2.functions">org.gwe.p2elv2.functions</a>
+</td>
+<td>22</td>
+<td>21</td>
+<td>1</td>
+<td>3</td>
+<td>23</td>
+<td>5.0%</td>
+<td>88.0%</td>
+<td>7.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.p2elv2.macro">org.gwe.p2elv2.macro</a>
+</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>0.0%</td>
+<td>86.0%</td>
+<td>14.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.p2elv2.model">org.gwe.p2elv2.model</a>
+</td>
+<td>7</td>
+<td>7</td>
+<td>0</td>
+<td>6</td>
+<td>7</td>
+<td>0.0%</td>
+<td>54.000004%</td>
+<td>46.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.persistence.dao">org.gwe.persistence.dao</a>
+</td>
+<td>19</td>
+<td>19</td>
+<td>0</td>
+<td>2</td>
+<td>12</td>
+<td>0.0%</td>
+<td>86.0%</td>
+<td>14.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.persistence.model">org.gwe.persistence.model</a>
+</td>
+<td>37</td>
+<td>34</td>
+<td>3</td>
+<td>23</td>
+<td>21</td>
+<td>8.0%</td>
+<td>48.0%</td>
+<td>44.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.persistence.model.live">org.gwe.persistence.model.live</a>
+</td>
+<td>9</td>
+<td>9</td>
+<td>0</td>
+<td>4</td>
+<td>6</td>
+<td>0.0%</td>
+<td>60.000004%</td>
+<td>40.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.persistence.model.order">org.gwe.persistence.model.order</a>
+</td>
+<td>7</td>
+<td>3</td>
+<td>4</td>
+<td>11</td>
+<td>11</td>
+<td>57.0%</td>
+<td>50.0%</td>
+<td>7.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.persistence.model.order.p2el">org.gwe.persistence.model.order.p2el</a>
+</td>
+<td>6</td>
+<td>5</td>
+<td>1</td>
+<td>7</td>
+<td>13</td>
+<td>17.0%</td>
+<td>65.0%</td>
+<td>18.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.utils">org.gwe.utils</a>
+</td>
+<td>15</td>
+<td>13</td>
+<td>2</td>
+<td>28</td>
+<td>21</td>
+<td>13.0%</td>
+<td>43.0%</td>
+<td>44.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.utils.cmd">org.gwe.utils.cmd</a>
+</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>7</td>
+<td>5</td>
+<td>0.0%</td>
+<td>42.0%</td>
+<td>58.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.utils.collections">org.gwe.utils.collections</a>
+</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>50.0%</td>
+<td>100.0%</td>
+<td>50.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.utils.concurrent">org.gwe.utils.concurrent</a>
+</td>
+<td>11</td>
+<td>10</td>
+<td>1</td>
+<td>9</td>
+<td>9</td>
+<td>9.0%</td>
+<td>50.0%</td>
+<td>41.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.utils.concurrent.pipeline">org.gwe.utils.concurrent.pipeline</a>
+</td>
+<td>4</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>4</td>
+<td>50.0%</td>
+<td>100.0%</td>
+<td>50.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.utils.reinvoke">org.gwe.utils.reinvoke</a>
+</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>6</td>
+<td>50.0%</td>
+<td>75.0%</td>
+<td>25.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.utils.rex">org.gwe.utils.rex</a>
+</td>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>12</td>
+<td>6</td>
+<td>0.0%</td>
+<td>33.0%</td>
+<td>67.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.utils.rex.config">org.gwe.utils.rex.config</a>
+</td>
+<td>8</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+<td>4</td>
+<td>50.0%</td>
+<td>67.0%</td>
+<td>17.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.utils.security">org.gwe.utils.security</a>
+</td>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>24</td>
+<td>8</td>
+<td>0.0%</td>
+<td>25.0%</td>
+<td>75.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.utils.services">org.gwe.utils.services</a>
+</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>20.0%</td>
+<td>67.0%</td>
+<td>13.0%</td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#org.gwe.utils.web">org.gwe.utils.web</a>
+</td>
+<td>9</td>
+<td>9</td>
+<td>0</td>
+<td>2</td>
+<td>5</td>
+<td>0.0%</td>
+<td>71.0%</td>
+<td>29.0%</td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#org.gwe.utils.xstream">org.gwe.utils.xstream</a>
+</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>5</td>
+<td>0.0%</td>
+<td>83.0%</td>
+<td>17.0%</td>
+<td>1</td>
+</tr>
+</table>
+<a name="packages"></a>
+<h2>Packages</h2>
+[ <a href="#summary">summary</a>
+ ] [ <a href="#packages">packages</a>
+ ] [ <a href="#cycles">cycles</a>
+ ] [ <a href="#explanations">explanations</a>
+ ] <br />
+<a name="Default"></a>
+<h3>Default</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>2</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>WindowsTester<br />
+</td>
+<td><i>None</i>
+</td>
+<td>java.io<br />
+java.lang<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe"></a>
+<h3>org.gwe</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>10</td>
+<td>13</td>
+<td>0.0%</td>
+<td>57.0%</td>
+<td>43.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.GWEAppContext<br />
+</td>
+<td>org.gwe.app.agent<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web.request<br />
+org.gwe.app.client.web.view<br />
+org.gwe.app.daemon<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.drivers.fileSystems.staging<br />
+org.gwe.integration.slicer<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.apache.log4j<br />
+org.gwe.app<br />
+org.gwe.drivers<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.p2elv2<br />
+org.gwe.persistence.model<br />
+org.gwe.utils<br />
+org.gwe.utils.security<br />
+org.springframework.context.support<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.api"></a>
+<h3>org.gwe.api</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>10</td>
+<td>22</td>
+<td>32.0%</td>
+<td>69.0%</td>
+<td>1.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.api.ISession4MonitorAPI<br />
+org.gwe.api.PulsingServerAPI<br />
+org.gwe.api.SecuredServerAPI<br />
+org.gwe.api.ServerAPI4Agent<br />
+org.gwe.api.ServerAPI4Daemon<br />
+org.gwe.api.ServerAPI4Monitor<br />
+org.gwe.api.ServerAPI4User<br />
+org.gwe.api.SessionRequest<br />
+org.gwe.api.SystemDaemonRequest<br />
+</td>
+<td>org.gwe.api.ArgumentNotFoundException<br />
+org.gwe.api.ClientOrderBasedOperation<br />
+org.gwe.api.ClientOrderBasedQuery<br />
+org.gwe.api.EventListener<br />
+org.gwe.api.PulsingServerAPIProxyCreator<br />
+org.gwe.api.PulsingServerAPIProxyCreator$1<br />
+org.gwe.api.PulsingServerAPIProxyCreator$PulsingMethodInterceptor<br />
+org.gwe.api.ServerAPIConnectionException<br />
+org.gwe.api.ServerAPILink<br />
+org.gwe.api.ServerAPILink$RemoteInvocatorHeartBeater<br />
+org.gwe.api.ServerStoppingException<br />
+org.gwe.api.Session4ClientAPI<br />
+org.gwe.api.Session4ClientAPIEnhancer<br />
+org.gwe.api.Session4ClientAPIEnhancer$1<br />
+org.gwe.api.Session4MonitorAPI<br />
+org.gwe.api.Session4MonitorAPI$EventQueueReader<br />
+org.gwe.api.Session4ServerAPI<br />
+org.gwe.api.ShutdownDaemonRequest<br />
+org.gwe.api.ValidationException<br />
+</td>
+<td>org.gwe.api.impl<br />
+org.gwe.app.agent<br />
+org.gwe.app.client<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.app.client.web.view<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.drivers.resManagers<br />
+org.gwe.integration.slicer<br />
+org.gwe.persistence.model<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.lang.reflect<br />
+java.net<br />
+java.rmi<br />
+java.rmi.registry<br />
+java.util<br />
+java.util.concurrent<br />
+org.aopalliance.intercept<br />
+org.apache.commons.logging<br />
+org.gwe.api.event<br />
+org.gwe.api.exceptions<br />
+org.gwe.drivers.netAccess.tunneling<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+org.gwe.utils<br />
+org.gwe.utils.concurrent<br />
+org.gwe.utils.reinvoke<br />
+org.gwe.utils.security<br />
+org.springframework.aop<br />
+org.springframework.aop.framework<br />
+org.springframework.aop.support<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.api.event"></a>
+<h3>org.gwe.api.event</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>5</td>
+<td>6</td>
+<td>25.0%</td>
+<td>55.0%</td>
+<td>20.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.api.event.EventFilter<br />
+</td>
+<td>org.gwe.api.event.DefaultEventFilter<br />
+org.gwe.api.event.Event<br />
+org.gwe.api.event.EventLoggerAdvice<br />
+</td>
+<td>org.gwe.api<br />
+org.gwe.api.impl<br />
+org.gwe.app.client<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.integration.slicer<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.lang.reflect<br />
+java.util<br />
+org.gwe.persistence.model<br />
+org.springframework.aop<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.api.exceptions"></a>
+<h3>org.gwe.api.exceptions</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>8</td>
+<td>2</td>
+<td>0.0%</td>
+<td>20.0%</td>
+<td>80.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.api.exceptions.AlreadyExistentUserException<br />
+org.gwe.api.exceptions.AuthenticationException<br />
+org.gwe.api.exceptions.DaemonNotFoundException<br />
+org.gwe.api.exceptions.GWEDomainException<br />
+org.gwe.api.exceptions.IdentifierNotSpecifiedException<br />
+org.gwe.api.exceptions.OrderNotFoundException<br />
+org.gwe.api.exceptions.PasswordMismatchException<br />
+org.gwe.api.exceptions.RecordNotFoundException<br />
+org.gwe.api.exceptions.ServerAPIBindingException<br />
+</td>
+<td>org.gwe.api<br />
+org.gwe.api.impl<br />
+org.gwe.app.client<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.app.daemon<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.integration.slicer<br />
+</td>
+<td>java.lang<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.api.impl"></a>
+<h3>org.gwe.api.impl</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>21</td>
+<td>30.000002%</td>
+<td>95.0%</td>
+<td>25.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.api.impl.BaseServerAPIImpl<br />
+org.gwe.api.impl.PulsingServerAPIImpl<br />
+org.gwe.api.impl.SecuredServerAPIImpl<br />
+</td>
+<td>org.gwe.api.impl.PulsingServerAPIImpl$BeatChecker<br />
+org.gwe.api.impl.SecuredServerAPIImpl$1<br />
+org.gwe.api.impl.SecuredServerAPIImpl$2<br />
+org.gwe.api.impl.ServerAPI4AgentImpl<br />
+org.gwe.api.impl.ServerAPI4DaemonImpl<br />
+org.gwe.api.impl.ServerAPI4MonitorImpl<br />
+org.gwe.api.impl.ServerAPI4UserImpl<br />
+</td>
+<td>org.gwe.app.daemon<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.lang.reflect<br />
+java.net<br />
+java.rmi<br />
+java.rmi.server<br />
+java.util<br />
+org.aopalliance.intercept<br />
+org.apache.commons.logging<br />
+org.gwe.api<br />
+org.gwe.api.event<br />
+org.gwe.api.exceptions<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.drivers.netAccess.tunneling<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+org.gwe.utils.concurrent<br />
+org.gwe.utils.security<br />
+org.springframework.aop<br />
+org.springframework.aop.framework<br />
+org.springframework.aop.support<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app"></a>
+<h3>org.gwe.app</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>5</td>
+<td>2</td>
+<td>0.0%</td>
+<td>29.0%</td>
+<td>71.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.app.Distribution<br />
+</td>
+<td>org.gwe<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.web.request<br />
+org.gwe.persistence.model<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.agent"></a>
+<h3>org.gwe.app.agent</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>9</td>
+<td>0.0%</td>
+<td>90.0%</td>
+<td>10.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.app.agent.AgentApp<br />
+org.gwe.app.agent.BaseAgent<br />
+</td>
+<td>org.gwe.drivers.resManagers<br />
+</td>
+<td>java.lang<br />
+java.rmi<br />
+java.util.concurrent<br />
+org.apache.commons.logging<br />
+org.gwe<br />
+org.gwe.api<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+org.gwe.utils.reinvoke<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.client"></a>
+<h3>org.gwe.app.client</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>7</td>
+<td>18</td>
+<td>10.0%</td>
+<td>72.0%</td>
+<td>18.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.app.client.ProgressTracker<br />
+</td>
+<td>org.gwe.app.client.GWEASCIILogo<br />
+org.gwe.app.client.GWEConsoleReader<br />
+org.gwe.app.client.HardcodedClientApp<br />
+org.gwe.app.client.ProgressTracker$1<br />
+org.gwe.app.client.ProgressTracker$2<br />
+org.gwe.app.client.ProgressTracker$3<br />
+org.gwe.app.client.RealtimeDaemonMonitorApp<br />
+org.gwe.app.client.RealtimeDaemonMonitorApp$RealTimeEventListener<br />
+org.gwe.app.client.SessionsRepository<br />
+</td>
+<td>org.gwe.app.client.admin<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.app.client.web.view<br />
+org.gwe.integration.slicer<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.rmi<br />
+java.text<br />
+java.util<br />
+jline<br />
+org.apache.commons.logging<br />
+org.gwe.api<br />
+org.gwe.api.event<br />
+org.gwe.api.exceptions<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order.p2el<br />
+org.gwe.utils.cmd<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.client.admin"></a>
+<h3>org.gwe.app.client.admin</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>3</td>
+<td>12</td>
+<td>0.0%</td>
+<td>80.0%</td>
+<td>20.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.app.client.admin.ClientDaemonAppManager<br />
+org.gwe.app.client.admin.ClientDaemonInstaller<br />
+org.gwe.app.client.admin.InstallationPhase<br />
+org.gwe.app.client.admin.InstallerException<br />
+org.gwe.app.client.admin.RemoteExecutionException<br />
+</td>
+<td>org.gwe.app.client<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.integration.slicer<br />
+</td>
+<td>java.lang<br />
+org.apache.commons.logging<br />
+org.gwe.app<br />
+org.gwe.app.client<br />
+org.gwe.app.client.config<br />
+org.gwe.drivers<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.persistence.model<br />
+org.gwe.utils<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.client.config"></a>
+<h3>org.gwe.app.client.config</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>9</td>
+<td>16</td>
+<td>12.0%</td>
+<td>64.0%</td>
+<td>24.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.app.client.config.ClientConfigReader<br />
+</td>
+<td>org.gwe.app.client.config.ClientConfig<br />
+org.gwe.app.client.config.ClientConfig$1<br />
+org.gwe.app.client.config.ConsoleKeyStorePasskeysReader<br />
+org.gwe.app.client.config.InstallationFiles<br />
+org.gwe.app.client.config.KeyStoreCreatorApp<br />
+org.gwe.app.client.config.KeysXMLConfigFile<br />
+org.gwe.app.client.config.XMLClientConfigReader<br />
+</td>
+<td>org.gwe.app.client<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web<br />
+org.gwe.app.client.web.request<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.app.client.web.view<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.integration.slicer<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe<br />
+org.gwe.app<br />
+org.gwe.app.client<br />
+org.gwe.p2elv2.macro<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+org.gwe.persistence.model.order.p2el<br />
+org.gwe.utils<br />
+org.gwe.utils.cmd<br />
+org.gwe.utils.rex<br />
+org.gwe.utils.security<br />
+org.gwe.utils.xstream<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.client.regular.shell"></a>
+<h3>org.gwe.app.client.regular.shell</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>17</td>
+<td>0.0%</td>
+<td>94.0%</td>
+<td>6.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.app.client.regular.shell.ClientShellApp<br />
+org.gwe.app.client.regular.shell.CommandShellApp<br />
+org.gwe.app.client.regular.shell.TerminalShellApp<br />
+</td>
+<td>org.gwe.app.client<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.rmi<br />
+java.util<br />
+jline<br />
+org.apache.commons.logging<br />
+org.gwe<br />
+org.gwe.api<br />
+org.gwe.api.exceptions<br />
+org.gwe.app.client<br />
+org.gwe.app.client.config<br />
+org.gwe.p2elv2<br />
+org.gwe.persistence.model<br />
+org.gwe.utils<br />
+org.gwe.utils.cmd<br />
+org.gwe.utils.rex<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.client.web"></a>
+<h3>org.gwe.app.client.web</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>15</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.app.client.web.GWEServletContext<br />
+org.gwe.app.client.web.WebServerApp<br />
+org.gwe.app.client.web.WebServerApp$ShutdownServlet<br />
+org.gwe.app.client.web.WebServerApp$ShutdownServlet$1<br />
+org.gwe.app.client.web.WebUtils<br />
+</td>
+<td><i>None</i>
+</td>
+<td>java.io<br />
+java.lang<br />
+java.lang.reflect<br />
+javax.servlet<br />
+javax.servlet.http<br />
+org.apache.commons.logging<br />
+org.gwe.app.client<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.app.client.web.view<br />
+org.gwe.utils<br />
+org.gwe.utils.security<br />
+org.mortbay.jetty<br />
+org.mortbay.jetty.handler<br />
+org.mortbay.jetty.servlet<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.client.web.request"></a>
+<h3>org.gwe.app.client.web.request</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>3</td>
+<td>8</td>
+<td>12.0%</td>
+<td>73.0%</td>
+<td>15.000001%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.app.client.web.request.ParamParser<br />
+</td>
+<td>org.gwe.app.client.web.request.BooleanParser<br />
+org.gwe.app.client.web.request.ConfigParam<br />
+org.gwe.app.client.web.request.IntegerParser<br />
+org.gwe.app.client.web.request.Operation<br />
+org.gwe.app.client.web.request.PageModel<br />
+org.gwe.app.client.web.request.Param<br />
+org.gwe.app.client.web.request.StringParser<br />
+</td>
+<td>org.gwe.app.client.web.servlet<br />
+org.gwe.app.client.web.view<br />
+org.gwe.utils.web<br />
+</td>
+<td>java.lang<br />
+java.util<br />
+javax.servlet.http<br />
+org.gwe<br />
+org.gwe.app<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.web.view<br />
+org.gwe.utils.web<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.client.web.servlet"></a>
+<h3>org.gwe.app.client.web.servlet</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>20</td>
+<td>18.0%</td>
+<td>95.0%</td>
+<td>13.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.app.client.web.servlet.GWEClusterSelectedServlet<br />
+org.gwe.app.client.web.servlet.GWEServlet<br />
+</td>
+<td>org.gwe.app.client.web.servlet.ClusterInfoServlet<br />
+org.gwe.app.client.web.servlet.ClusterInfoServlet$1<br />
+org.gwe.app.client.web.servlet.GWEServlet$1<br />
+org.gwe.app.client.web.servlet.GridInfoServlet<br />
+org.gwe.app.client.web.servlet.ImageServlet<br />
+org.gwe.app.client.web.servlet.JobInfoServlet<br />
+org.gwe.app.client.web.servlet.OrderInfoServlet<br />
+org.gwe.app.client.web.servlet.QueueOrderServlet<br />
+org.gwe.app.client.web.servlet.QueueOrderServlet$1<br />
+</td>
+<td>org.gwe.app.client.web<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.rmi<br />
+java.util<br />
+javax.servlet<br />
+javax.servlet.http<br />
+org.apache.commons.logging<br />
+org.gwe.api<br />
+org.gwe.api.exceptions<br />
+org.gwe.app.client<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.web.request<br />
+org.gwe.app.client.web.view<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.p2elv2.model<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order.p2el<br />
+org.gwe.utils<br />
+org.gwe.utils.rex<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.client.web.view"></a>
+<h3>org.gwe.app.client.web.view</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>3</td>
+<td>15</td>
+<td>6.0%</td>
+<td>83.0%</td>
+<td>11.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.app.client.web.view.HtmlModelPropsTable<br />
+</td>
+<td>org.gwe.app.client.web.view.HtmlClusterLink<br />
+org.gwe.app.client.web.view.HtmlClusterPropsTable<br />
+org.gwe.app.client.web.view.HtmlClustersTable<br />
+org.gwe.app.client.web.view.HtmlExecPropsTable<br />
+org.gwe.app.client.web.view.HtmlExecsTable<br />
+org.gwe.app.client.web.view.HtmlJobLink<br />
+org.gwe.app.client.web.view.HtmlJobPropsTable<br />
+org.gwe.app.client.web.view.HtmlJobsTable<br />
+org.gwe.app.client.web.view.HtmlKeysTable<br />
+org.gwe.app.client.web.view.HtmlOperLink<br />
+org.gwe.app.client.web.view.HtmlOrderLink<br />
+org.gwe.app.client.web.view.HtmlOrderProfilePropsTable<br />
+org.gwe.app.client.web.view.HtmlOrderPropsTable<br />
+org.gwe.app.client.web.view.HtmlOrdersTable<br />
+org.gwe.app.client.web.view.HtmlPVarTable<br />
+org.gwe.app.client.web.view.MainVelocityTemplate<br />
+org.gwe.app.client.web.view.Renderer<br />
+</td>
+<td>org.gwe.app.client.web<br />
+org.gwe.app.client.web.request<br />
+org.gwe.app.client.web.servlet<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.gwe<br />
+org.gwe.api<br />
+org.gwe.app.client<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.web.request<br />
+org.gwe.app.explorer<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.model<br />
+org.gwe.persistence.model<br />
+org.gwe.utils<br />
+org.gwe.utils.security<br />
+org.gwe.utils.web<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.controller"></a>
+<h3>org.gwe.app.controller</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>5</td>
+<td>80.0%</td>
+<td>100.0%</td>
+<td>80.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.app.controller.Session4Agent<br />
+org.gwe.app.controller.Session4Client<br />
+org.gwe.app.controller.Session4Controller<br />
+org.gwe.app.controller.Session4Daemon<br />
+</td>
+<td>org.gwe.app.controller.ControllerApp<br />
+</td>
+<td><i>None</i>
+</td>
+<td>java.io<br />
+java.lang<br />
+java.rmi<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.daemon"></a>
+<h3>org.gwe.app.daemon</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>14</td>
+<td>0.0%</td>
+<td>93.0%</td>
+<td>7.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.app.daemon.DaemonApp<br />
+org.gwe.app.daemon.DaemonApp$DaemonAppException<br />
+org.gwe.app.daemon.DaemonAppStarter<br />
+org.gwe.app.daemon.DaemonBeacon<br />
+org.gwe.app.daemon.DaemonInstallerApp<br />
+org.gwe.app.daemon.QueueOrderTest<br />
+org.gwe.app.daemon.QueueOrderTest$1<br />
+</td>
+<td>org.gwe.persistence.model<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.rmi<br />
+java.rmi.registry<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe<br />
+org.gwe.api.exceptions<br />
+org.gwe.api.impl<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.persistence.dao<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order.p2el<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.daemon.domain"></a>
+<h3>org.gwe.app.daemon.domain</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>4</td>
+<td>21</td>
+<td>0.0%</td>
+<td>84.0%</td>
+<td>16.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.app.daemon.domain.AgentDomain<br />
+org.gwe.app.daemon.domain.AgentDomain$1<br />
+org.gwe.app.daemon.domain.AllocationTooLateException<br />
+org.gwe.app.daemon.domain.BaseDomain<br />
+org.gwe.app.daemon.domain.DaemonDomain<br />
+org.gwe.app.daemon.domain.InternalDomain<br />
+org.gwe.app.daemon.domain.MonitorDomain<br />
+org.gwe.app.daemon.domain.MonitorDomain$1<br />
+org.gwe.app.daemon.domain.MonitorDomain$UserEventNotifier<br />
+org.gwe.app.daemon.domain.NoJobToProcessException<br />
+org.gwe.app.daemon.domain.ResultsPublisher<br />
+org.gwe.app.daemon.domain.UserDomain<br />
+</td>
+<td>org.gwe.api.impl<br />
+org.gwe.app.daemon<br />
+org.gwe.app.daemon.domain.background<br />
+org.gwe.persistence.model<br />
+</td>
+<td>com.thoughtworks.xstream<br />
+com.thoughtworks.xstream.io.xml<br />
+java.io<br />
+java.lang<br />
+java.sql<br />
+java.util<br />
+java.util.concurrent<br />
+java.util.regex<br />
+org.apache.commons.logging<br />
+org.gwe<br />
+org.gwe.api<br />
+org.gwe.api.event<br />
+org.gwe.api.exceptions<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.persistence.dao<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.live<br />
+org.gwe.persistence.model.order<br />
+org.gwe.utils<br />
+org.gwe.utils.concurrent<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.daemon.domain.background"></a>
+<h3>org.gwe.app.daemon.domain.background</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>8</td>
+<td>12.0%</td>
+<td>100.0%</td>
+<td>12.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.app.daemon.domain.background.AgentDomainBasedService<br />
+</td>
+<td>org.gwe.app.daemon.domain.background.JobAndAllocationMatcher<br />
+org.gwe.app.daemon.domain.background.JobGenerator<br />
+org.gwe.app.daemon.domain.background.JobsAndAllocationsPreparer<br />
+org.gwe.app.daemon.domain.background.JobsAndAllocationsPreparer$1<br />
+org.gwe.app.daemon.domain.background.JobsAndAllocationsPreparer$2<br />
+org.gwe.app.daemon.domain.background.JobsReadinessFlagger<br />
+org.gwe.app.daemon.domain.background.OrdersDBUpdater<br />
+</td>
+<td><i>None</i>
+</td>
+<td>java.lang<br />
+java.util<br />
+java.util.concurrent<br />
+org.apache.commons.logging<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.drivers.resManagers<br />
+org.gwe.persistence.model<br />
+org.gwe.utils.concurrent<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.app.explorer"></a>
+<h3>org.gwe.app.explorer</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>10</td>
+<td>0.0%</td>
+<td>91.0%</td>
+<td>9.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.app.explorer.VarsDependencies<br />
+org.gwe.app.explorer.VarsModelRenderer<br />
+</td>
+<td>org.gwe.app.client.web.view<br />
+</td>
+<td>com.thoughtworks.xstream<br />
+com.thoughtworks.xstream.io.xml<br />
+java.io<br />
+java.lang<br />
+java.util<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.p2elv2.model<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+org.gwe.persistence.model.order.p2el<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.drivers"></a>
+<h3>org.gwe.drivers</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>10</td>
+<td>8</td>
+<td>12.0%</td>
+<td>44.0%</td>
+<td>43.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.drivers.Driver<br />
+</td>
+<td>org.gwe.drivers.DriversManager<br />
+org.gwe.drivers.HandleCreationException<br />
+org.gwe.drivers.HandleCreationNotSupportedException<br />
+org.gwe.drivers.HandleOperationException<br />
+org.gwe.drivers.HandleOperationNotSupportedException<br />
+org.gwe.drivers.ResourceHandle<br />
+org.gwe.drivers.ResourceHandleFactory<br />
+</td>
+<td>org.gwe<br />
+org.gwe.app.client.admin<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.fileSystems.handles<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers.netAccess.handles<br />
+org.gwe.drivers.netAccess.tunneling<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.utils.security<br />
+</td>
+<td>java.lang<br />
+java.lang.reflect<br />
+java.net<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.utils.rex<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.drivers.bundleManagers"></a>
+<h3>org.gwe.drivers.bundleManagers</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>4</td>
+<td>8</td>
+<td>0.0%</td>
+<td>67.0%</td>
+<td>33.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.drivers.bundleManagers.BundleHandle<br />
+org.gwe.drivers.bundleManagers.BundleType<br />
+org.gwe.drivers.bundleManagers.DeploymentException<br />
+</td>
+<td>org.gwe.app.client<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.p2elv2.functions<br />
+</td>
+<td>java.lang<br />
+org.apache.commons.logging<br />
+org.gwe<br />
+org.gwe.drivers<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.utils<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.drivers.fileSystems"></a>
+<h3>org.gwe.drivers.fileSystems</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>8</td>
+<td>8</td>
+<td>20.0%</td>
+<td>50.0%</td>
+<td>30.000002%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.drivers.fileSystems.FileHandle<br />
+</td>
+<td>org.gwe.drivers.fileSystems.FileTransferer<br />
+org.gwe.drivers.fileSystems.FileTransferer$1<br />
+org.gwe.drivers.fileSystems.GridFileSystem<br />
+org.gwe.drivers.fileSystems.GridFileSystemUtils<br />
+</td>
+<td>org.gwe<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.drivers.fileSystems.handles<br />
+org.gwe.drivers.fileSystems.staging<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.persistence.model<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+org.apache.commons.logging<br />
+org.gwe.app.client.config<br />
+org.gwe.drivers<br />
+org.gwe.utils<br />
+org.gwe.utils.security<br />
+org.gwe.utils.services<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.drivers.fileSystems.handles"></a>
+<h3>org.gwe.drivers.fileSystems.handles</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>17</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.drivers.fileSystems.handles.HTTPHandle<br />
+org.gwe.drivers.fileSystems.handles.JSchHandle<br />
+org.gwe.drivers.fileSystems.handles.JargonHandle<br />
+org.gwe.drivers.fileSystems.handles.VfsAuthBridge<br />
+org.gwe.drivers.fileSystems.handles.VfsHandle<br />
+</td>
+<td><i>None</i>
+</td>
+<td>com.jcraft.jsch<br />
+java.io<br />
+java.lang<br />
+java.net<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.apache.commons.vfs<br />
+org.apache.commons.vfs.impl<br />
+org.apache.commons.vfs.provider.sftp<br />
+org.gwe.drivers<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers.netAccess.handles<br />
+org.gwe.utils<br />
+org.gwe.utils.rex<br />
+org.gwe.utils.security<br />
+sun.misc<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.drivers.fileSystems.staging"></a>
+<h3>org.gwe.drivers.fileSystems.staging</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>3</td>
+<td>12</td>
+<td>0.0%</td>
+<td>80.0%</td>
+<td>20.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.drivers.fileSystems.staging.DownloadHandle<br />
+org.gwe.drivers.fileSystems.staging.DownloadHandleRepo<br />
+org.gwe.drivers.fileSystems.staging.FileStagingException<br />
+org.gwe.drivers.fileSystems.staging.FilesStager<br />
+org.gwe.drivers.fileSystems.staging.FilesStager$1<br />
+org.gwe.drivers.fileSystems.staging.FilesTransferDescriptor<br />
+org.gwe.drivers.fileSystems.staging.ShellCommandExecutor<br />
+org.gwe.drivers.fileSystems.staging.ShellCommandExecutor$1<br />
+org.gwe.drivers.fileSystems.staging.StagingUtils<br />
+</td>
+<td>org.gwe.p2elv2<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.persistence.model.order.p2el<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+java.util.concurrent<br />
+org.apache.commons.logging<br />
+org.gwe<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.utils<br />
+org.gwe.utils.concurrent<br />
+org.gwe.utils.security<br />
+org.gwe.utils.services<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.drivers.netAccess"></a>
+<h3>org.gwe.drivers.netAccess</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>12</td>
+<td>7</td>
+<td>50.0%</td>
+<td>37.0%</td>
+<td>13.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.drivers.netAccess.ExecutionChannelInspector<br />
+org.gwe.drivers.netAccess.HostHandle<br />
+org.gwe.drivers.netAccess.RemoteHostHandle<br />
+</td>
+<td>org.gwe.drivers.netAccess.ConnectorException<br />
+org.gwe.drivers.netAccess.ShellCommand<br />
+org.gwe.drivers.netAccess.ShellCommand$1<br />
+</td>
+<td>org.gwe.app.client.admin<br />
+org.gwe.app.daemon<br />
+org.gwe.drivers<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.drivers.fileSystems.handles<br />
+org.gwe.drivers.fileSystems.staging<br />
+org.gwe.drivers.netAccess.handles<br />
+org.gwe.drivers.netAccess.tunneling<br />
+org.gwe.drivers.resManagers<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe.drivers<br />
+org.gwe.utils<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.drivers.netAccess.handles"></a>
+<h3>org.gwe.drivers.netAccess.handles</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>9</td>
+<td>0.0%</td>
+<td>90.0%</td>
+<td>10.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.drivers.netAccess.handles.JSchConnection<br />
+org.gwe.drivers.netAccess.handles.JSchUserInfo<br />
+org.gwe.drivers.netAccess.handles.LocalHostHandle<br />
+org.gwe.drivers.netAccess.handles.SSHHostHandle<br />
+org.gwe.drivers.netAccess.handles.SSHHostHandle$1<br />
+</td>
+<td>org.gwe.drivers.fileSystems.handles<br />
+</td>
+<td>com.jcraft.jsch<br />
+java.io<br />
+java.lang<br />
+java.net<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.drivers.netAccess.tunneling"></a>
+<h3>org.gwe.drivers.netAccess.tunneling</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>3</td>
+<td>9</td>
+<td>0.0%</td>
+<td>75.0%</td>
+<td>25.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.drivers.netAccess.tunneling.HostTunnel<br />
+org.gwe.drivers.netAccess.tunneling.HostTunnelException<br />
+org.gwe.drivers.netAccess.tunneling.HostTunnelTarget<br />
+org.gwe.drivers.netAccess.tunneling.HostTunnelsRepo<br />
+org.gwe.drivers.netAccess.tunneling.TunneledSocketFactory<br />
+</td>
+<td>org.gwe.api<br />
+org.gwe.api.impl<br />
+org.gwe.persistence.model<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.net<br />
+java.rmi.server<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.drivers.resManagers"></a>
+<h3>org.gwe.drivers.resManagers</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>12</td>
+<td>15.000001%</td>
+<td>92.0%</td>
+<td>8.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.drivers.resManagers.CommandLineResourceManagerDriver<br />
+org.gwe.drivers.resManagers.ResourceManagerDriver<br />
+</td>
+<td>org.gwe.drivers.resManagers.AllocationPhase<br />
+org.gwe.drivers.resManagers.BsubDriver<br />
+org.gwe.drivers.resManagers.CondorDriver<br />
+org.gwe.drivers.resManagers.GWEResourceManagerDriver<br />
+org.gwe.drivers.resManagers.GridResourceManager<br />
+org.gwe.drivers.resManagers.MultiProcessesDriver<br />
+org.gwe.drivers.resManagers.MultiProcessesDriver$1<br />
+org.gwe.drivers.resManagers.MultiThreadsDriver<br />
+org.gwe.drivers.resManagers.NoResourceManagerDiscoveredException<br />
+org.gwe.drivers.resManagers.QsubDriver<br />
+org.gwe.drivers.resManagers.ResourceAllocationException<br />
+</td>
+<td>org.gwe.app.daemon.domain.background<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+java.util.concurrent<br />
+java.util.regex<br />
+org.apache.commons.logging<br />
+org.gwe.api<br />
+org.gwe.app.agent<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.persistence.model<br />
+org.gwe.utils<br />
+org.gwe.utils.concurrent<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.integration.lddmm"></a>
+<h3>org.gwe.integration.lddmm</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>7</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.integration.lddmm.LDDMMDaemonRequest<br />
+org.gwe.integration.lddmm.LDDMMParams<br />
+org.gwe.integration.lddmm.LDDMMResultParser<br />
+</td>
+<td><i>None</i>
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+org.gwe.utils<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.integration.slicer"></a>
+<h3>org.gwe.integration.slicer</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>22</td>
+<td>11.0%</td>
+<td>96.0%</td>
+<td>7.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.integration.slicer.AbstractCLMProxyApp<br />
+</td>
+<td>org.gwe.integration.slicer.CLMApp<br />
+org.gwe.integration.slicer.GWECLMProxyApp<br />
+org.gwe.integration.slicer.GWECLMProxyApp$1<br />
+org.gwe.integration.slicer.GWECLMProxyAppEventListener<br />
+org.gwe.integration.slicer.GWECLMProxyAppEventListener$1<br />
+org.gwe.integration.slicer.GWEEnabledCLMCreatorApp<br />
+org.gwe.integration.slicer.SlicerResultParser<br />
+org.gwe.integration.slicer.WrapperCLMProxyApp<br />
+</td>
+<td>org.gwe.integration.slicer.chains<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.lang.reflect<br />
+java.rmi<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe<br />
+org.gwe.api<br />
+org.gwe.api.event<br />
+org.gwe.api.exceptions<br />
+org.gwe.app.client<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.client.config<br />
+org.gwe.integration.slicer.model<br />
+org.gwe.integration.slicer.model.param<br />
+org.gwe.p2elv2<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order.p2el<br />
+org.gwe.utils<br />
+org.gwe.utils.cmd<br />
+org.gwe.utils.rex<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.integration.slicer.chains"></a>
+<h3>org.gwe.integration.slicer.chains</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>10</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.integration.slicer.chains.ChainCLMDesc<br />
+org.gwe.integration.slicer.chains.ChainCLMProxyApp<br />
+org.gwe.integration.slicer.chains.ChainDesc<br />
+</td>
+<td><i>None</i>
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+javax.xml.parsers<br />
+org.apache.commons.logging<br />
+org.gwe.integration.slicer<br />
+org.gwe.integration.slicer.model<br />
+org.gwe.utils.cmd<br />
+org.w3c.dom<br />
+org.xml.sax<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.integration.slicer.model"></a>
+<h3>org.gwe.integration.slicer.model</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>4</td>
+<td>7</td>
+<td>0.0%</td>
+<td>64.0%</td>
+<td>36.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.integration.slicer.model.ExecutableModel<br />
+org.gwe.integration.slicer.model.ExecutableModelParser<br />
+org.gwe.integration.slicer.model.GroupModel<br />
+org.gwe.integration.slicer.model.ParameterModel<br />
+</td>
+<td>org.gwe.integration.slicer<br />
+org.gwe.integration.slicer.chains<br />
+org.gwe.integration.slicer.model.exec<br />
+org.gwe.integration.slicer.model.param<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+javax.xml.parsers<br />
+org.gwe.utils<br />
+org.gwe.utils.cmd<br />
+org.w3c.dom<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.integration.slicer.model.exec"></a>
+<h3>org.gwe.integration.slicer.model.exec</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>4</td>
+<td>0.0%</td>
+<td>100.0%</td>
+<td>0.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.integration.slicer.model.exec.ExecBSplineRegistrationModel<br />
+org.gwe.integration.slicer.model.exec.ExecBaseGWEModel<br />
+org.gwe.integration.slicer.model.exec.ExecBaseRegistrationModel<br />
+org.gwe.integration.slicer.model.exec.ExecEMSegmenterModel<br />
+org.gwe.integration.slicer.model.exec.ExecLinearRegistrationModel<br />
+</td>
+<td><i>None</i>
+</td>
+<td>java.lang<br />
+org.gwe.integration.slicer.model<br />
+org.gwe.integration.slicer.model.param<br />
+org.gwe.utils.cmd<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.integration.slicer.model.param"></a>
+<h3>org.gwe.integration.slicer.model.param</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>2</td>
+<td>3</td>
+<td>0.0%</td>
+<td>60.000004%</td>
+<td>40.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.integration.slicer.model.param.PMDir<br />
+org.gwe.integration.slicer.model.param.PMEnum<br />
+org.gwe.integration.slicer.model.param.PMEnumString<br />
+org.gwe.integration.slicer.model.param.PMFloat<br />
+org.gwe.integration.slicer.model.param.PMInt<br />
+org.gwe.integration.slicer.model.param.PMStrEnum<br />
+org.gwe.integration.slicer.model.param.PMString<br />
+</td>
+<td>org.gwe.integration.slicer<br />
+org.gwe.integration.slicer.model.exec<br />
+</td>
+<td>java.lang<br />
+java.util<br />
+org.gwe.integration.slicer.model<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.p2elv2"></a>
+<h3>org.gwe.p2elv2</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>7</td>
+<td>10</td>
+<td>26.0%</td>
+<td>58.999996%</td>
+<td>15.000001%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.p2elv2.P2ELRegExps<br />
+org.gwe.p2elv2.PFunction<br />
+org.gwe.p2elv2.PFunctionRuntime<br />
+org.gwe.p2elv2.PFunctionSingleValue<br />
+org.gwe.p2elv2.PProcessor<br />
+</td>
+<td>org.gwe.p2elv2.ContextVariables<br />
+org.gwe.p2elv2.P2ELDependentVariableNotResolvedException<br />
+org.gwe.p2elv2.P2ELFunctionNotSupported<br />
+org.gwe.p2elv2.P2ELMultiValueVarDependentOnRuntimeVarException<br />
+org.gwe.p2elv2.P2ELSyntaxException<br />
+org.gwe.p2elv2.PArrayVarValue<br />
+org.gwe.p2elv2.PPermutation<br />
+org.gwe.p2elv2.PPermutation$1<br />
+org.gwe.p2elv2.PProcessorType<br />
+org.gwe.p2elv2.PStatementCompiler<br />
+org.gwe.p2elv2.PStatementContext<br />
+org.gwe.p2elv2.PVarValue<br />
+org.gwe.p2elv2.PVarValueSpace<br />
+org.gwe.p2elv2.UnitTests<br />
+</td>
+<td>org.gwe<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web.view<br />
+org.gwe.integration.slicer<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.p2elv2.model<br />
+org.gwe.persistence.model.order.p2el<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.gwe.drivers.fileSystems.staging<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.p2elv2.model<br />
+org.gwe.utils<br />
+org.gwe.utils.rex<br />
+org.gwe.utils.rex.config<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.p2elv2.functions"></a>
+<h3>org.gwe.p2elv2.functions</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>3</td>
+<td>23</td>
+<td>5.0%</td>
+<td>88.0%</td>
+<td>7.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.p2elv2.functions.PProcessorStager<br />
+</td>
+<td>org.gwe.p2elv2.functions.PBaseFunctionTest<br />
+org.gwe.p2elv2.functions.PFConst<br />
+org.gwe.p2elv2.functions.PFCount<br />
+org.gwe.p2elv2.functions.PFDir<br />
+org.gwe.p2elv2.functions.PFFileDownload<br />
+org.gwe.p2elv2.functions.PFFileDownload$1<br />
+org.gwe.p2elv2.functions.PFFileUpload<br />
+org.gwe.p2elv2.functions.PFFileUpload$1<br />
+org.gwe.p2elv2.functions.PFFileUpload$2<br />
+org.gwe.p2elv2.functions.PFLines<br />
+org.gwe.p2elv2.functions.PFMD5Hex<br />
+org.gwe.p2elv2.functions.PFMath<br />
+org.gwe.p2elv2.functions.PFRange<br />
+org.gwe.p2elv2.functions.PFRange$NumberFormatter<br />
+org.gwe.p2elv2.functions.PFRegExp<br />
+org.gwe.p2elv2.functions.PFRegExp$Params<br />
+org.gwe.p2elv2.functions.PFUUID<br />
+org.gwe.p2elv2.functions.PFUnbundle<br />
+org.gwe.p2elv2.functions.PFXCat<br />
+org.gwe.p2elv2.functions.PFXPath<br />
+org.gwe.p2elv2.functions.PFXmlEdit<br />
+</td>
+<td>org.gwe.app.explorer<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.model<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.net<br />
+java.security<br />
+java.util<br />
+java.util.regex<br />
+javax.xml.transform<br />
+javax.xml.transform.dom<br />
+javax.xml.transform.stream<br />
+javax.xml.xpath<br />
+org.apache.commons.logging<br />
+org.gwe.drivers<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.fileSystems.staging<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.p2elv2<br />
+org.gwe.utils<br />
+org.gwe.utils.rex<br />
+org.gwe.utils.security<br />
+org.junit<br />
+org.w3c.dom<br />
+org.xml.sax<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.p2elv2.macro"></a>
+<h3>org.gwe.p2elv2.macro</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>6</td>
+<td>0.0%</td>
+<td>86.0%</td>
+<td>14.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.p2elv2.macro.PDocumentationLine<br />
+org.gwe.p2elv2.macro.PMacro<br />
+org.gwe.p2elv2.macro.PMacroLibrary<br />
+org.gwe.p2elv2.macro.PMacroParam<br />
+org.gwe.p2elv2.macro.PMacroRepo<br />
+</td>
+<td>org.gwe.app.client.config<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.gwe.p2elv2.model<br />
+org.gwe.utils<br />
+org.gwe.utils.rex<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.p2elv2.model"></a>
+<h3>org.gwe.p2elv2.model</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>6</td>
+<td>7</td>
+<td>0.0%</td>
+<td>54.000004%</td>
+<td>46.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.p2elv2.model.PFunctionInvocation<br />
+org.gwe.p2elv2.model.PStatement<br />
+org.gwe.p2elv2.model.PVarRef<br />
+org.gwe.p2elv2.model.PVarReferences<br />
+org.gwe.p2elv2.model.PVariable<br />
+org.gwe.p2elv2.model.PVariableArray<br />
+org.gwe.p2elv2.model.PVariableArray$PArrayVarValues<br />
+</td>
+<td>org.gwe.app.client.web.servlet<br />
+org.gwe.app.client.web.view<br />
+org.gwe.app.explorer<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.macro<br />
+org.gwe.persistence.model.order.p2el<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.utils<br />
+org.gwe.utils.rex<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.persistence.dao"></a>
+<h3>org.gwe.persistence.dao</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>2</td>
+<td>12</td>
+<td>0.0%</td>
+<td>86.0%</td>
+<td>14.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.persistence.dao.AllocationInfoDAO<br />
+org.gwe.persistence.dao.BaseInfoDAO<br />
+org.gwe.persistence.dao.ComputeResourceInfoDAO<br />
+org.gwe.persistence.dao.ComputeResourceInfoDAO$1<br />
+org.gwe.persistence.dao.DaemonConfigDescDAO<br />
+org.gwe.persistence.dao.GenericHibernateDaoSupport<br />
+org.gwe.persistence.dao.GenericHibernateDaoSupport$1<br />
+org.gwe.persistence.dao.GenericHibernateDaoSupport$2<br />
+org.gwe.persistence.dao.HeadResourceInfoDAO<br />
+org.gwe.persistence.dao.JobExecutionInfoDAO<br />
+org.gwe.persistence.dao.JobInfoDAO<br />
+org.gwe.persistence.dao.JobInfoDAO$1<br />
+org.gwe.persistence.dao.JobInfoDAO$2<br />
+org.gwe.persistence.dao.JobInfoDAO$3<br />
+org.gwe.persistence.dao.OrderInfoDAO<br />
+org.gwe.persistence.dao.OrderInfoDAO$1<br />
+org.gwe.persistence.dao.OrderInfoDAO$2<br />
+org.gwe.persistence.dao.OrderInfoDAO$3<br />
+org.gwe.persistence.dao.OrderInfoDAO$4<br />
+</td>
+<td>org.gwe.app.daemon<br />
+org.gwe.app.daemon.domain<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.lang.reflect<br />
+java.sql<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe.persistence.model<br />
+org.gwe.utils<br />
+org.hibernate<br />
+org.hibernate.criterion<br />
+org.springframework.orm.hibernate3<br />
+org.springframework.orm.hibernate3.support<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.persistence.model"></a>
+<h3>org.gwe.persistence.model</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>23</td>
+<td>21</td>
+<td>8.0%</td>
+<td>48.0%</td>
+<td>44.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.persistence.model.BaseModelInfo<br />
+org.gwe.persistence.model.BaseModelInfoIdGenerator<br />
+org.gwe.persistence.model.IEventLogger<br />
+</td>
+<td>org.gwe.persistence.model.ARCHType<br />
+org.gwe.persistence.model.AllocationInfo<br />
+org.gwe.persistence.model.AllocationInfo$1<br />
+org.gwe.persistence.model.AllocationInfo$DeathDealer<br />
+org.gwe.persistence.model.AllocationLive<br />
+org.gwe.persistence.model.AllocationReleaseReasons<br />
+org.gwe.persistence.model.BundleInfo<br />
+org.gwe.persistence.model.CleanUp<br />
+org.gwe.persistence.model.CompositeEventLogger<br />
+org.gwe.persistence.model.ComputeResourceInfo<br />
+org.gwe.persistence.model.DaemonConfigDesc<br />
+org.gwe.persistence.model.DaemonInstallation<br />
+org.gwe.persistence.model.EventLogger<br />
+org.gwe.persistence.model.EventType<br />
+org.gwe.persistence.model.GridInfo<br />
+org.gwe.persistence.model.HeadResourceInfo<br />
+org.gwe.persistence.model.HeadResourceInfoIdGenerator<br />
+org.gwe.persistence.model.InfoUtils<br />
+org.gwe.persistence.model.JobExecutionInfo<br />
+org.gwe.persistence.model.JobExecutionInfo$1<br />
+org.gwe.persistence.model.JobExecutionInfoIdGenerator<br />
+org.gwe.persistence.model.JobInfo<br />
+org.gwe.persistence.model.JobInfo$1<br />
+org.gwe.persistence.model.JobInfoIdGenerator<br />
+org.gwe.persistence.model.Launch<br />
+org.gwe.persistence.model.ModelSummary<br />
+org.gwe.persistence.model.OSAppFolder<br />
+org.gwe.persistence.model.OSType<br />
+org.gwe.persistence.model.OrderExecutionProfileInfo<br />
+org.gwe.persistence.model.OrderInfo<br />
+org.gwe.persistence.model.PlatformType<br />
+org.gwe.persistence.model.PreparingJobAbortedException<br />
+org.gwe.persistence.model.ResultParser<br />
+org.gwe.persistence.model.VarInfo<br />
+</td>
+<td>org.gwe<br />
+org.gwe.api<br />
+org.gwe.api.event<br />
+org.gwe.api.impl<br />
+org.gwe.app.agent<br />
+org.gwe.app.client<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.app.client.web.view<br />
+org.gwe.app.controller<br />
+org.gwe.app.daemon<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.app.daemon.domain.background<br />
+org.gwe.app.explorer<br />
+org.gwe.drivers.resManagers<br />
+org.gwe.integration.lddmm<br />
+org.gwe.integration.slicer<br />
+org.gwe.persistence.dao<br />
+org.gwe.persistence.model.live<br />
+org.gwe.persistence.model.order<br />
+org.gwe.persistence.model.order.p2el<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.net<br />
+java.sql<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe.api<br />
+org.gwe.app<br />
+org.gwe.app.daemon<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers.netAccess.tunneling<br />
+org.gwe.persistence.model.live<br />
+org.gwe.persistence.model.order<br />
+org.gwe.persistence.model.order.p2el<br />
+org.gwe.utils<br />
+org.gwe.utils.security<br />
+org.hibernate<br />
+org.hibernate.engine<br />
+org.hibernate.id<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.persistence.model.live"></a>
+<h3>org.gwe.persistence.model.live</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>4</td>
+<td>6</td>
+<td>0.0%</td>
+<td>60.000004%</td>
+<td>40.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.persistence.model.live.AllocationNotFoundException<br />
+org.gwe.persistence.model.live.JobLive<br />
+org.gwe.persistence.model.live.LiveAllocations<br />
+org.gwe.persistence.model.live.LiveExecutions<br />
+org.gwe.persistence.model.live.LiveExecutions$1<br />
+org.gwe.persistence.model.live.LiveOrders<br />
+org.gwe.persistence.model.live.LiveOrdersProgress<br />
+org.gwe.persistence.model.live.OrderIncrementalProgress<br />
+org.gwe.persistence.model.live.OrderLive<br />
+</td>
+<td>org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+org.gwe.persistence.model.order.p2el<br />
+</td>
+<td>java.lang<br />
+java.util<br />
+java.util.concurrent<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+org.gwe.utils.concurrent<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.persistence.model.order"></a>
+<h3>org.gwe.persistence.model.order</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>11</td>
+<td>11</td>
+<td>57.0%</td>
+<td>50.0%</td>
+<td>7.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.persistence.model.order.DaemonRequest<br />
+org.gwe.persistence.model.order.JobDescriptor<br />
+org.gwe.persistence.model.order.JobSideWorker<br />
+org.gwe.persistence.model.order.OrderDescriptor<br />
+</td>
+<td>org.gwe.persistence.model.order.ComposedOrderDescriptor<br />
+org.gwe.persistence.model.order.JobSideWorkerType<br />
+org.gwe.persistence.model.order.OSCommandDaemonRequest<br />
+</td>
+<td>org.gwe.api<br />
+org.gwe.api.impl<br />
+org.gwe.app.agent<br />
+org.gwe.app.client.config<br />
+org.gwe.app.controller<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.app.explorer<br />
+org.gwe.integration.lddmm<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.live<br />
+org.gwe.persistence.model.order.p2el<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+java.util.concurrent<br />
+org.apache.commons.logging<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.live<br />
+org.gwe.utils<br />
+org.gwe.utils.concurrent<br />
+org.gwe.utils.security<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.persistence.model.order.p2el"></a>
+<h3>org.gwe.persistence.model.order.p2el</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>7</td>
+<td>13</td>
+<td>17.0%</td>
+<td>65.0%</td>
+<td>18.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.persistence.model.order.p2el.PJobSideWorker<br />
+</td>
+<td>org.gwe.persistence.model.order.p2el.PJobDescriptor<br />
+org.gwe.persistence.model.order.p2el.PJobDescriptor$1<br />
+org.gwe.persistence.model.order.p2el.PJobDescriptor$2<br />
+org.gwe.persistence.model.order.p2el.PJobSideWorker$1<br />
+org.gwe.persistence.model.order.p2el.POrderDescriptor<br />
+</td>
+<td>org.gwe.app.client<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.app.daemon<br />
+org.gwe.app.explorer<br />
+org.gwe.integration.slicer<br />
+org.gwe.persistence.model<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+java.util.concurrent<br />
+org.apache.commons.logging<br />
+org.gwe.drivers.fileSystems.staging<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.model<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.live<br />
+org.gwe.persistence.model.order<br />
+org.gwe.utils<br />
+org.gwe.utils.rex<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils"></a>
+<h3>org.gwe.utils</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>28</td>
+<td>21</td>
+<td>13.0%</td>
+<td>43.0%</td>
+<td>44.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.utils.AbstractRandomTest<br />
+org.gwe.utils.BaseXMLParser$XMLProcessor<br />
+</td>
+<td>org.gwe.utils.BaseXMLParser<br />
+org.gwe.utils.CompressedObject<br />
+org.gwe.utils.CompressionException<br />
+org.gwe.utils.ConnectionTimeoutException<br />
+org.gwe.utils.Encryptor<br />
+org.gwe.utils.IOUtils<br />
+org.gwe.utils.JNDIMap<br />
+org.gwe.utils.LoggingConfigurer<br />
+org.gwe.utils.LoggingLevelsConfigurer<br />
+org.gwe.utils.Path<br />
+org.gwe.utils.RemoteResolver<br />
+org.gwe.utils.StringUtils<br />
+org.gwe.utils.VelocityUtils<br />
+</td>
+<td>org.gwe<br />
+org.gwe.api<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.app.client.web.view<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.fileSystems.handles<br />
+org.gwe.drivers.fileSystems.staging<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers.resManagers<br />
+org.gwe.integration.lddmm<br />
+org.gwe.integration.slicer<br />
+org.gwe.integration.slicer.model<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.p2elv2.macro<br />
+org.gwe.p2elv2.model<br />
+org.gwe.persistence.dao<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+org.gwe.persistence.model.order.p2el<br />
+org.gwe.utils.cmd<br />
+org.gwe.utils.security<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.net<br />
+java.nio.channels<br />
+java.rmi<br />
+java.rmi.registry<br />
+java.rmi.server<br />
+java.security<br />
+java.util<br />
+java.util.zip<br />
+javax.crypto<br />
+javax.crypto.spec<br />
+javax.naming<br />
+javax.xml.parsers<br />
+org.apache.commons.logging<br />
+org.apache.log4j<br />
+org.apache.velocity<br />
+org.apache.velocity.app<br />
+org.w3c.dom<br />
+org.xml.sax<br />
+sun.misc<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.cmd"></a>
+<h3>org.gwe.utils.cmd</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>7</td>
+<td>5</td>
+<td>0.0%</td>
+<td>42.0%</td>
+<td>58.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.utils.cmd.ArgsList<br />
+org.gwe.utils.cmd.OptionParser<br />
+org.gwe.utils.cmd.OptionTemplate<br />
+org.gwe.utils.cmd.OptionableAppTemplate<br />
+</td>
+<td>org.gwe.app.client<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.integration.slicer<br />
+org.gwe.integration.slicer.chains<br />
+org.gwe.integration.slicer.model<br />
+org.gwe.integration.slicer.model.exec<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.gwe.utils<br />
+org.springframework.beans<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.collections"></a>
+<h3>org.gwe.utils.collections</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>2</td>
+<td>50.0%</td>
+<td>100.0%</td>
+<td>50.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.utils.collections.MapValueCreator<br />
+</td>
+<td>org.gwe.utils.collections.HashMap2<br />
+</td>
+<td><i>None</i>
+</td>
+<td>java.lang<br />
+java.util<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.concurrent"></a>
+<h3>org.gwe.utils.concurrent</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>9</td>
+<td>9</td>
+<td>9.0%</td>
+<td>50.0%</td>
+<td>41.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.utils.concurrent.HeartBeater<br />
+</td>
+<td>org.gwe.utils.concurrent.AspectInjectedMethodInterceptor<br />
+org.gwe.utils.concurrent.AspectInjectedProxyCreator<br />
+org.gwe.utils.concurrent.BlockingList<br />
+org.gwe.utils.concurrent.BlockingMap<br />
+org.gwe.utils.concurrent.BlockingSet<br />
+org.gwe.utils.concurrent.BooleanLock<br />
+org.gwe.utils.concurrent.CounterThreadFactory<br />
+org.gwe.utils.concurrent.Heart<br />
+org.gwe.utils.concurrent.HeartCollection<br />
+org.gwe.utils.concurrent.ThreadPoolUtils<br />
+</td>
+<td>org.gwe.api<br />
+org.gwe.api.impl<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.app.daemon.domain.background<br />
+org.gwe.drivers.fileSystems.staging<br />
+org.gwe.drivers.resManagers<br />
+org.gwe.persistence.model.live<br />
+org.gwe.persistence.model.order<br />
+org.gwe.utils.concurrent.pipeline<br />
+</td>
+<td>java.lang<br />
+java.lang.reflect<br />
+java.util<br />
+java.util.concurrent<br />
+org.aopalliance.intercept<br />
+org.apache.commons.logging<br />
+org.springframework.aop<br />
+org.springframework.aop.framework<br />
+org.springframework.aop.support<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.concurrent.pipeline"></a>
+<h3>org.gwe.utils.concurrent.pipeline</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>0</td>
+<td>4</td>
+<td>50.0%</td>
+<td>100.0%</td>
+<td>50.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.utils.concurrent.pipeline.PipelineStage<br />
+org.gwe.utils.concurrent.pipeline.PipelineStageProcessor<br />
+</td>
+<td>org.gwe.utils.concurrent.pipeline.BlockingList<br />
+org.gwe.utils.concurrent.pipeline.PipelineStage$StageProcessorWrapper<br />
+</td>
+<td><i>None</i>
+</td>
+<td>java.lang<br />
+java.util<br />
+java.util.concurrent<br />
+org.gwe.utils.concurrent<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.reinvoke"></a>
+<h3>org.gwe.utils.reinvoke</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>2</td>
+<td>6</td>
+<td>50.0%</td>
+<td>75.0%</td>
+<td>25.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.utils.reinvoke.Reinvoke<br />
+</td>
+<td>org.gwe.utils.reinvoke.ReinvocationInterceptor<br />
+</td>
+<td>org.gwe.api<br />
+org.gwe.app.agent<br />
+</td>
+<td>java.lang<br />
+java.lang.annotation<br />
+java.lang.reflect<br />
+org.aopalliance.intercept<br />
+org.apache.commons.logging<br />
+org.springframework.aop.framework<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.rex"></a>
+<h3>org.gwe.utils.rex</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>12</td>
+<td>6</td>
+<td>0.0%</td>
+<td>33.0%</td>
+<td>67.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.utils.rex.FunctionInvocation<br />
+org.gwe.utils.rex.REXBrackets<br />
+org.gwe.utils.rex.REXException<br />
+org.gwe.utils.rex.REXParser<br />
+org.gwe.utils.rex.REXUtils<br />
+org.gwe.utils.rex.Statement<br />
+org.gwe.utils.rex.UnitTests<br />
+org.gwe.utils.rex.VarDeclaration<br />
+org.gwe.utils.rex.VarDefinition<br />
+org.gwe.utils.rex.VarValue<br />
+</td>
+<td>org.gwe.app.client.config<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web.servlet<br />
+org.gwe.drivers<br />
+org.gwe.drivers.fileSystems.handles<br />
+org.gwe.integration.slicer<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.p2elv2.macro<br />
+org.gwe.p2elv2.model<br />
+org.gwe.persistence.model.order.p2el<br />
+org.gwe.utils.security<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.lang.reflect<br />
+java.util<br />
+java.util.regex<br />
+org.gwe.utils.rex.config<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.rex.config"></a>
+<h3>org.gwe.utils.rex.config</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>2</td>
+<td>4</td>
+<td>50.0%</td>
+<td>67.0%</td>
+<td>17.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.utils.rex.config.REXConfig4Class<br />
+org.gwe.utils.rex.config.REXConfig4Field<br />
+org.gwe.utils.rex.config.REXConfig4ListElement<br />
+org.gwe.utils.rex.config.REXConfig4String<br />
+</td>
+<td>org.gwe.utils.rex.config.REXField<br />
+org.gwe.utils.rex.config.REXInspector4Class<br />
+org.gwe.utils.rex.config.REXInspector4ListElement<br />
+org.gwe.utils.rex.config.REXInspector4String<br />
+</td>
+<td>org.gwe.p2elv2<br />
+org.gwe.utils.rex<br />
+</td>
+<td>java.lang<br />
+java.lang.annotation<br />
+java.lang.reflect<br />
+java.util<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.security"></a>
+<h3>org.gwe.utils.security</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>24</td>
+<td>8</td>
+<td>0.0%</td>
+<td>25.0%</td>
+<td>75.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.utils.security.AccessControl<br />
+org.gwe.utils.security.AccountInfo<br />
+org.gwe.utils.security.CredentialNotFoundException<br />
+org.gwe.utils.security.KeyStore<br />
+org.gwe.utils.security.ProtocolScheme<br />
+org.gwe.utils.security.RMIResourceLink<br />
+org.gwe.utils.security.Realm<br />
+org.gwe.utils.security.RealmTestResult<br />
+org.gwe.utils.security.ResourceLink<br />
+org.gwe.utils.security.ThinURI<br />
+</td>
+<td>org.gwe<br />
+org.gwe.api<br />
+org.gwe.api.exceptions<br />
+org.gwe.api.impl<br />
+org.gwe.app.client<br />
+org.gwe.app.client.admin<br />
+org.gwe.app.client.config<br />
+org.gwe.app.client.regular.shell<br />
+org.gwe.app.client.web<br />
+org.gwe.app.client.web.view<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.drivers<br />
+org.gwe.drivers.bundleManagers<br />
+org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.fileSystems.handles<br />
+org.gwe.drivers.fileSystems.staging<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers.netAccess.handles<br />
+org.gwe.drivers.netAccess.tunneling<br />
+org.gwe.integration.slicer<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.functions<br />
+org.gwe.persistence.model<br />
+org.gwe.persistence.model.order<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.net<br />
+java.util<br />
+org.apache.commons.logging<br />
+org.gwe.drivers<br />
+org.gwe.utils<br />
+org.gwe.utils.rex<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.services"></a>
+<h3>org.gwe.utils.services</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>2</td>
+<td>4</td>
+<td>20.0%</td>
+<td>67.0%</td>
+<td>13.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td>org.gwe.utils.services.PlainService<br />
+</td>
+<td>org.gwe.utils.services.BrokeredService<br />
+org.gwe.utils.services.PermitRequest<br />
+org.gwe.utils.services.ProcessingPermitBroker<br />
+org.gwe.utils.services.RequestResult<br />
+</td>
+<td>org.gwe.drivers.fileSystems<br />
+org.gwe.drivers.fileSystems.staging<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.util<br />
+org.apache.commons.logging<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.web"></a>
+<h3>org.gwe.utils.web</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>2</td>
+<td>5</td>
+<td>0.0%</td>
+<td>71.0%</td>
+<td>29.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.utils.web.CellAlignment<br />
+org.gwe.utils.web.HtmlContent<br />
+org.gwe.utils.web.HtmlImage<br />
+org.gwe.utils.web.HtmlLink<br />
+org.gwe.utils.web.HtmlMapTable<br />
+org.gwe.utils.web.HtmlPropsTable<br />
+org.gwe.utils.web.HtmlTable<br />
+org.gwe.utils.web.HtmlTableCell<br />
+org.gwe.utils.web.WebIcon<br />
+</td>
+<td>org.gwe.app.client.web.request<br />
+org.gwe.app.client.web.view<br />
+</td>
+<td>java.io<br />
+java.lang<br />
+java.net<br />
+java.util<br />
+org.gwe.app.client.web.request<br />
+</td>
+</tr>
+</table>
+<a name="org.gwe.utils.xstream"></a>
+<h3>org.gwe.utils.xstream</h3>
+<table class="bodyTable"><tr class="a"><th>Afferent Couplings</th>
+<th>Efferent Couplings</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr>
+<tr class="b"><td>1</td>
+<td>5</td>
+<td>0.0%</td>
+<td>83.0%</td>
+<td>17.0%</td>
+</tr>
+</table>
+<table class="bodyTable"><tr class="a"><th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Used by Packages</th>
+<th>Uses Packages</th>
+</tr>
+<tr class="b"><td><i>None</i>
+</td>
+<td>org.gwe.utils.xstream.AliasTransf<br />
+org.gwe.utils.xstream.XMLConfigFile<br />
+</td>
+<td>org.gwe.app.client.config<br />
+</td>
+<td>com.thoughtworks.xstream<br />
+com.thoughtworks.xstream.io.xml<br />
+java.io<br />
+java.lang<br />
+java.lang.reflect<br />
+</td>
+</tr>
+</table>
+<a name="cycles"></a>
+<h2>Cycles</h2>
+[ <a href="#summary">summary</a>
+ ] [ <a href="#packages">packages</a>
+ ] [ <a href="#cycles">cycles</a>
+ ] [ <a href="#explanations">explanations</a>
+ ] <br />
+<br />
+<table class="bodyTable"><tr class="a"><th>Package</th>
+<th>Package Dependencies</th>
+</tr>
+<tr class="b"><td>org.gwe</td>
+<td>org.gwe.drivers.fileSystems<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.api</td>
+<td>org.gwe.api.event<br />
+org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.api.event</td>
+<td>org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.api.exceptions</td>
+<td>org.gwe.utils.security<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.api.impl</td>
+<td>org.gwe.api.exceptions<br />
+org.gwe.utils.security<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.app.agent</td>
+<td>org.gwe.api<br />
+org.gwe.api.event<br />
+org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.app.client</td>
+<td>org.gwe.utils.security<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.app.client.admin</td>
+<td>org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.app.client.config</td>
+<td>org.gwe.p2elv2.macro<br />
+org.gwe.p2elv2.model<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.model<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.app.client.regular.shell</td>
+<td>org.gwe.app.client.config<br />
+org.gwe.p2elv2.macro<br />
+org.gwe.p2elv2.model<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.model<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.app.client.web</td>
+<td>org.gwe.app.client.web.servlet<br />
+org.gwe.app.client.web.request<br />
+org.gwe.utils.web<br />
+org.gwe.app.client.web.request<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.app.client.web.request</td>
+<td>org.gwe.utils.web<br />
+org.gwe.app.client.web.request<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.app.client.web.servlet</td>
+<td>org.gwe.app.client.web.request<br />
+org.gwe.utils.web<br />
+org.gwe.app.client.web.request<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.app.client.web.view</td>
+<td>org.gwe.app.client.web.request<br />
+org.gwe.utils.web<br />
+org.gwe.app.client.web.request<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.app.controller</td>
+<td>org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.app.daemon</td>
+<td>org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.app.daemon.domain</td>
+<td>org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.app.daemon.domain.background</td>
+<td>org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.app.explorer</td>
+<td>org.gwe.persistence.model.order.p2el<br />
+org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.drivers</td>
+<td>org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.drivers.bundleManagers</td>
+<td>org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.drivers.fileSystems</td>
+<td>org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.drivers.fileSystems.handles</td>
+<td>org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.drivers.fileSystems.staging</td>
+<td>org.gwe.drivers.fileSystems<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.drivers.netAccess</td>
+<td>org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.drivers.netAccess.handles</td>
+<td>org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.drivers.netAccess.tunneling</td>
+<td>org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.drivers.resManagers</td>
+<td>org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.integration.lddmm</td>
+<td>org.gwe.persistence.model.order<br />
+org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.integration.slicer</td>
+<td>org.gwe.app.client<br />
+org.gwe.utils.security<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.integration.slicer.chains</td>
+<td>org.gwe.integration.slicer<br />
+org.gwe.app.client<br />
+org.gwe.utils.security<br />
+org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.p2elv2</td>
+<td>org.gwe.p2elv2.model<br />
+org.gwe.p2elv2<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.p2elv2.functions</td>
+<td>org.gwe.p2elv2<br />
+org.gwe.p2elv2.model<br />
+org.gwe.p2elv2<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.p2elv2.macro</td>
+<td>org.gwe.p2elv2.model<br />
+org.gwe.p2elv2<br />
+org.gwe.p2elv2.model<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.p2elv2.model</td>
+<td>org.gwe.p2elv2<br />
+org.gwe.p2elv2.model<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.persistence.dao</td>
+<td>org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.persistence.model</td>
+<td>org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.persistence.model.live</td>
+<td>org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.persistence.model.order</td>
+<td>org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.persistence.model.order.p2el</td>
+<td>org.gwe.persistence.model<br />
+org.gwe.app.daemon.domain<br />
+org.gwe.persistence.model<br />
+</td>
+</tr>
+<tr class="b"><td>org.gwe.utils.security</td>
+<td>org.gwe.drivers<br />
+org.gwe.drivers.netAccess<br />
+org.gwe.drivers<br />
+</td>
+</tr>
+<tr class="a"><td>org.gwe.utils.web</td>
+<td>org.gwe.app.client.web.request<br />
+org.gwe.utils.web<br />
+</td>
+</tr>
+</table>
+<a name="explanations"></a>
+<h2>Explanation</h2>
+[ <a href="#summary">summary</a>
+ ] [ <a href="#packages">packages</a>
+ ] [ <a href="#cycles">cycles</a>
+ ] [ <a href="#explanations">explanations</a>
+ ] <br />
+<br />
+The following explanations are for quick reference and are lifted directly from the original JDepend documentation.<br />
+<br />
+<table class="bodyTable"><tr class="b"><th>Term</th>
+<th>Description</th>
+</tr>
+<tr class="a"><td>Number of Classes</td>
+<td>The number of concrete and abstract classes (and interfaces) in the package is an indicator of the extensibility of the package.</td>
+</tr>
+<tr class="b"><td>Afferent Couplings</td>
+<td>The number of other packages that depend upon classes within the package is an indicator of the package's responsibility.</td>
+</tr>
+<tr class="a"><td>Efferent Couplings</td>
+<td>The number of other packages that the classes in the package depend upon is an indicator of the package's independence.</td>
+</tr>
+<tr class="b"><td>Abstractness</td>
+<td>The ratio of the number of abstract classes (and interfaces) in the analyzed package to the total number of classes in the analyzed package. The range for this metric is 0 to 1, with A=0 indicating a completely concrete package and A=1 indicating a completely abstract package.</td>
+</tr>
+<tr class="a"><td>Instability</td>
+<td>The ratio of efferent coupling (Ce) to total coupling (Ce / (Ce + Ca)). This metric is an indicator of the package's resilience to change. The range for this metric is 0 to 1, with I=0 indicating a completely stable package and I=1 indicating a completely instable package.</td>
+</tr>
+<tr class="b"><td>Distance</td>
+<td>The perpendicular distance of a package from the idealized line A + I = 1. This metric is an indicator of the package's balance between abstractness and stability. A package squarely on the main sequence is optimally balanced with respect to its abstractness and stability. Ideal packages are either completely abstract and stable (x=0, y=1) or completely concrete and instable (x=1, y=0). The range for this metric is 0 to 1, with D=0 indicating a package that is coincident with the main sequence and D=1 indicating a package that is as far from the main sequence as possible.</td>
+</tr>
+<tr class="a"><td>Cycles</td>
+<td>Packages participating in a package dependency cycle are  in a deadly embrace with respect to reusability and their  release cycle. Package dependency cycles can be easily identified by reviewing the textual reports of dependency cycles. Once these dependency cycles have been identified with JDepend, they can be broken by employing various object-oriented techniques.</td>
+</tr>
+</table>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007-2009
+    
+          
+  
+
+  
+    
+            
+  
+    
+   - <a href="http://maven.apache.org/privacy-policy.html">Privacy Policy</a></div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  <script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-1");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>

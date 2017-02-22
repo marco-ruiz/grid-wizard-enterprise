@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>GWE - Installation</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Marco Ruiz" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                                                    
+<meta content="GWE (Grid Wizard Enterprise) is an open source, HPC distributed enterprise system, which leverages on clusters of computers, in order to provide a powerful grid computing platform for end users to easily and effectively parallelize the execution of an (in theory) unlimited number of inter-independent processes." name="description"/>
+                                                        
+<meta content="gwe, grid, cluster, parallel, distributed, computing, hpc, high performance, resource manager, job scheduler, condor, sge, pbs, lsf, torque, globus, metascheduler, jsdl, java, open source" name="keywords"/>
+                                                        
+<meta content="all" name="robots"/>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+                                            <img src="../images/logo.jpg" alt="" />
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 02 Mar 2009
+                  &nbsp;| Version: 0.7.3.alpha
+                      </div>
+            <div class="xright">            <a href="http://www.na-mic.org/" class="externalLink">NAMIC</a>
+            |
+                <a href="http://nbirn.net/" class="externalLink">BIRN</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../news.html">News</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../changes-report.html">Release Notes</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../features.html">Features</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../credits.html">Credits</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../license.html">License</a>
+          </li>
+          </ul>
+              <h5>Guides</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../guides/glossary.html">Glossary</a>
+          </li>
+              
+          
+              
+            
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                  
+      
+            
+      
+            
+      
+            
+      
+            
+      
+                    
+            <li class="expanded">
+                    <a href="../guides/quick.html">Quick Start Guide</a>
+                  <ul>
+                  
+    <li class="none">
+              <strong>Installation</strong>
+        </li>
+                  
+    <li class="none">
+                    <a href="../guides/config.html">Configuration</a>
+          </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/user.html">Usage</a>
+                </li>
+                  
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="../guides/p2el.html">P2EL Specification</a>
+                </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+                    <a href="../guides/resources.html">Other Resources</a>
+          </li>
+          </ul>
+              <h5>GWE Powered Tools</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../integration/api.html">GWE API</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../integration/slicer.html">Case: 3D Slicer3</a>
+          </li>
+          </ul>
+              <h5>Project Collaboration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="https://issues.nbirn.net/jira/browse/GWE" class="externalLink">Issue Tracking</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../coming-soon.html">Continuous Integration</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://groups.google.com/group/gwe-forum?hl=en" class="externalLink">Forum</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../mail-lists.html">Mailing Lists</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../source-repository.html">Source Repository</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../team-list.html">Team</a>
+          </li>
+          </ul>
+              <h5>Source Code Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../xref/index.html">Browser</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../apidocs/index.html">JavaDocs</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../jdepend-report.html">Analysis</a>
+          </li>
+              
+    <li class="none">
+                    <a href="../taglist.html">Tag List</a>
+          </li>
+          </ul>
+                                                 
+                        
+                        
+            <a href="http://maven.apache.org/" title="Maven" class="poweredBy">
+                            <img alt="Maven" src="http://maven.apache.org/images/logos/maven-feather.png" />
+            </a>
+                               
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2><a name="Download">Download</a>
+ GWE 0.7.3.alpha</h2>
+<p>Download one of the GWE distribution bundles:</p>
+<table class="bodyTable"><tbody><tr class="a"><td align="left"></td>
+<td align="left"><b>Bundle Link</b>
+</td>
+</tr>
+<tr class="b"><td align="left">GWE Alpha Release 0.7.3.alpha (zip)</td>
+<td align="left"><a href="http://www.gridwizardenterprise.org/maven/org/gwe/client/0.7.3.alpha/gwe-0.7.3.alpha-client.zip" class="externalLink">gwe-0.7.3.alpha-client.zip</a>
+</td>
+</tr>
+<tr class="a"><td align="left">GWE Alpha Release 0.7.3.alpha (tar.gz)</td>
+<td align="left"><a href="http://www.gridwizardenterprise.org/maven/org/gwe/client/0.7.3.alpha/gwe-0.7.3.alpha-client.tar.gz" class="externalLink">gwe-0.7.3.alpha-client.tar.gz</a>
+</td>
+</tr>
+<tr class="b"><td align="left">GWE Alpha Release 0.7.3.alpha (tar.bz2)</td>
+<td align="left"><a href="http://www.gridwizardenterprise.org/maven/org/gwe/client/0.7.3.alpha/gwe-0.7.3.alpha-client.tar.bz2" class="externalLink">gwe-0.7.3.alpha-client.tar.bz2</a>
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><i>NOTE: The fact that these bundles include a '-client' prefix doesn't mean that they don't carry within them the necessary artifacts to deploy and entire GWE system. In summary, these bundles are everything you need to be able to deploy the full blown enterprise distributed system in your grid environment</i>
+ </p>
+<hr />
+<div class="section"><h3>Previous Releases</h3>
+<p>All previous releases of GWE can be found <a href="http://www.gridwizardenterprise.org/maven/org/gwe/client/" class="externalLink">here</a>
+.</p>
+</div>
+<div class="section"><h3>System <a name="Requirements">Requirements</a>
+</h3>
+<div class="section"><h4>Client Workstations</h4>
+<table class="bodyTable"><tbody><tr class="a"><td align="left"><b>JDK</b>
+</td>
+<td align="left">1.5 or above</td>
+</tr>
+<tr class="b"><td align="left"><b>Memory</b>
+</td>
+<td align="left">No minimum requirement</td>
+</tr>
+<tr class="a"><td align="left"><b>Disk</b>
+</td>
+<td align="left">No minimum requirement.</td>
+</tr>
+<tr class="b"><td align="left"><b>Operating System</b>
+</td>
+<td align="left">No minimum requirement. On Windows, Windows NT and above, Cygwin is required.</td>
+</tr>
+<tr class="a"><td align="left"><b>Network</b>
+</td>
+<td align="left">TCP/IP network connectivity to target cluster head nodes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section"><h4>Cluster Head Nodes</h4>
+<table class="bodyTable"><tbody><tr class="b"><td align="left"><b>JDK</b>
+</td>
+<td align="left">1.5 or above</td>
+</tr>
+<tr class="a"><td align="left"><b>Memory</b>
+</td>
+<td align="left">512MB or more</td>
+</tr>
+<tr class="b"><td align="left"><b>Disk</b>
+</td>
+<td align="left">Enough to hold localized and result files for a number of jobs equal to the daemon's queue size</td>
+</tr>
+<tr class="a"><td align="left"><b>Operating System</b>
+</td>
+<td align="left">No minimum requirement. Preferable Unix based.</td>
+</tr>
+<tr class="b"><td align="left"><b>Network</b>
+</td>
+<td align="left">TCP/IP network connectivity and SSH port opened.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h3><a name="Installation">Installation</a>
+ Instructions</h3>
+<p><i>GWE is a Java 1.5 based system, so you must have</i>
+ <b><a href="http://java.sun.com/javase/downloads/index_jdk5.jsp" class="externalLink">Java 1.5</a>
+</b>
+ <i>or higher installed in order to proceed.</i>
+</p>
+<div class="section"><h4>Unix-based Operating Systems (Linux, Solaris and Mac OS X)</h4>
+<ol type="1"><li>Extract the distribution archive, i.e. <tt>gwe-0.7.3.alpha-client.zip</tt>
+ to the directory you wish to install GWE 0.7.3.alpha. These instructions assume you chose <tt>&quot;/usr/local/gwe&quot;</tt>
+. The directory <tt>gwe-0.7.3.alpha</tt>
+ will be created from the archive.</li>
+<li>In a command terminal, add the <tt>GWE_HOME</tt>
+ environment variable, e.g. <tt>&quot;export GWE_HOME=/usr/local/gwe/gwe-0.7.3.alpha&quot;</tt>
+.</li>
+<li>Add <tt>GWE_HOME/bin</tt>
+ environment variable to your path, e.g. <tt>&quot;export PATH=$GWE_HOME/bin:$PATH&quot;</tt>
+.</li>
+<li>Make sure that <tt>JAVA_HOME</tt>
+ is set to the location of your JDK, e.g. <tt>&quot;export JAVA_HOME=/usr/java/jdk1.5.0_02&quot;</tt>
+ and that <tt>&quot;$JAVA_HOME/bin&quot;</tt>
+ is in your <tt>PATH</tt>
+ environment variable.</li>
+</ol>
+</div>
+<div class="section"><h4>Windows 2000/XP (Under Construction - Unresolved Cygwin related problems)</h4>
+<ol type="1"><li>Install <a href="http://cygwin.com/" class="externalLink">Cygwin</a>
+ in your system if it is not already installed.</li>
+<li>Unzip the distribution archive, i.e. <tt>gwe-0.7.3.alpha-client.zip</tt>
+ to the directory you wish to install GWE 0.7.3.alpha. These instructions assume you chose <tt>&quot;C:\Program Files\GWE&quot;</tt>
+. The directory <tt>gwe-0.7.3.alpha</tt>
+ will be created from the archive.</li>
+<li>Add the <tt>GWE_HOME</tt>
+ environment variable by opening up the system properties (WinKey + Pause), selecting the &quot;Advanced&quot; tab, and the &quot;Environment Variables&quot; button, then adding the <tt>GWE_HOME</tt>
+ variable in the user variables with the value <tt>&quot;C:\Program Files\GWE\gwe-0.7.3.alpha&quot;</tt>
+.</li>
+<li>In the same dialog, update/create the <tt>Path</tt>
+ environment variable in the user variables with the value <tt>&quot;%GWE_HOME%;%Path%&quot;</tt>
+ to make GWE available from the command line.</li>
+<li>In the same dialog, make sure that <tt>JAVA_HOME</tt>
+ exists in your user variables or in the system variables and it is set to the location of your JDK, e.g. <tt>&quot;C:\Program Files\Java\jdk1.5.0_02&quot;</tt>
+ and that <tt>&quot;%JAVA_HOME%\bin&quot;</tt>
+ is in your <tt>Path</tt>
+ environment variable.</li>
+<li>Open a new command prompt (Winkey + R then type <tt>&quot;cmd&quot;</tt>
+) and run <tt>&quot;mvn --version&quot;</tt>
+ to verify that it is correctly installed.</li>
+</ol>
+</div>
+</div>
+<div class="section"><h3><a name="Updating">Updating</a>
+ Instructions</h3>
+<ol type="1"><li>Install the new version of GWE as described in the <i><a href="#Installation">'Installation Instructions' section</a>
+</i>
+.</li>
+<li>Run <tt>&quot;gwe-util-client.sh [GWE_HOME_OF_OLD_VERSION]&quot;</tt>
+.</li>
+</ol>
+</div>
+<div class="section"><h3>Installation Sample Snapshot on Mac OS X</h3>
+<img src="../images/gwe-core/client-install-resized.png" /></div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2007-2009
+    
+          
+  
+
+  
+    
+            
+  
+    
+   - <a href="http://maven.apache.org/privacy-policy.html">Privacy Policy</a></div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  <script type="text/javascript">
+												var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+												document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+											</script>
+											<script type="text/javascript">
+												var pageTracker = _gat._getTracker("UA-3625573-1");
+												pageTracker._initData();
+												pageTracker._trackPageview();
+											</script>
+										</body>
+</html>
