@@ -3,6 +3,20 @@ GWE is an HPC distributed enterprise system, which leverages on cluster computin
 
 For detailed information on this project please visit the [project's legacy site (2012)](https://marco-ruiz.github.io/grid-wizard-enterprise/)
 
+Problem
+=======
+![](/README/problem-85.png)
+
+========
+Solution
+========
+![](/README/solution-85.png)
+
+=============
+Web Dashboard
+=============
+![](/README/wcp-order-3.png)
+
 
 ## Other Sources
 
