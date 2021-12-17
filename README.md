@@ -4,7 +4,7 @@ For information regarding this project, visit the [PROJECT SITE (2009)](https://
 
 ## Other External Sources
 
-- [Publication](http://www.springerlink.com/content/j3l733vn48jp1911)
+- [Publication](https://link.springer.com/protocol/10.1007/978-1-59745-524-4_11)
 - [Research Paper](http://www.i3s.unice.fr/~johan/MICCAI-Grid08/pdf/ruizMICCAIG.pdf)
 
 ## Domain Problem
